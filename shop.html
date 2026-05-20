@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Shop all products at Irene Household Collections. Furniture, duvets, kitchenware, carpets, mosquito nets and more in Nairobi."/>
+  <title>Shop | Irene Household Collections</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── SHOP PAGE SPECIFIC ── */
+    .shop-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 28px;
+      padding: 40px 5%;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 90px;
+      height: fit-content;
+    }
+    .sidebar-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 22px;
+      box-shadow: 0 4px 18px rgba(26,61,43,.07);
+      margin-bottom: 18px;
+    }
+    .sidebar-card h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--green-dark);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gold);
+    }
+    .cat-filter-list { display: flex; flex-direction: column; gap: 6px; }
+    .cat-filter-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 12px;
+      border-radius: 6px;
+      border: none;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 12.5px;
+      font-weight: 500;
+      text-align: left;
+      transition: all .25s;
+    }
+    .cat-filter-btn:hover {
+      background: rgba(26,61,43,.08);
+      color: var(--green);
+    }
+    .cat-filter-btn.active {
+      background: var(--green);
+      color: #fff;
+    }
+    .cat-filter-btn span {
+      font-size: 10px;
+      background: rgba(0,0,0,.08);
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+    .cat-filter-btn.active span {
+      background: rgba(255,255,255,.2);
+    }
+
+    /* Price filter */
+    .price-options { display: flex; flex-direction: column; gap: 7px; }
+    .price-opt {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 5px;
+      border: none;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 12px;
+      text-align: left;
+      cursor: pointer;
+      transition: all .25s;
+    }
+    .price-opt:hover { background: rgba(26,61,43,.08); color: var(--green); }
+    .price-opt.active { background: var(--green); color: #fff; }
+
+    /* Main content */
+    .shop-main {}
+    .shop-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .shop-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--green-dark);
+    }
+    .shop-header p {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+    .shop-controls-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* No results */
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+    .no-results .icon { font-size: 3rem; margin-bottom: 12px; }
+    .no-results p { font-size: 14px; }
+
+    /* Mobile sidebar toggle */
+    .sidebar-toggle {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 900px) {
+      .shop-layout { grid-template-columns: 1fr; }
+      .sidebar {
+        position: static;
+        display: none;
+      }
+      .sidebar.open { display: block; }
+      .sidebar-toggle { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ LOADER ═══════════════ -->
+<div id="loader">
+  <img src="logo.jpg" alt="Irene Household Collections"/>
+  <h2>Irene Household</h2>
+  <small>Collections</small>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- ═══════════════ PROMO BAR ═══════════════ -->
+<div class="promo-bar">
+  🔥 FREE DELIVERY on orders over KSh 5,000 in Nairobi
+  <span>|</span>
+  🏨 Hotel &amp; Airbnb Packages Available
+  <span>|</span>
+  📞 <a href="https://wa.me/254716060029">+254 716 060029</a>
+</div>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.jpg" alt="IHC Logo"/>
+    <div>
+      <b>Irene Household</b>
+      <small>Collections</small>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#categories">Categories</a></li>
+    <li><a href="shop.html" class="active">Shop</a></li>
+    <li><a href="index.html#payment">Payment</a></li>
+    <li><a href="index.html#hotel">Hotel/Airbnb</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <a href="https://wa.me/254716060029" class="nav-wa" target="_blank">
+      📞 +254 716 060029
+    </a>
+    <button class="icon-btn" onclick="openWishlist()" title="Wishlist">
+      ❤️ <span class="badge" id="wl-badge">0</span>
+    </button>
+    <button class="icon-btn" onclick="openCart()" title="Cart">
+      🛒 <span class="badge" id="cart-badge">0</span>
+    </button>
+    <div class="hamburger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html"           onclick="closeMobileNav()">Home</a>
+  <a href="index.html#categories"onclick="closeMobileNav()">Categories</a>
+  <a href="shop.html"            onclick="closeMobileNav()">Shop</a>
+  <a href="index.html#payment"   onclick="closeMobileNav()">Payment</a>
+  <a href="index.html#hotel"     onclick="closeMobileNav()">Hotel / Airbnb</a>
+  <a href="about.html"           onclick="closeMobileNav()">About Us</a>
+  <a href="contact.html"         onclick="closeMobileNav()">Contact</a>
+  <a href="https://wa.me/254716060029" target="_blank">💬 +254 716 060029</a>
+</div>
+
+<!-- ═══════════════ PAGE HERO ═══════════════ -->
+<div class="page-hero">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>›</span>
+    <span class="current">Shop</span>
+  </div>
+  <h1>All Products</h1>
+  <p>95 premium products across 9 categories</p>
+</div>
+
+<!-- ═══════════════ SHOP LAYOUT ═══════════════ -->
+<div style="background:var(--cream);padding-bottom:60px;">
+
+  <!-- Mobile sidebar toggle -->
+  <div style="padding:16px 5% 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+    <button class="sidebar-toggle" onclick="document.getElementById('sidebar').classList.toggle('open')">
+      ☰ Filters
+    </button>
+    <div class="search-wrap">
+      <input type="text" id="search-input" placeholder="Search products..."
+        oninput="liveSearch()" autocomplete="off"/>
+    </div>
+    <span id="product-count" style="color:var(--muted);font-size:12px;margin-left:auto;">95 products</span>
+  </div>
+
+  <div class="shop-layout">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar" id="sidebar">
+
+      <!-- Categories -->
+      <div class="sidebar-card">
+        <h4>Categories</h4>
+        <div class="cat-filter-list">
+          <button class="cat-filter-btn active" onclick="filterCat('all', this)">
+            🏠 All Products <span>95</span>
+          </button>
+          <button class="cat-filter-btn" onclick="filterCat('nets', this)">
+            🦟 Mosquito Nets <span>5</span>
+          </button>
+          <button class="cat-filter-btn" onclick="filterCat('duvets', this)">
+            🛏️ Duvets &amp; Covers <span>21</span>
+          </button>
+          <button class="cat-filter-btn" onclick="filterCat('kitchenware', this)">
+            🍽️ Kitchenware <span>24</span>
+          </button>
+          <button class="cat-filter-btn" onclick="filterCat('carpets', this)">
+            🪵 Carpets &amp; Mats <span>9</span>
+          </button>
+          <button class="cat-filter-btn" onclick="filterCat('seatcovers', this)">
+            🛋️ Seat Covers <span>2</span>
+          </button>
+          <button class="cat-filter-btn" onclick="filterCat('bath', this)">
+            🛁 Bath &amp; Towels <span>8</span>
+          </button>
+          <button class="cat-filter-btn" onclick="filterCat('furniture', this)">
+            🪑 Furniture <span>22</span>
+          </button>
+          <button class="cat-filter-btn" onclick="filterCat('kids', this)">
+            👦 Kids Corner <span>4</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Price Filter -->
+      <div class="sidebar-card">
+        <h4>Price Range</h4>
+        <div class="price-options">
+          <button class="price-opt active" onclick="filterPrice('all', this)">
+            💰 All Prices
+          </button>
+          <button class="price-opt" onclick="filterPrice('under2k', this)">
+            Under KSh 2,000
+          </button>
+          <button class="price-opt" onclick="filterPrice('2k5k', this)">
+            KSh 2,000 – 5,000
+          </button>
+          <button class="price-opt" onclick="filterPrice('5k15k', this)">
+            KSh 5,000 – 15,000
+          </button>
+          <button class="price-opt" onclick="filterPrice('above15k', this)">
+            Above KSh 15,000
+          </button>
+        </div>
+      </div>
+
+      <!-- Sort -->
+      <div class="sidebar-card">
+        <h4>Sort By</h4>
+        <div class="price-options">
+          <button class="price-opt active" onclick="sortBy('default', this)">
+            ✦ Default
+          </button>
+          <button class="price-opt" onclick="sortBy('price-asc', this)">
+            Price: Low to High
+          </button>
+          <button class="price-opt" onclick="sortBy('price-desc', this)">
+            Price: High to Low
+          </button>
+          <button class="price-opt" onclick="sortBy('name', this)">
+            Name: A to Z
+          </button>
+        </div>
+      </div>
+
+      <!-- Special -->
+      <div class="sidebar-card">
+        <h4>Special</h4>
+        <div class="price-options">
+          <button class="price-opt" onclick="filterBadge('HOT', this)">
+            🔥 Bestsellers
+          </button>
+          <button class="price-opt" onclick="filterBadge('SALE', this)">
+            🏷️ On Sale
+          </button>
+          <button class="price-opt" onclick="filterBadge('NEW', this)">
+            ✨ New Arrivals
+          </button>
+          <button class="price-opt" onclick="filterBadge('HOTEL', this)">
+            🏨 Hotel Items
+          </button>
+        </div>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="sidebar-card" style="background:var(--green);border:none;">
+        <h4 style="color:rgba(255,255,255,.6);">Need Help?</h4>
+        <p style="color:rgba(255,255,255,.7);font-size:12px;line-height:1.6;margin-bottom:14px;">
+          Can't find what you're looking for? Chat with us directly!
+        </p>
+        <a href="https://wa.me/254716060029" class="btn-gold" target="_blank"
+          style="width:100%;justify-content:center;font-size:11px;">
+          💬 Chat on WhatsApp
+        </a>
+      </div>
+
+    </aside>
+
+    <!-- ── MAIN PRODUCTS ── -->
+    <main class="shop-main">
+      <div class="shop-header">
+        <div>
+          <h2 id="shop-title">All Products</h2>
+          <p id="product-count-main">Showing 95 products</p>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="product-grid" id="products-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </main>
+
+  </div>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="logo.jpg" alt="IHC"/>
+        <div>
+          <b>Irene Household Collections</b>
+          <small>Quality. Comfort. Style.</small>
+        </div>
+      </div>
+      <p>Premium household items for homes, hotels and Airbnb properties across Nairobi, Kenya.</p>
+      <div class="social-links">
+        <a href="https://wa.me/254716060029" class="social-link" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/jaymieirene" class="social-link" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/irenehouseholdcollections" class="social-link" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="#" onclick="filterCat('furniture',null)">Furniture</a></li>
+        <li><a href="#" onclick="filterCat('duvets',null)">Duvets</a></li>
+        <li><a href="#" onclick="filterCat('kitchenware',null)">Kitchenware</a></li>
+        <li><a href="#" onclick="filterCat('carpets',null)">Carpets</a></li>
+        <li><a href="#" onclick="filterCat('nets',null)">Nets</a></li>
+        <li><a href="#" onclick="filterCat('bath',null)">Bath</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/254716060029">+254 716 060029</a></li>
+        <li><a href="https://irenehousehold.co.ke" target="_blank">irenehousehold.co.ke</a></li>
+        <li><span style="color:rgba(255,255,255,.35);font-size:12px;">Mon–Sat: 8:30am – 7:00pm</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Irene Household Collections. All Rights Reserved.</span>
+    <span>Made with ❤️ in Nairobi, Kenya</span>
+  </div>
+</footer>
+
+<!-- ═══════════════ CART DRAWER ═══════════════ -->
+<div class="overlay" id="cart-overlay"></div>
+<div class="drawer" id="cart-drawer">
+  <div class="drawer-head" style="background:var(--green);">
+    <div>
+      <h3 style="color:#fff;">🛒 Cart</h3>
+      <span id="cart-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span>
+    </div>
+    <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeCart()">✕</button>
+  </div>
+  <div class="drawer-items" id="cart-items">
+    <div class="drawer-empty">
+      <div class="drawer-empty-icon">🛒</div>
+      <p>Your cart is empty</p>
+    </div>
+  </div>
+  <div class="drawer-footer">
+    <div class="pay-status-picker">
+      <span class="pay-status-label">Payment Status</span>
+      <div class="pay-options">
+        <div class="pay-option" id="opt-paid" onclick="selectPayStatus('paid')">
+          <span class="pay-option-icon">✅</span>
+          <div class="pay-option-title">Already Paid</div>
+          <div class="pay-option-sub">M-Pesa sent</div>
+        </div>
+        <div class="pay-option" id="opt-nopay" onclick="selectPayStatus('nopay')">
+          <span class="pay-option-icon">💵</span>
+          <div class="pay-option-title">Pay on Delivery</div>
+          <div class="pay-option-sub">Cash / M-Pesa later</div>
+        </div>
+      </div>
+    </div>
+    <div class="cart-total">
+      <span>Total</span>
+      <strong id="cart-total">KSh 0</strong>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">💬 Order via WhatsApp</button>
+    <button class="clear-cart-btn" onclick="clearCart()">🗑 Clear Cart</button>
+  </div>
+</div>
+
+<!-- ═══════════════ WISHLIST DRAWER ═══════════════ -->
+<div class="overlay" id="wl-overlay"></div>
+<div class="drawer" id="wl-drawer">
+  <div class="drawer-head" style="background:#e53e3e;">
+    <div>
+      <h3 style="color:#fff;">❤️ Wishlist</h3>
+      <span id="wl-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span>
+    </div>
+    <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeWishlist()">✕</button>
+  </div>
+  <div class="drawer-items" id="wl-items">
+    <div class="drawer-empty">
+      <div class="drawer-empty-icon">♡</div>
+      <p>Your wishlist is empty</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ QUICK VIEW MODAL ═══════════════ -->
+<div class="modal" id="qv-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeQuickView()">✕</button>
+    <img class="modal-img" id="qv-img" src="" alt=""/>
+    <div class="modal-body">
+      <div class="modal-cat"  id="qv-cat"></div>
+      <div class="modal-name" id="qv-name"></div>
+      <div class="modal-note" id="qv-note"></div>
+      <div class="modal-price-row">
+        <span class="modal-price" id="qv-price"></span>
+        <span class="modal-old"   id="qv-old"></span>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-green" id="qv-add-btn" onclick="qvAddToCart()" style="flex:1;">
+          🛒 Add to Cart
+        </button>
+        <button class="wishlist-btn" id="qv-wl-btn" onclick="qvToggleWishlist()"
+          style="width:44px;height:44px;border-radius:6px;border:1.5px solid var(--border);">
+          ♡
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Progress Ring -->
+<div class="progress-ring" id="progress-ring" onclick="scrollToTop()">
+  <svg width="44" height="44" viewBox="0 0 44 44">
+    <circle cx="22" cy="22" r="18" fill="none" stroke="#e8e0d0" stroke-width="3"/>
+    <circle id="ring-circle" cx="22" cy="22" r="18" fill="none" stroke="#c8a951"
+      stroke-width="3" stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round"/>
+  </svg>
+  <div class="progress-ring-inner">↑</div>
+</div>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/254716060029" class="wa-float" target="_blank">
+  <svg viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Cookie Bar -->
+<div class="cookie-bar" id="cookie-bar">
+  <p>🍪 We use cookies to improve your experience on <strong>Irene Household Collections</strong>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-decline" onclick="declineCookie()">Decline</button>
+    <button class="cookie-accept" onclick="acceptCookie()">Accept ✓</button>
+  </div>
+</div>
+
+<!-- Bottom Nav -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-items">
+    <a href="index.html" class="bottom-nav-item">
+      <span class="icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="shop.html" class="bottom-nav-item active">
+      <span class="icon">🛍️</span>
+      <span>Shop</span>
+    </a>
+    <a href="#" class="bottom-nav-item" onclick="openWishlist();return false;">
+      <span class="icon">❤️</span>
+      <span>Saved</span>
+      <span class="bottom-nav-badge" id="wl-badge-bottom">0</span>
+    </a>
+    <a href="#" class="bottom-nav-item" onclick="openCart();return false;">
+      <span class="icon">🛒</span>
+      <span>Cart</span>
+      <span class="bottom-nav-badge" id="cart-badge-bottom">0</span>
+    </a>
+    <a href="contact.html" class="bottom-nav-item">
+      <span class="icon">💬</span>
+      <span>Contact</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════ SCRIPT ═══════════════ -->
+<script src="script.js"></script>
+<script>
+  // State for filters
+  let activeCat   = 'all';
+  let activePrice = 'all';
+  let activeSort  = 'default';
+  let activeBadge = '';
+
+  // Get filtered and sorted products
+  function getFiltered() {
+    let list = [...PRODUCTS];
+
+    // Category
+    if (activeCat !== 'all') {
+      list = list.filter(p => p.cat === activeCat);
+    }
+
+    // Price
+    if (activePrice === 'under2k')   list = list.filter(p => p.price > 0 && p.price < 2000);
+    if (activePrice === '2k5k')      list = list.filter(p => p.price >= 2000 && p.price <= 5000);
+    if (activePrice === '5k15k')     list = list.filter(p => p.price > 5000 && p.price <= 15000);
+    if (activePrice === 'above15k')  list = list.filter(p => p.price > 15000);
+
+    // Badge
+    if (activeBadge) list = list.filter(p => p.badge === activeBadge);
+
+    // Sort
+    if (activeSort === 'price-asc')  list.sort((a, b) => a.price - b.price);
+    if (activeSort === 'price-desc') list.sort((a, b) => b.price - a.price);
+    if (activeSort === 'name')       list.sort((a, b) => a.name.localeCompare(b.name));
+
+    return list;
+  }
+
+  function renderShop() {
+    const list = getFiltered();
+    const grid = document.getElementById('products-grid');
+    const countEl = document.getElementById('product-count-main');
+    const countEl2 = document.getElementById('product-count');
+
+    if (countEl)  countEl.textContent  = 'Showing ' + list.length + ' products';
+    if (countEl2) countEl2.textContent = list.length + ' products';
+
+    if (!list.length) {
+      grid.innerHTML = `
+        <div class="no-results">
+          <div class="icon">🔍</div>
+          <p>No products found. Try a different filter.</p>
+          <br/>
+          <button class="btn-green" onclick="resetFilters()">Reset Filters</button>
+        </div>`;
+      return;
+    }
+
+    grid.innerHTML = list.map(buildCard).join('');
+  }
+
+  function filterCat(cat, btn) {
+    activeCat = cat;
+    activeBadge = '';
+
+    // Update buttons
+    document.querySelectorAll('.cat-filter-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+
+    // Update title
+    const titles = {
+      all:'All Products', nets:'Mosquito Nets', duvets:'Duvets & Covers',
+      kitchenware:'Kitchenware', carpets:'Carpets & Mats', seatcovers:'Seat Covers',
+      bath:'Bath & Towels', furniture:'Furniture', kids:'Kids Corner'
+    };
+    const title = document.getElementById('shop-title');
+    if (title) title.textContent = titles[cat] || 'All Products';
+
+    renderShop();
+    window.scrollTo({ top: 300, behavior: 'smooth' });
+  }
+
+  function filterPrice(range, btn) {
+    activePrice = range;
+    document.querySelectorAll('.price-opt').forEach(b => {
+      if (b.onclick && b.onclick.toString().includes('filterPrice')) {
+        b.classList.remove('active');
+      }
+    });
+    if (btn) btn.classList.add('active');
+    renderShop();
+  }
+
+  function sortBy(method, btn) {
+    activeSort = method;
+    document.querySelectorAll('.price-opt').forEach(b => {
+      if (b.onclick && b.onclick.toString().includes('sortBy')) {
+        b.classList.remove('active');
+      }
+    });
+    if (btn) btn.classList.add('active');
+    renderShop();
+  }
+
+  function filterBadge(badge, btn) {
+    activeBadge = activeBadge === badge ? '' : badge;
+    document.querySelectorAll('.price-opt').forEach(b => {
+      if (b.onclick && b.onclick.toString().includes('filterBadge')) {
+        b.classList.remove('active');
+      }
+    });
+    if (activeBadge && btn) btn.classList.add('active');
+    renderShop();
+  }
+
+  function liveSearch() {
+    const q = document.getElementById('search-input').value.toLowerCase().trim();
+    const grid = document.getElementById('products-grid');
+    const countEl = document.getElementById('product-count-main');
+    const countEl2 = document.getElementById('product-count');
+
+    if (!q) { renderShop(); return; }
+
+    const results = PRODUCTS.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      p.cat.toLowerCase().includes(q)  ||
+      p.note.toLowerCase().includes(q)
+    );
+
+    if (countEl)  countEl.textContent  = 'Found ' + results.length + ' products';
+    if (countEl2) countEl2.textContent = results.length + ' products';
+
+    grid.innerHTML = results.length
+      ? results.map(buildCard).join('')
+      : `<div class="no-results">
+           <div class="icon">🔍</div>
+           <p>No results for "<strong>${q}</strong>"</p>
+         </div>`;
+  }
+
+  function resetFilters() {
+    activeCat   = 'all';
+    activePrice = 'all';
+    activeSort  = 'default';
+    activeBadge = '';
+    document.getElementById('search-input').value = '';
+    document.querySelectorAll('.cat-filter-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+    renderShop();
+  }
+
+  // Check URL param for category
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get('cat');
+    if (cat) {
+      const btn = document.querySelector(`.cat-filter-btn[onclick*="${cat}"]`);
+      filterCat(cat, btn);
+    } else {
+      renderShop();
+    }
+  });
+</script>
+
+</body>
+</html>
