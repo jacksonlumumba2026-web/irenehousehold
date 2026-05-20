@@ -1,4 +1,35 @@
 /* ═══════════════════════════════════════
+   IRENE HOUSEHOLD COLLECTIONS — script.js
+   ═══════════════════════════════════════
+   
+   ➕ HOW TO ADD NEW PRODUCTS:
+   
+   1. Upload photo to GitHub (e.g. carpet.10.jpg)
+   
+   2. Find the PRODUCTS array below
+   
+   3. Add a new line at the END (before the ];)
+      Copy this template and fill it in:
+   
+   { id:96, cat:'carpets',
+     name:'New Product Name',
+     note:'Short description or size',
+     price:2500, old:0,
+     img:'carpet.10.jpg',
+     badge:'NEW', badgeType:'new' },
+   
+   CATEGORIES: nets | duvets | kitchenware |
+               carpets | seatcovers | bath |
+               furniture | kids
+   
+   BADGES: HOT/hot | SALE/sale | NEW/new |
+           HOTEL/hotel | leave blank for none
+   
+   ID: Always use next number (last is 95)
+   OLD PRICE: Set old:0 for no strikethrough
+═══════════════════════════════════════ */
+
+/* ═══════════════════════════════════════
    IRENE HOUSEHOLD COLLECTIONS
    Main JavaScript File
 ═══════════════════════════════════════ */
@@ -494,19 +525,26 @@ function buildCard(p) {
 /* ═══════════════════════════════════════
    RENDER PRODUCTS
 ═══════════════════════════════════════ */
-function renderProducts(containerId, filter = 'all', limit = null) {
+function renderProducts(containerId, filter, limit) {
+  filter = filter || 'all';
   const container = document.getElementById(containerId);
   if (!container) return;
 
   let products = filter === 'all'
     ? PRODUCTS
-    : PRODUCTS.filter(p => p.cat === filter);
+    : PRODUCTS.filter(function(p) { return p.cat === filter; });
 
   if (limit) products = products.slice(0, limit);
 
   container.innerHTML = products.length
     ? products.map(buildCard).join('')
     : '<p style="text-align:center;color:#6b7280;padding:40px;">No products found.</p>';
+
+  // Update any count displays
+  var countEl = document.getElementById('product-count');
+  if (countEl && !limit) {
+    countEl.textContent = products.length + ' products';
+  }
 }
 
 /* ═══════════════════════════════════════

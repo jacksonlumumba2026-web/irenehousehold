@@ -1872,3 +1872,186 @@ footer {
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .section { padding: 52px 4%; }
 }
+
+/* ═══════════════════════════════════════
+   MOBILE OVERFLOW FIXES
+═══════════════════════════════════════ */
+
+/* Prevent anything from overflowing screen width */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Fix nav overflow on mobile */
+nav {
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+/* Fix promo bar overflow */
+.promo-bar {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 11px;
+}
+
+/* Fix hero strip on very small screens */
+@media (max-width: 480px) {
+  .hero-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+  .strip-item {
+    padding: 10px 6px;
+    gap: 5px;
+  }
+  .strip-text b    { font-size: 10px; }
+  .strip-text span { font-size: 9px; }
+}
+
+/* Fix bottom nav on all screens */
+.bottom-nav {
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+}
+.bottom-nav-items {
+  width: 100%;
+  padding: 0 4px;
+}
+.bottom-nav-item {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 2px;
+  font-size: 9px;
+  overflow: hidden;
+}
+.bottom-nav-item .icon { font-size: 18px; }
+
+/* Fix footer overflow */
+footer {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Fix section padding on small screens */
+@media (max-width: 400px) {
+  .section { padding: 44px 4%; }
+  nav { padding: 0 3%; }
+  .hero { padding-left: 4%; padding-right: 4%; }
+}
+
+/* Fix category grid on small screens */
+@media (max-width: 400px) {
+  .category-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .category-name { font-size: 11px; }
+}
+
+/* Fix product grid on small screens */
+@media (max-width: 400px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .card-name { font-size: 11.5px; }
+  .card-price { font-size: 15px; }
+}
+
+/* Fix footer grid on mobile */
+@media (max-width: 500px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Fix payment grid on mobile */
+@media (max-width: 500px) {
+  .payment-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Fix form row on mobile */
+@media (max-width: 500px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Fix hotel section on mobile */
+@media (max-width: 600px) {
+  .hotel-section {
+    grid-template-columns: 1fr;
+    padding: 48px 4%;
+  }
+}
+
+/* Fix quick contacts on contact page */
+@media (max-width: 700px) {
+  .quick-contacts {
+    grid-template-columns: 1fr !important;
+  }
+  .contact-main {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Fix about page grids */
+@media (max-width: 700px) {
+  .values-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .why-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .stats-bar {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px;
+    padding: 36px 4%;
+  }
+  .story-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .about-hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .values-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Fix shop layout on tablet */
+@media (max-width: 900px) {
+  .shop-layout {
+    grid-template-columns: 1fr !important;
+    padding: 20px 4% !important;
+  }
+}
+
+/* Fix nav logo text overflow */
+.nav-logo b, .nav-logo small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 120px;
+}
+
+/* Ensure images never overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix drawer on small screens */
+@media (max-width: 420px) {
+  .drawer { width: 100vw; right: -100vw; }
+  .drawer.open { right: 0; }
+}
