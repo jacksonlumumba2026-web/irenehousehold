@@ -2055,3 +2055,156 @@ img {
   .drawer { width: 100vw; right: -100vw; }
   .drawer.open { right: 0; }
 }
+
+/* ═══════════════════════════════════════
+   CONTACT PAGE FIXES
+═══════════════════════════════════════ */
+
+/* Contact items on light background */
+.contact-item {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 12px;
+  background: var(--cream);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.contact-item .contact-icon {
+  flex-shrink: 0;
+}
+.contact-item .contact-detail strong {
+  color: var(--green-dark) !important;
+}
+.contact-item .contact-detail span,
+.contact-item .contact-detail a {
+  color: var(--muted) !important;
+}
+.contact-item .contact-detail a:hover {
+  color: var(--green) !important;
+}
+
+/* Bottom nav — prevent any label overflow */
+.bottom-nav-item span:not(.icon):not(.bottom-nav-badge) {
+  font-size: 9px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 48px;
+  display: block;
+  text-align: center;
+}
+
+/* Nav top — prevent overflow on very small screens */
+@media (max-width: 360px) {
+  .nav-right { gap: 4px; margin-left: 6px; }
+  .nav-wa { display: none; }
+  .icon-btn { width: 32px; height: 32px; font-size: 13px; }
+}
+
+/* ═══════════════════════════════════════
+   FEATURE 1 — WHATSAPP SHARE BUTTON
+═══════════════════════════════════════ */
+.wa-share-btn {
+  width: 42px;
+  min-width: 42px;
+  background: #25d366;
+  border: none;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .25s;
+  padding: 0;
+}
+.wa-share-btn:hover {
+  background: #1da851;
+  transform: scale(1.08);
+}
+.wa-share-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: #fff;
+}
+
+/* ═══════════════════════════════════════
+   FEATURE 4 — FLASH SALE TIMER
+═══════════════════════════════════════ */
+.timer-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.timer-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.timer-label {
+  font-size: 8px;
+  color: rgba(255,255,255,.7);
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+.timer-sep {
+  font-size: 1.4rem;
+  color: rgba(255,255,255,.6);
+  font-weight: 700;
+  margin-top: -6px;
+}
+
+/* ═══════════════════════════════════════
+   FEATURE 3 — RECENTLY VIEWED
+═══════════════════════════════════════ */
+#recently-viewed-section {
+  border-top: 1px solid var(--border);
+}
+
+/* ═══════════════════════════════════════
+   FEATURE 5 — DELIVERY BAR
+═══════════════════════════════════════ */
+#delivery-bar-wrap {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+  padding-bottom: 14px !important;
+}
+
+/* ═══════════════════════════════════════
+   COMMUNITY SECTION
+═══════════════════════════════════════ */
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 860px;
+  margin: 0 auto 44px;
+}
+@media (max-width: 700px) {
+  .community-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 900px) and (min-width: 701px) {
+  .community-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* ── Community cards responsive fix ── */
+#community [style*="grid-template-columns:repeat(3,1fr)"] {
+  display: grid;
+}
+@media (max-width: 680px) {
+  #community [style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (min-width: 681px) and (max-width: 900px) {
+  #community [style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
