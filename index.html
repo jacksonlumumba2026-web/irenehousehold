@@ -15,8 +15,11 @@
       color: rgba(255,255,255,.7);
       text-align: center;
       padding: 7px 5%;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 500;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     .top-bar a { color: var(--gold); text-decoration: none; margin-left: 6px; }
 
@@ -24,7 +27,7 @@
     .simple-nav {
       background: #fff;
       border-bottom: 1px solid #e8e0d0;
-      padding: 12px 5%;
+      padding: 10px 4%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -32,6 +35,8 @@
       top: 0;
       z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,.06);
+      max-width: 100vw;
+      overflow: hidden;
     }
     .simple-nav-logo {
       display: flex;
@@ -51,12 +56,20 @@
       color: var(--green-dark);
       font-size: 13px;
       font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 130px;
     }
     .simple-nav-logo small {
       color: var(--gold);
       font-size: 9px;
       letter-spacing: 2px;
       text-transform: uppercase;
+      display: none;
+    }
+    @media (min-width: 480px) {
+      .simple-nav-logo small { display: block; }
     }
     .simple-nav-right {
       display: flex;
@@ -65,9 +78,12 @@
     }
     .simple-nav-links {
       display: flex;
-      gap: 20px;
+      gap: 16px;
       list-style: none;
-      margin-right: 16px;
+      margin-right: 12px;
+    }
+    .simple-nav-links a {
+      font-size: 12px;
     }
     .simple-nav-links a {
       color: var(--text);
@@ -182,13 +198,14 @@
     /* ── HERO BANNER ── */
     .hero-banner {
       background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
-      padding: 36px 5%;
+      padding: 28px 5%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 16px;
       position: relative;
       overflow: hidden;
+      min-height: 200px;
     }
     .hero-banner::before {
       content: '';
@@ -283,17 +300,14 @@
       border-bottom: 1px solid #e8e0d0;
     }
     .stat-strip-item {
-      padding: 14px 10px;
+      padding: 12px 6px;
       text-align: center;
       border-right: 1px solid #e8e0d0;
     }
     .stat-strip-item:last-child { border-right: none; }
-    .stat-strip-item .icon { font-size: 1.3rem; margin-bottom: 4px; display: block; }
-    .stat-strip-item b { display: block; color: var(--green-dark); font-size: 12px; font-weight: 700; }
-    .stat-strip-item span { color: var(--muted); font-size: 10px; }
-    @media (max-width: 500px) {
-      .stats-strip { grid-template-columns: repeat(2, 1fr); }
-    }
+    .stat-strip-item .icon { font-size: 1.2rem; margin-bottom: 3px; display: block; }
+    .stat-strip-item b { display: block; color: var(--green-dark); font-size: 11px; font-weight: 700; }
+    .stat-strip-item span { color: var(--muted); font-size: 9.5px; }
 
     /* ── SECTION HEADERS ── */
     .sec-header {
@@ -490,12 +504,12 @@
     /* ── FLASH SALE BANNER ── */
     .flash-banner {
       background: linear-gradient(90deg, #e53e3e, #c0392b);
-      padding: 14px 5%;
+      padding: 12px 4%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
+      overflow: hidden;
     }
     .flash-banner-left {
       display: flex;
@@ -680,6 +694,13 @@
     .subscribe-row button:hover { background: var(--gold2); }
 
     /* ── MOBILE BOTTOM NAV ── */
+    /* Hero image grid */
+    .hero-hex-wrap {
+      display: flex !important;
+    }
+    @media (max-width: 480px) {
+      .hero-hex-wrap { display: none !important; }
+    }
     @media (max-width: 768px) {
       body { padding-bottom: 64px; }
       .simple-nav-links { display: none; }
@@ -758,26 +779,52 @@
     </div>
   </div>
   <div class="flash-right">
-    <div class="flash-timer-box" id="flash-timer"></div>
-    <a href="shop.html" class="flash-shop-btn">Shop Sale →</a>
+    <div id="flash-timer" style="background:rgba(0,0,0,.25);padding:7px 12px;border-radius:8px;display:flex;align-items:center;gap:5px;"></div>
+    <a href="shop.html" class="flash-shop-btn" style="white-space:nowrap;">Shop →</a>
   </div>
 </div>
 
-<!-- HERO BANNER -->
-<div class="hero-banner">
-  <div class="hero-banner-text">
-    <span>✦ Quality. Comfort. Style.</span>
-    <h1>Everything Your<br>Home <em>Deserves</em></h1>
-    <p>Premium furniture, beddings, kitchenware, carpets and more. Trusted by homes, hotels and Airbnb hosts across Nairobi.</p>
-    <div class="hero-banner-btns">
-      <a href="shop.html" class="hero-btn-gold">🛍️ Shop Now</a>
-      <a href="https://wa.me/254716060029" class="hero-btn-outline" target="_blank">💬 WhatsApp Us</a>
+<!-- HERO BANNER — diagonal style -->
+<div style="background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 100%);display:flex;align-items:stretch;overflow:hidden;position:relative;min-height:180px;">
+
+  <!-- Left: diagonal text block -->
+  <div style="flex:1;padding:28px 5%;position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:10px;">
+    <!-- Diagonal cut right edge -->
+    <div style="position:absolute;top:0;right:-40px;bottom:0;width:80px;background:var(--green-dark);transform:skewX(-8deg);z-index:1;display:none;" class="hero-diag"></div>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,5vw,2.8rem);color:#fff;line-height:1.1;position:relative;z-index:2;">
+      Irene Household<br><em style="color:var(--gold);">Collections</em>
+    </h1>
+    <p style="color:rgba(255,255,255,.7);font-size:12.5px;line-height:1.6;max-width:320px;position:relative;z-index:2;">
+      Premium furniture, beddings, kitchenware, carpets &amp; more in Nairobi.
+    </p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:2;">
+      <a href="shop.html" style="background:var(--gold);color:var(--green-dark);padding:10px 20px;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">🛍️ Shop Now</a>
+      <a href="https://wa.me/254716060029" target="_blank" style="border:1.5px solid rgba(255,255,255,.4);color:#fff;padding:10px 16px;border-radius:6px;font-size:12px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">💬 WhatsApp</a>
     </div>
   </div>
-  <div class="hero-banner-imgs">
-    <div class="hero-img-circle"><img src="duvet.1.jpg" alt="Duvet" loading="lazy"/></div>
-    <div class="hero-img-circle"><img src="kitchenware.1.jpg" alt="Kitchen" loading="lazy"/></div>
-    <div class="hero-img-circle"><img src="furniture.1.jpg" alt="Furniture" loading="lazy"/></div>
+
+  <!-- Right: hexagon product images -->
+  <div style="flex-shrink:0;padding:16px 5% 16px 0;display:flex;align-items:center;justify-content:flex-end;position:relative;z-index:2;" class="hero-hex-wrap">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:6px;width:180px;height:160px;">
+      <div style="border-radius:8px;overflow:hidden;background:rgba(255,255,255,.1);">
+        <img src="furniture.1.jpg" alt="Furniture" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);" loading="lazy"/>
+      </div>
+      <div style="border-radius:8px;overflow:hidden;background:rgba(255,255,255,.1);">
+        <img src="duvet.1.jpg" alt="Duvet" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);" loading="lazy"/>
+      </div>
+      <div style="border-radius:8px;overflow:hidden;background:rgba(255,255,255,.1);">
+        <img src="kitchenware.1.jpg" alt="Kitchen" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);" loading="lazy"/>
+      </div>
+      <div style="border-radius:8px;overflow:hidden;background:rgba(255,255,255,.1);">
+        <img src="carpet.1.jpg" alt="Carpet" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);" loading="lazy"/>
+      </div>
+      <div style="border-radius:8px;overflow:hidden;background:rgba(255,255,255,.1);">
+        <img src="bath.1.jpg" alt="Bath" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);" loading="lazy"/>
+      </div>
+      <div style="border-radius:8px;overflow:hidden;background:rgba(255,255,255,.1);">
+        <img src="net.1.jpg" alt="Nets" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);" loading="lazy"/>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -802,6 +849,26 @@
     <span class="icon">💬</span>
     <b>24/7 Support</b>
     <span>Always Here</span>
+  </div>
+</div>
+
+<!-- BROWSE COLLECTIONS DROPDOWN -->
+<div style="background:#fff;border-bottom:1px solid #e8e0d0;padding:0 5%;">
+  <button id="home-browse-btn" onclick="toggleHomeBrowse()"
+    style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 0;background:none;border:none;font-size:14px;font-weight:600;color:var(--green-dark);font-family:'DM Sans',sans-serif;cursor:pointer;">
+    <span>📦 Browse Collections</span>
+    <span id="home-browse-arrow" style="font-size:12px;color:var(--muted);transition:transform .3s;">▼</span>
+  </button>
+  <div id="home-browse-dd" style="display:none;flex-wrap:wrap;gap:8px;padding-bottom:14px;">
+    <a href="shop.html" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--green)';this.style.color='#fff';this.style.borderColor='var(--green)'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)';this.style.borderColor='#e0e0e0'">🏠 All Products</a>
+    <a href="shop.html?cat=nets" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🦟 Mosquito Nets</a>
+    <a href="shop.html?cat=duvets" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🛏️ Duvets &amp; Covers</a>
+    <a href="shop.html?cat=kitchenware" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🍽️ Kitchenware</a>
+    <a href="shop.html?cat=carpets" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🪵 Carpets &amp; Mats</a>
+    <a href="shop.html?cat=seatcovers" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🛋️ Seat Covers</a>
+    <a href="shop.html?cat=bath" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🛁 Bath &amp; Towels</a>
+    <a href="shop.html?cat=furniture" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🪑 Furniture</a>
+    <a href="shop.html?cat=kids" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">👦 Kids Corner</a>
   </div>
 </div>
 
@@ -1179,6 +1246,16 @@
     window.open('https://wa.me/254716060029?text=' + encodeURIComponent(msg), '_blank');
     document.getElementById('subscribe-input').value = '';
     showToast('✅ Redirecting to WhatsApp...');
+  }
+
+  // Browse dropdown toggle
+  function toggleHomeBrowse() {
+    var dd = document.getElementById('home-browse-dd');
+    var arrow = document.getElementById('home-browse-arrow');
+    var btn = document.getElementById('home-browse-btn');
+    var isOpen = dd.style.display === 'flex';
+    dd.style.display = isOpen ? 'none' : 'flex';
+    arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
   }
 
   // Scroll progress
