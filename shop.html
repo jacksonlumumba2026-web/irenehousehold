@@ -215,6 +215,7 @@
   <a href="shop.html"            onclick="closeMobileNav()">Shop</a>
   <a href="index.html#payment"   onclick="closeMobileNav()">Payment</a>
   <a href="index.html#hotel"     onclick="closeMobileNav()">Hotel / Airbnb</a>
+  <a href="index.html#community" onclick="closeMobileNav()">🌍 Community</a>
   <a href="about.html"           onclick="closeMobileNav()">About Us</a>
   <a href="contact.html"         onclick="closeMobileNav()">Contact</a>
   <a href="https://wa.me/254716060029" target="_blank">💬 +254 716 060029</a>
@@ -378,6 +379,22 @@
 </div>
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
+
+<!-- ═══════════════ RECENTLY VIEWED ═══════════════ -->
+<div id="recently-viewed-section" style="display:none;background:#fff;padding:40px 5%;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+    <div>
+      <span style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);">✦ Your History</span>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--green-dark);margin-top:4px;">Recently Viewed</h3>
+    </div>
+    <button onclick="recentlyViewed=[];renderRecentlyViewed();"
+      style="font-size:11px;color:var(--muted);background:none;border:1px solid var(--border);padding:5px 12px;border-radius:4px;cursor:pointer;">
+      Clear
+    </button>
+  </div>
+  <div class="product-grid" id="recently-viewed-grid"></div>
+</div>
+
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -453,6 +470,16 @@
     </div>
   </div>
   <div class="drawer-footer">
+    <!-- Delivery progress bar -->
+    <div id="delivery-bar-wrap" style="padding:12px 0 0;">
+      <p id="delivery-msg" style="font-size:11.5px;color:var(--muted);margin-bottom:7px;text-align:center;">
+        Add <strong style="color:var(--green);">KSh 5,000</strong> more for <strong style="color:var(--green);">FREE delivery</strong> 🚚
+      </p>
+      <div style="background:var(--border);border-radius:20px;height:7px;overflow:hidden;">
+        <div id="delivery-bar" style="height:100%;width:0%;background:var(--gold);border-radius:20px;transition:width .5s ease,background .3s;"></div>
+      </div>
+    </div>
+
     <div class="pay-status-picker">
       <span class="pay-status-label">Payment Status</span>
       <div class="pay-options">
@@ -573,7 +600,7 @@
     </a>
     <a href="contact.html" class="bottom-nav-item">
       <span class="icon">💬</span>
-      <span>Contact</span>
+      <span>Chat</span>
     </a>
   </div>
 </nav>
