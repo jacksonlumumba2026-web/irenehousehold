@@ -7,435 +7,221 @@
   <title>Irene Household Collections | Quality. Comfort. Style.</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
+    /* ══════════════════════════════════
+       SHOP PAGE — CLEAN WHITE STYLE
+    ══════════════════════════════════ */
     body { background: #f5f5f5; }
 
-    /* ── TOP BAR ── */
-    .top-bar {
-      background: var(--green-dark);
-      color: rgba(255,255,255,.7);
-      text-align: center;
-      padding: 7px 5%;
-      font-size: 11px;
-      font-weight: 500;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-    .top-bar a { color: var(--gold); text-decoration: none; margin-left: 6px; }
-
-    /* ── SIMPLE NAV ── */
-    .simple-nav {
+    /* ── Top search bar ── */
+    .shop-search-bar {
       background: #fff;
       border-bottom: 1px solid #e8e0d0;
-      padding: 10px 4%;
+      padding: 12px 5%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,.06);
-      max-width: 100vw;
-      overflow: hidden;
+      gap: 12px;
     }
-    .simple-nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-    .simple-nav-logo img {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--gold);
-    }
-    .simple-nav-logo b {
-      display: block;
-      color: var(--green-dark);
-      font-size: 13px;
-      font-weight: 700;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 130px;
-    }
-    .simple-nav-logo small {
-      color: var(--gold);
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      display: none;
-    }
-    @media (min-width: 480px) {
-      .simple-nav-logo small { display: block; }
-    }
-    .simple-nav-right {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .simple-nav-links {
-      display: flex;
-      gap: 16px;
-      list-style: none;
-      margin-right: 12px;
-    }
-    .simple-nav-links a {
-      font-size: 12px;
-    }
-    .simple-nav-links a {
-      color: var(--text);
-      font-size: 12px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: color .2s;
-    }
-    .simple-nav-links a:hover,
-    .simple-nav-links a.active { color: var(--green); }
-    .nav-icon-btn {
-      position: relative;
+    .shop-search-bar input {
+      flex: 1;
       background: #f5f5f5;
-      border: none;
-      width: 38px;
-      height: 38px;
+      border: 1.5px solid #e0e0e0;
+      padding: 10px 16px 10px 38px;
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background .2s;
-      color: var(--text);
+      font-size: 13.5px;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      transition: border-color .25s;
     }
-    .nav-icon-btn:hover { background: #e8e0d0; }
-    .nav-cart-count {
+    .shop-search-bar input:focus { border-color: var(--green); }
+    .search-icon-wrap {
+      position: relative;
+      flex: 1;
+    }
+    .search-icon-wrap::before {
+      content: '🔍';
       position: absolute;
-      top: -4px;
-      right: -4px;
-      background: var(--green);
-      color: #fff;
-      font-size: 8px;
-      font-weight: 700;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    .nav-cart-count.show { display: flex; }
-    .nav-wa-btn {
-      background: var(--green);
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 11px;
-      font-weight: 700;
-      text-decoration: none;
-      white-space: nowrap;
-      display: none;
-    }
-    .ham-btn {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .ham-btn span {
-      width: 20px;
-      height: 2px;
-      background: var(--green-dark);
-      border-radius: 2px;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 13px;
+      pointer-events: none;
     }
 
-    /* Mobile menu */
-    .mob-menu {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 2000;
-      background: rgba(0,0,0,.5);
-    }
-    .mob-menu.open { display: block; }
-    .mob-menu-inner {
-      background: #fff;
-      width: 280px;
-      height: 100%;
-      padding: 24px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      overflow-y: auto;
-    }
-    .mob-menu-inner a {
-      color: var(--text);
-      text-decoration: none;
-      padding: 12px 8px;
-      font-size: 14px;
-      font-weight: 500;
-      border-bottom: 1px solid #f0f0f0;
-      transition: color .2s;
-    }
-    .mob-menu-inner a:hover { color: var(--green); }
-    .mob-menu-close {
-      background: none;
-      border: none;
-      font-size: 22px;
-      cursor: pointer;
-      color: var(--muted);
-      align-self: flex-end;
-      margin-bottom: 12px;
-    }
-
-    /* ── HERO BANNER ── */
-    .hero-banner {
-      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+    /* ── Banner ── */
+    .shop-banner {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 60%);
+      margin: 0 0 0 0;
       padding: 28px 5%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      position: relative;
+      gap: 20px;
       overflow: hidden;
-      min-height: 200px;
+      position: relative;
     }
-    .hero-banner::before {
+    .shop-banner::after {
       content: '';
       position: absolute;
       inset: 0;
       background-image: radial-gradient(circle at 1px 1px, rgba(200,169,81,.08) 1px, transparent 0);
       background-size: 28px 28px;
     }
-    .hero-banner-text { position: relative; z-index: 1; }
-    .hero-banner-text span {
-      display: inline-block;
-      background: rgba(200,169,81,.2);
-      color: var(--gold);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 20px;
-      margin-bottom: 10px;
-    }
-    .hero-banner-text h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      color: #fff;
-      line-height: 1.1;
-      margin-bottom: 8px;
-    }
-    .hero-banner-text h1 em { color: var(--gold); font-style: italic; }
-    .hero-banner-text p {
-      color: rgba(255,255,255,.7);
-      font-size: 13px;
-      margin-bottom: 18px;
-      max-width: 380px;
-      line-height: 1.6;
-    }
-    .hero-banner-btns { display: flex; gap: 10px; flex-wrap: wrap; }
-    .hero-btn-gold {
-      background: var(--gold);
-      color: var(--green-dark);
-      padding: 11px 22px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: background .25s;
-    }
-    .hero-btn-gold:hover { background: var(--gold2); }
-    .hero-btn-outline {
-      border: 1.5px solid rgba(255,255,255,.4);
-      color: #fff;
-      padding: 11px 22px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 500;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all .25s;
-    }
-    .hero-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-    .hero-banner-imgs {
-      display: flex;
-      gap: 10px;
+    .shop-banner-text {
       position: relative;
       z-index: 1;
-      flex-shrink: 0;
     }
-    .hero-img-circle {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2.5px solid rgba(200,169,81,.6);
-      background: rgba(255,255,255,.1);
-    }
-    .hero-img-circle img { width: 100%; height: 100%; object-fit: cover; }
-    @media (max-width: 600px) {
-      .hero-banner-imgs { display: none; }
-      .hero-banner-text h1 { font-size: 1.8rem; }
-    }
-
-    /* ── STATS STRIP ── */
-    .stats-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      background: #fff;
-      border-bottom: 1px solid #e8e0d0;
-    }
-    .stat-strip-item {
-      padding: 12px 6px;
-      text-align: center;
-      border-right: 1px solid #e8e0d0;
-    }
-    .stat-strip-item:last-child { border-right: none; }
-    .stat-strip-item .icon { font-size: 1.2rem; margin-bottom: 3px; display: block; }
-    .stat-strip-item b { display: block; color: var(--green-dark); font-size: 11px; font-weight: 700; }
-    .stat-strip-item span { color: var(--muted); font-size: 9.5px; }
-
-    /* ── SECTION HEADERS ── */
-    .sec-header {
-      padding: 28px 5% 14px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .sec-header-text {}
-    .sec-header-text .label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: block;
+    .shop-banner-text h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: #fff;
+      line-height: 1.1;
       margin-bottom: 4px;
     }
-    .sec-header-text h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      color: var(--green-dark);
+    .shop-banner-text p {
+      color: rgba(255,255,255,.65);
+      font-size: 13px;
     }
-    .sec-header a {
-      color: var(--green);
-      font-size: 12.5px;
-      font-weight: 600;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .sec-header a:hover { text-decoration: underline; }
-
-    /* ── CATEGORY GRID ── */
-    .cat-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      padding: 0 5% 28px;
-    }
-    .cat-card {
+    .shop-banner-imgs {
+      display: flex;
+      gap: 8px;
       position: relative;
-      border-radius: 10px;
+      z-index: 1;
+    }
+    .shop-banner-imgs div {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
       overflow: hidden;
-      aspect-ratio: 4/3;
-      cursor: pointer;
-      transition: transform .3s, box-shadow .3s;
-      background: var(--green-dark);
+      border: 2px solid rgba(200,169,81,.5);
+      background: rgba(255,255,255,.1);
     }
-    .cat-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(26,61,43,.2);
-    }
-    .cat-card img {
+    .shop-banner-imgs div img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(.6);
-      transition: transform .5s, filter .4s;
     }
-    .cat-card:hover img { transform: scale(1.05); filter: brightness(.75); }
-    .cat-card-ov {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(10,25,16,.9) 0%, transparent 55%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 12px;
-    }
-    .cat-badge {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-    .cat-card-name {
-      color: #fff;
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 2px;
-      transition: color .25s;
-    }
-    .cat-card:hover .cat-card-name { color: var(--gold); }
-    .cat-card-count { color: var(--gold); font-size: 10.5px; }
-    @media (min-width: 600px) { .cat-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; } }
-    @media (min-width: 900px) { .cat-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; } }
 
-    /* ── FEATURED PRODUCTS ── */
-    .featured-grid {
+    /* ── Browse Collections dropdown ── */
+    .browse-wrap {
+      background: #fff;
+      border-bottom: 1px solid #e8e0d0;
+      padding: 0 5%;
+    }
+    .browse-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      background: none;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--green-dark);
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+    }
+    .browse-btn .arrow {
+      font-size: 12px;
+      color: var(--muted);
+      transition: transform .3s;
+    }
+    .browse-btn.open .arrow { transform: rotate(180deg); }
+    .browse-dropdown {
+      display: none;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-bottom: 14px;
+    }
+    .browse-dropdown.open { display: flex; }
+    .browse-cat-btn {
+      padding: 8px 16px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 20px;
+      background: #f5f5f5;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      transition: all .2s;
+      font-family: 'DM Sans', sans-serif;
+      white-space: nowrap;
+    }
+    .browse-cat-btn:hover,
+    .browse-cat-btn.active {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+
+    /* ── Results bar ── */
+    .results-bar {
+      background: #fff;
+      padding: 10px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .results-bar p {
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .results-bar p strong { color: var(--green-dark); }
+    .sort-wrap select {
+      padding: 7px 12px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      cursor: pointer;
+    }
+    .sort-wrap select:focus { border-color: var(--green); }
+
+    /* ── Product Grid ── */
+    .shop-products-wrap {
+      padding: 16px 5% 32px;
+    }
+    .shop-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      padding: 0 5% 28px;
+      gap: 14px;
     }
-    .feat-card {
+
+    /* ── Clean Product Card ── */
+    .shop-card {
       background: #fff;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 2px 10px rgba(0,0,0,.06);
       transition: box-shadow .3s, transform .3s;
+      position: relative;
       display: flex;
       flex-direction: column;
     }
-    .feat-card:hover {
+    .shop-card:hover {
       box-shadow: 0 8px 28px rgba(26,61,43,.13);
       transform: translateY(-3px);
     }
-    .feat-card-img {
+    .shop-card-img {
       position: relative;
       aspect-ratio: 1;
       overflow: hidden;
       background: #f9f9f9;
     }
-    .feat-card-img img {
+    .shop-card-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform .5s;
     }
-    .feat-card:hover .feat-card-img img { transform: scale(1.06); }
-    .feat-badge {
+    .shop-card:hover .shop-card-img img { transform: scale(1.06); }
+    .shop-card-badge {
       position: absolute;
       top: 8px;
       left: 8px;
@@ -446,276 +232,211 @@
       padding: 3px 8px;
       border-radius: 4px;
     }
-    .feat-card-body {
+    .shop-card-wish {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 30px;
+      height: 30px;
+      background: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,.12);
+      cursor: pointer;
+      transition: transform .2s;
+    }
+    .shop-card-wish:hover { transform: scale(1.15); }
+    .shop-card-wish.active { color: #e53e3e; background: #fff0f0; }
+
+    .shop-card-body {
       padding: 12px;
       display: flex;
       flex-direction: column;
       flex: 1;
-      gap: 5px;
+      gap: 6px;
     }
-    .feat-cat {
+    .shop-card-cat {
       font-size: 9.5px;
       font-weight: 600;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--gold);
     }
-    .feat-name {
+    .shop-card-name {
       font-size: 13px;
       font-weight: 600;
       color: var(--green-dark);
       line-height: 1.35;
     }
-    .feat-price-row {
+    .shop-card-note {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .shop-card-price-row {
       display: flex;
       align-items: center;
       gap: 7px;
     }
-    .feat-price {
+    .shop-card-price {
       font-family: 'Cormorant Garamond', serif;
       font-size: 18px;
       font-weight: 700;
       color: var(--green);
     }
-    .feat-old {
+    .shop-card-old {
       font-size: 11px;
       color: #bbb;
       text-decoration: line-through;
     }
-    .feat-atc {
+    .shop-card-btns {
+      display: flex;
+      gap: 7px;
       margin-top: auto;
-      width: 100%;
+    }
+    .shop-card-atc {
+      flex: 1;
       background: var(--green);
       color: #fff;
       border: none;
-      padding: 11px;
-      font-size: 12px;
+      padding: 11px 8px;
+      font-size: 11.5px;
       font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
       border-radius: 6px;
       cursor: pointer;
       transition: background .25s;
       font-family: 'DM Sans', sans-serif;
     }
-    .feat-atc:hover { background: var(--green2); }
-    .feat-atc.added { background: var(--green2); }
-    @media (min-width: 600px) { .featured-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (min-width: 900px) { .featured-grid { grid-template-columns: repeat(4, 1fr); } }
-
-    /* ── FLASH SALE BANNER ── */
-    .flash-banner {
-      background: linear-gradient(90deg, #e53e3e, #c0392b);
-      padding: 12px 4%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      overflow: hidden;
-    }
-    .flash-banner-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .flash-banner-left .icon { font-size: 1.6rem; }
-    .flash-banner-left div b { display: block; color: #fff; font-size: 14px; font-weight: 700; }
-    .flash-banner-left div span { color: rgba(255,255,255,.75); font-size: 12px; }
-    .flash-right {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .flash-timer-box {
-      background: rgba(0,0,0,.25);
-      padding: 8px 14px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .flash-shop-btn {
-      background: #fff;
-      color: #e53e3e;
-      padding: 9px 16px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    /* ── HOTEL SECTION ── */
-    .hotel-sec {
-      background: var(--green);
-      padding: 40px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .hotel-sec-text h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      color: #fff;
-      margin-bottom: 8px;
-    }
-    .hotel-sec-text p { color: rgba(255,255,255,.7); font-size: 13px; max-width: 500px; line-height: 1.7; }
-    .hotel-badges { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
-    .hotel-badge {
-      background: rgba(200,169,81,.15);
-      border: 1px solid rgba(200,169,81,.3);
-      color: var(--gold);
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    /* ── TESTIMONIALS ── */
-    .testi-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      padding: 0 5% 28px;
-    }
-    .testi-card {
-      background: #fff;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 2px 10px rgba(0,0,0,.06);
-      border-left: 4px solid var(--gold);
-    }
-    .testi-stars { color: var(--gold); font-size: 12px; margin-bottom: 8px; }
-    .testi-card blockquote { font-style: italic; color: #555; font-size: 13px; line-height: 1.7; margin-bottom: 10px; }
-    .testi-card strong { font-size: 12.5px; color: var(--green-dark); }
-    .testi-card small { display: block; color: var(--gold); font-size: 10.5px; margin-top: 2px; }
-    @media (min-width: 600px) { .testi-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 900px) { .testi-grid { grid-template-columns: repeat(3, 1fr); } }
-
-    /* ── COMMUNITY ── */
-    .community-sec {
-      background: var(--green-dark);
-      padding: 48px 5%;
-    }
-    .community-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      max-width: 860px;
-      margin: 28px auto 32px;
-    }
-    .comm-card {
-      border-radius: 12px;
-      padding: 22px 16px;
-      text-align: center;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      transition: transform .3s;
-    }
-    .comm-card:hover { transform: translateY(-5px); }
-    .comm-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
+    .shop-card-atc:hover { background: var(--green2); }
+    .shop-card-atc.added { background: var(--green2); }
+    .shop-card-wa {
+      width: 40px;
+      min-width: 40px;
+      background: #25d366;
+      border: none;
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
+      transition: background .25s;
     }
-    .comm-icon svg { width: 24px; height: 24px; fill: #fff; }
-    .comm-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-    .comm-desc { font-size: 11.5px; color: rgba(255,255,255,.6); line-height: 1.6; }
-    .comm-btn {
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      width: 100%;
-      text-align: center;
-      margin-top: auto;
-    }
-    @media (max-width: 650px) { .community-cards { grid-template-columns: 1fr; } }
-    @media (min-width: 651px) and (max-width: 860px) { .community-cards { grid-template-columns: 1fr 1fr; } }
+    .shop-card-wa:hover { background: #1da851; }
+    .shop-card-wa svg { width: 16px; height: 16px; fill: #fff; }
 
-    /* ── SUBSCRIBE ── */
-    .subscribe-sec {
+    /* ── Pagination ── */
+    .pagination-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 24px 5% 40px;
+    }
+    .page-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1.5px solid #e0e0e0;
+      background: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .page-btn:hover { border-color: var(--green); color: var(--green); }
+    .page-btn.active { background: var(--green); color: #fff; border-color: var(--green); }
+    .page-btn.arrow { font-size: 16px; }
+    .page-btn:disabled { opacity: .35; cursor: not-allowed; }
+    .page-dots { color: var(--muted); font-size: 13px; padding: 0 2px; }
+
+    /* ── Subscribe strip ── */
+    .subscribe-strip {
       background: var(--green-dark);
-      border-top: 1px solid rgba(200,169,81,.15);
-      padding: 32px 5%;
+      padding: 36px 5%;
       text-align: center;
     }
-    .subscribe-sec h3 {
-      font-size: 13px;
+    .subscribe-strip h3 {
+      font-size: 14px;
       font-weight: 700;
       color: #fff;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 14px;
     }
-    .subscribe-row {
+    .subscribe-form {
       display: flex;
       gap: 10px;
-      max-width: 420px;
+      max-width: 460px;
       margin: 0 auto;
     }
-    .subscribe-row input {
+    .subscribe-form input {
       flex: 1;
       background: rgba(255,255,255,.08);
       border: 1.5px solid rgba(255,255,255,.15);
       color: #fff;
-      padding: 11px 14px;
+      padding: 12px 16px;
       border-radius: 8px;
       font-size: 13px;
       font-family: 'DM Sans', sans-serif;
       outline: none;
+      transition: border-color .25s;
     }
-    .subscribe-row input::placeholder { color: rgba(255,255,255,.4); }
-    .subscribe-row input:focus { border-color: var(--gold); }
-    .subscribe-row button {
+    .subscribe-form input::placeholder { color: rgba(255,255,255,.4); }
+    .subscribe-form input:focus { border-color: var(--gold); }
+    .subscribe-form button {
       background: var(--gold);
       color: var(--green-dark);
       border: none;
-      padding: 11px 20px;
+      padding: 12px 22px;
       border-radius: 8px;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
       font-family: 'DM Sans', sans-serif;
       white-space: nowrap;
+      transition: background .25s;
     }
-    .subscribe-row button:hover { background: var(--gold2); }
+    .subscribe-form button:hover { background: var(--gold2); }
 
-    /* ── MOBILE BOTTOM NAV ── */
-    /* Hero image grid */
-    .hero-hex-wrap {
-      display: flex !important;
+    /* ── No results ── */
+    .no-results-box {
+      grid-column: 1/-1;
+      text-align: center;
+      padding: 60px 20px;
+      background: #fff;
+      border-radius: 10px;
     }
-    @media (max-width: 480px) {
-      .hero-hex-wrap { display: none !important; }
+    .no-results-box .icon { font-size: 3rem; margin-bottom: 12px; }
+    .no-results-box p { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+
+    /* ── Responsive ── */
+    @media (min-width: 600px) {
+      .shop-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
     }
-    @media (max-width: 768px) {
-      body { padding-bottom: 64px; }
-      .simple-nav-links { display: none; }
-      .nav-wa-btn { display: none; }
+    @media (min-width: 900px) {
+      .shop-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; }
     }
-    @media (min-width: 769px) {
-      .ham-btn { display: none; }
-      .simple-nav-links { display: flex; }
-      .nav-wa-btn { display: inline-flex; }
+    @media (max-width: 400px) {
+      .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .shop-card-name { font-size: 12px; }
+      .shop-card-price { font-size: 16px; }
+      .shop-card-atc { font-size: 10.5px; padding: 10px 6px; }
     }
   </style>
 </head>
 <body>
 
-<!-- LOADER -->
+<!-- ═══ LOADER ═══ -->
 <div id="loader">
   <img src="logo.jpg" alt="IHC"/>
   <h2>Irene Household</h2>
@@ -723,341 +444,126 @@
   <div class="loader-bar"><div class="loader-fill"></div></div>
 </div>
 
-<!-- TOP BAR -->
-<div class="top-bar">
-  🔥 FREE DELIVERY on orders over KSh 5,000 &nbsp;|&nbsp;
-  Mon–Sat 8:30am–7:00pm &nbsp;|&nbsp;
-  <a href="https://wa.me/254716060029">📞 +254 716 060029</a>
+<!-- ═══ PROMO BAR ═══ -->
+<div class="promo-bar">
+  🔥 FREE DELIVERY on orders over KSh 5,000 in Nairobi
+  <span>|</span>
+  🏨 Hotel &amp; Airbnb Packages
+  <span>|</span>
+  📞 <a href="https://wa.me/254716060029">+254 716 060029</a>
 </div>
 
-<!-- SIMPLE NAV -->
-<nav class="simple-nav">
-  <a href="index.html" class="simple-nav-logo">
+<!-- ═══ NAV ═══ -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
     <img src="logo.jpg" alt="IHC"/>
     <div><b>Irene Household</b><small>Collections</small></div>
   </a>
-  <ul class="simple-nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="shop.html">Shop</a></li>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home / Shop</a></li>
+    <li><a href="index.html#payment">Payment</a></li>
     <li><a href="index.html#hotel">Hotel/Airbnb</a></li>
     <li><a href="index.html#community">Community</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <div class="simple-nav-right">
-    <a href="https://wa.me/254716060029" class="nav-wa-btn" target="_blank">💬 WhatsApp</a>
-    <button class="nav-icon-btn" onclick="openCart()">
-      🛒 <span class="nav-cart-count" id="cart-badge">0</span>
-    </button>
-    <button class="ham-btn" onclick="document.getElementById('mob-menu').classList.add('open')">
-      <span></span><span></span><span></span>
-    </button>
+  <div class="nav-right">
+    <a href="https://wa.me/254716060029" class="nav-wa" target="_blank">📞 +254 716 060029</a>
+    <button class="icon-btn" onclick="openWishlist()">❤️<span class="badge" id="wl-badge">0</span></button>
+    <button class="icon-btn" onclick="openCart()">🛒<span class="badge" id="cart-badge">0</span></button>
+    <div class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></div>
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
-<div class="mob-menu" id="mob-menu" onclick="if(event.target===this)this.classList.remove('open')">
-  <div class="mob-menu-inner">
-    <button class="mob-menu-close" onclick="document.getElementById('mob-menu').classList.remove('open')">✕</button>
-    <a href="index.html" onclick="document.getElementById('mob-menu').classList.remove('open')">🏠 Home</a>
-    <a href="shop.html" onclick="document.getElementById('mob-menu').classList.remove('open')">🛍️ Shop</a>
-    <a href="index.html#hotel" onclick="document.getElementById('mob-menu').classList.remove('open')">🏨 Hotel / Airbnb</a>
-    <a href="index.html#community" onclick="document.getElementById('mob-menu').classList.remove('open')">🌍 Community</a>
-    <a href="about.html" onclick="document.getElementById('mob-menu').classList.remove('open')">ℹ️ About Us</a>
-    <a href="contact.html" onclick="document.getElementById('mob-menu').classList.remove('open')">📞 Contact</a>
-    <a href="https://wa.me/254716060029" target="_blank">💬 WhatsApp Us</a>
-  </div>
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html"          onclick="closeMobileNav()">Home</a>
+  <a href="index.html"           onclick="closeMobileNav()">Shop</a>
+  <a href="index.html#payment"  onclick="closeMobileNav()">Payment</a>
+  <a href="index.html#hotel"    onclick="closeMobileNav()">Hotel / Airbnb</a>
+  <a href="index.html#community"onclick="closeMobileNav()">🌍 Community</a>
+  <a href="about.html"          onclick="closeMobileNav()">About Us</a>
+  <a href="contact.html"        onclick="closeMobileNav()">Contact</a>
+  <a href="https://wa.me/254716060029" target="_blank">💬 +254 716 060029</a>
 </div>
 
-<!-- FLASH SALE BANNER -->
-<div class="flash-banner">
-  <div class="flash-banner-left">
-    <span class="icon">🔥</span>
-    <div>
-      <b>FLASH SALE — Today Only!</b>
-      <span>Up to 40% off selected items</span>
-    </div>
+<!-- ═══ SEARCH BAR ═══ -->
+<div class="shop-search-bar">
+  <div class="search-icon-wrap" style="flex:1;">
+    <input type="text" id="search-input"
+      placeholder="Search products, categories..."
+      oninput="liveSearch()" autocomplete="off"/>
   </div>
-  <div class="flash-right">
-    <div id="flash-timer" style="background:rgba(0,0,0,.25);padding:7px 12px;border-radius:8px;display:flex;align-items:center;gap:5px;"></div>
-    <a href="shop.html" class="flash-shop-btn" style="white-space:nowrap;">Shop →</a>
-  </div>
-</div>
-
-<!-- HERO BANNER — diagonal style -->
-<div style="background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 100%);display:flex;align-items:stretch;overflow:hidden;position:relative;min-height:180px;">
-
-  <!-- Left: diagonal text block -->
-  <div style="flex:1;padding:28px 5%;position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:10px;">
-    <!-- Diagonal cut right edge -->
-    <div style="position:absolute;top:0;right:-40px;bottom:0;width:80px;background:var(--green-dark);transform:skewX(-8deg);z-index:1;display:none;" class="hero-diag"></div>
-    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,5vw,2.8rem);color:#fff;line-height:1.1;position:relative;z-index:2;">
-      Irene Household<br><em style="color:var(--gold);">Collections</em>
-    </h1>
-    <p style="color:rgba(255,255,255,.7);font-size:12.5px;line-height:1.6;max-width:320px;position:relative;z-index:2;">
-      Premium furniture, beddings, kitchenware, carpets &amp; more in Nairobi.
-    </p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:2;">
-      <a href="shop.html" style="background:var(--gold);color:var(--green-dark);padding:10px 20px;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">🛍️ Shop Now</a>
-      <a href="https://wa.me/254716060029" target="_blank" style="border:1.5px solid rgba(255,255,255,.4);color:#fff;padding:10px 16px;border-radius:6px;font-size:12px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">💬 WhatsApp</a>
-    </div>
-  </div>
-
-  <!-- Right: hexagon product images -->
-  <div style="flex-shrink:0;padding:16px 5% 16px 0;display:flex;align-items:center;justify-content:flex-end;position:relative;z-index:2;" class="hero-hex-wrap">
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,1fr);gap:6px;width:180px;height:160px;">
-      <div style="border-radius:8px;overflow:hidden;background:rgba(255,255,255,.1);">
-        <img src="furniture.1.jpg" alt="Furniture" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);" loading="lazy"/>
-      </div>
-      <div style="border-radius:8px;overflow:hidden;background:rgba(255,255,255,.1);">
-        <img src="duvet.1.jpg" alt="Duvet" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);" loading="lazy"/>
-      </div>
-      <div style="border-radius:8px;overflow:hidden;background:rgba(255,255,255,.1);">
-        <img src="kitchenware.1.jpg" alt="Kitchen" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);" loading="lazy"/>
-      </div>
-      <div style="border-radius:8px;overflow:hidden;background:rgba(255,255,255,.1);">
-        <img src="carpet.1.jpg" alt="Carpet" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);" loading="lazy"/>
-      </div>
-      <div style="border-radius:8px;overflow:hidden;background:rgba(255,255,255,.1);">
-        <img src="bath.1.jpg" alt="Bath" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);" loading="lazy"/>
-      </div>
-      <div style="border-radius:8px;overflow:hidden;background:rgba(255,255,255,.1);">
-        <img src="net.1.jpg" alt="Nets" style="width:100%;height:100%;object-fit:cover;filter:brightness(.85);" loading="lazy"/>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- STATS STRIP -->
-<div class="stats-strip">
-  <div class="stat-strip-item">
-    <span class="icon">🏆</span>
-    <b>Premium Quality</b>
-    <span>Verified Products</span>
-  </div>
-  <div class="stat-strip-item">
-    <span class="icon">💰</span>
-    <b>Best Prices</b>
-    <span>Affordable &amp; Fair</span>
-  </div>
-  <div class="stat-strip-item">
-    <span class="icon">🚚</span>
-    <b>Fast Delivery</b>
-    <span>Nairobi &amp; Beyond</span>
-  </div>
-  <div class="stat-strip-item">
-    <span class="icon">💬</span>
-    <b>24/7 Support</b>
-    <span>Always Here</span>
-  </div>
-</div>
-
-<!-- BROWSE COLLECTIONS DROPDOWN -->
-<div style="background:#fff;border-bottom:1px solid #e8e0d0;padding:0 5%;">
-  <button id="home-browse-btn" onclick="toggleHomeBrowse()"
-    style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 0;background:none;border:none;font-size:14px;font-weight:600;color:var(--green-dark);font-family:'DM Sans',sans-serif;cursor:pointer;">
-    <span>📦 Browse Collections</span>
-    <span id="home-browse-arrow" style="font-size:12px;color:var(--muted);transition:transform .3s;">▼</span>
+  <button class="icon-btn" onclick="openCart()" style="background:var(--green);color:#fff;border-radius:8px;width:42px;height:42px;">
+    🛒<span class="badge" id="cart-badge-2" style="top:-6px;right:-6px;">0</span>
   </button>
-  <div id="home-browse-dd" style="display:none;flex-wrap:wrap;gap:8px;padding-bottom:14px;">
-    <a href="shop.html" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--green)';this.style.color='#fff';this.style.borderColor='var(--green)'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)';this.style.borderColor='#e0e0e0'">🏠 All Products</a>
-    <a href="shop.html?cat=nets" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🦟 Mosquito Nets</a>
-    <a href="shop.html?cat=duvets" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🛏️ Duvets &amp; Covers</a>
-    <a href="shop.html?cat=kitchenware" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🍽️ Kitchenware</a>
-    <a href="shop.html?cat=carpets" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🪵 Carpets &amp; Mats</a>
-    <a href="shop.html?cat=seatcovers" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🛋️ Seat Covers</a>
-    <a href="shop.html?cat=bath" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🛁 Bath &amp; Towels</a>
-    <a href="shop.html?cat=furniture" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">🪑 Furniture</a>
-    <a href="shop.html?cat=kids" style="padding:8px 16px;border:1.5px solid #e0e0e0;border-radius:20px;background:#f5f5f5;font-size:12.5px;font-weight:500;color:var(--text);text-decoration:none;" onmouseover="this.style.background='var(--green)';this.style.color='#fff'" onmouseout="this.style.background='#f5f5f5';this.style.color='var(--text)'">👦 Kids Corner</a>
+</div>
+
+<!-- ═══ BANNER ═══ -->
+<div class="shop-banner">
+  <div class="shop-banner-text">
+    <h1>Irene Household<br>Collections</h1>
+    <p>Premium products — everything your home needs</p>
+  </div>
+  <div class="shop-banner-imgs">
+    <div><img src="duvet.1.jpg" alt="Duvet" loading="lazy"/></div>
+    <div><img src="kitchenware.1.jpg" alt="Kitchen" loading="lazy"/></div>
+    <div><img src="furniture.1.jpg" alt="Furniture" loading="lazy"/></div>
   </div>
 </div>
 
-<!-- SHOP BY CATEGORY -->
-<div class="sec-header" id="categories">
-  <div class="sec-header-text">
-    <span class="label">✦ Explore Our Range</span>
-    <h2>Shop By Category</h2>
-  </div>
-  <a href="shop.html">View All →</a>
-</div>
-<div class="cat-grid">
-  <div class="cat-card" onclick="location='shop.html?cat=furniture'">
-    <img src="furniture.1.jpg" alt="Furniture" loading="lazy"/>
-    <div class="cat-card-ov">
-      <div class="cat-card-name">🪑 Furniture</div>
-      <div class="cat-card-count">22 items →</div>
-    </div>
-  </div>
-  <div class="cat-card" onclick="location='shop.html?cat=duvets'">
-    <img src="duvet.1.jpg" alt="Duvets" loading="lazy"/>
-    <span class="cat-badge badge-sale">SALE</span>
-    <div class="cat-card-ov">
-      <div class="cat-card-name">🛏️ Duvets &amp; Covers</div>
-      <div class="cat-card-count">21 items →</div>
-    </div>
-  </div>
-  <div class="cat-card" onclick="location='shop.html?cat=kitchenware'">
-    <img src="kitchenware.1.jpg" alt="Kitchenware" loading="lazy"/>
-    <span class="cat-badge badge-hot">HOT</span>
-    <div class="cat-card-ov">
-      <div class="cat-card-name">🍽️ Kitchenware</div>
-      <div class="cat-card-count">24 items →</div>
-    </div>
-  </div>
-  <div class="cat-card" onclick="location='shop.html?cat=carpets'">
-    <img src="carpet.1.jpg" alt="Carpets" loading="lazy"/>
-    <div class="cat-card-ov">
-      <div class="cat-card-name">🪵 Carpets &amp; Mats</div>
-      <div class="cat-card-count">9 items →</div>
-    </div>
-  </div>
-  <div class="cat-card" onclick="location='shop.html?cat=nets'">
-    <img src="net.1.jpg" alt="Nets" loading="lazy"/>
-    <span class="cat-badge badge-sale">SALE</span>
-    <div class="cat-card-ov">
-      <div class="cat-card-name">🦟 Mosquito Nets</div>
-      <div class="cat-card-count">5 items →</div>
-    </div>
-  </div>
-  <div class="cat-card" onclick="location='shop.html?cat=bath'">
-    <img src="bath.1.jpg" alt="Bath" loading="lazy"/>
-    <div class="cat-card-ov">
-      <div class="cat-card-name">🛁 Bath &amp; Towels</div>
-      <div class="cat-card-count">8 items →</div>
-    </div>
-  </div>
-  <div class="cat-card" onclick="location='shop.html?cat=seatcovers'">
-    <img src="seatcover.1.jpg" alt="Seat Covers" loading="lazy"/>
-    <div class="cat-card-ov">
-      <div class="cat-card-name">🛋️ Seat Covers</div>
-      <div class="cat-card-count">2 items →</div>
-    </div>
-  </div>
-  <div class="cat-card" onclick="location='shop.html?cat=kids'">
-    <img src="kid.1.jpg" alt="Kids" loading="lazy"/>
-    <span class="cat-badge badge-new">NEW</span>
-    <div class="cat-card-ov">
-      <div class="cat-card-name">👦 Kids Corner</div>
-      <div class="cat-card-count">4 items →</div>
-    </div>
+<!-- ═══ BROWSE COLLECTIONS DROPDOWN ═══ -->
+<div class="browse-wrap">
+  <button class="browse-btn" id="browse-btn" onclick="toggleBrowse()">
+    <span id="browse-label">📦 Browse Collections</span>
+    <span class="arrow">▼</span>
+  </button>
+  <div class="browse-dropdown" id="browse-dropdown">
+    <button class="browse-cat-btn active" onclick="filterCat('all',this)">🏠 All Products</button>
+    <button class="browse-cat-btn" onclick="filterCat('nets',this)">🦟 Mosquito Nets</button>
+    <button class="browse-cat-btn" onclick="filterCat('duvets',this)">🛏️ Duvets &amp; Covers</button>
+    <button class="browse-cat-btn" onclick="filterCat('kitchenware',this)">🍽️ Kitchenware</button>
+    <button class="browse-cat-btn" onclick="filterCat('carpets',this)">🪵 Carpets &amp; Mats</button>
+    <button class="browse-cat-btn" onclick="filterCat('seatcovers',this)">🛋️ Seat Covers</button>
+    <button class="browse-cat-btn" onclick="filterCat('bath',this)">🛁 Bath &amp; Towels</button>
+    <button class="browse-cat-btn" onclick="filterCat('furniture',this)">🪑 Furniture</button>
+    <button class="browse-cat-btn" onclick="filterCat('kids',this)">👦 Kids Corner</button>
   </div>
 </div>
 
-<!-- FEATURED PRODUCTS -->
-<div class="sec-header" id="featured">
-  <div class="sec-header-text">
-    <span class="label">✦ Top Picks</span>
-    <h2>Featured Products</h2>
-  </div>
-  <a href="shop.html">View All Products →</a>
-</div>
-<div class="featured-grid" id="featured-grid">
-  <!-- Rendered by JS -->
-</div>
-
-<!-- HOTEL SECTION -->
-<section class="hotel-sec" id="hotel">
-  <div class="hotel-sec-text">
-    <h2>Hotel &amp; Airbnb Linen Packages</h2>
-    <p>Premium all-white bedding packages for hotels and Airbnb properties across Nairobi. Everything your guests need for a 5-star experience.</p>
-    <div class="hotel-badges">
-      <span class="hotel-badge">✓ White Fitted Bedsheets — KSh 2,900</span>
-      <span class="hotel-badge">✓ White Binded Duvet — KSh 3,500</span>
-      <span class="hotel-badge">✓ White Duvet Cover — KSh 2,700</span>
-      <span class="hotel-badge">✓ Bath Gown — KSh 1,999</span>
-      <span class="hotel-badge">✓ Prestige Towels — KSh 1,350</span>
-      <span class="hotel-badge">✓ Bulk Pricing Available</span>
-    </div>
-    <br/>
-    <a href="https://wa.me/254716060029?text=Hi%20Irene!%20I%20need%20Hotel%20or%20Airbnb%20linen%20packages."
-      class="hero-btn-gold" target="_blank" style="margin-top:14px;">
-      💬 Enquire Now
-    </a>
-  </div>
-  <div style="font-size:5rem;opacity:.15;">🏨</div>
-</section>
-
-<!-- TESTIMONIALS -->
-<div class="sec-header">
-  <div class="sec-header-text">
-    <span class="label">✦ Customer Love</span>
-    <h2>What Customers Say</h2>
-  </div>
-</div>
-<div class="testi-grid">
-  <div class="testi-card">
-    <div class="testi-stars">★★★★★</div>
-    <blockquote>"Got the four-stand net and marble coffee table. Both arrived fast and look exactly as advertised!"</blockquote>
-    <strong>Wanjiku M.</strong><small>Nairobi, Kenya</small>
-  </div>
-  <div class="testi-card">
-    <div class="testi-stars">★★★★★</div>
-    <blockquote>"Irene Household is my go-to for Airbnb beddings. Guests always compliment how crisp everything looks!"</blockquote>
-    <strong>Amina H.</strong><small>Kilimani, Nairobi</small>
-  </div>
-  <div class="testi-card">
-    <div class="testi-stars">★★★★★</div>
-    <blockquote>"Dinner set, duvet and carpet in one order. Same-day delivery and prices are unbeatable in Nairobi!"</blockquote>
-    <strong>Brian O.</strong><small>Westlands, Nairobi</small>
+<!-- ═══ RESULTS BAR ═══ -->
+<div class="results-bar">
+  <p id="results-text"><strong id="results-count">...</strong> products</p>
+  <div class="sort-wrap">
+    <select onchange="sortProducts(this.value)">
+      <option value="default">Sort: Default</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="name">Name: A to Z</option>
+    </select>
   </div>
 </div>
 
-<!-- COMMUNITY -->
-<section class="community-sec" id="community">
-  <div style="text-align:center;margin-bottom:0;">
-    <span style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px;">✦ Join Our Family</span>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,3vw,2.4rem);color:#fff;margin-bottom:8px;">Join the Irene Community</h2>
-    <p style="color:rgba(255,255,255,.6);font-size:13px;max-width:440px;margin:0 auto;line-height:1.8;">Be the first to see new arrivals and get exclusive deals across Nairobi.</p>
+<!-- ═══ PRODUCTS ═══ -->
+<div class="shop-products-wrap">
+  <div class="shop-grid" id="shop-grid">
+    <!-- Rendered by JS -->
   </div>
-  <div class="community-cards">
-    <a href="https://chat.whatsapp.com/KLvRlQ1YQR5IRYfzxB8rxA" target="_blank"
-      class="comm-card" style="background:rgba(37,211,102,.12);border:1.5px solid rgba(37,211,102,.3);position:relative;">
-      <span style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#25d366;color:#fff;font-size:9px;font-weight:700;padding:3px 10px;border-radius:10px;white-space:nowrap;">FREE TO JOIN</span>
-      <div class="comm-icon" style="background:#25d366;margin-top:8px;">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </div>
-      <div class="comm-name" style="color:#25d366;">WhatsApp</div>
-      <div class="comm-desc">Flash deals and new arrivals straight to your phone</div>
-      <div class="comm-btn" style="background:#25d366;color:#fff;">Join Now →</div>
-    </a>
-    <a href="https://www.facebook.com/irenehouseholdcollections" target="_blank"
-      class="comm-card" style="background:rgba(24,119,242,.12);border:1.5px solid rgba(24,119,242,.3);">
-      <div class="comm-icon" style="background:#1877f2;">
-        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-      </div>
-      <div class="comm-name" style="color:#4a9eff;">Facebook</div>
-      <div class="comm-desc">Join 4,877 people who love Irene Household</div>
-      <div class="comm-btn" style="background:#1877f2;color:#fff;">4,877 Likes →</div>
-    </a>
-    <a href="https://www.instagram.com/jaymieirene" target="_blank"
-      class="comm-card" style="background:rgba(225,48,108,.12);border:1.5px solid rgba(225,48,108,.3);">
-      <div class="comm-icon" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      </div>
-      <div class="comm-name" style="color:#ff6b9d;">Instagram</div>
-      <div class="comm-desc">Daily product photos and styling tips @jaymieirene</div>
-      <div class="comm-btn" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);color:#fff;">Follow →</div>
-    </a>
-  </div>
-  <div style="text-align:center;">
-    <a href="https://chat.whatsapp.com/KLvRlQ1YQR5IRYfzxB8rxA" target="_blank"
-      style="background:#25d366;color:#fff;padding:13px 28px;border-radius:8px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:10px;">
-      💬 Join WhatsApp Community
-    </a>
-    <p style="color:rgba(255,255,255,.35);font-size:11px;margin-top:10px;">Free to join • No spam • Leave anytime</p>
-  </div>
-</section>
+</div>
 
-<!-- SUBSCRIBE -->
-<div class="subscribe-sec">
+<!-- ═══ PAGINATION ═══ -->
+<div class="pagination-wrap" id="pagination"></div>
+
+<!-- ═══ SUBSCRIBE STRIP ═══ -->
+<div class="subscribe-strip">
   <h3>Sign Up for Deals &amp; New Arrivals</h3>
-  <div class="subscribe-row">
+  <div class="subscribe-form">
     <input type="text" id="subscribe-input" placeholder="Enter your phone number or WhatsApp"/>
-    <button onclick="subscribeWA()">Subscribe</button>
+    <button onclick="subscribeWhatsApp()">Subscribe</button>
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -1082,7 +588,7 @@
       <h4>Quick Links</h4>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
+        <li><a href="index.html">Shop</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -1090,12 +596,12 @@
     <div class="footer-col">
       <h4>Categories</h4>
       <ul>
-        <li><a href="shop.html?cat=furniture">Furniture</a></li>
-        <li><a href="shop.html?cat=duvets">Duvets</a></li>
-        <li><a href="shop.html?cat=kitchenware">Kitchenware</a></li>
-        <li><a href="shop.html?cat=carpets">Carpets</a></li>
-        <li><a href="shop.html?cat=nets">Nets</a></li>
-        <li><a href="shop.html?cat=bath">Bath</a></li>
+        <li><a href="#" onclick="filterCat('furniture',null);return false;">Furniture</a></li>
+        <li><a href="#" onclick="filterCat('duvets',null);return false;">Duvets</a></li>
+        <li><a href="#" onclick="filterCat('kitchenware',null);return false;">Kitchenware</a></li>
+        <li><a href="#" onclick="filterCat('carpets',null);return false;">Carpets</a></li>
+        <li><a href="#" onclick="filterCat('nets',null);return false;">Nets</a></li>
+        <li><a href="#" onclick="filterCat('bath',null);return false;">Bath</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1110,11 +616,11 @@
   </div>
   <div class="footer-bottom">
     <span>© 2025 Irene Household Collections. All Rights Reserved.</span>
-    <span>Made with ❤️ in Nairobi</span>
+    <span>Made with ❤️ in Nairobi, Kenya</span>
   </div>
 </footer>
 
-<!-- CART DRAWER (no wishlist) -->
+<!-- ═══ CART DRAWER ═══ -->
 <div class="overlay" id="cart-overlay"></div>
 <div class="drawer" id="cart-drawer">
   <div class="drawer-head" style="background:var(--green);">
@@ -1128,12 +634,12 @@
     <div class="drawer-empty"><div class="drawer-empty-icon">🛒</div><p>Your cart is empty</p></div>
   </div>
   <div class="drawer-footer">
-    <div id="delivery-bar-wrap" style="padding:12px 0;border-bottom:1px solid var(--border);margin-bottom:0;padding-bottom:14px;">
+    <div id="delivery-bar-wrap" style="padding:12px 0 0;border-bottom:1px solid var(--border);margin-bottom:0;padding-bottom:14px;">
       <p id="delivery-msg" style="font-size:11.5px;color:var(--muted);margin-bottom:7px;text-align:center;">
         Add <strong style="color:var(--green);">KSh 5,000</strong> more for <strong style="color:var(--green);">FREE delivery</strong> 🚚
       </p>
       <div style="background:var(--border);border-radius:20px;height:7px;overflow:hidden;">
-        <div id="delivery-bar" style="height:100%;width:0%;background:var(--gold);border-radius:20px;transition:width .5s,background .3s;"></div>
+        <div id="delivery-bar" style="height:100%;width:0%;background:var(--gold);border-radius:20px;transition:width .5s ease,background .3s;"></div>
       </div>
     </div>
     <div class="pay-status-picker">
@@ -1155,6 +661,52 @@
     <button class="checkout-btn" onclick="checkout()">💬 Order via WhatsApp</button>
     <button class="clear-cart-btn" onclick="clearCart()">🗑 Clear Cart</button>
   </div>
+</div>
+
+<!-- Wishlist Drawer -->
+<div class="overlay" id="wl-overlay"></div>
+<div class="drawer" id="wl-drawer">
+  <div class="drawer-head" style="background:#e53e3e;">
+    <div>
+      <h3 style="color:#fff;">❤️ Wishlist</h3>
+      <span id="wl-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span>
+    </div>
+    <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeWishlist()">✕</button>
+  </div>
+  <div class="drawer-items" id="wl-items">
+    <div class="drawer-empty"><div class="drawer-empty-icon">♡</div><p>Wishlist is empty</p></div>
+  </div>
+</div>
+
+<!-- Quick View Modal -->
+<div class="modal" id="qv-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeQuickView()">✕</button>
+    <img class="modal-img" id="qv-img" src="" alt=""/>
+    <div class="modal-body">
+      <div class="modal-cat" id="qv-cat"></div>
+      <div class="modal-name" id="qv-name"></div>
+      <div class="modal-note" id="qv-note"></div>
+      <div class="modal-price-row">
+        <span class="modal-price" id="qv-price"></span>
+        <span class="modal-old" id="qv-old"></span>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-green" id="qv-add-btn" onclick="qvAddToCart()" style="flex:1;">🛒 Add to Cart</button>
+        <button class="wishlist-btn" id="qv-wl-btn" onclick="qvToggleWishlist()"
+          style="width:44px;height:44px;border-radius:6px;border:1.5px solid var(--border);">♡</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recently Viewed -->
+<div id="recently-viewed-section" style="display:none;background:#fff;padding:32px 5%;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--green-dark);">Recently Viewed</h3>
+    <button onclick="recentlyViewed=[];renderRecentlyViewed();" style="font-size:11px;color:var(--muted);background:none;border:1px solid var(--border);padding:5px 12px;border-radius:4px;cursor:pointer;">Clear</button>
+  </div>
+  <div class="shop-grid" id="recently-viewed-grid"></div>
 </div>
 
 <!-- Progress Ring -->
@@ -1184,12 +736,14 @@
   </div>
 </div>
 
-<!-- Bottom Nav (mobile) -->
+<!-- Bottom Nav -->
 <nav class="bottom-nav">
   <div class="bottom-nav-items">
     <a href="index.html" class="bottom-nav-item active"><span class="icon">🏠</span><span>Home</span></a>
-    <a href="shop.html" class="bottom-nav-item"><span class="icon">🛍️</span><span>Shop</span></a>
-    <a href="index.html#community" class="bottom-nav-item"><span class="icon">🌍</span><span>Community</span></a>
+    <a href="#" class="bottom-nav-item" onclick="openWishlist();return false;">
+      <span class="icon">❤️</span><span>Saved</span>
+      <span class="bottom-nav-badge" id="wl-badge-bottom">0</span>
+    </a>
     <a href="#" class="bottom-nav-item" onclick="openCart();return false;">
       <span class="icon">🛒</span><span>Cart</span>
       <span class="bottom-nav-badge" id="cart-badge-bottom">0</span>
@@ -1198,48 +752,211 @@
   </div>
 </nav>
 
-<!-- SCRIPTS -->
+<!-- ═══ SCRIPTS ═══ -->
 <script src="script.js"></script>
 <script>
-  // Render featured — one per category with real images
-  document.addEventListener('DOMContentLoaded', function() {
-    var cats = ['nets','duvets','kitchenware','carpets','seatcovers','bath','furniture','kids'];
-    var featured = cats.map(function(cat) {
-      return PRODUCTS.find(function(p) {
-        return p.cat === cat && p.img && !p.img.startsWith('http');
-      });
-    }).filter(Boolean);
+  /* ── State ── */
+  var activeCat   = 'all';
+  var activeSort  = 'default';
+  var currentPage = 1;
+  var perPage     = 20;
+  var filteredList = [];
 
-    var grid = document.getElementById('featured-grid');
+  const CAT_LABELS = {
+    all:'All Products', nets:'Mosquito Nets', duvets:'Duvets & Covers',
+    kitchenware:'Kitchenware', carpets:'Carpets & Mats', seatcovers:'Seat Covers',
+    bath:'Bath & Towels', furniture:'Furniture', kids:'Kids Corner'
+  };
+
+  /* ── Browse dropdown toggle ── */
+  function toggleBrowse() {
+    var btn = document.getElementById('browse-btn');
+    var dd  = document.getElementById('browse-dropdown');
+    btn.classList.toggle('open');
+    dd.classList.toggle('open');
+  }
+
+  /* ── Build clean shop card ── */
+  function buildShopCard(p) {
+    var badge = p.badge
+      ? '<span class="shop-card-badge badge-' + p.badgeType + '">' + p.badge + '</span>' : '';
+    var oldPrice = p.old
+      ? '<span class="shop-card-old">KSh ' + p.old.toLocaleString() + '</span>' : '';
+    var priceDisplay = p.price > 0 ? 'KSh ' + p.price.toLocaleString() : 'Call for Price';
+    var inWL = wishlist.some(function(i) { return i.id === p.id; });
+    var safeName = p.name.replace(/'/g, '');
+
+    return '<div class="shop-card">' +
+      '<div class="shop-card-img">' +
+        '<img src="' + p.img + '" alt="' + safeName + '" loading="lazy"/>' +
+        badge +
+        '<button class="shop-card-wish ' + (inWL ? 'active' : '') + '" ' +
+          'onclick="toggleWishlist(this,' + p.id + ',\'' + safeName + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">' +
+          (inWL ? '❤️' : '♡') +
+        '</button>' +
+      '</div>' +
+      '<div class="shop-card-body">' +
+        '<div class="shop-card-cat">' + CAT_LABELS[p.cat] + '</div>' +
+        '<div class="shop-card-name">' + p.name + '</div>' +
+        '<div class="shop-card-note">' + p.note + '</div>' +
+        '<div class="shop-card-price-row">' +
+          '<span class="shop-card-price">' + priceDisplay + '</span>' +
+          oldPrice +
+        '</div>' +
+        '<div class="shop-card-btns">' +
+          '<button class="shop-card-atc" ' +
+            'onclick="addToCart(this,' + p.id + ',\'' + safeName + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">' +
+            'Add to Cart' +
+          '</button>' +
+          '<button class="shop-card-wa" title="Share on WhatsApp" ' +
+            'onclick="shareOnWhatsApp(\'' + safeName + '\',' + p.price + ',\'' + p.img + '\')">' +
+            '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>' +
+          '</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  /* ── Render shop ── */
+  function renderShop() {
+    var grid   = document.getElementById('shop-grid');
+    var resText = document.getElementById('results-text');
     if (!grid) return;
 
-    grid.innerHTML = featured.map(function(p) {
-      var badge = p.badge
-        ? '<span class="feat-badge badge-' + p.badgeType + '">' + p.badge + '</span>' : '';
-      var old = p.old
-        ? '<span class="feat-old">KSh ' + p.old.toLocaleString() + '</span>' : '';
-      var price = p.price > 0 ? 'KSh ' + p.price.toLocaleString() : 'Call for Price';
-      var sn = p.name.replace(/'/g,'');
-      var cats = {nets:'Mosquito Nets',duvets:'Duvets',kitchenware:'Kitchenware',
-        carpets:'Carpets',seatcovers:'Seat Covers',bath:'Bath',furniture:'Furniture',kids:'Kids'};
+    if (!filteredList.length) {
+      grid.innerHTML =
+        '<div class="no-results-box">' +
+          '<div class="icon">🔍</div>' +
+          '<p>No products found. Try a different filter.</p>' +
+          '<button class="btn-green" onclick="resetAll()">Reset Filters</button>' +
+        '</div>';
+      document.getElementById('pagination').innerHTML = '';
+      if (resText) resText.innerHTML = '<strong>0</strong> products found';
+      return;
+    }
 
-      return '<div class="feat-card">' +
-        '<div class="feat-card-img">' +
-          '<img src="' + p.img + '" alt="' + sn + '" loading="lazy"/>' +
-          badge +
-        '</div>' +
-        '<div class="feat-card-body">' +
-          '<div class="feat-cat">' + (cats[p.cat]||p.cat) + '</div>' +
-          '<div class="feat-name">' + p.name + '</div>' +
-          '<div class="feat-price-row"><span class="feat-price">' + price + '</span>' + old + '</div>' +
-          '<button class="feat-atc" onclick="addToCart(this,' + p.id + ',\'' + sn + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">Add to Cart</button>' +
-        '</div>' +
-      '</div>';
-    }).join('');
-  });
+    // Pagination
+    var totalPages = Math.ceil(filteredList.length / perPage);
+    if (currentPage > totalPages) currentPage = 1;
+    var start   = (currentPage - 1) * perPage;
+    var pageList = filteredList.slice(start, start + perPage);
 
-  // Subscribe
-  function subscribeWA() {
+    grid.innerHTML = pageList.map(buildShopCard).join('');
+
+    // Update count dynamically — no hardcoded numbers
+    var countEl = document.getElementById('results-count');
+    if (countEl) countEl.textContent = filteredList.length;
+    if (resText) {
+      var pageInfo = filteredList.length > perPage
+        ? ' &nbsp;—&nbsp; Page <strong>' + currentPage + '</strong> of <strong>' + totalPages + '</strong>'
+        : '';
+      resText.innerHTML = '<strong id="results-count">' + filteredList.length + '</strong> products' + pageInfo;
+    }
+
+    renderPagination(totalPages);
+    setTimeout(initZoom, 100);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── Pagination ── */
+  function renderPagination(total) {
+    var wrap = document.getElementById('pagination');
+    if (!wrap || total <= 1) { if (wrap) wrap.innerHTML = ''; return; }
+
+    var html = '';
+    html += '<button class="page-btn arrow" onclick="goPage(' + (currentPage-1) + ')" ' +
+      (currentPage===1 ? 'disabled' : '') + '>←</button>';
+
+    for (var i = 1; i <= total; i++) {
+      if (i === 1 || i === total || Math.abs(i - currentPage) <= 1) {
+        html += '<button class="page-btn ' + (i===currentPage?'active':'') + '" onclick="goPage(' + i + ')">' + i + '</button>';
+      } else if (Math.abs(i - currentPage) === 2) {
+        html += '<span class="page-dots">...</span>';
+      }
+    }
+
+    html += '<button class="page-btn arrow" onclick="goPage(' + (currentPage+1) + ')" ' +
+      (currentPage===total ? 'disabled' : '') + '>→</button>';
+
+    wrap.innerHTML = html;
+  }
+
+  function goPage(n) {
+    currentPage = n;
+    renderShop();
+  }
+
+  /* ── Filter by category ── */
+  function filterCat(cat, btn) {
+    activeCat = cat;
+    currentPage = 1;
+
+    document.querySelectorAll('.browse-cat-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    if (btn) btn.classList.add('active');
+
+    // Update browse label
+    var label = document.getElementById('browse-label');
+    if (label) {
+      label.textContent = cat === 'all'
+        ? '📦 Browse Collections'
+        : '📦 ' + (CAT_LABELS[cat] || cat);
+    }
+
+    applyFilters();
+  }
+
+  /* ── Sort ── */
+  function sortProducts(val) {
+    activeSort = val;
+    currentPage = 1;
+    applyFilters();
+  }
+
+  /* ── Apply all filters + sort ── */
+  function applyFilters() {
+    filteredList = activeCat === 'all'
+      ? [...PRODUCTS]
+      : PRODUCTS.filter(function(p) { return p.cat === activeCat; });
+
+    if (activeSort === 'price-asc')  filteredList.sort(function(a,b){return a.price-b.price;});
+    if (activeSort === 'price-desc') filteredList.sort(function(a,b){return b.price-a.price;});
+    if (activeSort === 'name')       filteredList.sort(function(a,b){return a.name.localeCompare(b.name);});
+
+    renderShop();
+  }
+
+  /* ── Live search ── */
+  function liveSearch() {
+    var q = document.getElementById('search-input').value.toLowerCase().trim();
+    if (!q) { applyFilters(); return; }
+
+    filteredList = PRODUCTS.filter(function(p) {
+      return p.name.toLowerCase().includes(q) ||
+             p.cat.toLowerCase().includes(q)  ||
+             p.note.toLowerCase().includes(q);
+    });
+    currentPage = 1;
+    renderShop();
+  }
+
+  /* ── Reset ── */
+  function resetAll() {
+    activeCat = 'all';
+    activeSort = 'default';
+    currentPage = 1;
+    document.getElementById('search-input').value = '';
+    document.querySelectorAll('.browse-cat-btn').forEach(function(b,i) {
+      b.classList.toggle('active', i===0);
+    });
+    var label = document.getElementById('browse-label');
+    if (label) label.textContent = '📦 Browse Collections';
+    applyFilters();
+  }
+
+  /* ── Subscribe ── */
+  function subscribeWhatsApp() {
     var val = document.getElementById('subscribe-input').value.trim();
     if (!val) { showToast('⚠️ Please enter your phone number'); return; }
     var msg = 'Hi Irene! I would like to subscribe for deals and new arrivals. My contact: ' + val;
@@ -1248,23 +965,39 @@
     showToast('✅ Redirecting to WhatsApp...');
   }
 
-  // Browse dropdown toggle
-  function toggleHomeBrowse() {
-    var dd = document.getElementById('home-browse-dd');
-    var arrow = document.getElementById('home-browse-arrow');
-    var btn = document.getElementById('home-browse-btn');
-    var isOpen = dd.style.display === 'flex';
-    dd.style.display = isOpen ? 'none' : 'flex';
-    arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+  /* ── Recently viewed for shop cards ── */
+  function renderRecentlyViewed() {
+    var container = document.getElementById('recently-viewed-grid');
+    var section   = document.getElementById('recently-viewed-section');
+    if (!container) return;
+
+    var items = recentlyViewed
+      .map(function(id) { return PRODUCTS.find(function(p) { return p.id === id; }); })
+      .filter(Boolean);
+
+    if (!items.length) { if (section) section.style.display='none'; return; }
+    if (section) section.style.display = 'block';
+    container.innerHTML = items.map(buildShopCard).join('');
+    setTimeout(initZoom, 100);
   }
 
-  // Scroll progress
-  window.addEventListener('scroll', function() {
-    var p = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-    var el = document.getElementById('ring-circle');
-    if (el) el.style.strokeDashoffset = 113.1 - p * 113.1;
-    document.getElementById('progress-ring').classList.toggle('show', window.scrollY > 300);
+  /* ── Init ── */
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check URL param
+    var params = new URLSearchParams(window.location.search);
+    var cat = params.get('cat');
+    if (cat) {
+      activeCat = cat;
+      document.querySelectorAll('.browse-cat-btn').forEach(function(b) {
+        var matches = b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + cat + "'");
+        b.classList.toggle('active', matches);
+      });
+      var label = document.getElementById('browse-label');
+      if (label) label.textContent = '📦 ' + (CAT_LABELS[cat] || cat);
+    }
+    applyFilters();
   });
 </script>
+
 </body>
 </html>
