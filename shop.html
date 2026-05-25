@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Shop all products at Irene Household Collections. Furniture, duvets, kitchenware, carpets, mosquito nets and more in Nairobi."/>
+  <title>Shop All Products | Irene Household Collections</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── SHOP PAGE EXTRA ── */
+    .shop-page-wrap { max-width:1200px; margin:0 auto; }
+
+    /* Browse dropdown */
+    .browse-bar {
+      background:#fff;
+      border-bottom:1px solid #eee;
+      padding:0 4%;
+    }
+    .browse-toggle {
+      width:100%; display:flex; align-items:center;
+      justify-content:space-between;
+      padding:13px 0;
+      background:none; border:none;
+      font-size:14px; font-weight:600;
+      color:var(--green-dark);
+      cursor:pointer;
+    }
+    .browse-toggle .arr { font-size:11px; color:var(--muted); transition:transform .3s; }
+    .browse-toggle.open .arr { transform:rotate(180deg); }
+    .browse-cats {
+      display:none; flex-wrap:wrap; gap:8px; padding-bottom:14px;
+    }
+    .browse-cats.open { display:flex; }
+    .browse-cat {
+      padding:7px 15px;
+      border:1.5px solid #e0e0e0; border-radius:20px;
+      background:#f5f5f5; font-size:12.5px; font-weight:500;
+      color:var(--text); cursor:pointer; transition:all .2s;
+      white-space:nowrap;
+    }
+    .browse-cat:hover, .browse-cat.active {
+      background:var(--green); color:#fff; border-color:var(--green);
+    }
+
+    /* Results bar */
+    .results-bar {
+      background:#fff; padding:10px 4%;
+      display:flex; align-items:center;
+      justify-content:space-between; flex-wrap:wrap; gap:8px;
+      border-bottom:1px solid #f0f0f0;
+    }
+    .results-bar p { font-size:12.5px; color:var(--muted); }
+    .results-bar p strong { color:var(--green-dark); }
+    .results-bar select {
+      padding:7px 12px; border:1.5px solid #e0e0e0;
+      border-radius:6px; font-size:12px; color:var(--text);
+      background:#fff; outline:none;
+    }
+    .results-bar select:focus { border-color:var(--green); }
+
+    /* Products wrap */
+    .products-wrap { padding:14px 4% 28px; }
+
+    /* No results */
+    .no-results {
+      grid-column:1/-1; text-align:center;
+      padding:56px 20px; background:#fff; border-radius:10px;
+    }
+    .no-results .nr-icon { font-size:3rem; margin-bottom:12px; }
+    .no-results p { font-size:14px; color:var(--muted); margin-bottom:16px; }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <img src="logo.jpg" alt="IHC"/>
+  <h2>Irene Household</h2>
+  <small>Collections</small>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- PROMO BAR -->
+<div class="promo-bar">
+  🔥 FREE DELIVERY on orders over KSh 5,000 in Nairobi
+  <span>|</span> 🏨 Hotel &amp; Airbnb Packages
+  <span>|</span> 📞 <a href="https://wa.me/254716060029">+254 716 060029</a>
+</div>
+
+<!-- TOP NAV -->
+<nav class="top-nav" id="main-nav">
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="logo.jpg" alt="IHC"/>
+    <div class="nav-logo-text">
+      <b>Irene Household</b>
+      <small>Collections</small>
+    </div>
+  </a>
+  <div class="nav-search-wrap">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="search-input"
+      placeholder="Search furniture, duvets, kitchenware..."
+      oninput="liveSearch()" autocomplete="off"/>
+    <button class="nav-search-btn" onclick="liveSearch()">Search</button>
+  </div>
+  <div class="nav-icons">
+    <button class="nav-icon-btn" onclick="openWishlist()">❤️<span class="nav-badge" id="wl-badge">0</span></button>
+    <button class="nav-icon-btn" onclick="openCart()">🛒<span class="nav-badge" id="cart-badge">0</span></button>
+    <div class="nav-ham nav-icon-btn" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-nav">
+  <a href="index.html"          onclick="closeMobileNav()">🏠 Home</a>
+  <a href="shop.html"           onclick="closeMobileNav()">🛍️ Shop All Products</a>
+  <a href="index.html#payment"  onclick="closeMobileNav()">💳 M-Pesa Payment</a>
+  <a href="index.html#hotel"    onclick="closeMobileNav()">🏨 Hotel / Airbnb</a>
+  <a href="index.html#community"onclick="closeMobileNav()">🌍 Community</a>
+  <a href="about.html"          onclick="closeMobileNav()">ℹ️ About Us</a>
+  <a href="contact.html"        onclick="closeMobileNav()">📞 Contact</a>
+  <a href="https://wa.me/254716060029" target="_blank">💬 WhatsApp Us</a>
+</div>
+
+<!-- CATEGORY STRIP -->
+<div class="cat-strip-wrap">
+  <div class="cat-strip" id="cat-strip">
+    <button class="cat-strip-item active" onclick="filterCat('all',this)">
+      <div class="cat-strip-img"><img src="logo.jpg" alt="All"/></div>
+      <span class="cat-strip-label">All</span>
+    </button>
+    <button class="cat-strip-item" onclick="filterCat('furniture',this)">
+      <div class="cat-strip-img"><img src="furniture.1.jpg" alt="Furniture" loading="lazy"/></div>
+      <span class="cat-strip-label">Furniture</span>
+    </button>
+    <button class="cat-strip-item" onclick="filterCat('duvets',this)">
+      <div class="cat-strip-img"><img src="duvet.1.jpg" alt="Duvets" loading="lazy"/></div>
+      <span class="cat-strip-label">Duvets</span>
+    </button>
+    <button class="cat-strip-item" onclick="filterCat('kitchenware',this)">
+      <div class="cat-strip-img"><img src="kitchenware.1.jpg" alt="Kitchen" loading="lazy"/></div>
+      <span class="cat-strip-label">Kitchenware</span>
+    </button>
+    <button class="cat-strip-item" onclick="filterCat('carpets',this)">
+      <div class="cat-strip-img"><img src="carpet.1.jpg" alt="Carpets" loading="lazy"/></div>
+      <span class="cat-strip-label">Carpets</span>
+    </button>
+    <button class="cat-strip-item" onclick="filterCat('nets',this)">
+      <div class="cat-strip-img"><img src="net.1.jpg" alt="Nets" loading="lazy"/></div>
+      <span class="cat-strip-label">Nets</span>
+    </button>
+    <button class="cat-strip-item" onclick="filterCat('seatcovers',this)">
+      <div class="cat-strip-img"><img src="seatcover.1.jpg" alt="Seat Covers" loading="lazy"/></div>
+      <span class="cat-strip-label">Seat Covers</span>
+    </button>
+    <button class="cat-strip-item" onclick="filterCat('bath',this)">
+      <div class="cat-strip-img"><img src="bath.1.jpg" alt="Bath" loading="lazy"/></div>
+      <span class="cat-strip-label">Bath</span>
+    </button>
+    <button class="cat-strip-item" onclick="filterCat('kids',this)">
+      <div class="cat-strip-img"><img src="kid.1.jpg" alt="Kids" loading="lazy"/></div>
+      <span class="cat-strip-label">Kids</span>
+    </button>
+  </div>
+</div>
+
+<!-- BROWSE DROPDOWN -->
+<div class="browse-bar">
+  <button class="browse-toggle" id="browse-btn" onclick="toggleBrowse()">
+    <span id="browse-label">📦 Browse Collections</span>
+    <span class="arr">▼</span>
+  </button>
+  <div class="browse-cats" id="browse-cats">
+    <button class="browse-cat active" onclick="filterCat('all',this)">🏠 All Products</button>
+    <button class="browse-cat" onclick="filterCat('nets',this)">🦟 Mosquito Nets</button>
+    <button class="browse-cat" onclick="filterCat('duvets',this)">🛏️ Duvets &amp; Covers</button>
+    <button class="browse-cat" onclick="filterCat('kitchenware',this)">🍽️ Kitchenware</button>
+    <button class="browse-cat" onclick="filterCat('carpets',this)">🪵 Carpets &amp; Mats</button>
+    <button class="browse-cat" onclick="filterCat('seatcovers',this)">🛋️ Seat Covers</button>
+    <button class="browse-cat" onclick="filterCat('bath',this)">🛁 Bath &amp; Towels</button>
+    <button class="browse-cat" onclick="filterCat('furniture',this)">🪑 Furniture</button>
+    <button class="browse-cat" onclick="filterCat('kids',this)">👦 Kids Corner</button>
+    <button class="browse-cat" onclick="filterBadge('HOT')">🔥 Bestsellers</button>
+    <button class="browse-cat" onclick="filterBadge('SALE')">🏷️ On Sale</button>
+    <button class="browse-cat" onclick="filterBadge('NEW')">✨ New Arrivals</button>
+    <button class="browse-cat" onclick="filterBadge('HOTEL')">🏨 Hotel Items</button>
+  </div>
+</div>
+
+<!-- RESULTS BAR -->
+<div class="results-bar">
+  <p id="results-text"><strong>95</strong> products</p>
+  <select onchange="sortProducts(this.value)">
+    <option value="default">Sort: Default</option>
+    <option value="price-asc">Price: Low to High</option>
+    <option value="price-desc">Price: High to Low</option>
+    <option value="name">Name: A to Z</option>
+  </select>
+</div>
+
+<!-- PRODUCTS -->
+<div class="products-wrap shop-page-wrap">
+  <div class="products-grid" id="shop-grid"></div>
+</div>
+
+<!-- PAGINATION -->
+<div class="pagination" id="pagination"></div>
+
+<!-- RECENTLY VIEWED -->
+<div id="recently-viewed-section" style="display:none;background:#fff;padding:28px 4%;">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--green-dark);">Recently Viewed</h3>
+    <button onclick="recentlyViewed=[];renderRecentlyViewed();"
+      style="font-size:11px;color:var(--muted);background:none;border:1px solid #eee;padding:4px 10px;border-radius:4px;cursor:pointer;">
+      Clear
+    </button>
+  </div>
+  <div class="products-grid" id="recently-viewed-grid"></div>
+</div>
+
+<!-- SUBSCRIBE STRIP -->
+<div class="sub-strip">
+  <h3>Sign Up for Deals &amp; New Arrivals</h3>
+  <div class="sub-form">
+    <input type="text" id="sub-input" placeholder="Enter your WhatsApp number"/>
+    <button onclick="subscribeWA()">Subscribe</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="logo.jpg" alt="IHC"/>
+        <div><b>Irene Household Collections</b><small>Quality. Comfort. Style.</small></div>
+      </div>
+      <p>Premium household items for homes, hotels and Airbnb properties across Nairobi, Kenya.</p>
+      <div class="social-links">
+        <a href="https://wa.me/254716060029" class="soc-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://instagram.com/jaymieirene" class="soc-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://facebook.com/irenehouseholdcollections" class="soc-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Categories</h4><ul>
+      <li><a href="#" onclick="filterCat('furniture',null);return false;">Furniture</a></li>
+      <li><a href="#" onclick="filterCat('duvets',null);return false;">Duvets</a></li>
+      <li><a href="#" onclick="filterCat('kitchenware',null);return false;">Kitchenware</a></li>
+      <li><a href="#" onclick="filterCat('carpets',null);return false;">Carpets</a></li>
+      <li><a href="#" onclick="filterCat('nets',null);return false;">Nets</a></li>
+      <li><a href="#" onclick="filterCat('bath',null);return false;">Bath</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul>
+      <li><a href="https://wa.me/254716060029">+254 716 060029</a></li>
+      <li><a href="https://irenehousehold.co.ke" target="_blank">irenehousehold.co.ke</a></li>
+      <li><a href="https://instagram.com/jaymieirene">@jaymieirene</a></li>
+      <li><span style="color:rgba(255,255,255,.3);font-size:12px;">Mon–Sat 8:30am–7pm</span></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Irene Household Collections. All Rights Reserved.</span>
+    <span>Made with ❤️ in Nairobi, Kenya</span>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="cart-overlay"></div>
+<div class="drawer" id="cart-drawer">
+  <div class="drawer-head" style="background:var(--green);">
+    <div><h3 style="color:#fff;">🛒 Cart</h3><span id="cart-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span></div>
+    <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeCart()">✕</button>
+  </div>
+  <div class="drawer-items" id="cart-items">
+    <div class="drawer-empty"><div class="drawer-empty-icon">🛒</div><p>Your cart is empty</p></div>
+  </div>
+  <div class="drawer-footer">
+    <div class="delivery-bar-wrap">
+      <p class="delivery-msg" id="delivery-msg">Add <strong style="color:var(--green);">KSh 5,000</strong> more for <strong style="color:var(--green);">FREE delivery</strong> 🚚</p>
+      <div class="delivery-track"><div class="delivery-fill" id="delivery-fill"></div></div>
+    </div>
+    <span class="pay-label">Payment Status</span>
+    <div class="pay-opts">
+      <div class="pay-opt" id="opt-paid" onclick="selectPayStatus('paid')"><span class="pay-opt-icon">✅</span><div class="pay-opt-title">Already Paid</div><div class="pay-opt-sub">M-Pesa sent</div></div>
+      <div class="pay-opt" id="opt-nopay" onclick="selectPayStatus('nopay')"><span class="pay-opt-icon">💵</span><div class="pay-opt-title">Pay on Delivery</div><div class="pay-opt-sub">Cash / M-Pesa later</div></div>
+    </div>
+    <div class="cart-total-row"><span>Total</span><strong id="cart-total">KSh 0</strong></div>
+    <button class="btn-checkout" onclick="checkout()">💬 Order via WhatsApp</button>
+    <button class="btn-clear" onclick="clearCart()">🗑 Clear Cart</button>
+  </div>
+</div>
+
+<!-- WISHLIST DRAWER -->
+<div class="overlay" id="wl-overlay"></div>
+<div class="drawer" id="wl-drawer">
+  <div class="drawer-head" style="background:#e53e3e;">
+    <div><h3 style="color:#fff;">❤️ Wishlist</h3><span id="wl-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span></div>
+    <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeWishlist()">✕</button>
+  </div>
+  <div class="drawer-items" id="wl-items">
+    <div class="drawer-empty"><div class="drawer-empty-icon">♡</div><p>Wishlist is empty</p></div>
+  </div>
+</div>
+
+<!-- QUICK VIEW -->
+<div class="modal" id="qv-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeQuickView()">✕</button>
+    <img class="modal-img" id="qv-img" src="" alt=""/>
+    <div class="modal-body">
+      <div class="modal-cat" id="qv-cat"></div>
+      <div class="modal-name" id="qv-name"></div>
+      <div class="modal-note" id="qv-note"></div>
+      <div class="modal-price-row"><span class="modal-price" id="qv-price"></span><span class="modal-old" id="qv-old"></span></div>
+      <div class="modal-actions">
+        <button class="btn-green" onclick="qvAddToCart()" style="flex:1;">🛒 Add to Cart</button>
+        <button id="qv-wl-btn" onclick="qvToggleWishlist()" style="width:42px;height:42px;border-radius:6px;border:1.5px solid #eee;background:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;">♡</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS RING -->
+<div class="progress-ring" id="progress-ring" onclick="scrollToTop()">
+  <svg width="42" height="42" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="#e8e0d0" stroke-width="3"/><circle id="ring-circle" cx="22" cy="22" r="18" fill="none" stroke="#c8a951" stroke-width="3" stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round"/></svg>
+  <div class="progress-ring-inner">↑</div>
+</div>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/254716060029" class="wa-float" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div class="toast" id="toast"></div>
+
+<div class="cookie-bar" id="cookie-bar">
+  <p>🍪 We use cookies to improve your experience on <strong>Irene Household Collections</strong>.</p>
+  <div class="cookie-btns">
+    <button class="ck-no" onclick="declineCookie()">Decline</button>
+    <button class="ck-yes" onclick="acceptCookie()">Accept ✓</button>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-items">
+    <a href="index.html" class="bnav-item"><span class="bicon">🏠</span><span>Home</span></a>
+    <a href="shop.html" class="bnav-item active"><span class="bicon">🛍️</span><span>Shop</span></a>
+    <a href="#" class="bnav-item" onclick="openWishlist();return false;"><span class="bicon">❤️</span><span>Saved</span><span class="bnav-badge" id="wl-badge-bottom">0</span></a>
+    <a href="#" class="bnav-item" onclick="openCart();return false;"><span class="bicon">🛒</span><span>Cart</span><span class="bnav-badge" id="cart-badge-bottom">0</span></a>
+    <a href="contact.html" class="bnav-item"><span class="bicon">💬</span><span>Chat</span></a>
+  </div>
+</nav>
+
+<script src="script.js"></script>
+<script>
+  var activeCat   = 'all';
+  var activeSort  = 'default';
+  var activeBadge = '';
+  var currentPage = 1;
+  var perPage     = 20;
+  var filteredList = [];
+
+  var CAT_LABELS = {
+    all:'All Products', nets:'Mosquito Nets', duvets:'Duvets & Covers',
+    kitchenware:'Kitchenware', carpets:'Carpets & Mats', seatcovers:'Seat Covers',
+    bath:'Bath & Towels', furniture:'Furniture', kids:'Kids Corner'
+  };
+
+  function toggleBrowse() {
+    var btn = document.getElementById('browse-btn');
+    var cats = document.getElementById('browse-cats');
+    btn.classList.toggle('open');
+    cats.classList.toggle('open');
+  }
+
+  function filterCat(cat, btn) {
+    activeCat = cat;
+    activeBadge = '';
+    currentPage = 1;
+
+    // Update category strip
+    document.querySelectorAll('.cat-strip-item').forEach(function(b) { b.classList.remove('active'); });
+    // Find matching strip button
+    document.querySelectorAll('.cat-strip-item').forEach(function(b) {
+      if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + cat + "'")) {
+        b.classList.add('active');
+      }
+    });
+
+    // Update browse buttons
+    document.querySelectorAll('.browse-cat').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+
+    var label = document.getElementById('browse-label');
+    if (label) label.textContent = cat === 'all' ? '📦 Browse Collections' : '📦 ' + (CAT_LABELS[cat] || cat);
+
+    applyFilters();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function filterBadge(badge) {
+    activeBadge = activeBadge === badge ? '' : badge;
+    activeCat   = 'all';
+    currentPage = 1;
+    applyFilters();
+  }
+
+  function sortProducts(val) {
+    activeSort  = val;
+    currentPage = 1;
+    applyFilters();
+  }
+
+  function applyFilters() {
+    filteredList = [...PRODUCTS];
+
+    if (activeCat !== 'all') {
+      filteredList = filteredList.filter(function(p) { return p.cat === activeCat; });
+    }
+    if (activeBadge) {
+      filteredList = filteredList.filter(function(p) { return p.badge === activeBadge; });
+    }
+    if (activeSort === 'price-asc')  filteredList.sort(function(a,b) { return a.price - b.price; });
+    if (activeSort === 'price-desc') filteredList.sort(function(a,b) { return b.price - a.price; });
+    if (activeSort === 'name')       filteredList.sort(function(a,b) { return a.name.localeCompare(b.name); });
+
+    renderShop();
+  }
+
+  function renderShop() {
+    var grid    = document.getElementById('shop-grid');
+    var resText = document.getElementById('results-text');
+    if (!grid) return;
+
+    if (!filteredList.length) {
+      grid.innerHTML =
+        '<div class="no-results">' +
+          '<div class="nr-icon">🔍</div>' +
+          '<p>No products found. Try a different filter.</p>' +
+          '<button class="btn-green" onclick="resetAll()">Reset Filters</button>' +
+        '</div>';
+      document.getElementById('pagination').innerHTML = '';
+      if (resText) resText.innerHTML = '<strong>0</strong> products';
+      return;
+    }
+
+    var totalPages = Math.ceil(filteredList.length / perPage);
+    if (currentPage > totalPages) currentPage = 1;
+    var start    = (currentPage - 1) * perPage;
+    var pageList = filteredList.slice(start, start + perPage);
+
+    grid.innerHTML = pageList.map(buildCard).join('');
+
+    if (resText) {
+      resText.innerHTML =
+        '<strong>' + filteredList.length + '</strong> products' +
+        (totalPages > 1 ? ' — Page <strong>' + currentPage + '</strong> of <strong>' + totalPages + '</strong>' : '');
+    }
+
+    renderPagination(totalPages);
+    setTimeout(initZoom, 100);
+  }
+
+  function renderPagination(total) {
+    var wrap = document.getElementById('pagination');
+    if (!wrap || total <= 1) { if (wrap) wrap.innerHTML = ''; return; }
+
+    var html = '<button class="pg-btn" onclick="goPage(' + (currentPage-1) + ')" ' + (currentPage===1?'disabled':'') + '>←</button>';
+
+    for (var i = 1; i <= total; i++) {
+      if (i === 1 || i === total || Math.abs(i - currentPage) <= 1) {
+        html += '<button class="pg-btn' + (i===currentPage?' active':'') + '" onclick="goPage(' + i + ')">' + i + '</button>';
+      } else if (Math.abs(i - currentPage) === 2) {
+        html += '<span class="pg-dots">...</span>';
+      }
+    }
+
+    html += '<button class="pg-btn" onclick="goPage(' + (currentPage+1) + ')" ' + (currentPage===total?'disabled':'') + '>→</button>';
+    wrap.innerHTML = html;
+  }
+
+  function goPage(n) {
+    currentPage = n;
+    renderShop();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function liveSearch() {
+    var q = document.getElementById('search-input').value.toLowerCase().trim();
+    if (!q) { applyFilters(); return; }
+    filteredList = PRODUCTS.filter(function(p) {
+      return p.name.toLowerCase().includes(q) ||
+             p.cat.toLowerCase().includes(q)  ||
+             p.note.toLowerCase().includes(q);
+    });
+    currentPage = 1;
+    renderShop();
+  }
+
+  function resetAll() {
+    activeCat = 'all'; activeSort = 'default'; activeBadge = ''; currentPage = 1;
+    document.getElementById('search-input').value = '';
+    document.querySelectorAll('.cat-strip-item').forEach(function(b,i) { b.classList.toggle('active',i===0); });
+    document.querySelectorAll('.browse-cat').forEach(function(b,i) { b.classList.toggle('active',i===0); });
+    var label = document.getElementById('browse-label');
+    if (label) label.textContent = '📦 Browse Collections';
+    applyFilters();
+  }
+
+  function subscribeWA() {
+    var val = document.getElementById('sub-input').value.trim();
+    if (!val) { showToast('⚠️ Please enter your phone number'); return; }
+    var msg = 'Hi Irene! Please add me to your deals list. My number: ' + val;
+    window.open('https://wa.me/254716060029?text=' + encodeURIComponent(msg), '_blank');
+    document.getElementById('sub-input').value = '';
+    showToast('✅ Redirecting to WhatsApp...');
+  }
+
+  function renderRecentlyViewed() {
+    var container = document.getElementById('recently-viewed-grid');
+    var section   = document.getElementById('recently-viewed-section');
+    if (!container) return;
+    var items = recentlyViewed.map(function(id) {
+      return PRODUCTS.find(function(p) { return p.id === id; });
+    }).filter(Boolean);
+    if (!items.length) { if (section) section.style.display = 'none'; return; }
+    if (section) section.style.display = 'block';
+    container.innerHTML = items.map(buildCard).join('');
+    setTimeout(initZoom, 100);
+  }
+
+  // Init
+  document.addEventListener('DOMContentLoaded', function() {
+    var params = new URLSearchParams(window.location.search);
+    var cat = params.get('cat');
+    var q   = params.get('q');
+
+    if (cat) {
+      activeCat = cat;
+      var label = document.getElementById('browse-label');
+      if (label) label.textContent = '📦 ' + (CAT_LABELS[cat] || cat);
+      // Highlight cat strip
+      document.querySelectorAll('.cat-strip-item').forEach(function(b) {
+        var active = b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + cat + "'");
+        b.classList.toggle('active', active);
+      });
+    }
+
+    if (q) {
+      document.getElementById('search-input').value = q;
+      filteredList = PRODUCTS.filter(function(p) {
+        return p.name.toLowerCase().includes(q.toLowerCase()) ||
+               p.cat.toLowerCase().includes(q.toLowerCase());
+      });
+      currentPage = 1;
+      renderShop();
+    } else {
+      applyFilters();
+    }
+  });
+</script>
+</body>
+</html>
