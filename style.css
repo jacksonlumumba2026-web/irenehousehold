@@ -607,7 +607,7 @@ input, select, textarea { font-family:'DM Sans',sans-serif; }
    WHATSAPP FLOAT
 ═══════════════════════════════════════ */
 .wa-float {
-  position:fixed; bottom:22px; right:18px; z-index:500;
+  position:fixed; bottom:80px; right:18px; z-index:900;
   background:#25d366; width:52px; height:52px;
   border-radius:50%;
   display:flex; align-items:center; justify-content:center;
@@ -622,7 +622,7 @@ input, select, textarea { font-family:'DM Sans',sans-serif; }
    PROGRESS RING
 ═══════════════════════════════════════ */
 .progress-ring {
-  position:fixed; bottom:22px; left:18px; z-index:500;
+  position:fixed; bottom:80px; left:18px; z-index:900;
   width:42px; height:42px; cursor:pointer; display:none;
 }
 .progress-ring.show { display:block; }

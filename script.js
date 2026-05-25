@@ -209,7 +209,7 @@ const PRODUCTS = [
   { id:23, cat:'duvets',      name:'Binded Cartoon Themed Cotton Duvet',note:'Size 4x6',                        price:3500, old:0,     img:'duvet.18.jpg',       badge:'NEW',  badgeType:'new' },
   { id:24, cat:'duvets',      name:'White Fitted Bedsheets',            note:'4pcs pillow case included',        price:2900, old:0,     img:'duvet.19.jpg',       badge:'HOTEL',badgeType:'hotel' },
   { id:25, cat:'duvets',      name:'Bedrunner',                         note:'1pc runner and 2 pillow covers',   price:1800, old:2200,  img:'duvet.20.jpg',       badge:'SALE', badgeType:'sale' },
-  { id:26, cat:'duvets',      name:'Mattress Protectors',               note:'3x6 — waterproof',                  price:0,    old:0,     img:'duvet.21.jpg',       badge:'HOTEL',badgeType:'hotel' },
+  { id:26, cat:'duvets',      name:'Mattress Protectors',               note:'3x6 waterproof',                  price:0,    old:0,     img:'duvet.21.jpg',       badge:'HOTEL',badgeType:'hotel' },
 
   // KITCHENWARE
   { id:27, cat:'kitchenware', name:'6pcs High Quality Signature Hotpots', note:'6pcs hotpot set',              price:8000, old:0,     img:'kitchenware.1.jpg',  badge:'HOT',  badgeType:'hot' },
@@ -298,8 +298,8 @@ const PRODUCTS = [
    FEATURE 1 — WHATSAPP SHARE
 ═══════════════════════════════════════ */
 function shareOnWhatsApp(name, price, img) {
-  var priceText = price > 0 ? 'KSh ' + price.toLocaleString() : 'Call for Price';
-  var msg = 'Check out this from Irene Household Collections! ' + name + ' - ' + priceText + '. Shop: https://jacksonlumumba2026-web.github.io/irenehousehold/ Order: https://wa.me/254716060029';
+  var p = price > 0 ? 'KSh ' + price.toLocaleString() : 'Call for Price';
+  var msg = 'Hi! Check out ' + name + ' (' + p + ') from Irene Household Collections. Shop at irenehousehold.co.ke or order on WhatsApp: wa.me/254716060029';
   window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
 }
 
@@ -644,33 +644,28 @@ function qvToggleWishlist() {
    PRODUCT CARD BUILDER
 ═══════════════════════════════════════ */
 function buildCard(p) {
-  var badge    = p.badge ? '<span class="badge-tag badge-' + p.badgeType + '">' + p.badge + '</span>' : '';
-  var oldPrice = p.old   ? '<span class="card-old-price" style="font-size:11px;color:#bbb;text-decoration:line-through;">KSh ' + p.old.toLocaleString() + '</span>' : '';
-  var priceDisplay = p.price > 0 ? 'KSh ' + p.price.toLocaleString() : 'Call for Price';
+  var badge = p.badge ? '<span class="badge-tag badge-' + p.badgeType + '">' + p.badge + '</span>' : '';
+  var oldPrice = p.old ? '<span style="font-size:11px;color:#bbb;text-decoration:line-through;">KSh ' + p.old.toLocaleString() + '</span>' : '';
+  var price = p.price > 0 ? 'KSh ' + p.price.toLocaleString() : 'Call for Price';
   var inWL = wishlist.some(function(i) { return i.id === p.id; });
-  var safeName = p.name.replace(/'/g, '').replace(/"/g, '');
+  var n = p.name.replace(/'/g, '').replace(/"/g, '');
+  var waMsg = encodeURIComponent('Hi Irene! I am interested in: ' + p.name + ' - ' + price + '. Website: irenehousehold.co.ke');
 
   return '<div class="product-card">' +
     '<div class="card-img">' +
-      '<img src="' + p.img + '" alt="' + safeName + '" loading="lazy"/>' +
+      '<img src="' + p.img + '" alt="' + n + '" loading="lazy"/>' +
       badge +
       '<button class="card-qv" onclick="openQuickView(' + p.id + ')">&#128065; Quick View</button>' +
-      '<button class="card-wish' + (inWL ? ' active' : '') + '" data-id="' + p.id + '"' +
-        ' onclick="toggleWishlist(this,' + p.id + ',\'' + safeName + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">' +
-        (inWL ? '&#10084;&#65039;' : '&#9825;') +
-      '</button>' +
+      '<button class="card-wish' + (inWL ? ' active' : '') + '" onclick="toggleWishlist(this,' + p.id + ',\'' + n + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">&#9825;</button>' +
     '</div>' +
     '<div class="card-body">' +
       '<div class="card-location">Nairobi, Kenya</div>' +
       '<div class="card-name">' + p.name + '</div>' +
       '<div class="card-note">' + p.note + '</div>' +
-      '<div class="card-price-row">' +
-        '<span class="card-price">' + priceDisplay + '</span>' +
-        oldPrice +
-      '</div>' +
+      '<div class="card-price-row"><span class="card-price">' + price + '</span>' + oldPrice + '</div>' +
       '<div style="display:flex;gap:6px;margin-top:8px;">' +
-        '<button class="card-atc" style="flex:1;" onclick="addToCart(this,' + p.id + ',\'' + safeName + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">&#128722; Add to Cart</button>' +
-        '<button class="wa-share-btn" title="Share on WhatsApp" onclick="shareOnWhatsApp(\'' + safeName + '\',' + p.price + ',\'' + p.img + '\')">&#128172;</button>' +
+        '<button class="card-atc" style="flex:1;" onclick="addToCart(this,' + p.id + ',\'' + n + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">&#128722; Add to Cart</button>' +
+        '<a href="https://wa.me/254716060029?text=' + waMsg + '" target="_blank" class="wa-share-btn" title="Order on WhatsApp">&#128172;</a>' +
       '</div>' +
     '</div>' +
   '</div>';
