@@ -134,7 +134,7 @@ function openZoomModal(src, alt) {
   modal.innerHTML =
     '<div style="position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:16px;" onclick="this.parentElement.remove()">' +
     '<img src="' + src + '" alt="' + alt + '" style="max-width:95vw;max-height:90vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);"/>' +
-    '<button style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;" onclick="document.getElementById('zoom-modal').remove()">✕</button>' +
+    '<button style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;" onclick="document.getElementById(\'zoom-modal\').remove()">✕</button>' +
     '<p style="position:absolute;bottom:20px;color:rgba(255,255,255,.5);font-size:12px;">Tap anywhere to close</p>' +
     '</div>';
   document.body.appendChild(modal);
@@ -299,16 +299,10 @@ const PRODUCTS = [
 function shareOnWhatsApp(name, price, img) {
   var priceText = price > 0 ? 'KSh ' + price.toLocaleString() : 'Call for Price';
   var msg =
-    '🛍️ Check out this product from Irene Household Collections!
-
-' +
-    '✨ ' + name + '
-' +
-    '💰 ' + priceText + '
-
-' +
-    '🌐 Shop here: https://jacksonlumumba2026-web.github.io/irene-household/
-' +
+    '🛍️ Check out this product from Irene Household Collections!\n\n' +
+    '✨ ' + name + '\n' +
+    '💰 ' + priceText + '\n\n' +
+    '🌐 Shop here: https://jacksonlumumba2026-web.github.io/irene-household/\n' +
     '📞 Order: https://wa.me/254716060029';
   window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
 }
