@@ -5,8 +5,9 @@
 var FREE_DELIVERY_THRESHOLD = 5000;
 
 function updateDeliveryBar() {
-  var bar  = document.getElementById('delivery-fill');
-  var msg  = document.getElementById('delivery-msg');
+  var bar     = document.getElementById('delivery-bar');
+  var msg     = document.getElementById('delivery-msg');
+  var barWrap = document.getElementById('delivery-bar-wrap');
   if (!bar || !msg) return;
 
   var total = cart.reduce(function(s, i) { return s + i.price * i.qty; }, 0);
@@ -134,7 +135,7 @@ function openZoomModal(src, alt) {
   modal.innerHTML =
     '<div style="position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:16px;" onclick="this.parentElement.remove()">' +
     '<img src="' + src + '" alt="' + alt + '" style="max-width:95vw;max-height:90vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);"/>' +
-    '<button style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;" onclick="document.getElementById(\'zoom-modal\').remove()">✕</button>' +
+    '<button style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;" onclick="document.getElementById(\"zoom-modal\").remove()">✕</button>' +
     '<p style="position:absolute;bottom:20px;color:rgba(255,255,255,.5);font-size:12px;">Tap anywhere to close</p>' +
     '</div>';
   document.body.appendChild(modal);
@@ -208,7 +209,7 @@ const PRODUCTS = [
   { id:23, cat:'duvets',      name:'Binded Cartoon Themed Cotton Duvet',note:'Size 4x6',                        price:3500, old:0,     img:'duvet.18.jpg',       badge:'NEW',  badgeType:'new' },
   { id:24, cat:'duvets',      name:'White Fitted Bedsheets',            note:'4pcs pillow case included',        price:2900, old:0,     img:'duvet.19.jpg',       badge:'HOTEL',badgeType:'hotel' },
   { id:25, cat:'duvets',      name:'Bedrunner',                         note:'1pc runner and 2 pillow covers',   price:1800, old:2200,  img:'duvet.20.jpg',       badge:'SALE', badgeType:'sale' },
-  { id:26, cat:'duvets',      name:'Mattress Protectors',               note:'3x6 waterproof',                  price:0,    old:0,     img:'duvet.21.jpg',       badge:'HOTEL',badgeType:'hotel' },
+  { id:26, cat:'duvets',      name:'Mattress Protectors',               note:'3x6 — waterproof',                  price:0,    old:0,     img:'duvet.21.jpg',       badge:'HOTEL',badgeType:'hotel' },
 
   // KITCHENWARE
   { id:27, cat:'kitchenware', name:'6pcs High Quality Signature Hotpots', note:'6pcs hotpot set',              price:8000, old:0,     img:'kitchenware.1.jpg',  badge:'HOT',  badgeType:'hot' },
@@ -298,12 +299,7 @@ const PRODUCTS = [
 ═══════════════════════════════════════ */
 function shareOnWhatsApp(name, price, img) {
   var priceText = price > 0 ? 'KSh ' + price.toLocaleString() : 'Call for Price';
-  var msg =
-    '🛍️ Check out this product from Irene Household Collections!\n\n' +
-    '✨ ' + name + '\n' +
-    '💰 ' + priceText + '\n\n' +
-    '🌐 Shop here: https://jacksonlumumba2026-web.github.io/irene-household/\n' +
-    '📞 Order: https://wa.me/254716060029';
+  var msg = 'Check out this from Irene Household Collections! ' + name + ' - ' + priceText + '. Shop: https://jacksonlumumba2026-web.github.io/irenehousehold/ Order: https://wa.me/254716060029';
   window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
 }
 
@@ -405,7 +401,7 @@ function changeQty(id, delta) {
 function clearCart() {
   cart = [];
   payStatus = '';
-  document.querySelectorAll('.pay-opt').forEach(function(o) { o.className = 'pay-opt'; });
+  document.querySelectorAll('.pay-option').forEach(o => o.className = 'pay-option');
   updateCartUI();
   renderCartItems();
 }
@@ -476,8 +472,8 @@ function closeCart() {
 
 function selectPayStatus(type) {
   payStatus = type;
-  document.getElementById('opt-paid').className  = 'pay-opt' + (type === 'paid'  ? ' sel-paid'  : '');
-  document.getElementById('opt-nopay').className = 'pay-opt' + (type === 'nopay' ? ' sel-nopay' : '');
+  document.getElementById('opt-paid').className  = 'pay-option' + (type === 'paid'  ? ' selected-paid'  : '');
+  document.getElementById('opt-nopay').className = 'pay-option' + (type === 'nopay' ? ' selected-nopay' : '');
   showToast(type === 'paid' ? '✅ Marked as Already Paid' : '💵 Marked as Pay on Delivery');
 }
 
@@ -648,42 +644,36 @@ function qvToggleWishlist() {
    PRODUCT CARD BUILDER
 ═══════════════════════════════════════ */
 function buildCard(p) {
-  const badge    = p.badge ? `<span class="badge-tag badge-${p.badgeType}">${p.badge}</span>` : '';
-  const oldPrice = p.old   ? `<span class="card-old-price">KSh ${p.old.toLocaleString()}</span>` : '';
-  const priceDisplay = p.price > 0 ? 'KSh ' + p.price.toLocaleString() : 'Call for Price';
-  const inWL = wishlist.some(i => i.id === p.id);
+  var badge    = p.badge ? '<span class="badge-tag badge-' + p.badgeType + '">' + p.badge + '</span>' : '';
+  var oldPrice = p.old   ? '<span class="card-old-price" style="font-size:11px;color:#bbb;text-decoration:line-through;">KSh ' + p.old.toLocaleString() + '</span>' : '';
+  var priceDisplay = p.price > 0 ? 'KSh ' + p.price.toLocaleString() : 'Call for Price';
+  var inWL = wishlist.some(function(i) { return i.id === p.id; });
+  var safeName = p.name.replace(/'/g, '').replace(/"/g, '');
 
-  return `
-    <div class="product-card" data-cat="${p.cat}" data-name="${p.name.toLowerCase()}">
-      <div class="card-img">
-        <img src="${p.img}" alt="${p.name}" loading="lazy"/>
-        ${badge}
-        <button class="quick-view-btn" onclick="openQuickView(${p.id})">👁 Quick View</button>
-        <button class="wishlist-btn ${inWL ? 'active' : ''}" data-id="${p.id}"
-          onclick="toggleWishlist(this, ${p.id}, '${p.name.replace(/'/g, '')}', '${p.cat}', ${p.price}, '${p.img}')">
-          ${inWL ? '❤️' : '♡'}
-        </button>
-      </div>
-      <div class="card-body">
-        <div class="card-cat">${p.cat}</div>
-        <div class="card-name">${p.name}</div>
-        <div class="card-note">${p.note}</div>
-        <div class="card-price-row">
-          <span class="card-price">${priceDisplay}</span>
-          ${oldPrice}
-        </div>
-        <div style="display:flex;gap:7px;margin-top:0;">
-          <button class="add-to-cart-btn" style="flex:1;"
-            onclick="addToCart(this, ${p.id}, '${p.name.replace(/'/g, '')}', '${p.cat}', ${p.price}, '${p.img}')">
-            🛒 Add to Cart
-          </button>
-          <button class="wa-share-btn" title="Share on WhatsApp"
-            onclick="shareOnWhatsApp('${p.name.replace(/'/g,'')}', ${p.price}, '${p.img}')">
-            <svg viewBox="0 0 24 24" fill="white" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </button>
-        </div>
-      </div>
-    </div>`;
+  return '<div class="product-card">' +
+    '<div class="card-img">' +
+      '<img src="' + p.img + '" alt="' + safeName + '" loading="lazy"/>' +
+      badge +
+      '<button class="card-qv" onclick="openQuickView(' + p.id + ')">&#128065; Quick View</button>' +
+      '<button class="card-wish' + (inWL ? ' active' : '') + '" data-id="' + p.id + '"' +
+        ' onclick="toggleWishlist(this,' + p.id + ',\'' + safeName + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">' +
+        (inWL ? '&#10084;&#65039;' : '&#9825;') +
+      '</button>' +
+    '</div>' +
+    '<div class="card-body">' +
+      '<div class="card-location">Nairobi, Kenya</div>' +
+      '<div class="card-name">' + p.name + '</div>' +
+      '<div class="card-note">' + p.note + '</div>' +
+      '<div class="card-price-row">' +
+        '<span class="card-price">' + priceDisplay + '</span>' +
+        oldPrice +
+      '</div>' +
+      '<div style="display:flex;gap:6px;margin-top:8px;">' +
+        '<button class="card-atc" style="flex:1;" onclick="addToCart(this,' + p.id + ',\'' + safeName + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">&#128722; Add to Cart</button>' +
+        '<button class="wa-share-btn" title="Share on WhatsApp" onclick="shareOnWhatsApp(\'' + safeName + '\',' + p.price + ',\'' + p.img + '\')">&#128172;</button>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
 }
 
 /* ═══════════════════════════════════════
