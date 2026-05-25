@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Contact Irene Household Collections. Reach us via WhatsApp, phone or our contact form. Based in Nairobi, Kenya."/>
+  <title>Contact Us | Irene Household Collections</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ── CONTACT PAGE SPECIFIC ── */
+    .contact-hero {
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      padding: 130px 5% 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, rgba(200,169,81,.07) 1px, transparent 0);
+      background-size: 36px 36px;
+    }
+    .contact-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 10px;
+    }
+    .contact-hero p {
+      color: rgba(255,255,255,.65);
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Quick contact cards */
+    .quick-contacts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+    .quick-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px 22px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(26,61,43,.08);
+      border-top: 4px solid var(--gold);
+      transition: transform .3s, box-shadow .3s;
+      text-decoration: none;
+      display: block;
+      color: var(--text);
+    }
+    .quick-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(26,61,43,.14);
+    }
+    .quick-card-icon {
+      font-size: 2.6rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .quick-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+    .quick-card p {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .quick-card .link {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Main contact layout */
+    .contact-main {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 44px;
+      align-items: start;
+    }
+
+    /* Info side */
+    .contact-info-side {}
+    .info-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 4px 18px rgba(26,61,43,.07);
+      margin-bottom: 20px;
+    }
+    .info-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--green-dark);
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    /* Hours */
+    .hours-list { display: flex; flex-direction: column; gap: 10px; }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 12px;
+      background: var(--cream);
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    .hours-row .day { color: var(--green-dark); font-weight: 500; }
+    .hours-row .time { color: var(--muted); }
+    .hours-row.today {
+      background: rgba(26,61,43,.07);
+      border-left: 3px solid var(--green);
+    }
+    .hours-row.today .day { color: var(--green); font-weight: 700; }
+    .closed { color: var(--red) !important; }
+
+    /* Social links big */
+    .social-big { display: flex; flex-direction: column; gap: 10px; }
+    .social-big-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 16px;
+      background: var(--cream);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all .25s;
+      border: 1.5px solid transparent;
+    }
+    .social-big-link:hover {
+      background: rgba(26,61,43,.06);
+      border-color: var(--green);
+      transform: translateX(5px);
+    }
+    .social-big-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .social-big-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 2px;
+    }
+    .social-big-text span {
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+
+    /* Form side */
+    .contact-form-side {}
+    .form-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 36px;
+      box-shadow: 0 4px 18px rgba(26,61,43,.07);
+      border-top: 4px solid var(--gold);
+    }
+    .form-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+    .form-card > p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    /* Light form styles (overriding dark from style.css) */
+    .light-form .form-group label {
+      color: var(--muted);
+    }
+    .light-form .form-group input,
+    .light-form .form-group textarea,
+    .light-form .form-group select {
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      color: var(--text);
+    }
+    .light-form .form-group input:focus,
+    .light-form .form-group textarea:focus,
+    .light-form .form-group select:focus {
+      border-color: var(--green);
+      background: #fff;
+    }
+    .light-form .form-group select option {
+      background: #fff;
+      color: var(--text);
+    }
+    .light-form textarea { min-height: 120px; }
+
+    /* Map placeholder */
+    .map-card {
+      background: var(--green);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+      color: #fff;
+      margin-top: 20px;
+    }
+    .map-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+    .map-card p {
+      color: rgba(255,255,255,.65);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(26,61,43,.06);
+    }
+    .faq-q {
+      width: 100%;
+      padding: 16px 20px;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .faq-q:hover { background: rgba(26,61,43,.04); }
+    .faq-q.open { color: var(--green); }
+    .faq-q .arrow {
+      font-size: 12px;
+      transition: transform .3s;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+    .faq-q.open .arrow { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .35s ease;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      padding: 0 20px;
+    }
+    .faq-a.open {
+      max-height: 200px;
+      padding: 0 20px 16px;
+    }
+
+    @media (max-width: 900px) {
+      .contact-main  { grid-template-columns: 1fr; }
+      .quick-contacts { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .quick-contacts { grid-template-columns: 1fr; }
+      .form-card { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ LOADER ═══════════════ -->
+<div id="loader">
+  <img src="logo.jpg" alt="Irene Household Collections"/>
+  <h2>Irene Household</h2>
+  <small>Collections</small>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- ═══════════════ PROMO BAR ═══════════════ -->
+<div class="promo-bar">
+  🔥 FREE DELIVERY on orders over KSh 5,000 in Nairobi
+  <span>|</span>
+  🏨 Hotel &amp; Airbnb Packages Available
+  <span>|</span>
+  📞 <a href="https://wa.me/254716060029">+254 716 060029</a>
+</div>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.jpg" alt="IHC Logo"/>
+    <div>
+      <b>Irene Household</b>
+      <small>Collections</small>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html">Shop</a></li>
+    <li><a href="index.html#payment">Payment</a></li>
+    <li><a href="index.html#hotel">Hotel/Airbnb</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://wa.me/254716060029" class="nav-wa" target="_blank">
+      📞 +254 716 060029
+    </a>
+    <button class="icon-btn" onclick="openWishlist()">
+      ❤️ <span class="badge" id="wl-badge">0</span>
+    </button>
+    <button class="icon-btn" onclick="openCart()">
+      🛒 <span class="badge" id="cart-badge">0</span>
+    </button>
+    <div class="hamburger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html"         onclick="closeMobileNav()">Home</a>
+  <a href="index.html"          onclick="closeMobileNav()">Shop</a>
+  <a href="index.html#payment" onclick="closeMobileNav()">Payment</a>
+  <a href="index.html#hotel"   onclick="closeMobileNav()">Hotel / Airbnb</a>
+  <a href="index.html#community" onclick="closeMobileNav()">🌍 Community</a>
+  <a href="about.html"         onclick="closeMobileNav()">About Us</a>
+  <a href="contact.html"       onclick="closeMobileNav()">Contact</a>
+  <a href="https://wa.me/254716060029" target="_blank">💬 +254 716 060029</a>
+</div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="contact-hero">
+  <div class="breadcrumb">
+    <a href="index.html" style="color:var(--gold);">Home</a>
+    <span style="color:rgba(255,255,255,.3);">›</span>
+    <span style="color:rgba(255,255,255,.6);">Contact</span>
+  </div>
+  <h1>Get In Touch</h1>
+  <p>We are always happy to hear from you. Reach us via WhatsApp, phone or our contact form.</p>
+</div>
+
+<!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+<section class="section" style="background:var(--cream);">
+
+  <!-- Quick contact cards -->
+  <div class="quick-contacts">
+
+    <a href="https://wa.me/254716060029" class="quick-card rev d1" target="_blank">
+      <span class="quick-card-icon">💬</span>
+      <h3>WhatsApp</h3>
+      <p>Chat with us directly for orders, enquiries and support. Fastest response!</p>
+      <span class="link">+254 716 060029 →</span>
+    </a>
+
+    <a href="tel:+254716060029" class="quick-card rev d2">
+      <span class="quick-card-icon">📞</span>
+      <h3>Call Us</h3>
+      <p>Prefer a phone call? Give us a ring during business hours and we'll answer.</p>
+      <span class="link">+254 716 060029 →</span>
+    </a>
+
+    <a href="https://irenehousehold.co.ke" class="quick-card rev d3" target="_blank">
+      <span class="quick-card-icon">🌐</span>
+      <h3>Website</h3>
+      <p>Visit our official website for more information about our products and services.</p>
+      <span class="link">irenehousehold.co.ke →</span>
+    </a>
+
+  </div>
+
+  <!-- Main layout -->
+  <div class="contact-main">
+
+    <!-- ── INFO SIDE ── -->
+    <div class="contact-info-side">
+
+      <!-- Contact details -->
+      <div class="info-card rev-l">
+        <h3>📍 Contact Details</h3>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+
+          <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--cream);border-radius:8px;">
+            <div style="width:44px;height:44px;min-width:44px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;">💬</div>
+            <div>
+              <strong style="display:block;font-size:13px;font-weight:600;color:var(--green-dark);margin-bottom:2px;">WhatsApp</strong>
+              <a href="https://wa.me/254716060029" style="color:var(--green);font-size:13px;font-weight:600;">+254 716 060029</a>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--cream);border-radius:8px;">
+            <div style="width:44px;height:44px;min-width:44px;background:rgba(26,61,43,.07);border:1px solid rgba(26,61,43,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;">📞</div>
+            <div>
+              <strong style="display:block;font-size:13px;font-weight:600;color:var(--green-dark);margin-bottom:2px;">Phone</strong>
+              <a href="tel:+254716060029" style="color:var(--green);font-size:13px;font-weight:600;">+254 716 060029</a>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--cream);border-radius:8px;">
+            <div style="width:44px;height:44px;min-width:44px;background:rgba(26,61,43,.07);border:1px solid rgba(26,61,43,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;">🌐</div>
+            <div>
+              <strong style="display:block;font-size:13px;font-weight:600;color:var(--green-dark);margin-bottom:2px;">Website</strong>
+              <a href="https://irenehousehold.co.ke" target="_blank" style="color:var(--green);font-size:13px;">irenehousehold.co.ke</a>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--cream);border-radius:8px;">
+            <div style="width:44px;height:44px;min-width:44px;background:rgba(26,61,43,.07);border:1px solid rgba(26,61,43,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;">📍</div>
+            <div>
+              <strong style="display:block;font-size:13px;font-weight:600;color:var(--green-dark);margin-bottom:2px;">Location</strong>
+              <span style="color:var(--muted);font-size:13px;">Nairobi, Kenya</span>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--cream);border-radius:8px;">
+            <div style="width:44px;height:44px;min-width:44px;background:rgba(26,61,43,.07);border:1px solid rgba(26,61,43,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;">🏦</div>
+            <div>
+              <strong style="display:block;font-size:13px;font-weight:600;color:var(--green-dark);margin-bottom:4px;">M-Pesa Paybill</strong>
+              <span style="font-size:13px;color:var(--muted);">Paybill: </span><strong style="color:var(--green);font-size:14px;">522533</strong>
+              <span style="color:var(--muted);font-size:13px;"> &nbsp;|&nbsp; Account: </span><strong style="color:var(--green);font-size:14px;">5997131</strong>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Business hours -->
+      <div class="info-card rev-l">
+        <h3>🕐 Business Hours</h3>
+        <div class="hours-list">
+          <div class="hours-row" id="hour-mon">
+            <span class="day">Monday</span>
+            <span class="time">8:30 AM – 7:00 PM</span>
+          </div>
+          <div class="hours-row" id="hour-tue">
+            <span class="day">Tuesday</span>
+            <span class="time">8:30 AM – 7:00 PM</span>
+          </div>
+          <div class="hours-row" id="hour-wed">
+            <span class="day">Wednesday</span>
+            <span class="time">8:30 AM – 7:00 PM</span>
+          </div>
+          <div class="hours-row" id="hour-thu">
+            <span class="day">Thursday</span>
+            <span class="time">8:30 AM – 7:00 PM</span>
+          </div>
+          <div class="hours-row" id="hour-fri">
+            <span class="day">Friday</span>
+            <span class="time">8:30 AM – 7:00 PM</span>
+          </div>
+          <div class="hours-row" id="hour-sat">
+            <span class="day">Saturday</span>
+            <span class="time">8:30 AM – 7:00 PM</span>
+          </div>
+          <div class="hours-row" id="hour-sun">
+            <span class="day">Sunday</span>
+            <span class="time closed">Closed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social media -->
+      <div class="info-card rev-l">
+        <h3>📱 Find Us Online</h3>
+        <div class="social-big">
+          <a href="https://www.instagram.com/jaymieirene" class="social-big-link" target="_blank">
+            <div class="social-big-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">📸</div>
+            <div class="social-big-text">
+              <strong>Instagram</strong>
+              <span>@jaymieirene</span>
+            </div>
+          </a>
+          <a href="https://www.facebook.com/irenehouseholdcollections" class="social-big-link" target="_blank">
+            <div class="social-big-icon" style="background:#1877f2;">📘</div>
+            <div class="social-big-text">
+              <strong>Facebook</strong>
+              <span>Irene Household Collections</span>
+            </div>
+          </a>
+          <a href="https://wa.me/254716060029" class="social-big-link" target="_blank">
+            <div class="social-big-icon" style="background:#25d366;">💬</div>
+            <div class="social-big-text">
+              <strong>WhatsApp</strong>
+              <span>+254 716 060029</span>
+            </div>
+          </a>
+          <a href="https://irenehousehold.co.ke" class="social-big-link" target="_blank">
+            <div class="social-big-icon" style="background:var(--green);">🌐</div>
+            <div class="social-big-text">
+              <strong>Website</strong>
+              <span>irenehousehold.co.ke</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Location card -->
+      <div class="map-card rev-l">
+        <div style="font-size:3rem;margin-bottom:12px;">📍</div>
+        <h3>Nairobi, Kenya</h3>
+        <p>We serve customers across Nairobi and offer delivery upcountry on request.</p>
+        <a href="https://wa.me/254716060029?text=Hi%20Irene!%20I%20would%20like%20to%20know%20your%20exact%20location."
+          class="btn-gold" target="_blank">
+          💬 Ask for Directions
+        </a>
+      </div>
+
+    </div>
+
+    <!-- ── FORM SIDE ── -->
+    <div class="contact-form-side">
+
+      <!-- Contact form -->
+      <div class="form-card rev-r">
+        <h2>Send Us a Message</h2>
+        <p>Fill in the form below and we'll get back to you via WhatsApp instantly.</p>
+
+        <div class="contact-form light-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name *</label>
+              <input type="text" id="contact-name" placeholder="Jane Wanjiku"/>
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" id="contact-phone" placeholder="+254 7XX XXX XXX"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>I am interested in</label>
+            <select id="contact-cat">
+              <option value="">— Select a category —</option>
+              <option>Mosquito Nets</option>
+              <option>Duvets and Covers</option>
+              <option>Kitchenware</option>
+              <option>Carpets and Mats</option>
+              <option>Seat Covers</option>
+              <option>Bath and Towels</option>
+              <option>Furniture</option>
+              <option>Kids Corner</option>
+              <option>Hotel / Airbnb Package</option>
+              <option>Bulk / Wholesale Order</option>
+              <option>Multiple Categories</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Budget Range</label>
+            <select id="contact-budget">
+              <option value="">— Select budget —</option>
+              <option>Under KSh 5,000</option>
+              <option>KSh 5,000 – 15,000</option>
+              <option>KSh 15,000 – 50,000</option>
+              <option>Above KSh 50,000</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Your Message *</label>
+            <textarea id="contact-msg"
+              placeholder="Tell us what you need, any specific products, quantities or questions..."></textarea>
+          </div>
+
+          <button class="form-submit" onclick="sendContactForm()">
+            💬 Send via WhatsApp
+          </button>
+
+          <p style="text-align:center;color:var(--muted);font-size:11.5px;margin-top:12px;">
+            ⚡ Your message opens directly in WhatsApp — fastest response!
+          </p>
+        </div>
+      </div>
+
+      <!-- M-Pesa card -->
+      <div class="info-card rev-r" style="margin-top:20px;border-top:4px solid var(--green);">
+        <h3>💳 M-Pesa Payment</h3>
+        <div class="pay-row" style="margin-bottom:10px;">
+          <label>Paybill Number</label>
+          <div style="display:flex;align-items:center;gap:9px;">
+            <span class="pay-value" id="paybill-num">522533</span>
+            <button class="copy-btn" onclick="copyValue('paybill-num', this)">Copy</button>
+          </div>
+        </div>
+        <div class="pay-row">
+          <label>Account Number</label>
+          <div style="display:flex;align-items:center;gap:9px;">
+            <span class="pay-value" id="account-num">5997131</span>
+            <button class="copy-btn" onclick="copyValue('account-num', this)">Copy</button>
+          </div>
+        </div>
+        <div class="pay-note" style="margin-top:12px;">
+          💡 After paying, WhatsApp us your M-Pesa confirmation message to
+          <strong>+254 716 060029</strong> so we can process your order.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section class="section" style="background:#fff;">
+  <span class="section-label rev">✦ Quick Answers</span>
+  <h2 class="section-title rev">Frequently Asked Questions</h2>
+  <p class="section-sub rev">Everything you need to know about ordering from us</p>
+
+  <div class="faq-list" style="max-width:780px;margin:0 auto;">
+
+    <div class="faq-item rev">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How do I place an order?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        Ordering is easy! Browse our products on the Shop page, add items to your cart,
+        then click "Order via WhatsApp". Your full order is automatically sent to us as
+        a WhatsApp message. We confirm and arrange delivery from there.
+      </div>
+    </div>
+
+    <div class="faq-item rev">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How do I pay for my order?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        We accept payment via M-Pesa Paybill. Send money to Paybill <strong>522533</strong>,
+        Account <strong>5997131</strong>. Then WhatsApp us your M-Pesa confirmation SMS.
+        We also accept Pay on Delivery for some orders — confirm with us first.
+      </div>
+    </div>
+
+    <div class="faq-item rev">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do you deliver outside Nairobi?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        Yes! We deliver across Nairobi and can arrange upcountry delivery on request.
+        Delivery charges depend on your location. WhatsApp us for a delivery quote
+        to your area.
+      </div>
+    </div>
+
+    <div class="faq-item rev">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How long does delivery take?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        For Nairobi orders, we typically deliver within the same day or next day
+        depending on order time and location. Upcountry deliveries take 1–3 business
+        days depending on the destination.
+      </div>
+    </div>
+
+    <div class="faq-item rev">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do you offer bulk or wholesale pricing?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        Yes! We offer special pricing for bulk orders and wholesale buyers. This is
+        especially popular for hotels, Airbnb properties and businesses. Contact us
+        via WhatsApp for a bulk pricing quote.
+      </div>
+    </div>
+
+    <div class="faq-item rev">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Can I see the products before buying?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        Yes! WhatsApp us and we can send you more photos or videos of any product.
+        You can also visit us in Nairobi — chat with us first to arrange a convenient time.
+      </div>
+    </div>
+
+    <div class="faq-item rev">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What is your return policy?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        We want you to be 100% satisfied. If a product arrives damaged or is not as
+        described, contact us within 24 hours via WhatsApp with photos and we will
+        sort it out for you right away.
+      </div>
+    </div>
+
+    <div class="faq-item rev">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do you supply hotels and Airbnb properties?
+        <span class="arrow">▼</span>
+      </button>
+      <div class="faq-a">
+        Absolutely! We specialise in supplying premium all-white linen packages for
+        hotels, Airbnb and short-stay properties across Nairobi. This includes white
+        fitted bedsheets, duvet sets, pillowcases, towels, bath gowns and more.
+        Contact us for a tailored package and pricing.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section style="background:linear-gradient(135deg,var(--green-dark),var(--green));padding:72px 5%;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(200,169,81,.07) 1px,transparent 0);background-size:36px 36px;"></div>
+  <div style="position:relative;z-index:1;">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);color:#fff;margin-bottom:12px;">
+      Still Have Questions?
+    </h2>
+    <p style="color:rgba(255,255,255,.65);font-size:14px;margin-bottom:28px;">
+      Our team is always ready to help. Chat with us on WhatsApp for the fastest response.
+    </p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://wa.me/254716060029" class="btn-gold" target="_blank">
+        💬 Chat on WhatsApp
+      </a>
+      <a href="index.html" class="btn-ghost">
+        🛍️ Browse Products
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="logo.jpg" alt="IHC"/>
+        <div>
+          <b>Irene Household Collections</b>
+          <small>Quality. Comfort. Style.</small>
+        </div>
+      </div>
+      <p>Premium household items for homes, hotels and Airbnb properties across Nairobi, Kenya.</p>
+      <div class="social-links">
+        <a href="https://wa.me/254716060029" class="social-link" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/jaymieirene" class="social-link" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/irenehouseholdcollections" class="social-link" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html">Shop</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="index.html?cat=furniture">Furniture</a></li>
+        <li><a href="index.html?cat=duvets">Duvets</a></li>
+        <li><a href="index.html?cat=kitchenware">Kitchenware</a></li>
+        <li><a href="index.html?cat=carpets">Carpets</a></li>
+        <li><a href="index.html?cat=nets">Nets</a></li>
+        <li><a href="index.html?cat=bath">Bath</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/254716060029">+254 716 060029</a></li>
+        <li><a href="https://irenehousehold.co.ke" target="_blank">irenehousehold.co.ke</a></li>
+        <li><a href="https://instagram.com/jaymieirene" target="_blank">@jaymieirene</a></li>
+        <li><span style="color:rgba(255,255,255,.35);font-size:12px;">Mon–Sat: 8:30am – 7:00pm</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Irene Household Collections. All Rights Reserved.</span>
+    <span>Made with ❤️ in Nairobi, Kenya</span>
+  </div>
+</footer>
+
+<!-- ═══════════════ CART DRAWER ═══════════════ -->
+<div class="overlay" id="cart-overlay"></div>
+<div class="drawer" id="cart-drawer">
+  <div class="drawer-head" style="background:var(--green);">
+    <div>
+      <h3 style="color:#fff;">🛒 Cart</h3>
+      <span id="cart-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span>
+    </div>
+    <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeCart()">✕</button>
+  </div>
+  <div class="drawer-items" id="cart-items">
+    <div class="drawer-empty">
+      <div class="drawer-empty-icon">🛒</div>
+      <p>Your cart is empty</p>
+    </div>
+  </div>
+  <div class="drawer-footer">
+    <!-- Delivery progress bar -->
+    <div id="delivery-bar-wrap" style="padding:12px 0 0;">
+      <p id="delivery-msg" style="font-size:11.5px;color:var(--muted);margin-bottom:7px;text-align:center;">
+        Add <strong style="color:var(--green);">KSh 5,000</strong> more for <strong style="color:var(--green);">FREE delivery</strong> 🚚
+      </p>
+      <div style="background:var(--border);border-radius:20px;height:7px;overflow:hidden;">
+        <div id="delivery-bar" style="height:100%;width:0%;background:var(--gold);border-radius:20px;transition:width .5s ease,background .3s;"></div>
+      </div>
+    </div>
+
+    <div class="pay-status-picker">
+      <span class="pay-status-label">Payment Status</span>
+      <div class="pay-options">
+        <div class="pay-option" id="opt-paid" onclick="selectPayStatus('paid')">
+          <span class="pay-option-icon">✅</span>
+          <div class="pay-option-title">Already Paid</div>
+          <div class="pay-option-sub">M-Pesa sent</div>
+        </div>
+        <div class="pay-option" id="opt-nopay" onclick="selectPayStatus('nopay')">
+          <span class="pay-option-icon">💵</span>
+          <div class="pay-option-title">Pay on Delivery</div>
+          <div class="pay-option-sub">Cash / M-Pesa later</div>
+        </div>
+      </div>
+    </div>
+    <div class="cart-total">
+      <span>Total</span>
+      <strong id="cart-total">KSh 0</strong>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">💬 Order via WhatsApp</button>
+    <button class="clear-cart-btn" onclick="clearCart()">🗑 Clear Cart</button>
+  </div>
+</div>
+
+<!-- Wishlist Drawer -->
+<div class="overlay" id="wl-overlay"></div>
+<div class="drawer" id="wl-drawer">
+  <div class="drawer-head" style="background:#e53e3e;">
+    <div>
+      <h3 style="color:#fff;">❤️ Wishlist</h3>
+      <span id="wl-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span>
+    </div>
+    <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeWishlist()">✕</button>
+  </div>
+  <div class="drawer-items" id="wl-items">
+    <div class="drawer-empty">
+      <div class="drawer-empty-icon">♡</div>
+      <p>Your wishlist is empty</p>
+    </div>
+  </div>
+</div>
+
+<!-- Quick View Modal -->
+<div class="modal" id="qv-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeQuickView()">✕</button>
+    <img class="modal-img" id="qv-img" src="" alt=""/>
+    <div class="modal-body">
+      <div class="modal-cat"  id="qv-cat"></div>
+      <div class="modal-name" id="qv-name"></div>
+      <div class="modal-note" id="qv-note"></div>
+      <div class="modal-price-row">
+        <span class="modal-price" id="qv-price"></span>
+        <span class="modal-old"   id="qv-old"></span>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-green" id="qv-add-btn" onclick="qvAddToCart()" style="flex:1;">🛒 Add to Cart</button>
+        <button class="wishlist-btn" id="qv-wl-btn" onclick="qvToggleWishlist()"
+          style="width:44px;height:44px;border-radius:6px;border:1.5px solid var(--border);">♡</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Progress Ring -->
+<div class="progress-ring" id="progress-ring" onclick="scrollToTop()">
+  <svg width="44" height="44" viewBox="0 0 44 44">
+    <circle cx="22" cy="22" r="18" fill="none" stroke="#e8e0d0" stroke-width="3"/>
+    <circle id="ring-circle" cx="22" cy="22" r="18" fill="none" stroke="#c8a951"
+      stroke-width="3" stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round"/>
+  </svg>
+  <div class="progress-ring-inner">↑</div>
+</div>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/254716060029" class="wa-float" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Cookie Bar -->
+<div class="cookie-bar" id="cookie-bar">
+  <p>🍪 We use cookies to improve your experience on <strong>Irene Household Collections</strong>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-decline" onclick="declineCookie()">Decline</button>
+    <button class="cookie-accept" onclick="acceptCookie()">Accept ✓</button>
+  </div>
+</div>
+
+<!-- Bottom Nav -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-items">
+    <a href="index.html" class="bottom-nav-item">
+      <span class="icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="index.html" class="bottom-nav-item">
+      <span class="icon">🛍️</span>
+      <span>Shop</span>
+    </a>
+    <a href="#" class="bottom-nav-item" onclick="openWishlist();return false;">
+      <span class="icon">❤️</span>
+      <span>Saved</span>
+      <span class="bottom-nav-badge" id="wl-badge-bottom">0</span>
+    </a>
+    <a href="#" class="bottom-nav-item" onclick="openCart();return false;">
+      <span class="icon">🛒</span>
+      <span>Cart</span>
+      <span class="bottom-nav-badge" id="cart-badge-bottom">0</span>
+    </a>
+    <a href="contact.html" class="bottom-nav-item active">
+      <span class="icon">💬</span>
+      <span>Chat</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script src="script.js"></script>
+<script>
+  // Contact form
+  function sendContactForm() {
+    const name   = document.getElementById('contact-name').value.trim();
+    const phone  = document.getElementById('contact-phone').value.trim();
+    const cat    = document.getElementById('contact-cat').value;
+    const budget = document.getElementById('contact-budget').value;
+    const msg    = document.getElementById('contact-msg').value.trim();
+
+    if (!name)  { showToast('⚠️ Please enter your name'); return; }
+    if (!phone) { showToast('⚠️ Please enter your phone number'); return; }
+    if (!msg)   { showToast('⚠️ Please enter a message'); return; }
+
+    const waMsg =
+      'Hello Irene Household! 👋\n\n' +
+      '📋 ENQUIRY FORM\n' +
+      '━━━━━━━━━━━━━━━━━━━\n' +
+      'Name: ' + name + '\n' +
+      'Phone: ' + phone + '\n' +
+      (cat    ? 'Interest: ' + cat    + '\n' : '') +
+      (budget ? 'Budget: '  + budget + '\n' : '') +
+      '━━━━━━━━━━━━━━━━━━━\n\n' +
+      'Message:\n' + msg;
+
+    window.open('https://wa.me/254716060029?text=' + encodeURIComponent(waMsg), '_blank');
+  }
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-q').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+
+    // Open clicked (if it was closed)
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  // Highlight today's hours
+  document.addEventListener('DOMContentLoaded', () => {
+    const days = ['hour-sun','hour-mon','hour-tue','hour-wed','hour-thu','hour-fri','hour-sat'];
+    const today = new Date().getDay();
+    const todayEl = document.getElementById(days[today]);
+    if (todayEl) {
+      todayEl.classList.add('today');
+      const dayEl = todayEl.querySelector('.day');
+      if (dayEl) dayEl.textContent += ' (Today)';
+    }
+  });
+</script>
+
+</body>
+</html>
