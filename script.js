@@ -291,6 +291,7 @@ const PRODUCTS = [
   { id:93, cat:'kids',        name:'Big Size Insulated Kids Lunch Bag', note:'Fits lunch snack and water bottle',price:850,  old:0,     img:'kid.2.jpg',          badge:'',     badgeType:'' },
   { id:94, cat:'kids',        name:'Girls High Quality Leather Shoes',  note:'Material leather',                 price:2500, old:0,     img:'kid.3.jpg',          badge:'',     badgeType:'' },
   { id:95, cat:'kids',        name:'Boys High Quality Leather Shoes',   note:'Material leather',                 price:2500, old:0,     img:'kid.4.jpg',          badge:'',     badgeType:'' },
+  { id:96, cat:'duvets',      name:'Egyptian Duvet Cover',              note:'Size 6x7 and 6x6 — 1 duvet cover, 1 bedsheet and 2 pillowcases', price:4000, old:0, img:'duvet.22.jpg', badge:'HOT', badgeType:'hot' },
 ];
 
 
