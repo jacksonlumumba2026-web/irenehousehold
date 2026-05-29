@@ -312,6 +312,37 @@ const PRODUCTS = [
   { id:106, cat:'decor',       name:'Plain Coral Fleece Throw Blanket',    note:'Sizes 4/5, 5/6, 6/6 — Soft and cosy — Multiple colours',            price:999,  old:0,  img:'decor.1.jpg',   imgs:['decor.1.jpg','decor.1b.jpg','decor.1c.jpg'], badge:'NEW',  badgeType:'new'  },
   { id:107, cat:'decor',       name:'3pcs 3D Non-Slip Toilet Mat Set',     note:'Heavy grip rubber underside — Size 45x75cm + 2pcs 40x45cm',         price:850,  old:0,  img:'decor.2.jpg',        badge:'HOT',  badgeType:'hot'  },
   { id:108, cat:'decor',       name:'3-Layer Oval Trolley Rack Table',     note:'60x30x67cm — Black or white marble — 2 round top shelves',          price:2999, old:0,  img:'decor.3.jpg',   imgs:['decor.3.jpg','decor.3b.jpg'], badge:'NEW',  badgeType:'new'  },
+  // ── PILLOWS & CUSHIONS ──
+  { id:109, cat:'decor',  name:'Wave Pillow Case',                    note:'Size 45x45cm — Case only',                            price:200,  old:0, img:'decor.4.jpg',        badge:'NEW',  badgeType:'new'  },
+  { id:110, cat:'decor',  name:'Wave Pillow Insert',                  note:'Size 45x45cm — Insert only',                          price:200,  old:0, img:'decor.4b.jpg',       badge:'NEW',  badgeType:'new'  },
+  { id:111, cat:'decor',  name:'Wave Pillow + Case Set',              note:'Size 45x45cm — Pillow and case included',             price:400,  old:0, img:'decor.4c.jpg',       badge:'HOT',  badgeType:'hot'  },
+  { id:112, cat:'decor',  name:'Knot Pillow',                         note:'Size 22cm width — Decorative knot design',            price:850,  old:0, img:'decor.5.jpg',        badge:'',     badgeType:''     },
+  { id:113, cat:'decor',  name:'Tufted Bohemian Throw Pillow Cover',  note:'Square 45x45cm or Lumbar 30x50cm — @750 each',        price:750,  old:0, img:'decor.6.jpg',        badge:'NEW',  badgeType:'new'  },
+
+  // ── DOORMATS & FLOOR MATS ──
+  { id:114, cat:'carpets', name:'Heavy Plastic Doormat',              note:'Size 50x80cm — Durable heavy duty',                   price:1200, old:0, img:'carpet.10.jpg',      badge:'',     badgeType:''     },
+  { id:115, cat:'carpets', name:'Turkish Doormat',                    note:'Size 50x80cm — Premium Turkish design',               price:1300, old:0, img:'carpet.11.jpg',      badge:'HOT',  badgeType:'hot'  },
+  { id:116, cat:'carpets', name:'Memory Foam Mat',                    note:'Size 40x60cm @550 or 50x80cm @650',                   price:550,  old:0, img:'carpet.12.jpg',      badge:'',     badgeType:''     },
+  { id:117, cat:'carpets', name:'3D Smooth Doormat',                  note:'Size 50x80cm — Stylish 3D design',                    price:600,  old:0, img:'carpet.13.jpg',      badge:'NEW',  badgeType:'new'  },
+  { id:118, cat:'carpets', name:'Rubber Absorbent Mat',               note:'Size 50x80cm — Non-slip rubber base',                 price:850,  old:0, img:'carpet.14.jpg',      badge:'',     badgeType:''     },
+  { id:119, cat:'carpets', name:'Non-Slip Memory Foam Mat',           note:'40x60cm @850 or 50x80cm @1250 navy blue only',        price:850,  old:0, img:'carpet.15.jpg',      badge:'',     badgeType:''     },
+  { id:120, cat:'carpets', name:'Translucent Bathroom Anti-Slip Mat', note:'Large 50x80cm @800 or Medium 40x60cm @650',           price:650,  old:0, img:'carpet.16.jpg',      badge:'NEW',  badgeType:'new'  },
+  { id:121, cat:'carpets', name:'Heavy Large Plastic Outdoor Doormat',note:'Size 60x90cm — Extra large heavy duty',               price:1500, old:0, img:'carpet.17.jpg',      badge:'',     badgeType:''     },
+  { id:122, cat:'carpets', name:'Faux Fur Carpet',                    note:'Size 60x180cm — Irregular shape — Bedside or décor',  price:2300, old:0, img:'carpet.18.jpg',      badge:'SALE', badgeType:'sale', imgs:['carpet.18.jpg','carpet.18b.jpg','carpet.18c.jpg'] },
+
+  // ── DUVETS & BEDDING ──
+  { id:123, cat:'duvets',  name:'Single Velvet Fluffy Duvet',         note:'Size 4x6 and 5x6 — 1 fluffy fleece duvet',            price:2999, old:0, img:'duvet.23.jpg',       badge:'HOT',  badgeType:'hot'  },
+  { id:124, cat:'duvets',  name:'6pc Luxury Velvet Plush Duvet Set',  note:'Size 6x6 and 6x7 — 1 duvet, 1 bedsheet, 4 pillowcases', price:4300, old:0, img:'duvet.24.jpg',     badge:'HOT',  badgeType:'hot'  },
+  { id:125, cat:'duvets',  name:'Fleece Blanket',                     note:'Size 6x6 — Soft and warm',                            price:999,  old:0, img:'duvet.25.jpg',       badge:'',     badgeType:''     },
+
+  // ── FURNITURE ──
+  { id:126, cat:'furniture', name:'Kids Fashion Plastic Wardrobe',    note:'Colourful kids wardrobe — Multiple sections',         price:4999, old:0, img:'furniture.23.jpg',   badge:'NEW',  badgeType:'new'  },
+
+  // ── COOKWARE / KITCHEN ──
+  { id:127, cat:'cookware',  name:'Electromate Hand Mixer',           note:'Powerful hand mixer — Perfect for baking',            price:1299, old:0, img:'cookware.5.jpg',     badge:'NEW',  badgeType:'new'  },
+  { id:128, cat:'cookware',  name:'9.5L Tea Urn Double Tap',          note:'Large capacity — Double tap for easy serving',        price:2999, old:0, img:'cookware.6.jpg',     badge:'SALE', badgeType:'sale' },
+  { id:129, cat:'cookware',  name:'Unique Knife Set',                 note:'Premium quality — Full knife set',                    price:2999, old:0, img:'cookware.7.jpg',     badge:'HOT',  badgeType:'hot'  },
+
 ];
 
 
