@@ -568,6 +568,8 @@
         var active = b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + cat + "'");
         b.classList.toggle('active', active);
       });
+      applyFilters();
+      return;
     }
 
     if (q) {
