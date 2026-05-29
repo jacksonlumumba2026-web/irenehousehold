@@ -726,7 +726,7 @@ function buildCard(p) {
     '<div class="card-body">' +
       '<div class="card-location">Nairobi, Kenya</div>' +
       '<div class="card-name">' + p.name + '</div>' +
-        '<button class="card-atc" style="flex:1;" onclick="addToCart(this,' + p.id + ',\'' + n + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">&#128722; Add to Cart</button>' +
+      '<div class="card-note">' + p.note + '</div>' +
       '<div class="card-price-row"><span class="card-price">' + price + '</span>' + oldPrice + '</div>' +
       '<div style="display:flex;gap:6px;margin-top:8px;">' +
         '<button class="card-atc" style="flex:1;" onclick="addToCart(this,' + p.id + ',\'' + n + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">&#128722; Add to Cart</button>' +
