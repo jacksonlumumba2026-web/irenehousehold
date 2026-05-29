@@ -182,8 +182,8 @@ function openZoomModal(src, alt) {
 ═══════════════════════════════════════ */
 const PRODUCTS = [
   // MOSQUITO NETS
+  { id:2,  cat:'nets',        name:'Round Nets',                        note:'Fits 3x6, 4x6 and 5x6',           price:900,  old:1300,  img:'net.2.jpg',          badge:'SALE', badgeType:'sale' },
   { id:1,  cat:'nets',        name:'Tent Net',                          note:'Sizes available',                  price:2000, old:0,     img:'net.1.jpg',          badge:'',     badgeType:'' },
-  { id:2,  cat:'nets',        name:'Round Nets',                        note:'Fits 3x6, 4x6 and 5x6',           price:1300, old:0,     img:'net.2.jpg',          badge:'',     badgeType:'' },
   { id:3,  cat:'nets',        name:'Four Stand Mosquito Nets',          note:'Pink, purple, white and cream',    price:1400, old:1800,  img:'net.3.jpg',          badge:'SALE', badgeType:'sale' },
   { id:4,  cat:'nets',        name:'Two Stand Rail Mosquito Net',       note:'Multiple colours available',       price:4300, old:4500,  img:'net.4.jpg',          badge:'SALE', badgeType:'sale' },
   { id:5,  cat:'nets',        name:'Decker Top Square Mosquito Net',    note:'Free size fits all beds',          price:1800, old:0,     img:'net.5.jpg',          badge:'',     badgeType:'' },
@@ -342,6 +342,8 @@ const PRODUCTS = [
   { id:127, cat:'cookware',  name:'Electromate Hand Mixer',           note:'Powerful hand mixer — Perfect for baking',            price:1299, old:0, img:'cookware.5.jpg',     badge:'NEW',  badgeType:'new'  },
   { id:128, cat:'cookware',  name:'9.5L Tea Urn Double Tap',          note:'Large capacity — Double tap for easy serving',        price:2999, old:0, img:'cookware.6.jpg',     badge:'SALE', badgeType:'sale' },
   { id:129, cat:'cookware',  name:'Unique Knife Set',                 note:'Premium quality — Full knife set',                    price:2999, old:0, img:'cookware.7.jpg',     badge:'HOT',  badgeType:'hot'  },
+
+  { id:130, cat:'nets', name:'Double Decker Mosquito Net', note:'Size 4x6 — Colours: Purple, Pink, White and Cream', price:1700, old:0, img:'net.6.jpg', imgs:['net.6.jpg','net.6b.jpg','net.6c.jpg','net.6d.jpg'], badge:'NEW', badgeType:'new' },
 
 ];
 
