@@ -291,7 +291,27 @@ const PRODUCTS = [
   { id:93, cat:'kids',        name:'Big Size Insulated Kids Lunch Bag', note:'Fits lunch snack and water bottle',price:850,  old:0,     img:'kid.2.jpg',          badge:'',     badgeType:'' },
   { id:94, cat:'kids',        name:'Girls High Quality Leather Shoes',  note:'Material leather',                 price:2500, old:0,     img:'kid.3.jpg',          badge:'',     badgeType:'' },
   { id:95, cat:'kids',        name:'Boys High Quality Leather Shoes',   note:'Material leather',                 price:2500, old:0,     img:'kid.4.jpg',          badge:'',     badgeType:'' },
-  { id:96, cat:'duvets',      name:'Egyptian Duvet Cover',              note:'Size 6x7 and 6x6 — 1 duvet cover, 1 bedsheet and 2 pillowcases', price:4000, old:0, img:'duvet.22.jpg', badge:'HOT', badgeType:'hot' },
+  { id:96,  cat:'duvets',      name:'Egyptian Duvet Cover',              note:'Size 6x7 and 6x6 — 1 duvet cover, 1 bedsheet, 2 pillowcases',   price:4000, old:0,    img:'duvet.22.jpg',       badge:'HOT',  badgeType:'hot'  },
+
+  // ELECTRONICS
+  { id:97,  cat:'electronics', name:'Q7S Smart WiFi Camera V380',         note:'Pan & Tilt 355° — Night Vision — Motion Detection — Two-Way Audio', price:2800, old:0,  img:'electronics.1.jpg',  badge:'NEW',  badgeType:'new'  },
+  { id:98,  cat:'electronics', name:'Cute Cat Kids Watch Combo',           note:'Watch + Wireless Earbuds + Cute Case — Perfect gift for kids',       price:1350, old:0,  img:'electronics.2.jpg',  badge:'HOT',  badgeType:'hot'  },
+  { id:99,  cat:'electronics', name:'Neck Pillow with Phone Holder Pocket',note:'Built-in side pocket for your phone — Travel essential',             price:950,  old:0,  img:'electronics.3.jpg',  badge:'',     badgeType:''     },
+
+  // COOKWARE
+  { id:100, cat:'cookware',    name:'Edenberg 12pcs Stainless Cookware',   note:'Capacities: 2.1L 2.9L 3.9L 5.1L 6.5L 8.2L — Code 4037',           price:9500, old:0,  img:'cookware.1.jpg',     badge:'HOT',  badgeType:'hot'  },
+  { id:101, cat:'cookware',    name:'Nunix 50x55 Standing Cooker 3+1',     note:'3 Gas + 1 Electric burner — New model with gas oven',               price:18999,old:0,  img:'cookware.2.jpg',     badge:'NEW',  badgeType:'new'  },
+  { id:102, cat:'cookware',    name:'Nunix Table Top Cooker 3+1',          note:'3 Gas + 1 Electric burner — Compact tabletop design',               price:6000, old:0,  img:'cookware.3.jpg',     badge:'',     badgeType:''     },
+  { id:103, cat:'cookware',    name:'Nunix Full Gas Standing Cooker',      note:'Full gas cooker with shelf — Ideal for home and kitchen',            price:7900, old:0,  img:'cookware.4.jpg',     badge:'',     badgeType:''     },
+
+  // TRAVEL & LUGGAGE
+  { id:104, cat:'travel',      name:'Unbreakable PP 3-in-1 Suitcase Set',  note:'3 sizes — 360° wheels — Double zip — Scratch resistant — 4 colours', price:7999, old:0, img:'travel.1.jpg',  imgs:['travel.1.jpg','travel.1b.jpg','travel.1c.jpg','travel.1d.jpg'], badge:'HOT',  badgeType:'hot'  },
+  { id:105, cat:'travel',      name:'Waterproof Outdoor Picnic Mat',        note:'150x200cm — Available in 4 colours — Foldable and portable',         price:750,  old:0, img:'travel.2.jpg',  imgs:['travel.2.jpg','travel.2b.jpg','travel.2c.jpg','travel.2d.jpg'], badge:'SALE', badgeType:'sale' },
+
+  // HOME DECOR
+  { id:106, cat:'decor',       name:'Plain Coral Fleece Throw Blanket',    note:'Sizes 4/5, 5/6, 6/6 — Soft and cosy — Multiple colours',            price:999,  old:0,  img:'decor.1.jpg',   imgs:['decor.1.jpg','decor.1b.jpg','decor.1c.jpg'], badge:'NEW',  badgeType:'new'  },
+  { id:107, cat:'decor',       name:'3pcs 3D Non-Slip Toilet Mat Set',     note:'Heavy grip rubber underside — Size 45x75cm + 2pcs 40x45cm',         price:850,  old:0,  img:'decor.2.jpg',        badge:'HOT',  badgeType:'hot'  },
+  { id:108, cat:'decor',       name:'3-Layer Oval Trolley Rack Table',     note:'60x30x67cm — Black or white marble — 2 round top shelves',          price:2999, old:0,  img:'decor.3.jpg',   imgs:['decor.3.jpg','decor.3b.jpg'], badge:'NEW',  badgeType:'new'  },
 ];
 
 
@@ -652,17 +672,30 @@ function buildCard(p) {
   var n = p.name.replace(/'/g, '').replace(/"/g, '');
   var waMsg = encodeURIComponent('Hi Irene! I am interested in: ' + p.name + ' - ' + price + '. Website: irenehousehold.co.ke');
 
-  return '<div class="product-card">' +
+  // Multi-photo colour switcher
+  var colourSwitch = '';
+  if (p.imgs && p.imgs.length > 1) {
+    colourSwitch = '<div style="display:flex;gap:5px;padding:6px 10px;background:#f9f9f9;border-top:1px solid #f0f0f0;">';
+    for (var ci = 0; ci < p.imgs.length; ci++) {
+      colourSwitch += '<div onclick="switchImg(this,\'' + p.imgs[ci] + '\',\'' + p.id + '\')" style="width:32px;height:32px;border-radius:4px;overflow:hidden;cursor:pointer;border:2px solid ' + (ci===0?'var(--green)':'#e0e0e0') + ';flex-shrink:0;">' +
+        '<img src="' + p.imgs[ci] + '" style="width:100%;height:100%;object-fit:cover;" loading="lazy"/>' +
+      '</div>';
+    }
+    colourSwitch += '</div>';
+  }
+
+  return '<div class="product-card" id="card-' + p.id + '">' +
     '<div class="card-img">' +
-      '<img src="' + p.img + '" alt="' + n + '" loading="lazy"/>' +
+      '<img src="' + p.img + '" alt="' + n + '" loading="lazy" id="img-' + p.id + '"/>' +
       badge +
       '<button class="card-qv" onclick="openQuickView(' + p.id + ')">&#128065; Quick View</button>' +
       '<button class="card-wish' + (inWL ? ' active' : '') + '" onclick="toggleWishlist(this,' + p.id + ',\'' + n + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">&#9825;</button>' +
     '</div>' +
+    colourSwitch +
     '<div class="card-body">' +
       '<div class="card-location">Nairobi, Kenya</div>' +
       '<div class="card-name">' + p.name + '</div>' +
-      '<div class="card-note">' + p.note + '</div>' +
+        '<button class="card-atc" style="flex:1;" onclick="addToCart(this,' + p.id + ',\'' + n + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">&#128722; Add to Cart</button>' +
       '<div class="card-price-row"><span class="card-price">' + price + '</span>' + oldPrice + '</div>' +
       '<div style="display:flex;gap:6px;margin-top:8px;">' +
         '<button class="card-atc" style="flex:1;" onclick="addToCart(this,' + p.id + ',\'' + n + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">&#128722; Add to Cart</button>' +
@@ -670,6 +703,18 @@ function buildCard(p) {
       '</div>' +
     '</div>' +
   '</div>';
+}
+
+// Switch product image when colour thumb is clicked
+function switchImg(thumb, imgSrc, productId) {
+  var mainImg = document.getElementById('img-' + productId);
+  if (mainImg) mainImg.src = imgSrc;
+  // Update border on thumbs
+  var parent = thumb.parentElement;
+  parent.querySelectorAll('div').forEach(function(t) {
+    t.style.border = '2px solid #e0e0e0';
+  });
+  thumb.style.border = '2px solid var(--green)';
 }
 
 /* ═══════════════════════════════════════

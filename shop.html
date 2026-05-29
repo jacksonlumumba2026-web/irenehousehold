@@ -163,6 +163,22 @@
       <div class="cat-strip-img"><img src="kid.1.jpg" alt="Kids" loading="lazy"/></div>
       <span class="cat-strip-label">Kids</span>
     </button>
+    <button class="cat-strip-item" onclick="filterCat('electronics',this)">
+      <div class="cat-strip-img"><img src="electronics.1.jpg" alt="Electronics" loading="lazy"/></div>
+      <span class="cat-strip-label">Electronics</span>
+    </button>
+    <button class="cat-strip-item" onclick="filterCat('cookware',this)">
+      <div class="cat-strip-img"><img src="cookware.1.jpg" alt="Cookware" loading="lazy"/></div>
+      <span class="cat-strip-label">Cookware</span>
+    </button>
+    <button class="cat-strip-item" onclick="filterCat('travel',this)">
+      <div class="cat-strip-img"><img src="travel.1.jpg" alt="Travel" loading="lazy"/></div>
+      <span class="cat-strip-label">Travel</span>
+    </button>
+    <button class="cat-strip-item" onclick="filterCat('decor',this)">
+      <div class="cat-strip-img"><img src="decor.1.jpg" alt="Home Décor" loading="lazy"/></div>
+      <span class="cat-strip-label">Home Décor</span>
+    </button>
   </div>
 </div>
 
@@ -186,6 +202,10 @@
     <button class="browse-cat" onclick="filterBadge('SALE')">🏷️ On Sale</button>
     <button class="browse-cat" onclick="filterBadge('NEW')">✨ New Arrivals</button>
     <button class="browse-cat" onclick="filterBadge('HOTEL')">🏨 Hotel Items</button>
+    <button class="browse-cat" onclick="filterCat('electronics',this)">🔌 Electronics</button>
+    <button class="browse-cat" onclick="filterCat('cookware',this)">🍳 Cookware</button>
+    <button class="browse-cat" onclick="filterCat('travel',this)">🧳 Travel & Luggage</button>
+    <button class="browse-cat" onclick="filterCat('decor',this)">🛋️ Home Décor</button>
   </div>
 </div>
 
@@ -366,7 +386,8 @@
   var CAT_LABELS = {
     all:'All Products', nets:'Mosquito Nets', duvets:'Duvets & Covers',
     kitchenware:'Kitchenware', carpets:'Carpets & Mats', seatcovers:'Seat Covers',
-    bath:'Bath & Towels', furniture:'Furniture', kids:'Kids Corner'
+    bath:'Bath & Towels', furniture:'Furniture', kids:'Kids Corner',
+    electronics:'Electronics', cookware:'Cookware', travel:'Travel & Luggage', decor:'Home Décor'
   };
 
   function toggleBrowse() {
