@@ -298,7 +298,7 @@ const PRODUCTS = [
   { id:87, cat:'furniture',   name:'Balcony Privacy Shield',            note:'Colours available',                price:4500, old:0,     img:'furniture.18.jpg',   badge:'',     badgeType:'' },
   { id:88, cat:'furniture',   name:'Kids Stackable Bed',                note:'Space saving design',              price:6500, old:0,     img:'furniture.19.jpg',   badge:'',     badgeType:'' },
   { id:89, cat:'furniture',   name:'Kindergarten Tables and Chairs',    note:'Kindergarten tables',              price:10950,old:0,     img:'furniture.20.jpg',   badge:'',     badgeType:'' },
-  { id:90, cat:'furniture',   name:'3 in 1 Coffee Table Round',         note:'Classic side table',               price:19999,old:0,     img:'furniture.21.jpg',   badge:'',     badgeType:'' },
+  { id:90, cat:'furniture',   name:'3 in 1 Coffee Table Round',         note:'Classic side table',               price:14500,old:19900,     img:'furniture.21.jpg',   badge:'',     badgeType:'' },
   { id:91, cat:'furniture',   name:'Nordic Luxury Double Drawer Bedside',note:'Two drawer large capacity',       price:7500, old:8500,  img:'furniture.22.jpg',   badge:'SALE', badgeType:'sale' },
 
   // KIDS CORNER
