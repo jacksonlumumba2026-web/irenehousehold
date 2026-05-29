@@ -250,14 +250,14 @@ const PRODUCTS = [
 
   // SEAT COVERS
   { id:60, cat:'seatcovers', name:'Printed Polyester Seat Covers',
-    note:'7 Seater 3211 @KSh10,500 | 7 Seater 322 @KSh9,300 | 5 Seater 311 @KSh7,500 | 5 Seater 32 @KSh6,300 — Stretchable',
-    price:6300, old:0,
+    note:'5 Seater 311 @KSh12,999 | 7 Seater 3211 @KSh17,999 — Stretchable material — Multiple colours',
+    price:12999, old:0,
     img:'seatcover.1.jpg',
     imgs:['seatcover.1.jpg','seatcover.1b.jpg','seatcover.1c.jpg','seatcover.1d.jpg'],
     badge:'HOT', badgeType:'hot' },
   { id:61, cat:'seatcovers', name:'Purely Turkey Ready Made Seat Covers',
-    note:'3 Seater @KSh3,300 | 2 Seater @KSh3,000 | 1 Seater @KSh2,500 — Premium quality',
-    price:2500, old:0,
+    note:'1 Seater @KSh4,000 | 2 Seater @KSh4,500 | 3 Seater @KSh5,000 — Premium quality',
+    price:4000, old:0,
     img:'seatcover.2.jpg',
     imgs:['seatcover.2.jpg','seatcover.2b.jpg','seatcover.2c.jpg','seatcover.2d.jpg'],
     badge:'', badgeType:'' },
@@ -298,7 +298,7 @@ const PRODUCTS = [
   { id:87, cat:'furniture',   name:'Balcony Privacy Shield',            note:'Colours available',                price:4500, old:0,     img:'furniture.18.jpg',   badge:'',     badgeType:'' },
   { id:88, cat:'furniture',   name:'Kids Stackable Bed',                note:'Space saving design',              price:6500, old:0,     img:'furniture.19.jpg',   badge:'',     badgeType:'' },
   { id:89, cat:'furniture',   name:'Kindergarten Tables and Chairs',    note:'Kindergarten tables',              price:10950,old:0,     img:'furniture.20.jpg',   badge:'',     badgeType:'' },
-  { id:90, cat:'furniture',   name:'3 in 1 Coffee Table Round',         note:'Classic side table',               price:14500,old:19900,     img:'furniture.21.jpg',   badge:'',     badgeType:'' },
+  { id:90, cat:'furniture',   name:'3 in 1 Coffee Table Round',         note:'Classic side table',               price:19999,old:0,     img:'furniture.21.jpg',   badge:'',     badgeType:'' },
   { id:91, cat:'furniture',   name:'Nordic Luxury Double Drawer Bedside',note:'Two drawer large capacity',       price:7500, old:8500,  img:'furniture.22.jpg',   badge:'SALE', badgeType:'sale' },
 
   // KIDS CORNER
