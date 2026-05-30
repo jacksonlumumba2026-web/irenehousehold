@@ -250,8 +250,8 @@ const PRODUCTS = [
 
   // SEAT COVERS
   { id:60, cat:'seatcovers', name:'Printed Polyester Seat Covers',
-    note:'5 Seater 311 @KSh12,999 | 7 Seater 3211 @KSh17,999 — Stretchable material — Multiple colours',
-    price:12999, old:0,
+    note:'1 Seater @KSh2,500 | 2 Seater @KSh3,000 | 3 Seater @KSh3,300 | 5 Seater 311 @KSh7,500 | 7 Seater 3211 @KSh10,500',
+    price:2500, old:0,
     img:'seatcover.1.jpg',
     imgs:['seatcover.1.jpg','seatcover.1b.jpg','seatcover.1c.jpg','seatcover.1d.jpg'],
     badge:'HOT', badgeType:'hot' },
@@ -261,11 +261,11 @@ const PRODUCTS = [
     img:'seatcover.2.jpg',
     imgs:['seatcover.2.jpg','seatcover.2b.jpg','seatcover.2c.jpg','seatcover.2d.jpg'],
     badge:'', badgeType:'' },
-  { id:131, cat:'seatcovers', name:'5 Seater Seat Cover Set 3-1-1',   note:'Full 5 seater set — Stretchable material — Multiple colours', price:6000,  old:0, img:'seatcover.3.jpg',  imgs:['seatcover.3.jpg','seatcover.3b.jpg','seatcover.3c.jpg','seatcover.3d.jpg'], badge:'',    badgeType:''     },
-  { id:132, cat:'seatcovers', name:'5 Seater Seat Cover Set 3-2',     note:'Full 5 seater set — Stretchable material — Multiple colours', price:5500,  old:0, img:'seatcover.4.jpg',  imgs:['seatcover.4.jpg','seatcover.4b.jpg','seatcover.4c.jpg','seatcover.4d.jpg'], badge:'',    badgeType:''     },
-  { id:133, cat:'seatcovers', name:'3 Seater Seat Cover',              note:'Single 3 seater cover — Multiple colours available',         price:5000,  old:6000, img:'seatcover.5.jpg',  imgs:['seatcover.5.jpg','seatcover.5b.jpg','seatcover.5c.jpg'],                    badge:'',    badgeType:''     },
-  { id:134, cat:'seatcovers', name:'2 Seater Seat Cover',              note:'Single 2 seater cover — Multiple colours available',         price:4500,  old:5500, img:'seatcover.6.jpg',  imgs:['seatcover.6.jpg','seatcover.6b.jpg','seatcover.6c.jpg'],                    badge:'',    badgeType:''     },
-  { id:135, cat:'seatcovers', name:'1 Seater Seat Cover',              note:'Single 1 seater cover — Multiple colours available',         price:4000,  old:5000, img:'seatcover.7.jpg',  imgs:['seatcover.7.jpg','seatcover.7b.jpg','seatcover.7c.jpg'],                    badge:'',    badgeType:''     },
+  { id:131, cat:'seatcovers', name:'5 Seater Seat Cover Set 3-1-1',   note:'Full 5 seater set — Stretchable material — Multiple colours', price:7500,  old:0, img:'seatcover.3.jpg',  imgs:['seatcover.3.jpg','seatcover.3b.jpg','seatcover.3c.jpg','seatcover.3d.jpg'], badge:'',    badgeType:''     },
+  { id:132, cat:'seatcovers', name:'5 Seater Seat Cover Set 3-2',     note:'Full 5 seater set — Stretchable material — Multiple colours', price:6300,  old:0, img:'seatcover.4.jpg',  imgs:['seatcover.4.jpg','seatcover.4b.jpg','seatcover.4c.jpg','seatcover.4d.jpg'], badge:'',    badgeType:''     },
+  { id:133, cat:'seatcovers', name:'3 Seater Seat Cover',              note:'Single 3 seater cover — Multiple colours available',         price:3300,  old:0, img:'seatcover.5.jpg',  imgs:['seatcover.5.jpg','seatcover.5b.jpg','seatcover.5c.jpg'],                    badge:'',    badgeType:''     },
+  { id:134, cat:'seatcovers', name:'2 Seater Seat Cover',              note:'Single 2 seater cover — Multiple colours available',         price:3000,  old:0, img:'seatcover.6.jpg',  imgs:['seatcover.6.jpg','seatcover.6b.jpg','seatcover.6c.jpg'],                    badge:'',    badgeType:''     },
+  { id:135, cat:'seatcovers', name:'1 Seater Seat Cover',              note:'Single 1 seater cover — Multiple colours available',         price:2500,  old:0, img:'seatcover.7.jpg',  imgs:['seatcover.7.jpg','seatcover.7b.jpg','seatcover.7c.jpg'],                    badge:'',    badgeType:''     },
 
   // BATH AND TOWELS
   { id:62, cat:'bath',        name:'3 in 1 Towel Set',                  note:'100 percent cotton',               price:2500, old:0,     img:'bath.1.jpg',         badge:'HOT',  badgeType:'hot' },
