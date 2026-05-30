@@ -741,7 +741,7 @@ function buildCard(p) {
     '</div>' +
     colourSwitch +
     '<div class="card-body">' +
-      '<div class="card-location">Nairobi, Kenya</div>' +
+      '<div class="card-location">Kenya — Countrywide Delivery</div>' +
       '<div class="card-name">' + p.name + '</div>' +
       '<div class="card-note">' + p.note + '</div>' +
       '<div class="card-price-row"><span class="card-price">' + price + '</span>' + oldPrice + '</div>' +
