@@ -1043,3 +1043,15 @@ img { max-width:100%; }
 .wa-share-btn { width:40px; min-width:40px; background:#25d366; border:none; border-radius:5px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s; }
 .wa-share-btn:hover { background:#1da851; }
 .wa-share-btn svg { width:15px; height:15px; fill:#fff; }
+
+/* ═══════════════════════════════════════
+   PRODUCT COLOUR THUMBNAILS
+═══════════════════════════════════════ */
+.card-img img:hover { cursor: zoom-in; }
+
+/* Thumbnail active state */
+.card-thumbs img:hover {
+  border-color: var(--green) !important;
+  transform: scale(1.08);
+  transition: all .2s;
+}

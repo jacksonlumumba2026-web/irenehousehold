@@ -182,71 +182,71 @@ function openZoomModal(src, alt) {
 ═══════════════════════════════════════ */
 const PRODUCTS = [
   // MOSQUITO NETS
-  { id:2,  cat:'nets',        name:'Round Nets',                        note:'Fits 3x6, 4x6 and 5x6',           price:900,  old:1300,  img:'net.2.jpg',          badge:'SALE', badgeType:'sale' },
-  { id:1,  cat:'nets',        name:'Tent Net',                          note:'Sizes available',                  price:2000, old:0,     img:'net.1.jpg',          badge:'',     badgeType:'' },
-  { id:3,  cat:'nets',        name:'Four Stand Mosquito Nets',          note:'Pink, purple, white and cream',    price:1400, old:1800,  img:'net.3.jpg',          badge:'SALE', badgeType:'sale' },
-  { id:4,  cat:'nets',        name:'Two Stand Rail Mosquito Net',       note:'Multiple colours available',       price:4300, old:4500,  img:'net.4.jpg',          badge:'SALE', badgeType:'sale' },
-  { id:5,  cat:'nets',        name:'Decker Top Square Mosquito Net',    note:'Free size fits all beds',          price:1800, old:0,     img:'net.5.jpg',          badge:'',     badgeType:'' },
+  { id:2,  cat:'nets',        name:'Round Nets',                        note:'Fits 3x6, 4x6 and 5x6',           price:900,  old:1300,  img:'net.2.jpg', imgs:['net.2.jpg','net.2b.jpg','net.2c.jpg','net.2d.jpg'],          badge:'SALE', badgeType:'sale' },
+  { id:1,  cat:'nets',        name:'Tent Net',                          note:'Sizes available',                  price:2000, old:0,     img:'net.1.jpg', imgs:['net.1.jpg','net.1b.jpg','net.1c.jpg','net.1d.jpg'],          badge:'',     badgeType:'' },
+  { id:3,  cat:'nets',        name:'Four Stand Mosquito Nets',          note:'Pink, purple, white and cream',    price:1400, old:1800,  img:'net.3.jpg', imgs:['net.3.jpg','net.3b.jpg','net.3c.jpg','net.3d.jpg'],          badge:'SALE', badgeType:'sale' },
+  { id:4,  cat:'nets',        name:'Two Stand Rail Mosquito Net',       note:'Multiple colours available',       price:4300, old:4500,  img:'net.4.jpg', imgs:['net.4.jpg','net.4b.jpg','net.4c.jpg','net.4d.jpg'],          badge:'SALE', badgeType:'sale' },
+  { id:5,  cat:'nets',        name:'Decker Top Square Mosquito Net',    note:'Free size fits all beds',          price:1800, old:0,     img:'net.5.jpg', imgs:['net.5.jpg','net.5b.jpg','net.5c.jpg','net.5d.jpg'],          badge:'',     badgeType:'' },
 
   // DUVETS AND COVERS
-  { id:6,  cat:'duvets',      name:'Fluffy Duvets',                     note:'1pc duvet, ultra soft',            price:4800, old:0,     img:'duvet.1.jpg',        badge:'HOT',  badgeType:'hot' },
-  { id:7,  cat:'duvets',      name:'Velvet Duvets',                     note:'Multiple sizes available',         price:3800, old:4300,  img:'duvet.2.jpg',        badge:'SALE', badgeType:'sale' },
-  { id:8,  cat:'duvets',      name:'Silk Embroidered Comforter Set',    note:'Comes as a full set',              price:5500, old:0,     img:'duvet.3.jpg',        badge:'NEW',  badgeType:'new' },
-  { id:9,  cat:'duvets',      name:'Luxury Tufted Home Comforter',      note:'Size 6x7 and 6x8',                price:5500, old:0,     img:'duvet.4.jpg',        badge:'',     badgeType:'' },
-  { id:10, cat:'duvets',      name:'Binded Duvet Set',                  note:'Size 7x8',                        price:4000, old:0,     img:'duvet.5.jpg',        badge:'',     badgeType:'' },
-  { id:11, cat:'duvets',      name:'White Stripped Binded Duvet Set',   note:'Hotel grade all white',            price:3500, old:0,     img:'duvet.6.jpg',        badge:'HOTEL',badgeType:'hotel' },
-  { id:12, cat:'duvets',      name:'Single Warm Woolen Duvet',          note:'Size 5x6',                        price:1999, old:2300,  img:'duvet.7.jpg',        badge:'SALE', badgeType:'sale' },
-  { id:13, cat:'duvets',      name:'Unbinded Cartoon Duvets',           note:'1 duvet included',                 price:2800, old:0,     img:'duvet.8.jpg',        badge:'',     badgeType:'' },
-  { id:14, cat:'duvets',      name:'High Quality Flannel Sherpa',       note:'Size 150x225cm',                  price:3300, old:0,     img:'duvet.9.jpg',        badge:'',     badgeType:'' },
-  { id:15, cat:'duvets',      name:'White Stripped Duvet Covers Set',   note:'1 duvet cover included',           price:2700, old:0,     img:'duvet.10.jpg',       badge:'HOTEL',badgeType:'hotel' },
-  { id:16, cat:'duvets',      name:'3pc Tufted Wave Duvet Cover Set',   note:'Elegant comfort luxury soft',      price:3700, old:0,     img:'duvet.11.jpg',       badge:'HOT',  badgeType:'hot' },
-  { id:17, cat:'duvets',      name:'Nordic Microfibre Duvet Cover',     note:'Full set included',                price:4500, old:0,     img:'duvet.12.jpg',       badge:'NEW',  badgeType:'new' },
-  { id:18, cat:'duvets',      name:'Pinch Pleat Pintuck Duvet Cover',   note:'Elegant comfort design',           price:3500, old:0,     img:'duvet.13.jpg',       badge:'',     badgeType:'' },
-  { id:19, cat:'duvets',      name:'Designer Duvet Covers',             note:'2 pillowcases included',           price:2600, old:0,     img:'duvet.14.jpg',       badge:'',     badgeType:'' },
-  { id:20, cat:'duvets',      name:'Classy Duvet Covers',               note:'2 pillowcases included',           price:2600, old:0,     img:'duvet.15.jpg',       badge:'',     badgeType:'' },
-  { id:21, cat:'duvets',      name:'2 Sided 100 Percent Cotton Duvet',  note:'Size 6x7 and 7x8',                price:2900, old:0,     img:'duvet.16.jpg',       badge:'HOTEL',badgeType:'hotel' },
-  { id:22, cat:'duvets',      name:'Cartoon Themed Duvet Covers',       note:'Kids sizes available',             price:3500, old:0,     img:'duvet.17.jpg',       badge:'',     badgeType:'' },
-  { id:23, cat:'duvets',      name:'Binded Cartoon Themed Cotton Duvet',note:'Size 4x6',                        price:3500, old:0,     img:'duvet.18.jpg',       badge:'NEW',  badgeType:'new' },
-  { id:24, cat:'duvets',      name:'White Fitted Bedsheets',            note:'4pcs pillow case included',        price:2900, old:0,     img:'duvet.19.jpg',       badge:'HOTEL',badgeType:'hotel' },
-  { id:25, cat:'duvets',      name:'Bedrunner',                         note:'1pc runner and 2 pillow covers',   price:1800, old:2200,  img:'duvet.20.jpg',       badge:'SALE', badgeType:'sale' },
-  { id:26, cat:'duvets',      name:'Mattress Protectors',               note:'3x6 waterproof',                  price:0,    old:0,     img:'duvet.21.jpg',       badge:'HOTEL',badgeType:'hotel' },
+  { id:6,  cat:'duvets',      name:'Fluffy Duvets',                     note:'1pc duvet, ultra soft',            price:4800, old:0,     img:'duvet.1.jpg', imgs:['duvet.1.jpg','duvet.1b.jpg','duvet.1c.jpg','duvet.1d.jpg'],        badge:'HOT',  badgeType:'hot' },
+  { id:7,  cat:'duvets',      name:'Velvet Duvets',                     note:'Multiple sizes available',         price:3800, old:4300,  img:'duvet.2.jpg', imgs:['duvet.2.jpg','duvet.2b.jpg','duvet.2c.jpg','duvet.2d.jpg'],        badge:'SALE', badgeType:'sale' },
+  { id:8,  cat:'duvets',      name:'Silk Embroidered Comforter Set',    note:'Comes as a full set',              price:5500, old:0,     img:'duvet.3.jpg', imgs:['duvet.3.jpg','duvet.3b.jpg','duvet.3c.jpg','duvet.3d.jpg'],        badge:'NEW',  badgeType:'new' },
+  { id:9,  cat:'duvets',      name:'Luxury Tufted Home Comforter',      note:'Size 6x7 and 6x8',                price:5500, old:0,     img:'duvet.4.jpg', imgs:['duvet.4.jpg','duvet.4b.jpg','duvet.4c.jpg','duvet.4d.jpg'],        badge:'',     badgeType:'' },
+  { id:10, cat:'duvets',      name:'Binded Duvet Set',                  note:'Size 7x8',                        price:4000, old:0,     img:'duvet.5.jpg', imgs:['duvet.5.jpg','duvet.5b.jpg','duvet.5c.jpg','duvet.5d.jpg'],        badge:'',     badgeType:'' },
+  { id:11, cat:'duvets',      name:'White Stripped Binded Duvet Set',   note:'Hotel grade all white',            price:3500, old:0,     img:'duvet.6.jpg', imgs:['duvet.6.jpg','duvet.6b.jpg','duvet.6c.jpg','duvet.6d.jpg'],        badge:'HOTEL',badgeType:'hotel' },
+  { id:12, cat:'duvets',      name:'Single Warm Woolen Duvet',          note:'Size 5x6',                        price:1999, old:2300,  img:'duvet.7.jpg', imgs:['duvet.7.jpg','duvet.7b.jpg','duvet.7c.jpg','duvet.7d.jpg'],        badge:'SALE', badgeType:'sale' },
+  { id:13, cat:'duvets',      name:'Unbinded Cartoon Duvets',           note:'1 duvet included',                 price:2800, old:0,     img:'duvet.8.jpg', imgs:['duvet.8.jpg','duvet.8b.jpg','duvet.8c.jpg','duvet.8d.jpg'],        badge:'',     badgeType:'' },
+  { id:14, cat:'duvets',      name:'High Quality Flannel Sherpa',       note:'Size 150x225cm',                  price:3300, old:0,     img:'duvet.9.jpg', imgs:['duvet.9.jpg','duvet.9b.jpg','duvet.9c.jpg','duvet.9d.jpg'],        badge:'',     badgeType:'' },
+  { id:15, cat:'duvets',      name:'White Stripped Duvet Covers Set',   note:'1 duvet cover included',           price:2700, old:0,     img:'duvet.10.jpg', imgs:['duvet.10.jpg','duvet.10b.jpg','duvet.10c.jpg','duvet.10d.jpg'],       badge:'HOTEL',badgeType:'hotel' },
+  { id:16, cat:'duvets',      name:'3pc Tufted Wave Duvet Cover Set',   note:'Elegant comfort luxury soft',      price:3700, old:0,     img:'duvet.11.jpg', imgs:['duvet.11.jpg','duvet.11b.jpg','duvet.11c.jpg','duvet.11d.jpg'],       badge:'HOT',  badgeType:'hot' },
+  { id:17, cat:'duvets',      name:'Nordic Microfibre Duvet Cover',     note:'Full set included',                price:4500, old:0,     img:'duvet.12.jpg', imgs:['duvet.12.jpg','duvet.12b.jpg','duvet.12c.jpg','duvet.12d.jpg'],       badge:'NEW',  badgeType:'new' },
+  { id:18, cat:'duvets',      name:'Pinch Pleat Pintuck Duvet Cover',   note:'Elegant comfort design',           price:3500, old:0,     img:'duvet.13.jpg', imgs:['duvet.13.jpg','duvet.13b.jpg','duvet.13c.jpg','duvet.13d.jpg'],       badge:'',     badgeType:'' },
+  { id:19, cat:'duvets',      name:'Designer Duvet Covers',             note:'2 pillowcases included',           price:2600, old:0,     img:'duvet.14.jpg', imgs:['duvet.14.jpg','duvet.14b.jpg','duvet.14c.jpg','duvet.14d.jpg'],       badge:'',     badgeType:'' },
+  { id:20, cat:'duvets',      name:'Classy Duvet Covers',               note:'2 pillowcases included',           price:2600, old:0,     img:'duvet.15.jpg', imgs:['duvet.15.jpg','duvet.15b.jpg','duvet.15c.jpg','duvet.15d.jpg'],       badge:'',     badgeType:'' },
+  { id:21, cat:'duvets',      name:'2 Sided 100 Percent Cotton Duvet',  note:'Size 6x7 and 7x8',                price:2900, old:0,     img:'duvet.16.jpg', imgs:['duvet.16.jpg','duvet.16b.jpg','duvet.16c.jpg','duvet.16d.jpg'],       badge:'HOTEL',badgeType:'hotel' },
+  { id:22, cat:'duvets',      name:'Cartoon Themed Duvet Covers',       note:'Kids sizes available',             price:3500, old:0,     img:'duvet.17.jpg', imgs:['duvet.17.jpg','duvet.17b.jpg','duvet.17c.jpg','duvet.17d.jpg'],       badge:'',     badgeType:'' },
+  { id:23, cat:'duvets',      name:'Binded Cartoon Themed Cotton Duvet',note:'Size 4x6',                        price:3500, old:0,     img:'duvet.18.jpg', imgs:['duvet.18.jpg','duvet.18b.jpg','duvet.18c.jpg','duvet.18d.jpg'],       badge:'NEW',  badgeType:'new' },
+  { id:24, cat:'duvets',      name:'White Fitted Bedsheets',            note:'4pcs pillow case included',        price:2900, old:0,     img:'duvet.19.jpg', imgs:['duvet.19.jpg','duvet.19b.jpg','duvet.19c.jpg','duvet.19d.jpg'],       badge:'HOTEL',badgeType:'hotel' },
+  { id:25, cat:'duvets',      name:'Bedrunner',                         note:'1pc runner and 2 pillow covers',   price:1800, old:2200,  img:'duvet.20.jpg', imgs:['duvet.20.jpg','duvet.20b.jpg','duvet.20c.jpg','duvet.20d.jpg'],       badge:'SALE', badgeType:'sale' },
+  { id:26, cat:'duvets',      name:'Mattress Protectors',               note:'3x6 waterproof',                  price:0,    old:0,     img:'duvet.21.jpg', imgs:['duvet.21.jpg','duvet.21b.jpg','duvet.21c.jpg','duvet.21d.jpg'],       badge:'HOTEL',badgeType:'hotel' },
 
   // KITCHENWARE
-  { id:27, cat:'kitchenware', name:'6pcs High Quality Signature Hotpots', note:'6pcs hotpot set',              price:8000, old:0,     img:'kitchenware.1.jpg',  badge:'HOT',  badgeType:'hot' },
-  { id:28, cat:'kitchenware', name:'Redberry Maximus Jumbo',            note:'3pcs set 10L 15L 20L',            price:11000,old:0,     img:'kitchenware.2.jpg',  badge:'',     badgeType:'' },
-  { id:29, cat:'kitchenware', name:'Carolina Premium Stainless Steel',  note:'4pcs in a set',                   price:4000, old:0,     img:'kitchenware.3.jpg',  badge:'',     badgeType:'' },
-  { id:30, cat:'kitchenware', name:'Insulated Concord Hotpot',          note:'Keeps hot 8 to 12hrs',            price:5000, old:0,     img:'kitchenware.4.jpg',  badge:'NEW',  badgeType:'new' },
-  { id:31, cat:'kitchenware', name:'3pcs Alixir Insulated Hotpots',     note:'2000ml 2500ml 3000ml',            price:4000, old:0,     img:'kitchenware.5.jpg',  badge:'',     badgeType:'' },
-  { id:32, cat:'kitchenware', name:'A Set of 4 Hotpots',                note:'1.2L 1.8L 2.4L and 3.5L',        price:2800, old:0,     img:'kitchenware.6.jpg',  badge:'',     badgeType:'' },
-  { id:33, cat:'kitchenware', name:'Classy Insulated Balivia Hotpot',   note:'Set of 4pcs',                     price:3400, old:0,     img:'kitchenware.7.jpg',  badge:'',     badgeType:'' },
-  { id:34, cat:'kitchenware', name:'Elegant Hotspots Set',              note:'Capacity 1.5L 3L 5L and 9L',      price:2800, old:0,     img:'kitchenware.8.jpg',  badge:'',     badgeType:'' },
-  { id:35, cat:'kitchenware', name:'58pcs Ceramic Dinner Set',          note:'12 inch oval plate included',      price:6999, old:0,     img:'kitchenware.9.jpg',  badge:'HOT',  badgeType:'hot' },
-  { id:36, cat:'kitchenware', name:'33pcs Wavy Dinner Set',             note:'6 wavy plates',                   price:9999, old:0,     img:'kitchenware.10.jpg', badge:'',     badgeType:'' },
-  { id:37, cat:'kitchenware', name:'31pcs Dinner Sets',                 note:'6 plates included',               price:8999, old:0,     img:'kitchenware.11.jpg', badge:'',     badgeType:'' },
-  { id:38, cat:'kitchenware', name:'24pcs Ceramic Dinner Set',          note:'24 PCs full premium set',         price:7500, old:0,     img:'kitchenware.12.jpg', badge:'NEW',  badgeType:'new' },
-  { id:39, cat:'kitchenware', name:'30pcs Wavy Dinner Set',             note:'Luxury design',                   price:7000, old:0,     img:'kitchenware.13.jpg', badge:'',     badgeType:'' },
-  { id:40, cat:'kitchenware', name:'24pcs Dinner Sets Black Gold Rim',  note:'24 pcs set',                      price:7000, old:0,     img:'kitchenware.14.jpg', badge:'',     badgeType:'' },
-  { id:41, cat:'kitchenware', name:'24pcs Dinner Sets White Gold Line', note:'24 pcs set',                      price:7000, old:0,     img:'kitchenware.15.jpg', badge:'',     badgeType:'' },
-  { id:42, cat:'kitchenware', name:'24pcs Japanese Dinner Sets',        note:'Trendy Japanese style',            price:6000, old:0,     img:'kitchenware.16.jpg', badge:'',     badgeType:'' },
-  { id:43, cat:'kitchenware', name:'32pcs Quadra Dinner Set',           note:'6pcs dinner plates',              price:6999, old:0,     img:'kitchenware.17.jpg', badge:'NEW',  badgeType:'new' },
-  { id:44, cat:'kitchenware', name:'16pcs Diva Dinner Set',             note:'4pcs dinner plates',              price:4300, old:0,     img:'kitchenware.18.jpg', badge:'',     badgeType:'' },
-  { id:45, cat:'kitchenware', name:'Japanese Style Dinnerset',          note:'Ceramic premium pieces',           price:6500, old:0,     img:'kitchenware.19.jpg', badge:'',     badgeType:'' },
-  { id:46, cat:'kitchenware', name:'13pcs Ceramic Versace Tea Set',     note:'6pcs 250ml cups',                 price:4000, old:0,     img:'kitchenware.20.jpg', badge:'NEW',  badgeType:'new' },
-  { id:47, cat:'kitchenware', name:'6pcs Ceramic Plates',               note:'Marble design',                   price:1800, old:0,     img:'kitchenware.21.jpg', badge:'',     badgeType:'' },
-  { id:48, cat:'kitchenware', name:'3pcs Ceramic Serving Dishes',       note:'Gold accent design',               price:4500, old:0,     img:'kitchenware.22.jpg', badge:'',     badgeType:'' },
-  { id:49, cat:'kitchenware', name:'3pcs Ceramic Bowls',                note:'With lids',                        price:4500, old:0,     img:'kitchenware.23.jpg', badge:'',     badgeType:'' },
-  { id:50, cat:'kitchenware', name:'3pcs Trays',                        note:'Gold trim design',                 price:3000, old:0,     img:'kitchenware.24.jpg', badge:'',     badgeType:'' },
+  { id:27, cat:'kitchenware', name:'6pcs High Quality Signature Hotpots', note:'6pcs hotpot set',              price:8000, old:0,     img:'kitchenware.1.jpg', imgs:['kitchenware.1.jpg','kitchenware.1b.jpg','kitchenware.1c.jpg','kitchenware.1d.jpg'],  badge:'HOT',  badgeType:'hot' },
+  { id:28, cat:'kitchenware', name:'Redberry Maximus Jumbo',            note:'3pcs set 10L 15L 20L',            price:11000,old:0,     img:'kitchenware.2.jpg', imgs:['kitchenware.2.jpg','kitchenware.2b.jpg','kitchenware.2c.jpg','kitchenware.2d.jpg'],  badge:'',     badgeType:'' },
+  { id:29, cat:'kitchenware', name:'Carolina Premium Stainless Steel',  note:'4pcs in a set',                   price:4000, old:0,     img:'kitchenware.3.jpg', imgs:['kitchenware.3.jpg','kitchenware.3b.jpg','kitchenware.3c.jpg','kitchenware.3d.jpg'],  badge:'',     badgeType:'' },
+  { id:30, cat:'kitchenware', name:'Insulated Concord Hotpot',          note:'Keeps hot 8 to 12hrs',            price:5000, old:0,     img:'kitchenware.4.jpg', imgs:['kitchenware.4.jpg','kitchenware.4b.jpg','kitchenware.4c.jpg','kitchenware.4d.jpg'],  badge:'NEW',  badgeType:'new' },
+  { id:31, cat:'kitchenware', name:'3pcs Alixir Insulated Hotpots',     note:'2000ml 2500ml 3000ml',            price:4000, old:0,     img:'kitchenware.5.jpg', imgs:['kitchenware.5.jpg','kitchenware.5b.jpg','kitchenware.5c.jpg','kitchenware.5d.jpg'],  badge:'',     badgeType:'' },
+  { id:32, cat:'kitchenware', name:'A Set of 4 Hotpots',                note:'1.2L 1.8L 2.4L and 3.5L',        price:2800, old:0,     img:'kitchenware.6.jpg', imgs:['kitchenware.6.jpg','kitchenware.6b.jpg','kitchenware.6c.jpg','kitchenware.6d.jpg'],  badge:'',     badgeType:'' },
+  { id:33, cat:'kitchenware', name:'Classy Insulated Balivia Hotpot',   note:'Set of 4pcs',                     price:3400, old:0,     img:'kitchenware.7.jpg', imgs:['kitchenware.7.jpg','kitchenware.7b.jpg','kitchenware.7c.jpg','kitchenware.7d.jpg'],  badge:'',     badgeType:'' },
+  { id:34, cat:'kitchenware', name:'Elegant Hotspots Set',              note:'Capacity 1.5L 3L 5L and 9L',      price:2800, old:0,     img:'kitchenware.8.jpg', imgs:['kitchenware.8.jpg','kitchenware.8b.jpg','kitchenware.8c.jpg','kitchenware.8d.jpg'],  badge:'',     badgeType:'' },
+  { id:35, cat:'kitchenware', name:'58pcs Ceramic Dinner Set',          note:'12 inch oval plate included',      price:6999, old:0,     img:'kitchenware.9.jpg', imgs:['kitchenware.9.jpg','kitchenware.9b.jpg','kitchenware.9c.jpg','kitchenware.9d.jpg'],  badge:'HOT',  badgeType:'hot' },
+  { id:36, cat:'kitchenware', name:'33pcs Wavy Dinner Set',             note:'6 wavy plates',                   price:9999, old:0,     img:'kitchenware.10.jpg', imgs:['kitchenware.10.jpg','kitchenware.10b.jpg','kitchenware.10c.jpg','kitchenware.10d.jpg'], badge:'',     badgeType:'' },
+  { id:37, cat:'kitchenware', name:'31pcs Dinner Sets',                 note:'6 plates included',               price:8999, old:0,     img:'kitchenware.11.jpg', imgs:['kitchenware.11.jpg','kitchenware.11b.jpg','kitchenware.11c.jpg','kitchenware.11d.jpg'], badge:'',     badgeType:'' },
+  { id:38, cat:'kitchenware', name:'24pcs Ceramic Dinner Set',          note:'24 PCs full premium set',         price:7500, old:0,     img:'kitchenware.12.jpg', imgs:['kitchenware.12.jpg','kitchenware.12b.jpg','kitchenware.12c.jpg','kitchenware.12d.jpg'], badge:'NEW',  badgeType:'new' },
+  { id:39, cat:'kitchenware', name:'30pcs Wavy Dinner Set',             note:'Luxury design',                   price:7000, old:0,     img:'kitchenware.13.jpg', imgs:['kitchenware.13.jpg','kitchenware.13b.jpg','kitchenware.13c.jpg','kitchenware.13d.jpg'], badge:'',     badgeType:'' },
+  { id:40, cat:'kitchenware', name:'24pcs Dinner Sets Black Gold Rim',  note:'24 pcs set',                      price:7000, old:0,     img:'kitchenware.14.jpg', imgs:['kitchenware.14.jpg','kitchenware.14b.jpg','kitchenware.14c.jpg','kitchenware.14d.jpg'], badge:'',     badgeType:'' },
+  { id:41, cat:'kitchenware', name:'24pcs Dinner Sets White Gold Line', note:'24 pcs set',                      price:7000, old:0,     img:'kitchenware.15.jpg', imgs:['kitchenware.15.jpg','kitchenware.15b.jpg','kitchenware.15c.jpg','kitchenware.15d.jpg'], badge:'',     badgeType:'' },
+  { id:42, cat:'kitchenware', name:'24pcs Japanese Dinner Sets',        note:'Trendy Japanese style',            price:6000, old:0,     img:'kitchenware.16.jpg', imgs:['kitchenware.16.jpg','kitchenware.16b.jpg','kitchenware.16c.jpg','kitchenware.16d.jpg'], badge:'',     badgeType:'' },
+  { id:43, cat:'kitchenware', name:'32pcs Quadra Dinner Set',           note:'6pcs dinner plates',              price:6999, old:0,     img:'kitchenware.17.jpg', imgs:['kitchenware.17.jpg','kitchenware.17b.jpg','kitchenware.17c.jpg','kitchenware.17d.jpg'], badge:'NEW',  badgeType:'new' },
+  { id:44, cat:'kitchenware', name:'16pcs Diva Dinner Set',             note:'4pcs dinner plates',              price:4300, old:0,     img:'kitchenware.18.jpg', imgs:['kitchenware.18.jpg','kitchenware.18b.jpg','kitchenware.18c.jpg','kitchenware.18d.jpg'], badge:'',     badgeType:'' },
+  { id:45, cat:'kitchenware', name:'Japanese Style Dinnerset',          note:'Ceramic premium pieces',           price:6500, old:0,     img:'kitchenware.19.jpg', imgs:['kitchenware.19.jpg','kitchenware.19b.jpg','kitchenware.19c.jpg','kitchenware.19d.jpg'], badge:'',     badgeType:'' },
+  { id:46, cat:'kitchenware', name:'13pcs Ceramic Versace Tea Set',     note:'6pcs 250ml cups',                 price:4000, old:0,     img:'kitchenware.20.jpg', imgs:['kitchenware.20.jpg','kitchenware.20b.jpg','kitchenware.20c.jpg','kitchenware.20d.jpg'], badge:'NEW',  badgeType:'new' },
+  { id:47, cat:'kitchenware', name:'6pcs Ceramic Plates',               note:'Marble design',                   price:1800, old:0,     img:'kitchenware.21.jpg', imgs:['kitchenware.21.jpg','kitchenware.21b.jpg','kitchenware.21c.jpg','kitchenware.21d.jpg'], badge:'',     badgeType:'' },
+  { id:48, cat:'kitchenware', name:'3pcs Ceramic Serving Dishes',       note:'Gold accent design',               price:4500, old:0,     img:'kitchenware.22.jpg', imgs:['kitchenware.22.jpg','kitchenware.22b.jpg','kitchenware.22c.jpg','kitchenware.22d.jpg'], badge:'',     badgeType:'' },
+  { id:49, cat:'kitchenware', name:'3pcs Ceramic Bowls',                note:'With lids',                        price:4500, old:0,     img:'kitchenware.23.jpg', imgs:['kitchenware.23.jpg','kitchenware.23b.jpg','kitchenware.23c.jpg','kitchenware.23d.jpg'], badge:'',     badgeType:'' },
+  { id:50, cat:'kitchenware', name:'3pcs Trays',                        note:'Gold trim design',                 price:3000, old:0,     img:'kitchenware.24.jpg', imgs:['kitchenware.24.jpg','kitchenware.24b.jpg','kitchenware.24c.jpg','kitchenware.24d.jpg'], badge:'',     badgeType:'' },
 
   // CARPETS AND MATS
-  { id:51, cat:'carpets',     name:'Fluffy Carpets',                    note:'5x8 size 280cm',                  price:3500, old:0,     img:'carpet.1.jpg',       badge:'HOT',  badgeType:'hot' },
-  { id:52, cat:'carpets',     name:'Faux Fur Carpets',                  note:'Size 3x6',                        price:2600, old:0,     img:'carpet.2.jpg',       badge:'',     badgeType:'' },
-  { id:53, cat:'carpets',     name:'Fluffy Bedside Mat',                note:'Size 4x6',                        price:2000, old:0,     img:'carpet.3.jpg',       badge:'',     badgeType:'' },
-  { id:54, cat:'carpets',     name:'Home Decorative Mats',              note:'Love heart 90cmx90cm',             price:2400, old:0,     img:'carpet.4.jpg',       badge:'HOT',  badgeType:'hot' },
-  { id:55, cat:'carpets',     name:'Kitchen Mats',                      note:'Multiple designs',                 price:2000, old:0,     img:'carpet.5.jpg',       badge:'',     badgeType:'' },
-  { id:56, cat:'carpets',     name:'Round Anti-slip Mat',               note:'Size 55cm by 55cm',               price:950,  old:0,     img:'carpet.6.jpg',       badge:'',     badgeType:'' },
-  { id:57, cat:'carpets',     name:'Kawaii Rug',                        note:'Non-slip rainbow unicorn',         price:950,  old:0,     img:'carpet.7.jpg',       badge:'NEW',  badgeType:'new' },
-  { id:58, cat:'carpets',     name:'Chairpads and Comforters',          note:'Classy and elegant',               price:800,  old:0,     img:'carpet.8.jpg',       badge:'',     badgeType:'' },
-  { id:59, cat:'carpets',     name:'Faux Fur Mats',                     note:'Pink faux fur',                    price:2600, old:0,     img:'carpet.9.jpg',       badge:'',     badgeType:'' },
+  { id:51, cat:'carpets',     name:'Fluffy Carpets',                    note:'5x8 size 280cm',                  price:3500, old:0,     img:'carpet.1.jpg', imgs:['carpet.1.jpg','carpet.1b.jpg','carpet.1c.jpg','carpet.1d.jpg'],       badge:'HOT',  badgeType:'hot' },
+  { id:52, cat:'carpets',     name:'Faux Fur Carpets',                  note:'Size 3x6',                        price:2600, old:0,     img:'carpet.2.jpg', imgs:['carpet.2.jpg','carpet.2b.jpg','carpet.2c.jpg','carpet.2d.jpg'],       badge:'',     badgeType:'' },
+  { id:53, cat:'carpets',     name:'Fluffy Bedside Mat',                note:'Size 4x6',                        price:2000, old:0,     img:'carpet.3.jpg', imgs:['carpet.3.jpg','carpet.3b.jpg','carpet.3c.jpg','carpet.3d.jpg'],       badge:'',     badgeType:'' },
+  { id:54, cat:'carpets',     name:'Home Decorative Mats',              note:'Love heart 90cmx90cm',             price:2400, old:0,     img:'carpet.4.jpg', imgs:['carpet.4.jpg','carpet.4b.jpg','carpet.4c.jpg','carpet.4d.jpg'],       badge:'HOT',  badgeType:'hot' },
+  { id:55, cat:'carpets',     name:'Kitchen Mats',                      note:'Multiple designs',                 price:2000, old:0,     img:'carpet.5.jpg', imgs:['carpet.5.jpg','carpet.5b.jpg','carpet.5c.jpg','carpet.5d.jpg'],       badge:'',     badgeType:'' },
+  { id:56, cat:'carpets',     name:'Round Anti-slip Mat',               note:'Size 55cm by 55cm',               price:950,  old:0,     img:'carpet.6.jpg', imgs:['carpet.6.jpg','carpet.6b.jpg','carpet.6c.jpg','carpet.6d.jpg'],       badge:'',     badgeType:'' },
+  { id:57, cat:'carpets',     name:'Kawaii Rug',                        note:'Non-slip rainbow unicorn',         price:950,  old:0,     img:'carpet.7.jpg', imgs:['carpet.7.jpg','carpet.7b.jpg','carpet.7c.jpg','carpet.7d.jpg'],       badge:'NEW',  badgeType:'new' },
+  { id:58, cat:'carpets',     name:'Chairpads and Comforters',          note:'Classy and elegant',               price:800,  old:0,     img:'carpet.8.jpg', imgs:['carpet.8.jpg','carpet.8b.jpg','carpet.8c.jpg','carpet.8d.jpg'],       badge:'',     badgeType:'' },
+  { id:59, cat:'carpets',     name:'Faux Fur Mats',                     note:'Pink faux fur',                    price:2600, old:0,     img:'carpet.9.jpg', imgs:['carpet.9.jpg','carpet.9b.jpg','carpet.9c.jpg','carpet.9d.jpg'],       badge:'',     badgeType:'' },
 
   // SEAT COVERS
   { id:60, cat:'seatcovers', name:'Printed Polyester Seat Covers',
@@ -268,56 +268,55 @@ const PRODUCTS = [
   { id:135, cat:'seatcovers', name:'1 Seater Seat Cover',              note:'Single 1 seater cover — Multiple colours available',         price:2500,  old:0, img:'seatcover.7.jpg',  imgs:['seatcover.7.jpg','seatcover.7b.jpg','seatcover.7c.jpg'],                    badge:'',    badgeType:''     },
 
   // BATH AND TOWELS
-  { id:62, cat:'bath',        name:'3 in 1 Towel Set',                  note:'100 percent cotton',               price:2500, old:0,     img:'bath.1.jpg',         badge:'HOT',  badgeType:'hot' },
-  { id:63, cat:'bath',        name:'Prestige Towels',                   note:'Size 90x165cm',                   price:1350, old:0,     img:'bath.2.jpg',         badge:'HOTEL',badgeType:'hotel' },
-  { id:64, cat:'bath',        name:'Bath Towels Micro Fiber',           note:'Soft and absorbent',               price:1100, old:0,     img:'bath.3.jpg',         badge:'',     badgeType:'' },
-  { id:65, cat:'bath',        name:'Bath Gown',                         note:'Premium quality',                  price:1999, old:2500,  img:'bath.4.jpg',         badge:'SALE', badgeType:'sale' },
-  { id:66, cat:'bath',        name:'Micro Fibre Bath Wrap',             note:'Hair wrap 65cm by 25cm',           price:1300, old:0,     img:'bath.5.jpg',         badge:'NEW',  badgeType:'new' },
-  { id:67, cat:'bath',        name:'Hooded Kids Bathrobe',              note:'Ages 3 to 12 years',               price:2000, old:0,     img:'bath.6.jpg',         badge:'NEW',  badgeType:'new' },
-  { id:68, cat:'bath',        name:'3pcs Fluffy Toilet Set',            note:'Cover mat and rug',                price:1800, old:0,     img:'bath.7.jpg',         badge:'',     badgeType:'' },
-  { id:69, cat:'bath',        name:'3 Pieces Body Cleaning Wash Clothes',note:'Shower ball included',            price:800,  old:0,     img:'bath.8.jpg',         badge:'',     badgeType:'' },
+  { id:62, cat:'bath',        name:'3 in 1 Towel Set',                  note:'100 percent cotton',               price:2500, old:0,     img:'bath.1.jpg', imgs:['bath.1.jpg','bath.1b.jpg','bath.1c.jpg','bath.1d.jpg'],         badge:'HOT',  badgeType:'hot' },
+  { id:63, cat:'bath',        name:'Prestige Towels',                   note:'Size 90x165cm',                   price:1350, old:0,     img:'bath.2.jpg', imgs:['bath.2.jpg','bath.2b.jpg','bath.2c.jpg','bath.2d.jpg'],         badge:'HOTEL',badgeType:'hotel' },
+  { id:64, cat:'bath',        name:'Bath Towels Micro Fiber',           note:'Soft and absorbent',               price:1100, old:0,     img:'bath.3.jpg', imgs:['bath.3.jpg','bath.3b.jpg','bath.3c.jpg','bath.3d.jpg'],         badge:'',     badgeType:'' },
+  { id:65, cat:'bath',        name:'Bath Gown',                         note:'Premium quality',                  price:1999, old:2500,  img:'bath.4.jpg', imgs:['bath.4.jpg','bath.4b.jpg','bath.4c.jpg','bath.4d.jpg'],         badge:'SALE', badgeType:'sale' },
+  { id:66, cat:'bath',        name:'Micro Fibre Bath Wrap',             note:'Hair wrap 65cm by 25cm',           price:1300, old:0,     img:'bath.5.jpg', imgs:['bath.5.jpg','bath.5b.jpg','bath.5c.jpg','bath.5d.jpg'],         badge:'NEW',  badgeType:'new' },
+  { id:67, cat:'bath',        name:'Hooded Kids Bathrobe',              note:'Ages 3 to 12 years',               price:2000, old:0,     img:'bath.6.jpg', imgs:['bath.6.jpg','bath.6b.jpg','bath.6c.jpg','bath.6d.jpg'],         badge:'NEW',  badgeType:'new' },
+  { id:68, cat:'bath',        name:'3pcs Fluffy Toilet Set',            note:'Cover mat and rug',                price:1800, old:0,     img:'bath.7.jpg', imgs:['bath.7.jpg','bath.7b.jpg','bath.7c.jpg','bath.7d.jpg'],         badge:'',     badgeType:'' },
+  { id:69, cat:'bath',        name:'3 Pieces Body Cleaning Wash Clothes',note:'Shower ball included',            price:800,  old:0,     img:'bath.8.jpg', imgs:['bath.8.jpg','bath.8b.jpg','bath.8c.jpg','bath.8d.jpg'],         badge:'',     badgeType:'' },
 
   // FURNITURE
-  { id:70, cat:'furniture',   name:'Four Seater Marble Dining Table',   note:'Marble top premium',               price:48500,old:0,     img:'furniture.1.jpg',    badge:'HOT',  badgeType:'hot' },
-  { id:71, cat:'furniture',   name:'Pure Marble Coffee Table',          note:'White golden 8 stands',            price:12500,old:16500, img:'furniture.2.jpg',    badge:'SALE', badgeType:'sale' },
-  { id:72, cat:'furniture',   name:'3 in 1 Coffee Table',               note:'Classic side table living room',   price:19500,old:20999, img:'furniture.3.jpg',    badge:'SALE', badgeType:'sale' },
-  { id:73, cat:'furniture',   name:'Four Seater Dining Table',          note:'Wooden top and chairs',            price:31900,old:0,     img:'furniture.4.jpg',    badge:'',     badgeType:'' },
-  { id:74, cat:'furniture',   name:'Four Seater Dining Table White',    note:'White finish',                     price:23999,old:0,     img:'furniture.5.jpg',    badge:'',     badgeType:'' },
-  { id:75, cat:'furniture',   name:'Minimalist Two Seater Dining Table',note:'Modern design',                   price:16999,old:0,     img:'furniture.6.jpg',    badge:'NEW',  badgeType:'new' },
-  { id:76, cat:'furniture',   name:'Modern Luxury Marble Effect Table', note:'Color white and black',            price:9499, old:0,     img:'furniture.7.jpg',    badge:'',     badgeType:'' },
-  { id:77, cat:'furniture',   name:'Luxury Creative Side Table',        note:'Size 68x40x60cm',                 price:6999, old:7999,  img:'furniture.8.jpg',    badge:'SALE', badgeType:'sale' },
-  { id:78, cat:'furniture',   name:'Marbletop Luxury Double Drawer',    note:'Two drawer large capacity',        price:8999, old:9500,  img:'furniture.9.jpg',    badge:'SALE', badgeType:'sale' },
-  { id:79, cat:'furniture',   name:'Nordic Luxury Double Drawer White', note:'Two drawer large capacity',        price:7500, old:8500,  img:'furniture.10.jpg',   badge:'SALE', badgeType:'sale' },
-  { id:80, cat:'furniture',   name:'Verona Bistro Arm Chair',           note:'Grey and Light Pink',              price:10800,old:0,     img:'furniture.11.jpg',   badge:'NEW',  badgeType:'new' },
-  { id:81, cat:'furniture',   name:'Eame Chairs',                       note:'Per chair',                        price:3600, old:0,     img:'furniture.12.jpg',   badge:'',     badgeType:'' },
-  { id:82, cat:'furniture',   name:'Plastic Wardrobe Three Column',     note:'Multiple colours',                 price:5500, old:0,     img:'furniture.13.jpg',   badge:'',     badgeType:'' },
-  { id:83, cat:'furniture',   name:'Metallic Shoe and Clothe Rack',     note:'Double row hook design',           price:2500, old:0,     img:'furniture.14.jpg',   badge:'',     badgeType:'' },
-  { id:84, cat:'furniture',   name:'Tree Book Shelf',                   note:'Size 147.2cm x 21.5 x 34cm',      price:6300, old:0,     img:'furniture.15.jpg',   badge:'',     badgeType:'' },
-  { id:85, cat:'furniture',   name:'Inflatable Deluxe Lounge Seat',     note:'Portable and inflatable 2pcs',     price:4550, old:0,     img:'furniture.16.jpg',   badge:'NEW',  badgeType:'new' },
-  { id:86, cat:'furniture',   name:'Toilet and Washing Machine Rack',   note:'Space saving design',              price:2999, old:0,     img:'furniture.17.jpg',   badge:'',     badgeType:'' },
-  { id:87, cat:'furniture',   name:'Balcony Privacy Shield',            note:'Colours available',                price:4500, old:0,     img:'furniture.18.jpg',   badge:'',     badgeType:'' },
-  { id:88, cat:'furniture',   name:'Kids Stackable Bed',                note:'Space saving design',              price:6500, old:0,     img:'furniture.19.jpg',   badge:'',     badgeType:'' },
-  { id:89, cat:'furniture',   name:'Kindergarten Tables and Chairs',    note:'Kindergarten tables',              price:10950,old:0,     img:'furniture.20.jpg',   badge:'',     badgeType:'' },
-  { id:90, cat:'furniture',   name:'3 in 1 Coffee Table Round',         note:'Classic side table',               price:19999,old:0,     img:'furniture.21.jpg',   badge:'',     badgeType:'' },
-  { id:91, cat:'furniture',   name:'Nordic Luxury Double Drawer Bedside',note:'Two drawer large capacity',       price:7500, old:8500,  img:'furniture.22.jpg',   badge:'SALE', badgeType:'sale' },
+  { id:70, cat:'furniture',   name:'Four Seater Marble Dining Table',   note:'Marble top premium',               price:48500,old:0,     img:'furniture.1.jpg', imgs:['furniture.1.jpg','furniture.1b.jpg','furniture.1c.jpg','furniture.1d.jpg'],    badge:'HOT',  badgeType:'hot' },
+  { id:71, cat:'furniture',   name:'Pure Marble Coffee Table',          note:'White golden 8 stands',            price:12500,old:16500, img:'furniture.2.jpg', imgs:['furniture.2.jpg','furniture.2b.jpg','furniture.2c.jpg','furniture.2d.jpg'],    badge:'SALE', badgeType:'sale' },
+  { id:72, cat:'furniture',   name:'3 in 1 Coffee Table',               note:'Classic side table living room',   price:19500,old:20999, img:'furniture.3.jpg', imgs:['furniture.3.jpg','furniture.3b.jpg','furniture.3c.jpg','furniture.3d.jpg'],    badge:'SALE', badgeType:'sale' },
+  { id:73, cat:'furniture',   name:'Four Seater Dining Table',          note:'Wooden top and chairs',            price:31900,old:0,     img:'furniture.4.jpg', imgs:['furniture.4.jpg','furniture.4b.jpg','furniture.4c.jpg','furniture.4d.jpg'],    badge:'',     badgeType:'' },
+  { id:74, cat:'furniture',   name:'Four Seater Dining Table White',    note:'White finish',                     price:23999,old:0,     img:'furniture.5.jpg', imgs:['furniture.5.jpg','furniture.5b.jpg','furniture.5c.jpg','furniture.5d.jpg'],    badge:'',     badgeType:'' },
+  { id:75, cat:'furniture',   name:'Minimalist Two Seater Dining Table',note:'Modern design',                   price:16999,old:0,     img:'furniture.6.jpg', imgs:['furniture.6.jpg','furniture.6b.jpg','furniture.6c.jpg','furniture.6d.jpg'],    badge:'NEW',  badgeType:'new' },
+  { id:77, cat:'furniture',   name:'Luxury Creative Side Table',        note:'Size 68x40x60cm',                 price:6999, old:7999,  img:'furniture.8.jpg', imgs:['furniture.8.jpg','furniture.8b.jpg','furniture.8c.jpg','furniture.8d.jpg'],    badge:'SALE', badgeType:'sale' },
+  { id:78, cat:'furniture',   name:'Marbletop Luxury Double Drawer',    note:'Two drawer large capacity',        price:8999, old:9500,  img:'furniture.9.jpg', imgs:['furniture.9.jpg','furniture.9b.jpg','furniture.9c.jpg','furniture.9d.jpg'],    badge:'SALE', badgeType:'sale' },
+  { id:79, cat:'furniture',   name:'Nordic Luxury Double Drawer White', note:'Two drawer large capacity',        price:7500, old:8500,  img:'furniture.10.jpg', imgs:['furniture.10.jpg','furniture.10b.jpg','furniture.10c.jpg','furniture.10d.jpg'],   badge:'SALE', badgeType:'sale' },
+  { id:80, cat:'furniture',   name:'Verona Bistro Arm Chair',           note:'Grey and Light Pink',              price:10800,old:0,     img:'furniture.11.jpg', imgs:['furniture.11.jpg','furniture.11b.jpg','furniture.11c.jpg','furniture.11d.jpg'],   badge:'NEW',  badgeType:'new' },
+  { id:81, cat:'furniture',   name:'Eame Chairs',                       note:'Per chair',                        price:3600, old:0,     img:'furniture.12.jpg', imgs:['furniture.12.jpg','furniture.12b.jpg','furniture.12c.jpg','furniture.12d.jpg'],   badge:'',     badgeType:'' },
+  { id:82, cat:'furniture',   name:'Plastic Wardrobe Three Column',     note:'Multiple colours',                 price:5500, old:0,     img:'furniture.13.jpg', imgs:['furniture.13.jpg','furniture.13b.jpg','furniture.13c.jpg','furniture.13d.jpg'],   badge:'',     badgeType:'' },
+  { id:83, cat:'furniture',   name:'Metallic Shoe and Clothe Rack',     note:'Double row hook design',           price:2500, old:0,     img:'furniture.14.jpg', imgs:['furniture.14.jpg','furniture.14b.jpg','furniture.14c.jpg','furniture.14d.jpg'],   badge:'',     badgeType:'' },
+  { id:84, cat:'furniture',   name:'Tree Book Shelf',                   note:'Size 147.2cm x 21.5 x 34cm',      price:6300, old:0,     img:'furniture.15.jpg', imgs:['furniture.15.jpg','furniture.15b.jpg','furniture.15c.jpg','furniture.15d.jpg'],   badge:'',     badgeType:'' },
+  { id:85, cat:'furniture',   name:'Inflatable Deluxe Lounge Seat',     note:'Portable and inflatable 2pcs',     price:4550, old:0,     img:'furniture.16.jpg', imgs:['furniture.16.jpg','furniture.16b.jpg','furniture.16c.jpg','furniture.16d.jpg'],   badge:'NEW',  badgeType:'new' },
+  { id:86, cat:'furniture',   name:'Toilet and Washing Machine Rack',   note:'Space saving design',              price:2999, old:0,     img:'furniture.17.jpg', imgs:['furniture.17.jpg','furniture.17b.jpg','furniture.17c.jpg','furniture.17d.jpg'],   badge:'',     badgeType:'' },
+  { id:87, cat:'furniture',   name:'Balcony Privacy Shield',            note:'Colours available',                price:4500, old:0,     img:'furniture.18.jpg', imgs:['furniture.18.jpg','furniture.18b.jpg','furniture.18c.jpg','furniture.18d.jpg'],   badge:'',     badgeType:'' },
+  { id:88, cat:'furniture',   name:'Kids Stackable Bed',                note:'Space saving design',              price:6500, old:0,     img:'furniture.19.jpg', imgs:['furniture.19.jpg','furniture.19b.jpg','furniture.19c.jpg','furniture.19d.jpg'],   badge:'',     badgeType:'' },
+  { id:89, cat:'furniture',   name:'Kindergarten Tables and Chairs',    note:'Kindergarten tables',              price:10950,old:0,     img:'furniture.20.jpg', imgs:['furniture.20.jpg','furniture.20b.jpg','furniture.20c.jpg','furniture.20d.jpg'],   badge:'',     badgeType:'' },
+  { id:90, cat:'furniture',   name:'3 in 1 Coffee Table Round',         note:'Classic side table',               price:19999,old:0,     img:'furniture.21.jpg', imgs:['furniture.21.jpg','furniture.21b.jpg','furniture.21c.jpg','furniture.21d.jpg'],   badge:'',     badgeType:'' },
+  { id:91, cat:'furniture',   name:'Nordic Luxury Double Drawer Bedside',note:'Two drawer large capacity',       price:7500, old:8500,  img:'furniture.22.jpg', imgs:['furniture.22.jpg','furniture.22b.jpg','furniture.22c.jpg','furniture.22d.jpg'],   badge:'SALE', badgeType:'sale' },
 
   // KIDS CORNER
-  { id:92, cat:'kids',        name:'Biaowang Large Capacity School Bag',note:'Side pockets for water bottle',    price:2300, old:0,     img:'kid.1.jpg',          badge:'',     badgeType:'' },
-  { id:93, cat:'kids',        name:'Big Size Insulated Kids Lunch Bag', note:'Fits lunch snack and water bottle',price:850,  old:0,     img:'kid.2.jpg',          badge:'',     badgeType:'' },
-  { id:94, cat:'kids',        name:'Girls High Quality Leather Shoes',  note:'Material leather',                 price:2500, old:0,     img:'kid.3.jpg',          badge:'',     badgeType:'' },
-  { id:95, cat:'kids',        name:'Boys High Quality Leather Shoes',   note:'Material leather',                 price:2500, old:0,     img:'kid.4.jpg',          badge:'',     badgeType:'' },
-  { id:96,  cat:'duvets',      name:'Egyptian Duvet Cover',              note:'Size 6x7 and 6x6 — 1 duvet cover, 1 bedsheet, 2 pillowcases',   price:4000, old:0,    img:'duvet.22.jpg',       badge:'HOT',  badgeType:'hot'  },
+  { id:92, cat:'kids',        name:'Biaowang Large Capacity School Bag',note:'Side pockets for water bottle',    price:2300, old:0,     img:'kid.1.jpg', imgs:['kid.1.jpg','kid.1b.jpg','kid.1c.jpg','kid.1d.jpg'],          badge:'',     badgeType:'' },
+  { id:93, cat:'kids',        name:'Big Size Insulated Kids Lunch Bag', note:'Fits lunch snack and water bottle',price:850,  old:0,     img:'kid.2.jpg', imgs:['kid.2.jpg','kid.2b.jpg','kid.2c.jpg','kid.2d.jpg'],          badge:'',     badgeType:'' },
+  { id:94, cat:'kids',        name:'Girls High Quality Leather Shoes',  note:'Material leather',                 price:2500, old:0,     img:'kid.3.jpg', imgs:['kid.3.jpg','kid.3b.jpg','kid.3c.jpg','kid.3d.jpg'],          badge:'',     badgeType:'' },
+  { id:95, cat:'kids',        name:'Boys High Quality Leather Shoes',   note:'Material leather',                 price:2500, old:0,     img:'kid.4.jpg', imgs:['kid.4.jpg','kid.4b.jpg','kid.4c.jpg','kid.4d.jpg'],          badge:'',     badgeType:'' },
+  { id:96,  cat:'duvets',      name:'Egyptian Duvet Cover',              note:'Size 6x7 and 6x6 — 1 duvet cover, 1 bedsheet, 2 pillowcases',   price:4000, old:0,    img:'duvet.22.jpg', imgs:['duvet.22.jpg','duvet.22b.jpg','duvet.22c.jpg','duvet.22d.jpg'],       badge:'HOT',  badgeType:'hot'  },
 
   // ELECTRONICS
-  { id:97,  cat:'electronics', name:'Q7S Smart WiFi Camera V380',         note:'Pan & Tilt 355° — Night Vision — Motion Detection — Two-Way Audio', price:2800, old:0,  img:'electronics.1.jpg',  badge:'NEW',  badgeType:'new'  },
-  { id:98,  cat:'electronics', name:'Cute Cat Kids Watch Combo',           note:'Watch + Wireless Earbuds + Cute Case — Perfect gift for kids',       price:1350, old:0,  img:'electronics.2.jpg',  badge:'HOT',  badgeType:'hot'  },
-  { id:99,  cat:'electronics', name:'Neck Pillow with Phone Holder Pocket',note:'Built-in side pocket for your phone — Travel essential',             price:950,  old:0,  img:'electronics.3.jpg',  badge:'',     badgeType:''     },
+  { id:97,  cat:'electronics', name:'Q7S Smart WiFi Camera V380',         note:'Pan & Tilt 355° — Night Vision — Motion Detection — Two-Way Audio', price:2800, old:0,  img:'electronics.1.jpg', imgs:['electronics.1.jpg','electronics.1b.jpg','electronics.1c.jpg','electronics.1d.jpg'],  badge:'NEW',  badgeType:'new'  },
+  { id:98,  cat:'electronics', name:'Cute Cat Kids Watch Combo',           note:'Watch + Wireless Earbuds + Cute Case — Perfect gift for kids',       price:1350, old:0,  img:'electronics.2.jpg', imgs:['electronics.2.jpg','electronics.2b.jpg','electronics.2c.jpg','electronics.2d.jpg'],  badge:'HOT',  badgeType:'hot'  },
+  { id:99,  cat:'electronics', name:'Neck Pillow with Phone Holder Pocket',note:'Built-in side pocket for your phone — Travel essential',             price:950,  old:0,  img:'electronics.3.jpg', imgs:['electronics.3.jpg','electronics.3b.jpg','electronics.3c.jpg','electronics.3d.jpg'],  badge:'',     badgeType:''     },
 
   // COOKWARE
-  { id:100, cat:'cookware',    name:'Edenberg 12pcs Stainless Cookware',   note:'Capacities: 2.1L 2.9L 3.9L 5.1L 6.5L 8.2L — Code 4037',           price:9500, old:0,  img:'cookware.1.jpg',     badge:'HOT',  badgeType:'hot'  },
-  { id:101, cat:'cookware',    name:'Nunix 50x55 Standing Cooker 3+1',     note:'3 Gas + 1 Electric burner — New model with gas oven',               price:18999,old:0,  img:'cookware.2.jpg',     badge:'NEW',  badgeType:'new'  },
-  { id:102, cat:'cookware',    name:'Nunix Table Top Cooker 3+1',          note:'3 Gas + 1 Electric burner — Compact tabletop design',               price:6000, old:0,  img:'cookware.3.jpg',     badge:'',     badgeType:''     },
-  { id:103, cat:'cookware',    name:'Nunix Full Gas Standing Cooker',      note:'Full gas cooker with shelf — Ideal for home and kitchen',            price:7900, old:0,  img:'cookware.4.jpg',     badge:'',     badgeType:''     },
+  { id:100, cat:'cookware',    name:'Edenberg 12pcs Stainless Cookware',   note:'Capacities: 2.1L 2.9L 3.9L 5.1L 6.5L 8.2L — Code 4037',           price:9500, old:0,  img:'cookware.1.jpg', imgs:['cookware.1.jpg','cookware.1b.jpg','cookware.1c.jpg','cookware.1d.jpg'],     badge:'HOT',  badgeType:'hot'  },
+  { id:101, cat:'cookware',    name:'Nunix 50x55 Standing Cooker 3+1',     note:'3 Gas + 1 Electric burner — New model with gas oven',               price:18999,old:0,  img:'cookware.2.jpg', imgs:['cookware.2.jpg','cookware.2b.jpg','cookware.2c.jpg','cookware.2d.jpg'],     badge:'NEW',  badgeType:'new'  },
+  { id:102, cat:'cookware',    name:'Nunix Table Top Cooker 3+1',          note:'3 Gas + 1 Electric burner — Compact tabletop design',               price:6000, old:0,  img:'cookware.3.jpg', imgs:['cookware.3.jpg','cookware.3b.jpg','cookware.3c.jpg','cookware.3d.jpg'],     badge:'',     badgeType:''     },
+  { id:103, cat:'cookware',    name:'Nunix Full Gas Standing Cooker',      note:'Full gas cooker with shelf — Ideal for home and kitchen',            price:7900, old:0,  img:'cookware.4.jpg', imgs:['cookware.4.jpg','cookware.4b.jpg','cookware.4c.jpg','cookware.4d.jpg'],     badge:'',     badgeType:''     },
 
   // TRAVEL & LUGGAGE
   { id:104, cat:'travel',      name:'Unbreakable PP 3-in-1 Suitcase Set',  note:'3 sizes — 360° wheels — Double zip — Scratch resistant — 4 colours', price:7999, old:0, img:'travel.1.jpg',  imgs:['travel.1.jpg','travel.1b.jpg','travel.1c.jpg','travel.1d.jpg'], badge:'HOT',  badgeType:'hot'  },
@@ -325,38 +324,38 @@ const PRODUCTS = [
 
   // HOME DECOR
   { id:106, cat:'decor',       name:'Plain Coral Fleece Throw Blanket',    note:'Sizes 4/5, 5/6, 6/6 — Soft and cosy — Multiple colours',            price:999,  old:0,  img:'decor.1.jpg',   imgs:['decor.1.jpg','decor.1b.jpg','decor.1c.jpg'], badge:'NEW',  badgeType:'new'  },
-  { id:107, cat:'decor',       name:'3pcs 3D Non-Slip Toilet Mat Set',     note:'Heavy grip rubber underside — Size 45x75cm + 2pcs 40x45cm',         price:850,  old:0,  img:'decor.2.jpg',        badge:'HOT',  badgeType:'hot'  },
+  { id:107, cat:'decor',       name:'3pcs 3D Non-Slip Toilet Mat Set',     note:'Heavy grip rubber underside — Size 45x75cm + 2pcs 40x45cm',         price:850,  old:0,  img:'decor.2.jpg', imgs:['decor.2.jpg','decor.2b.jpg','decor.2c.jpg','decor.2d.jpg'],        badge:'HOT',  badgeType:'hot'  },
   { id:108, cat:'decor',       name:'3-Layer Oval Trolley Rack Table',     note:'60x30x67cm — Black or white marble — 2 round top shelves',          price:2999, old:0,  img:'decor.3.jpg',   imgs:['decor.3.jpg','decor.3b.jpg'], badge:'NEW',  badgeType:'new'  },
   // ── PILLOWS & CUSHIONS ──
-  { id:109, cat:'decor',  name:'Wave Pillow Case',                    note:'Size 45x45cm — Case only',                            price:200,  old:0, img:'decor.4.jpg',        badge:'NEW',  badgeType:'new'  },
-  { id:110, cat:'decor',  name:'Wave Pillow Insert',                  note:'Size 45x45cm — Insert only',                          price:200,  old:0, img:'decor.4b.jpg',       badge:'NEW',  badgeType:'new'  },
-  { id:111, cat:'decor',  name:'Wave Pillow + Case Set',              note:'Size 45x45cm — Pillow and case included',             price:400,  old:0, img:'decor.4c.jpg',       badge:'HOT',  badgeType:'hot'  },
-  { id:112, cat:'decor',  name:'Knot Pillow',                         note:'Size 22cm width — Decorative knot design',            price:850,  old:0, img:'decor.5.jpg',        badge:'',     badgeType:''     },
-  { id:113, cat:'decor',  name:'Tufted Bohemian Throw Pillow Cover',  note:'Square 45x45cm or Lumbar 30x50cm — @750 each',        price:750,  old:0, img:'decor.6.jpg',        badge:'NEW',  badgeType:'new'  },
+  { id:109, cat:'decor',  name:'Wave Pillow Case',                    note:'Size 45x45cm — Case only',                            price:200,  old:0, img:'decor.4.jpg', imgs:['decor.4.jpg','decor.4b.jpg','decor.4c.jpg','decor.4d.jpg'],        badge:'NEW',  badgeType:'new'  },
+  { id:110, cat:'decor',  name:'Wave Pillow Insert',                  note:'Size 45x45cm — Insert only',                          price:200,  old:0, img:'decor.4b.jpg', imgs:['decor.4b.jpg','decor.4bb.jpg','decor.4bc.jpg','decor.4bd.jpg'],       badge:'NEW',  badgeType:'new'  },
+  { id:111, cat:'decor',  name:'Wave Pillow + Case Set',              note:'Size 45x45cm — Pillow and case included',             price:400,  old:0, img:'decor.4c.jpg', imgs:['decor.4c.jpg','decor.4cb.jpg','decor.4cc.jpg','decor.4cd.jpg'],       badge:'HOT',  badgeType:'hot'  },
+  { id:112, cat:'decor',  name:'Knot Pillow',                         note:'Size 22cm width — Decorative knot design',            price:850,  old:0, img:'decor.5.jpg', imgs:['decor.5.jpg','decor.5b.jpg','decor.5c.jpg','decor.5d.jpg'],        badge:'',     badgeType:''     },
+  { id:113, cat:'decor',  name:'Tufted Bohemian Throw Pillow Cover',  note:'Square 45x45cm or Lumbar 30x50cm — @750 each',        price:750,  old:0, img:'decor.6.jpg', imgs:['decor.6.jpg','decor.6b.jpg','decor.6c.jpg','decor.6d.jpg'],        badge:'NEW',  badgeType:'new'  },
 
   // ── DOORMATS & FLOOR MATS ──
-  { id:114, cat:'carpets', name:'Heavy Plastic Doormat',              note:'Size 50x80cm — Durable heavy duty',                   price:1200, old:0, img:'carpet.10.jpg',      badge:'',     badgeType:''     },
-  { id:115, cat:'carpets', name:'Turkish Doormat',                    note:'Size 50x80cm — Premium Turkish design',               price:1300, old:0, img:'carpet.11.jpg',      badge:'HOT',  badgeType:'hot'  },
-  { id:116, cat:'carpets', name:'Memory Foam Mat',                    note:'Size 40x60cm @550 or 50x80cm @650',                   price:550,  old:0, img:'carpet.12.jpg',      badge:'',     badgeType:''     },
-  { id:117, cat:'carpets', name:'3D Smooth Doormat',                  note:'Size 50x80cm — Stylish 3D design',                    price:600,  old:0, img:'carpet.13.jpg',      badge:'NEW',  badgeType:'new'  },
-  { id:118, cat:'carpets', name:'Rubber Absorbent Mat',               note:'Size 50x80cm — Non-slip rubber base',                 price:850,  old:0, img:'carpet.14.jpg',      badge:'',     badgeType:''     },
-  { id:119, cat:'carpets', name:'Non-Slip Memory Foam Mat',           note:'40x60cm @850 or 50x80cm @1250 navy blue only',        price:850,  old:0, img:'carpet.15.jpg',      badge:'',     badgeType:''     },
-  { id:120, cat:'carpets', name:'Translucent Bathroom Anti-Slip Mat', note:'Large 50x80cm @800 or Medium 40x60cm @650',           price:650,  old:0, img:'carpet.16.jpg',      badge:'NEW',  badgeType:'new'  },
-  { id:121, cat:'carpets', name:'Heavy Large Plastic Outdoor Doormat',note:'Size 60x90cm — Extra large heavy duty',               price:1500, old:0, img:'carpet.17.jpg',      badge:'',     badgeType:''     },
+  { id:114, cat:'carpets', name:'Heavy Plastic Doormat',              note:'Size 50x80cm — Durable heavy duty',                   price:1200, old:0, img:'carpet.10.jpg', imgs:['carpet.10.jpg','carpet.10b.jpg','carpet.10c.jpg','carpet.10d.jpg'],      badge:'',     badgeType:''     },
+  { id:115, cat:'carpets', name:'Turkish Doormat',                    note:'Size 50x80cm — Premium Turkish design',               price:1300, old:0, img:'carpet.11.jpg', imgs:['carpet.11.jpg','carpet.11b.jpg','carpet.11c.jpg','carpet.11d.jpg'],      badge:'HOT',  badgeType:'hot'  },
+  { id:116, cat:'carpets', name:'Memory Foam Mat',                    note:'Size 40x60cm @550 or 50x80cm @650',                   price:550,  old:0, img:'carpet.12.jpg', imgs:['carpet.12.jpg','carpet.12b.jpg','carpet.12c.jpg','carpet.12d.jpg'],      badge:'',     badgeType:''     },
+  { id:117, cat:'carpets', name:'3D Smooth Doormat',                  note:'Size 50x80cm — Stylish 3D design',                    price:600,  old:0, img:'carpet.13.jpg', imgs:['carpet.13.jpg','carpet.13b.jpg','carpet.13c.jpg','carpet.13d.jpg'],      badge:'NEW',  badgeType:'new'  },
+  { id:118, cat:'carpets', name:'Rubber Absorbent Mat',               note:'Size 50x80cm — Non-slip rubber base',                 price:850,  old:0, img:'carpet.14.jpg', imgs:['carpet.14.jpg','carpet.14b.jpg','carpet.14c.jpg','carpet.14d.jpg'],      badge:'',     badgeType:''     },
+  { id:119, cat:'carpets', name:'Non-Slip Memory Foam Mat',           note:'40x60cm @850 or 50x80cm @1250 navy blue only',        price:850,  old:0, img:'carpet.15.jpg', imgs:['carpet.15.jpg','carpet.15b.jpg','carpet.15c.jpg','carpet.15d.jpg'],      badge:'',     badgeType:''     },
+  { id:120, cat:'carpets', name:'Translucent Bathroom Anti-Slip Mat', note:'Large 50x80cm @800 or Medium 40x60cm @650',           price:650,  old:0, img:'carpet.16.jpg', imgs:['carpet.16.jpg','carpet.16b.jpg','carpet.16c.jpg','carpet.16d.jpg'],      badge:'NEW',  badgeType:'new'  },
+  { id:121, cat:'carpets', name:'Heavy Large Plastic Outdoor Doormat',note:'Size 60x90cm — Extra large heavy duty',               price:1500, old:0, img:'carpet.17.jpg', imgs:['carpet.17.jpg','carpet.17b.jpg','carpet.17c.jpg','carpet.17d.jpg'],      badge:'',     badgeType:''     },
   { id:122, cat:'carpets', name:'Faux Fur Carpet',                    note:'Size 60x180cm — Irregular shape — Bedside or décor',  price:2300, old:0, img:'carpet.18.jpg',      badge:'SALE', badgeType:'sale', imgs:['carpet.18.jpg','carpet.18b.jpg','carpet.18c.jpg'] },
 
   // ── DUVETS & BEDDING ──
-  { id:123, cat:'duvets',  name:'Single Velvet Fluffy Duvet',         note:'Size 4x6 and 5x6 — 1 fluffy fleece duvet',            price:2999, old:0, img:'duvet.23.jpg',       badge:'HOT',  badgeType:'hot'  },
-  { id:124, cat:'duvets',  name:'6pc Luxury Velvet Plush Duvet Set',  note:'Size 6x6 and 6x7 — 1 duvet, 1 bedsheet, 4 pillowcases', price:4300, old:0, img:'duvet.24.jpg',     badge:'HOT',  badgeType:'hot'  },
-  { id:125, cat:'duvets',  name:'Fleece Blanket',                     note:'Size 6x6 — Soft and warm',                            price:999,  old:0, img:'duvet.25.jpg',       badge:'',     badgeType:''     },
+  { id:123, cat:'duvets',  name:'Single Velvet Fluffy Duvet',         note:'Size 4x6 and 5x6 — 1 fluffy fleece duvet',            price:2999, old:0, img:'duvet.23.jpg', imgs:['duvet.23.jpg','duvet.23b.jpg','duvet.23c.jpg','duvet.23d.jpg'],       badge:'HOT',  badgeType:'hot'  },
+  { id:124, cat:'duvets',  name:'6pc Luxury Velvet Plush Duvet Set',  note:'Size 6x6 and 6x7 — 1 duvet, 1 bedsheet, 4 pillowcases', price:4300, old:0, img:'duvet.24.jpg', imgs:['duvet.24.jpg','duvet.24b.jpg','duvet.24c.jpg','duvet.24d.jpg'],     badge:'HOT',  badgeType:'hot'  },
+  { id:125, cat:'duvets',  name:'Fleece Blanket',                     note:'Size 6x6 — Soft and warm',                            price:999,  old:0, img:'duvet.25.jpg', imgs:['duvet.25.jpg','duvet.25b.jpg','duvet.25c.jpg','duvet.25d.jpg'],       badge:'',     badgeType:''     },
 
   // ── FURNITURE ──
-  { id:126, cat:'furniture', name:'Kids Fashion Plastic Wardrobe',    note:'Colourful kids wardrobe — Multiple sections',         price:4999, old:0, img:'furniture.23.jpg',   badge:'NEW',  badgeType:'new'  },
+  { id:126, cat:'furniture', name:'Kids Fashion Plastic Wardrobe',    note:'Colourful kids wardrobe — Multiple sections',         price:4999, old:0, img:'furniture.23.jpg', imgs:['furniture.23.jpg','furniture.23b.jpg','furniture.23c.jpg','furniture.23d.jpg'],   badge:'NEW',  badgeType:'new'  },
 
   // ── COOKWARE / KITCHEN ──
-  { id:127, cat:'cookware',  name:'Electromate Hand Mixer',           note:'Powerful hand mixer — Perfect for baking',            price:1299, old:0, img:'cookware.5.jpg',     badge:'NEW',  badgeType:'new'  },
-  { id:128, cat:'cookware',  name:'9.5L Tea Urn Double Tap',          note:'Large capacity — Double tap for easy serving',        price:2999, old:0, img:'cookware.6.jpg',     badge:'SALE', badgeType:'sale' },
-  { id:129, cat:'cookware',  name:'Unique Knife Set',                 note:'Premium quality — Full knife set',                    price:2999, old:0, img:'cookware.7.jpg',     badge:'HOT',  badgeType:'hot'  },
+  { id:127, cat:'cookware',  name:'Electromate Hand Mixer',           note:'Powerful hand mixer — Perfect for baking',            price:1299, old:0, img:'cookware.5.jpg', imgs:['cookware.5.jpg','cookware.5b.jpg','cookware.5c.jpg','cookware.5d.jpg'],     badge:'NEW',  badgeType:'new'  },
+  { id:128, cat:'cookware',  name:'9.5L Tea Urn Double Tap',          note:'Large capacity — Double tap for easy serving',        price:2999, old:0, img:'cookware.6.jpg', imgs:['cookware.6.jpg','cookware.6b.jpg','cookware.6c.jpg','cookware.6d.jpg'],     badge:'SALE', badgeType:'sale' },
+  { id:129, cat:'cookware',  name:'Unique Knife Set',                 note:'Premium quality — Full knife set',                    price:2999, old:0, img:'cookware.7.jpg', imgs:['cookware.7.jpg','cookware.7b.jpg','cookware.7c.jpg','cookware.7d.jpg'],     badge:'HOT',  badgeType:'hot'  },
 
   { id:130, cat:'nets', name:'Double Decker Mosquito Net', note:'Size 4x6 — Colours: Purple, Pink, White and Cream', price:1700, old:0, img:'net.6.jpg', imgs:['net.6.jpg','net.6b.jpg','net.6c.jpg','net.6d.jpg'], badge:'NEW', badgeType:'new' },
 
@@ -719,29 +718,34 @@ function buildCard(p) {
   var inWL = wishlist.some(function(i) { return i.id === p.id; });
   var n = p.name.replace(/'/g, '').replace(/"/g, '');
   var waMsg = encodeURIComponent('Hi Irene! I am interested in: ' + p.name + ' - ' + price + '. Website: irenehousehold.co.ke');
-
-  // Multi-photo colour switcher
-  var colourSwitch = '';
-  if (p.imgs && p.imgs.length > 1) {
-    colourSwitch = '<div style="display:flex;gap:5px;padding:6px 10px;background:#f9f9f9;border-top:1px solid #f0f0f0;">';
-    for (var ci = 0; ci < p.imgs.length; ci++) {
-      colourSwitch += '<div onclick="switchImg(this,\'' + p.imgs[ci] + '\',\'' + p.id + '\')" style="width:32px;height:32px;border-radius:4px;overflow:hidden;cursor:pointer;border:2px solid ' + (ci===0?'var(--green)':'#e0e0e0') + ';flex-shrink:0;">' +
-        '<img src="' + p.imgs[ci] + '" style="width:100%;height:100%;object-fit:cover;" loading="lazy"/>' +
-      '</div>';
+  
+  // Build thumbnail strip - max 4 images
+  var thumbs = '';
+  var imgs = p.imgs || [p.img];
+  var mainImgId = 'img-' + p.id;
+  
+  if (imgs.length > 1) {
+    thumbs = '<div style="display:flex;gap:4px;padding:6px 8px;background:#f9f9f9;border-top:1px solid #eee;">';
+    for (var t = 0; t < Math.min(imgs.length, 4); t++) {
+      var tImg = imgs[t];
+      thumbs += '<img src="' + tImg + '" ' +
+        'onclick="document.getElementById(\'' + mainImgId + '\').src=\'' + tImg + '\';" ' +
+        'style="width:42px;height:42px;object-fit:cover;border-radius:4px;cursor:pointer;border:2px solid ' + (t===0 ? '#1a3d2b' : '#eee') + ';" ' +
+        'onerror="this.style.display=\'none\'"/>';
     }
-    colourSwitch += '</div>';
+    thumbs += '</div>';
   }
 
-  return '<div class="product-card" id="card-' + p.id + '">' +
+  return '<div class="product-card">' +
     '<div class="card-img">' +
-      '<img src="' + p.img + '" alt="' + n + '" loading="lazy" id="img-' + p.id + '"/>' +
+      '<img id="' + mainImgId + '" src="' + p.img + '" alt="' + n + '" loading="lazy"/>' +
       badge +
       '<button class="card-qv" onclick="openQuickView(' + p.id + ')">&#128065; Quick View</button>' +
       '<button class="card-wish' + (inWL ? ' active' : '') + '" onclick="toggleWishlist(this,' + p.id + ',\'' + n + '\',\'' + p.cat + '\',' + p.price + ',\'' + p.img + '\')">&#9825;</button>' +
     '</div>' +
-    colourSwitch +
+    thumbs +
     '<div class="card-body">' +
-      '<div class="card-location">Kenya — Countrywide Delivery</div>' +
+      '<div class="card-location">Nairobi, Kenya</div>' +
       '<div class="card-name">' + p.name + '</div>' +
       '<div class="card-note">' + p.note + '</div>' +
       '<div class="card-price-row"><span class="card-price">' + price + '</span>' + oldPrice + '</div>' +
