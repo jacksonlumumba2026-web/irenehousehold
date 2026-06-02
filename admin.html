@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel | Irene Household Collections</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    body { background:#f2f2f2; }
+
+    /* ── ADMIN NAV ── */
+    .admin-nav {
+      background:var(--green-dark); padding:14px 4%;
+      display:flex; align-items:center; justify-content:space-between;
+      position:sticky; top:0; z-index:100;
+    }
+    .admin-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .admin-logo img { width:36px; height:36px; border-radius:50%; border:2px solid var(--gold); object-fit:cover; }
+    .admin-logo b { color:#fff; font-size:13px; font-weight:700; display:block; }
+    .admin-logo small { color:var(--gold); font-size:9px; letter-spacing:2px; }
+    .admin-badge { background:var(--gold); color:var(--green-dark); font-size:10px; font-weight:700; padding:4px 12px; border-radius:20px; }
+
+    /* ── LOGIN ── */
+    .login-wrap { display:flex; align-items:center; justify-content:center; min-height:calc(100vh - 64px); padding:20px; }
+    .login-card {
+      background:#fff; border-radius:12px; padding:36px 28px;
+      width:100%; max-width:360px; box-shadow:0 4px 24px rgba(0,0,0,.1);
+      border-top:4px solid var(--gold); text-align:center;
+    }
+    .login-icon { font-size:3rem; margin-bottom:12px; }
+    .login-card h2 { font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:var(--green-dark); margin-bottom:6px; }
+    .login-card p { color:var(--muted); font-size:13px; margin-bottom:24px; }
+    .login-pin {
+      width:100%; background:var(--bg); border:1.5px solid #e0e0e0;
+      border-radius:8px; padding:14px; font-size:1.4rem; font-family:'DM Sans',sans-serif;
+      outline:none; text-align:center; letter-spacing:8px; margin-bottom:12px;
+    }
+    .login-pin:focus { border-color:var(--green); }
+    .login-btn { width:100%; background:var(--green); color:#fff; border:none; padding:13px; font-size:13px; font-weight:700; border-radius:8px; cursor:pointer; }
+    .login-btn:hover { background:var(--green2); }
+    .login-err { color:var(--red); font-size:12px; margin-top:8px; display:none; }
+
+    /* ── DASHBOARD ── */
+    .dash { max-width:860px; margin:0 auto; padding:20px 4% 80px; display:none; }
+
+    /* Setup banner */
+    .setup-banner {
+      background:linear-gradient(135deg,var(--green-dark),var(--green));
+      border-radius:12px; padding:20px; margin-bottom:20px;
+      display:none;
+    }
+    .setup-banner h3 { color:#fff; font-family:'Cormorant Garamond',serif; font-size:1.3rem; margin-bottom:6px; }
+    .setup-banner p { color:rgba(255,255,255,.7); font-size:12px; margin-bottom:14px; }
+    .setup-input-row { display:flex; gap:10px; }
+    .setup-input {
+      flex:1; background:rgba(255,255,255,.15); border:1.5px solid rgba(255,255,255,.3);
+      color:#fff; padding:10px 14px; border-radius:8px; font-size:13px;
+      font-family:'DM Sans',sans-serif; outline:none;
+    }
+    .setup-input::placeholder { color:rgba(255,255,255,.5); }
+    .setup-input:focus { border-color:var(--gold); }
+    .setup-save { background:var(--gold); color:var(--green-dark); border:none; padding:10px 18px; border-radius:8px; font-size:12px; font-weight:700; cursor:pointer; white-space:nowrap; }
+
+    /* Stats */
+    .stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px; }
+    @media(max-width:500px){ .stats-row{ grid-template-columns:repeat(2,1fr); } }
+    .stat-card { background:#fff; border-radius:10px; padding:16px; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,.06); border-top:3px solid var(--gold); }
+    .stat-card strong { display:block; font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--green); }
+    .stat-card span { font-size:10.5px; color:var(--muted); }
+
+    /* Tabs */
+    .tabs { display:flex; background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,.06); margin-bottom:20px; }
+    .tab { flex:1; padding:13px 8px; border:none; background:none; font-size:11.5px; font-weight:600; color:var(--muted); cursor:pointer; border-bottom:3px solid transparent; transition:all .2s; font-family:'DM Sans',sans-serif; }
+    .tab.active { color:var(--green); border-bottom-color:var(--green); }
+    .tab:hover { color:var(--green); }
+
+    /* Sections */
+    .section { display:none; }
+    .section.active { display:block; }
+
+    /* Cards */
+    .card { background:#fff; border-radius:12px; padding:22px; box-shadow:0 2px 12px rgba(0,0,0,.07); margin-bottom:16px; }
+    .card h3 { font-family:'Cormorant Garamond',serif; font-size:1.35rem; color:var(--green-dark); margin-bottom:16px; padding-bottom:11px; border-bottom:2px solid var(--gold); }
+
+    /* Form */
+    .row2 { display:grid; grid-template-columns:1fr 1fr; gap:13px; }
+    @media(max-width:480px){ .row2{ grid-template-columns:1fr; } }
+    .fg { margin-bottom:13px; }
+    .fg label { display:block; font-size:10px; font-weight:700; color:var(--muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:5px; }
+    .fg input, .fg select, .fg textarea {
+      width:100%; background:var(--bg); border:1.5px solid #e0e0e0;
+      border-radius:8px; padding:11px 13px; font-size:13.5px;
+      font-family:'DM Sans',sans-serif; outline:none; transition:border-color .2s;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color:var(--green); background:#fff; }
+    .fg textarea { resize:vertical; min-height:68px; }
+
+    /* Photo upload */
+    .photo-upload {
+      border:2px dashed #d0d0d0; border-radius:10px; padding:18px;
+      text-align:center; cursor:pointer; background:var(--bg);
+      transition:all .2s; margin-bottom:10px;
+    }
+    .photo-upload:hover { border-color:var(--green); background:rgba(26,61,43,.04); }
+    .photo-upload input { display:none; }
+    .photo-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:12px; }
+    .photo-box {
+      aspect-ratio:1; border-radius:8px; background:#f0f0f0;
+      border:2px dashed #e0e0e0; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:3px;
+      cursor:pointer; transition:all .2s; overflow:hidden; position:relative;
+    }
+    .photo-box:hover { border-color:var(--green); }
+    .photo-box img { width:100%; height:100%; object-fit:cover; }
+    .photo-box .lbl { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,.6); color:#fff; font-size:7px; font-weight:700; padding:2px; text-align:center; }
+    .photo-box .del { position:absolute; top:3px; right:3px; background:rgba(229,62,62,.9); color:#fff; border:none; width:18px; height:18px; border-radius:50%; font-size:9px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+    .photo-box .plus { font-size:1.4rem; color:#ccc; }
+    .photo-box small { font-size:8px; color:var(--muted); }
+
+    /* Badge selector */
+    .badge-sel { display:flex; gap:7px; flex-wrap:wrap; }
+    .badge-opt { padding:7px 13px; border-radius:20px; border:1.5px solid #e0e0e0; font-size:11.5px; font-weight:600; cursor:pointer; background:#fff; transition:all .2s; font-family:'DM Sans',sans-serif; }
+    .badge-opt.sel[data-v=""]     { background:#f5f5f5; border-color:#aaa; color:var(--muted); }
+    .badge-opt.sel[data-v="HOT"]  { background:var(--gold);  color:var(--green-dark); border-color:var(--gold); }
+    .badge-opt.sel[data-v="SALE"] { background:var(--red);   color:#fff; border-color:var(--red); }
+    .badge-opt.sel[data-v="NEW"]  { background:var(--green); color:#fff; border-color:var(--green); }
+    .badge-opt.sel[data-v="HOTEL"]{ background:#7c3aed; color:#fff; border-color:#7c3aed; }
+
+    /* Action buttons */
+    .btn-save { width:100%; background:var(--green); color:#fff; border:none; padding:14px; font-size:13px; font-weight:700; border-radius:8px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:background .2s; }
+    .btn-save:hover { background:var(--green2); }
+    .btn-save:disabled { background:#aaa; cursor:not-allowed; }
+    .btn-del-red { width:100%; background:var(--red); color:#fff; border:none; padding:12px; font-size:12px; font-weight:700; border-radius:8px; cursor:pointer; margin-top:8px; transition:background .2s; }
+    .btn-del-red:hover { background:#c0392b; }
+
+    /* Loading spinner */
+    .spinner { display:inline-block; width:18px; height:18px; border:3px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; }
+    @keyframes spin { to{ transform:rotate(360deg); } }
+
+    /* Success / Error message */
+    .msg-bar { padding:12px 16px; border-radius:8px; margin-bottom:14px; font-size:13px; font-weight:600; display:none; align-items:center; gap:10px; }
+    .msg-bar.success { background:var(--green); color:#fff; display:flex; }
+    .msg-bar.error   { background:var(--red);   color:#fff; display:flex; }
+
+    /* Product list */
+    .p-item { display:flex; align-items:center; gap:12px; padding:11px; background:var(--bg); border-radius:8px; margin-bottom:8px; cursor:pointer; border:1.5px solid transparent; transition:all .2s; }
+    .p-item:hover { border-color:var(--green); background:#fff; }
+    .p-item img { width:48px; height:48px; border-radius:7px; object-fit:cover; background:#eee; flex-shrink:0; }
+    .p-item-info { flex:1; }
+    .p-item-name { font-size:12.5px; font-weight:600; color:var(--green-dark); }
+    .p-item-meta { font-size:11px; color:var(--muted); margin-top:2px; }
+    .p-item-price { font-family:'Cormorant Garamond',serif; font-size:15px; color:var(--green); font-weight:700; }
+    .p-item-action { font-size:11px; color:var(--green); font-weight:600; white-space:nowrap; }
+
+    /* Search */
+    .search-bar { width:100%; background:var(--bg); border:1.5px solid #e0e0e0; border-radius:8px; padding:11px 14px; font-size:13px; font-family:'DM Sans',sans-serif; outline:none; margin-bottom:14px; }
+    .search-bar:focus { border-color:var(--green); background:#fff; }
+
+    /* Guide */
+    .guide-block { background:var(--bg); border-radius:10px; padding:16px; margin-bottom:14px; }
+    .guide-block h4 { font-size:12px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+    .guide-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+    .guide-item { background:#fff; border-radius:7px; padding:10px 12px; font-size:12px; }
+    .guide-item strong { display:block; color:var(--green-dark); margin-bottom:3px; }
+    .guide-item code { color:var(--green); font-weight:700; font-size:11.5px; }
+
+    /* Step */
+    .step { display:flex; gap:10px; margin-bottom:10px; align-items:flex-start; }
+    .step-n { width:22px; height:22px; min-width:22px; background:var(--green); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; }
+    .step p { font-size:12px; color:var(--muted); line-height:1.5; }
+    .step p strong { color:var(--green-dark); }
+
+    /* Token status */
+    .token-status { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:600; }
+    .token-dot { width:8px; height:8px; border-radius:50%; }
+    .token-dot.ok { background:#22c55e; }
+    .token-dot.no { background:#e53e3e; }
+  </style>
+</head>
+<body>
+
+<!-- ADMIN NAV -->
+<div class="admin-nav">
+  <a href="index.html" class="admin-logo">
+    <img src="logo.jpg" alt="IHC"/>
+    <div><b>Irene Household</b><small>Collections</small></div>
+  </a>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="token-status" id="token-status" style="display:none;">
+      <div class="token-dot" id="token-dot"></div>
+      <span id="token-label" style="color:rgba(255,255,255,.7);"></span>
+    </div>
+    <span class="admin-badge">⚙️ Admin</span>
+  </div>
+</div>
+
+<!-- LOGIN -->
+<div class="login-wrap" id="login-screen">
+  <div class="login-card">
+    <div class="login-icon">🔐</div>
+    <h2>Admin Login</h2>
+    <p>Enter your PIN to manage products</p>
+    <input type="password" class="login-pin" id="pin" placeholder="••••"
+      maxlength="6" onkeydown="if(event.key==='Enter')checkPin()"/>
+    <button class="login-btn" onclick="checkPin()">Login →</button>
+    <p class="login-err" id="login-err">❌ Wrong PIN. Try again.</p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dash" id="dashboard">
+
+  <!-- GitHub Token Setup -->
+  <div class="setup-banner" id="setup-banner">
+    <h3>⚙️ Connect to GitHub</h3>
+    <p>Enter your GitHub token to save products directly. You only need to do this once.</p>
+    <div class="setup-input-row">
+      <input type="password" class="setup-input" id="token-input"
+        placeholder="Paste your GitHub token here..."/>
+      <button class="setup-save" onclick="saveToken()">Save Token</button>
+    </div>
+    <p style="color:rgba(255,255,255,.5);font-size:11px;margin-top:8px;">
+      👉 Tap the Guide tab to see how to get your GitHub token
+    </p>
+  </div>
+
+  <!-- Message bar -->
+  <div class="msg-bar" id="msg-bar"></div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card"><strong id="s-total">-</strong><span>Products</span></div>
+    <div class="stat-card"><strong id="s-cats">-</strong><span>Categories</span></div>
+    <div class="stat-card"><strong id="s-hot">-</strong><span>HOT Items</span></div>
+    <div class="stat-card"><strong id="s-sale">-</strong><span>On Sale</span></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('add',this)">➕ Add</button>
+    <button class="tab" onclick="showTab('edit',this)">✏️ Edit</button>
+    <button class="tab" onclick="showTab('delete',this)">🗑️ Delete</button>
+    <button class="tab" onclick="showTab('list',this)">📋 Products</button>
+    <button class="tab" onclick="showTab('guide',this)">📖 Guide</button>
+  </div>
+
+  <!-- ══ ADD ══ -->
+  <div class="section active" id="sec-add">
+    <div class="card">
+      <h3>➕ Add New Product</h3>
+
+      <!-- Photos -->
+      <div class="fg">
+        <label>Photos — Max 4 colours</label>
+        <div class="photo-upload" onclick="document.getElementById('photo-in').click()">
+          <input type="file" id="photo-in" accept="image/*" multiple onchange="handlePhotos(this)"/>
+          <div style="font-size:2rem;margin-bottom:6px;">📸</div>
+          <p style="font-size:12px;font-weight:600;color:var(--green-dark);">Tap to select photos</p>
+          <p style="font-size:11px;color:var(--muted);">Each photo = one colour option (max 4)</p>
+        </div>
+        <div class="photo-grid" id="photo-grid">
+          <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Main</small></div>
+          <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Colour 2</small></div>
+          <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Colour 3</small></div>
+          <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Colour 4</small></div>
+        </div>
+      </div>
+
+      <div class="row2">
+        <div class="fg">
+          <label>Product Name *</label>
+          <input type="text" id="a-name" placeholder="e.g. Fluffy Carpet"/>
+        </div>
+        <div class="fg">
+          <label>Category *</label>
+          <select id="a-cat">
+            <option value="">— Select —</option>
+            <option value="nets">🦟 Mosquito Nets</option>
+            <option value="duvets">🛏️ Duvets & Covers</option>
+            <option value="kitchenware">🍽️ Kitchenware</option>
+            <option value="carpets">🪵 Carpets & Mats</option>
+            <option value="seatcovers">🛋️ Seat Covers</option>
+            <option value="bath">🛁 Bath & Towels</option>
+            <option value="furniture">🪑 Furniture</option>
+            <option value="kids">👦 Kids Corner</option>
+            <option value="electronics">🔌 Electronics</option>
+            <option value="cookware">🍳 Cookware</option>
+            <option value="travel">🧳 Travel & Luggage</option>
+            <option value="decor">🏡 Home Decor</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label>Description / Size</label>
+        <textarea id="a-note" placeholder="e.g. Size 5x8 — available in pink, grey, cream"></textarea>
+      </div>
+
+      <div class="row2">
+        <div class="fg">
+          <label>Price (KSh) *</label>
+          <input type="number" id="a-price" placeholder="3500"/>
+        </div>
+        <div class="fg">
+          <label>Old Price (KSh)</label>
+          <input type="number" id="a-old" placeholder="Leave blank if none"/>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label>Badge</label>
+        <div class="badge-sel" id="add-badges">
+          <button class="badge-opt sel" data-v="" onclick="selBadge(this,'add-badges')">None</button>
+          <button class="badge-opt" data-v="HOT" onclick="selBadge(this,'add-badges')">🔥 HOT</button>
+          <button class="badge-opt" data-v="SALE" onclick="selBadge(this,'add-badges')">🏷️ SALE</button>
+          <button class="badge-opt" data-v="NEW" onclick="selBadge(this,'add-badges')">✨ NEW</button>
+          <button class="badge-opt" data-v="HOTEL" onclick="selBadge(this,'add-badges')">🏨 HOTEL</button>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label>Image File Name (no .jpg) *</label>
+        <input type="text" id="a-img" placeholder="e.g. carpet.10" oninput="updateImgPreview('a-img','a-img-preview')"/>
+        <p style="font-size:11px;color:var(--muted);margin-top:4px;">Files: <strong id="a-img-preview">carpet.10.jpg, carpet.10b.jpg, carpet.10c.jpg, carpet.10d.jpg</strong></p>
+      </div>
+
+      <button class="btn-save" id="btn-add-save" onclick="saveProduct()">
+        💾 Save Product to Website
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ EDIT ══ -->
+  <div class="section" id="sec-edit">
+    <div class="card">
+      <h3>✏️ Edit Product</h3>
+      <input type="text" class="search-bar" id="edit-q"
+        placeholder="🔍 Search product name..." oninput="searchProducts('edit-q','edit-results','edit')"/>
+      <div id="edit-results"></div>
+      <div id="edit-form" style="display:none;">
+        <div style="background:rgba(26,61,43,.06);border-radius:8px;padding:11px 14px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+          <span style="font-size:1.3rem;">✏️</span>
+          <div><strong style="font-size:13px;color:var(--green-dark);" id="edit-title">Product</strong><div style="font-size:11px;color:var(--muted);">ID: <span id="edit-id">0</span></div></div>
+        </div>
+        <div class="row2">
+          <div class="fg"><label>Name</label><input type="text" id="e-name"/></div>
+          <div class="fg"><label>Category</label>
+            <select id="e-cat">
+              <option value="nets">🦟 Mosquito Nets</option>
+              <option value="duvets">🛏️ Duvets & Covers</option>
+              <option value="kitchenware">🍽️ Kitchenware</option>
+              <option value="carpets">🪵 Carpets & Mats</option>
+              <option value="seatcovers">🛋️ Seat Covers</option>
+              <option value="bath">🛁 Bath & Towels</option>
+              <option value="furniture">🪑 Furniture</option>
+              <option value="kids">👦 Kids Corner</option>
+              <option value="electronics">🔌 Electronics</option>
+              <option value="cookware">🍳 Cookware</option>
+              <option value="travel">🧳 Travel & Luggage</option>
+              <option value="decor">🏡 Home Decor</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>Description</label><textarea id="e-note"></textarea></div>
+        <div class="row2">
+          <div class="fg"><label>Price (KSh)</label><input type="number" id="e-price"/></div>
+          <div class="fg"><label>Old Price (KSh)</label><input type="number" id="e-old"/></div>
+        </div>
+        <div class="fg">
+          <label>Badge</label>
+          <div class="badge-sel" id="edit-badges">
+            <button class="badge-opt" data-v="" onclick="selBadge(this,'edit-badges')">None</button>
+            <button class="badge-opt" data-v="HOT" onclick="selBadge(this,'edit-badges')">🔥 HOT</button>
+            <button class="badge-opt" data-v="SALE" onclick="selBadge(this,'edit-badges')">🏷️ SALE</button>
+            <button class="badge-opt" data-v="NEW" onclick="selBadge(this,'edit-badges')">✨ NEW</button>
+            <button class="badge-opt" data-v="HOTEL" onclick="selBadge(this,'edit-badges')">🏨 HOTEL</button>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Image File Name (no .jpg)</label>
+          <input type="text" id="e-img" oninput="updateImgPreview('e-img','e-img-preview')"/>
+          <p style="font-size:11px;color:var(--muted);margin-top:4px;">Files: <strong id="e-img-preview"></strong></p>
+        </div>
+        <button class="btn-save" id="btn-edit-save" onclick="updateProduct()">
+          💾 Save Changes to Website
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ DELETE ══ -->
+  <div class="section" id="sec-delete">
+    <div class="card">
+      <h3>🗑️ Delete Product</h3>
+      <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:8px;padding:12px 14px;margin-bottom:16px;font-size:12px;color:#991b1b;">
+        ⚠️ Deleting a product removes it from the website permanently.
+      </div>
+      <input type="text" class="search-bar" id="del-q"
+        placeholder="🔍 Search product to delete..." oninput="searchProducts('del-q','del-results','delete')"/>
+      <div id="del-results"></div>
+      <div id="del-confirm" style="display:none;">
+        <div style="background:#fff5f5;border:1.5px solid var(--red);border-radius:10px;padding:16px;margin-bottom:14px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <img id="del-img" src="" style="width:56px;height:56px;border-radius:8px;object-fit:cover;" onerror="this.style.display='none'"/>
+            <div>
+              <div style="font-size:14px;font-weight:700;color:var(--green-dark);" id="del-name">Product</div>
+              <div style="font-size:11.5px;color:var(--muted);" id="del-meta"></div>
+              <div style="font-size:11px;color:var(--red);font-weight:600;margin-top:3px;">⚠️ This cannot be undone!</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <button class="btn-del-red" style="margin-top:0;" id="btn-del-confirm" onclick="confirmDelete()">
+              🗑️ Yes, Delete from Website
+            </button>
+            <button onclick="cancelDelete()" style="flex:1;background:none;border:1.5px solid #e0e0e0;color:var(--muted);padding:12px;border-radius:8px;font-size:12px;cursor:pointer;">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PRODUCTS LIST ══ -->
+  <div class="section" id="sec-list">
+    <div class="card">
+      <h3>📋 All Products (<span id="list-count">-</span>)</h3>
+      <input type="text" class="search-bar" id="list-q"
+        placeholder="🔍 Search products..." oninput="searchProducts('list-q','list-results','view')"/>
+      <div id="list-results"></div>
+    </div>
+  </div>
+
+  <!-- ══ GUIDE ══ -->
+  <div class="section" id="sec-guide">
+    <div class="card">
+      <h3>📖 Setup Guide</h3>
+
+      <div class="guide-block" style="background:linear-gradient(135deg,var(--green-dark),var(--green));margin-bottom:16px;">
+        <h4 style="color:var(--gold);">Step 1 — Get GitHub Token</h4>
+        <div class="step"><div class="step-n">1</div><p style="color:rgba(255,255,255,.8);">Go to <strong style="color:#fff;">github.com</strong> and log in</p></div>
+        <div class="step"><div class="step-n">2</div><p style="color:rgba(255,255,255,.8);">Click your profile picture → <strong style="color:#fff;">Settings</strong></p></div>
+        <div class="step"><div class="step-n">3</div><p style="color:rgba(255,255,255,.8);">Scroll down → click <strong style="color:#fff;">Developer settings</strong></p></div>
+        <div class="step"><div class="step-n">4</div><p style="color:rgba(255,255,255,.8);">Click <strong style="color:#fff;">Personal access tokens → Tokens (classic)</strong></p></div>
+        <div class="step"><div class="step-n">5</div><p style="color:rgba(255,255,255,.8);">Click <strong style="color:#fff;">Generate new token (classic)</strong></p></div>
+        <div class="step"><div class="step-n">6</div><p style="color:rgba(255,255,255,.8);">Tick <strong style="color:#fff;">repo</strong> checkbox → scroll down → click <strong style="color:#fff;">Generate token</strong></p></div>
+        <div class="step"><div class="step-n">7</div><p style="color:rgba(255,255,255,.8);">Copy the token → go to <strong style="color:#fff;">Add tab</strong> → paste it in the token field above</p></div>
+      </div>
+
+      <div class="guide-block">
+        <h4>📸 Photo Naming Rules</h4>
+        <div class="guide-grid">
+          <div class="guide-item"><strong>Main photo</strong><code>carpet.10.jpg</code></div>
+          <div class="guide-item"><strong>2nd colour</strong><code>carpet.10b.jpg</code></div>
+          <div class="guide-item"><strong>3rd colour</strong><code>carpet.10c.jpg</code></div>
+          <div class="guide-item"><strong>4th colour</strong><code>carpet.10d.jpg</code></div>
+        </div>
+      </div>
+
+      <div class="guide-block">
+        <h4>📁 Category Photo Prefixes</h4>
+        <div class="guide-grid">
+          <div class="guide-item"><strong>Mosquito Nets</strong><code>net.</code></div>
+          <div class="guide-item"><strong>Duvets</strong><code>duvet.</code></div>
+          <div class="guide-item"><strong>Kitchenware</strong><code>kitchenware.</code></div>
+          <div class="guide-item"><strong>Carpets</strong><code>carpet.</code></div>
+          <div class="guide-item"><strong>Seat Covers</strong><code>seatcover.</code></div>
+          <div class="guide-item"><strong>Bath & Towels</strong><code>bath.</code></div>
+          <div class="guide-item"><strong>Furniture</strong><code>furniture.</code></div>
+          <div class="guide-item"><strong>Kids</strong><code>kid.</code></div>
+          <div class="guide-item"><strong>Electronics</strong><code>electronics.</code></div>
+          <div class="guide-item"><strong>Cookware</strong><code>cookware.</code></div>
+          <div class="guide-item"><strong>Travel</strong><code>travel.</code></div>
+          <div class="guide-item"><strong>Home Decor</strong><code>decor.</code></div>
+        </div>
+      </div>
+
+      <div style="background:rgba(200,169,81,.1);border:1px solid rgba(200,169,81,.3);border-radius:8px;padding:14px;">
+        <p style="font-size:12.5px;color:var(--green-dark);font-weight:600;margin-bottom:5px;">💡 Note on Photos</p>
+        <p style="font-size:12px;color:var(--muted);line-height:1.7;">
+          The admin panel saves product details automatically. But photos still need to be uploaded manually to GitHub with the correct filename. Go to your GitHub repo → click <strong>Add file → Upload files</strong> → upload the photo.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+<script>
+  /* ══════════════════════════════════════
+     CONFIG — Update these for your repo
+  ══════════════════════════════════════ */
+  var GITHUB_OWNER = 'jacksonlumumba2026-web';
+  var GITHUB_REPO  = 'irenehousehold';
+  var GITHUB_FILE  = 'products.json';
+  var GITHUB_BRANCH = 'main';
+  var ADMIN_PIN    = '1234'; // Change to your preferred PIN
+
+  /* ══════════════════════════════════════
+     STATE
+  ══════════════════════════════════════ */
+  var allProducts  = [];
+  var editProduct  = null;
+  var deleteTarget = null;
+  var addBadge     = '';
+  var editBadge    = '';
+  var addPhotos    = [];
+  var githubToken  = '';
+  var fileSha      = '';
+
+  /* ── PIN LOGIN ── */
+  function checkPin() {
+    var pin = document.getElementById('pin').value;
+    if (pin === ADMIN_PIN) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      initAdmin();
+    } else {
+      document.getElementById('login-err').style.display = 'block';
+      document.getElementById('pin').value = '';
+    }
+  }
+  document.getElementById('pin').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') checkPin();
+  });
+
+  /* ── INIT ── */
+  function initAdmin() {
+    // Load saved token
+    try {
+      githubToken = localStorage.getItem('ihc_token') || '';
+    } catch(e) { githubToken = ''; }
+
+    updateTokenStatus();
+    if (!githubToken) {
+      document.getElementById('setup-banner').style.display = 'block';
+    }
+
+    // Load products
+    loadProductsAdmin();
+  }
+
+  function updateTokenStatus() {
+    var statusWrap = document.getElementById('token-status');
+    var dot = document.getElementById('token-dot');
+    var label = document.getElementById('token-label');
+    statusWrap.style.display = 'flex';
+    if (githubToken) {
+      dot.className = 'token-dot ok';
+      label.textContent = 'Connected';
+    } else {
+      dot.className = 'token-dot no';
+      label.textContent = 'No Token';
+    }
+  }
+
+  function saveToken() {
+    var t = document.getElementById('token-input').value.trim();
+    if (!t) { showMsg('Please paste your GitHub token', 'error'); return; }
+    githubToken = t;
+    try { localStorage.setItem('ihc_token', t); } catch(e) {}
+    document.getElementById('setup-banner').style.display = 'none';
+    updateTokenStatus();
+    showMsg('✅ Token saved! You can now save products directly.', 'success');
+  }
+
+  /* ── LOAD PRODUCTS ── */
+  function loadProductsAdmin() {
+    fetch('products.json?v=' + Date.now())
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        allProducts = data;
+        updateStats();
+        renderList(allProducts, 'list-results', 'view');
+      })
+      .catch(function() {
+        // Use PRODUCTS from script.js as fallback
+        allProducts = PRODUCTS || [];
+        updateStats();
+        renderList(allProducts, 'list-results', 'view');
+      });
+
+    // Also get file SHA for GitHub API
+    if (githubToken) getFileSha();
+  }
+
+  function getFileSha() {
+    fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + GITHUB_FILE, {
+      headers: { 'Authorization': 'token ' + githubToken }
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(d) { fileSha = d.sha || ''; })
+    .catch(function() {});
+  }
+
+  /* ── SAVE TO GITHUB ── */
+  function saveToGitHub(newProducts, successMsg) {
+    if (!githubToken) {
+      showMsg('⚠️ No GitHub token. Please add your token in the setup section.', 'error');
+      return Promise.reject('No token');
+    }
+
+    var content = btoa(unescape(encodeURIComponent(JSON.stringify(newProducts, null, 2))));
+
+    var body = {
+      message: 'Admin: ' + successMsg,
+      content: content,
+      branch: GITHUB_BRANCH
+    };
+    if (fileSha) body.sha = fileSha;
+
+    return fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + GITHUB_FILE, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'token ' + githubToken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    })
+    .then(function(r) {
+      if (!r.ok) throw new Error('GitHub API error: ' + r.status);
+      return r.json();
+    })
+    .then(function(d) {
+      fileSha = d.content ? d.content.sha : fileSha;
+      allProducts = newProducts;
+      updateStats();
+      renderList(allProducts, 'list-results', 'view');
+      showMsg('✅ ' + successMsg + ' — website updated!', 'success');
+      showToast('✅ ' + successMsg);
+      return d;
+    });
+  }
+
+  /* ── STATS ── */
+  function updateStats() {
+    document.getElementById('s-total').textContent = allProducts.length;
+    document.getElementById('s-cats').textContent = new Set(allProducts.map(function(p){ return p.cat; })).size;
+    document.getElementById('s-hot').textContent  = allProducts.filter(function(p){ return p.badge==='HOT'; }).length;
+    document.getElementById('s-sale').textContent = allProducts.filter(function(p){ return p.badge==='SALE'; }).length;
+    document.getElementById('list-count').textContent = allProducts.length;
+  }
+
+  /* ── TABS ── */
+  function showTab(name, btn) {
+    document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('active'); });
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+    document.getElementById('sec-' + name).classList.add('active');
+    if (btn) btn.classList.add('active');
+    if (name === 'list') renderList(allProducts, 'list-results', 'view');
+  }
+
+  /* ── PHOTOS ── */
+  function handlePhotos(input) {
+    addPhotos = Array.from(input.files).slice(0, 4);
+    var grid = document.getElementById('photo-grid');
+    var labels = ['Main', 'Colour 2', 'Colour 3', 'Colour 4'];
+    grid.innerHTML = '';
+    for (var i = 0; i < 4; i++) {
+      if (addPhotos[i]) {
+        var url = URL.createObjectURL(addPhotos[i]);
+        grid.innerHTML += '<div class="photo-box"><img src="' + url + '"/>' +
+          '<span class="lbl">' + labels[i] + '</span>' +
+          '<button class="del" onclick="removePhoto(' + i + ')">✕</button></div>';
+      } else {
+        grid.innerHTML += '<div class="photo-box" onclick="document.getElementById(\'photo-in\').click()"><span class="plus">+</span><small>' + labels[i] + '</small></div>';
+      }
+    }
+  }
+
+  function removePhoto(idx) {
+    addPhotos.splice(idx, 1);
+    handlePhotos({ files: addPhotos });
+  }
+
+  /* ── BADGE ── */
+  function selBadge(btn, groupId) {
+    document.querySelectorAll('#' + groupId + ' .badge-opt').forEach(function(b){ b.classList.remove('sel'); });
+    btn.classList.add('sel');
+    if (groupId === 'add-badges') addBadge = btn.dataset.v;
+    if (groupId === 'edit-badges') editBadge = btn.dataset.v;
+  }
+
+  /* ── IMG PREVIEW ── */
+  function updateImgPreview(inputId, previewId) {
+    var base = document.getElementById(inputId).value.trim();
+    var el = document.getElementById(previewId);
+    if (el) el.textContent = base
+      ? base+'.jpg, '+base+'b.jpg, '+base+'c.jpg, '+base+'d.jpg'
+      : '';
+  }
+
+  /* ── SAVE NEW PRODUCT ── */
+  function saveProduct() {
+    var name  = document.getElementById('a-name').value.trim();
+    var cat   = document.getElementById('a-cat').value;
+    var note  = document.getElementById('a-note').value.trim();
+    var price = parseInt(document.getElementById('a-price').value) || 0;
+    var old   = parseInt(document.getElementById('a-old').value)   || 0;
+    var imgB  = document.getElementById('a-img').value.trim();
+
+    if (!name)  { showMsg('Please enter product name', 'error'); return; }
+    if (!cat)   { showMsg('Please select a category', 'error'); return; }
+    if (!price) { showMsg('Please enter a price', 'error'); return; }
+    if (!imgB)  { showMsg('Please enter the image filename', 'error'); return; }
+
+    var maxId = allProducts.length ? Math.max.apply(null, allProducts.map(function(p){ return p.id; })) : 0;
+    var newProduct = {
+      id: maxId + 1,
+      cat: cat,
+      name: name,
+      note: note,
+      price: price,
+      old: old,
+      img: imgB + '.jpg',
+      imgs: [imgB+'.jpg', imgB+'b.jpg', imgB+'c.jpg', imgB+'d.jpg'],
+      badge: addBadge,
+      badgeType: addBadge.toLowerCase()
+    };
+
+    var btn = document.getElementById('btn-add-save');
+    btn.disabled = true;
+    btn.innerHTML = '<div class="spinner"></div> Saving...';
+
+    var updated = allProducts.concat([newProduct]);
+    saveToGitHub(updated, 'Product added: ' + name)
+      .then(function() {
+        // Reset form
+        document.getElementById('a-name').value = '';
+        document.getElementById('a-cat').value  = '';
+        document.getElementById('a-note').value = '';
+        document.getElementById('a-price').value = '';
+        document.getElementById('a-old').value   = '';
+        document.getElementById('a-img').value   = '';
+        document.getElementById('a-img-preview').textContent = '';
+        addPhotos = [];
+        addBadge = '';
+        document.querySelectorAll('#add-badges .badge-opt').forEach(function(b,i){ b.classList.toggle('sel',i===0); });
+        handlePhotos({files:[]});
+      })
+      .catch(function(e) {
+        showMsg('❌ Failed to save. Check your GitHub token.', 'error');
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.innerHTML = '💾 Save Product to Website';
+      });
+  }
+
+  /* ── SEARCH PRODUCTS ── */
+  function searchProducts(inputId, resultsId, mode) {
+    var q = document.getElementById(inputId).value.toLowerCase().trim();
+    var list = q ? allProducts.filter(function(p){
+      return p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q);
+    }).slice(0, 10) : (mode === 'view' ? allProducts : []);
+    renderList(list, resultsId, mode);
+  }
+
+  function renderList(products, containerId, mode) {
+    var wrap = document.getElementById(containerId);
+    if (!wrap) return;
+    if (!products.length) {
+      wrap.innerHTML = '<p style="font-size:12px;color:var(--muted);padding:10px 0;">No products found.</p>';
+      return;
+    }
+    var badges = { HOT:'background:#c8a951;color:#0d1f16', SALE:'background:#e53e3e;color:#fff', NEW:'background:#1a3d2b;color:#fff', HOTEL:'background:#7c3aed;color:#fff' };
+    wrap.innerHTML = products.map(function(p) {
+      var price = p.price > 0 ? 'KSh ' + p.price.toLocaleString() : 'Call for Price';
+      var bdg = p.badge ? '<span style="'+badges[p.badge]+';font-size:8px;font-weight:700;padding:2px 6px;border-radius:3px;margin-left:5px;">'+p.badge+'</span>' : '';
+      var action = mode === 'edit'   ? 'Edit →' :
+                   mode === 'delete' ? '<span style="color:var(--red)">Delete →</span>' : '';
+      var onclick = mode === 'edit'   ? 'loadEdit(' + p.id + ')' :
+                    mode === 'delete' ? 'loadDelete(' + p.id + ')' : '';
+      return '<div class="p-item"' + (onclick ? ' onclick="'+onclick+'"' : '') + '>' +
+        '<img src="' + p.img + '" loading="lazy" onerror="this.style.display=\'none\'"/>' +
+        '<div class="p-item-info">' +
+          '<div class="p-item-name">' + p.name + bdg + '</div>' +
+          '<div class="p-item-meta">ID: ' + p.id + ' | ' + (CAT_LABELS[p.cat]||p.cat) + '</div>' +
+          '<div class="p-item-price">' + price + '</div>' +
+        '</div>' +
+        (action ? '<div class="p-item-action">' + action + '</div>' : '') +
+      '</div>';
+    }).join('');
+  }
+
+  /* ── EDIT PRODUCT ── */
+  function loadEdit(id) {
+    var p = allProducts.find(function(p){ return p.id === id; });
+    if (!p) return;
+    editProduct = p;
+    editBadge = p.badge || '';
+
+    document.getElementById('edit-results').innerHTML = '';
+    document.getElementById('edit-q').value = '';
+    document.getElementById('edit-form').style.display = 'block';
+    document.getElementById('edit-title').textContent = p.name;
+    document.getElementById('edit-id').textContent = p.id;
+    document.getElementById('e-name').value  = p.name;
+    document.getElementById('e-cat').value   = p.cat;
+    document.getElementById('e-note').value  = p.note;
+    document.getElementById('e-price').value = p.price;
+    document.getElementById('e-old').value   = p.old || '';
+
+    var imgBase = p.img.replace('.jpg','');
+    document.getElementById('e-img').value = imgBase;
+    document.getElementById('e-img-preview').textContent = imgBase+'.jpg, '+imgBase+'b.jpg, '+imgBase+'c.jpg, '+imgBase+'d.jpg';
+
+    document.querySelectorAll('#edit-badges .badge-opt').forEach(function(b){
+      b.classList.toggle('sel', b.dataset.v === editBadge);
+    });
+
+    document.getElementById('edit-form').scrollIntoView({behavior:'smooth',block:'start'});
+    showToast('Loaded: ' + p.name);
+  }
+
+  function updateProduct() {
+    if (!editProduct) { showMsg('Please select a product first', 'error'); return; }
+    var name  = document.getElementById('e-name').value.trim();
+    var cat   = document.getElementById('e-cat').value;
+    var note  = document.getElementById('e-note').value.trim();
+    var price = parseInt(document.getElementById('e-price').value) || 0;
+    var old   = parseInt(document.getElementById('e-old').value)   || 0;
+    var imgB  = document.getElementById('e-img').value.trim();
+
+    if (!name || !cat || !imgB) { showMsg('Please fill all required fields', 'error'); return; }
+
+    var updated = allProducts.map(function(p) {
+      if (p.id !== editProduct.id) return p;
+      return {
+        id: p.id, cat: cat, name: name, note: note,
+        price: price, old: old,
+        img: imgB+'.jpg',
+        imgs: [imgB+'.jpg',imgB+'b.jpg',imgB+'c.jpg',imgB+'d.jpg'],
+        badge: editBadge, badgeType: editBadge.toLowerCase()
+      };
+    });
+
+    var btn = document.getElementById('btn-edit-save');
+    btn.disabled = true;
+    btn.innerHTML = '<div class="spinner"></div> Saving...';
+
+    saveToGitHub(updated, 'Product updated: ' + name)
+      .then(function() {
+        document.getElementById('edit-form').style.display = 'none';
+        editProduct = null;
+      })
+      .catch(function() { showMsg('❌ Failed to save. Check your GitHub token.', 'error'); })
+      .finally(function() {
+        btn.disabled = false;
+        btn.innerHTML = '💾 Save Changes to Website';
+      });
+  }
+
+  /* ── DELETE PRODUCT ── */
+  function loadDelete(id) {
+    var p = allProducts.find(function(p){ return p.id === id; });
+    if (!p) return;
+    deleteTarget = p;
+
+    document.getElementById('del-results').innerHTML = '';
+    document.getElementById('del-q').value = '';
+    document.getElementById('del-img').src = p.img;
+    document.getElementById('del-name').textContent = p.name;
+    var price = p.price > 0 ? 'KSh ' + p.price.toLocaleString() : 'Call for Price';
+    document.getElementById('del-meta').textContent = (CAT_LABELS[p.cat]||p.cat) + ' | ' + price;
+    document.getElementById('del-confirm').style.display = 'block';
+    document.getElementById('del-confirm').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function confirmDelete() {
+    if (!deleteTarget) return;
+    var btn = document.getElementById('btn-del-confirm');
+    btn.disabled = true;
+    btn.innerHTML = '<div class="spinner"></div> Deleting...';
+
+    var updated = allProducts.filter(function(p){ return p.id !== deleteTarget.id; });
+    var name = deleteTarget.name;
+
+    saveToGitHub(updated, 'Product deleted: ' + name)
+      .then(function() {
+        document.getElementById('del-confirm').style.display = 'none';
+        deleteTarget = null;
+      })
+      .catch(function() { showMsg('❌ Failed to delete. Check your GitHub token.', 'error'); })
+      .finally(function() {
+        btn.disabled = false;
+        btn.innerHTML = '🗑️ Yes, Delete from Website';
+      });
+  }
+
+  function cancelDelete() {
+    deleteTarget = null;
+    document.getElementById('del-confirm').style.display = 'none';
+    document.getElementById('del-q').value = '';
+    document.getElementById('del-results').innerHTML = '';
+  }
+
+  /* ── MESSAGE ── */
+  function showMsg(msg, type) {
+    var bar = document.getElementById('msg-bar');
+    bar.textContent = msg;
+    bar.className = 'msg-bar ' + type;
+    bar.style.display = 'flex';
+    setTimeout(function(){ bar.style.display = 'none'; }, 5000);
+    bar.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+
+  function goSearch() {}
+</script>
+</body>
+</html>
