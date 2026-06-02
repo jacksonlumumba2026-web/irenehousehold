@@ -2236,5 +2236,22 @@
     ],
     "badge": "NEW",
     "badgeType": "new"
+  },
+  {
+    "id": 136,
+    "cat": "decor",
+    "name": "Tufted Bohemian Throw Pillow Cover",
+    "note": "All colours available",
+    "price": 750,
+    "old": 0,
+    "img": "decor.6.jpg",
+    "imgs": [
+      "decor.6.jpg",
+      "decor.6b.jpg",
+      "decor.6c.jpg",
+      "decor.6d.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new"
   }
 ]
