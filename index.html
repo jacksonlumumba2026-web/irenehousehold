@@ -491,17 +491,24 @@
     window.location = cat === 'all' ? 'shop.html' : 'shop.html?cat=' + cat;
   }
 
-  // Render featured — one per category with real images
-  document.addEventListener('DOMContentLoaded', function() {
-    var cats = ['nets','duvets','kitchenware','carpets','seatcovers','bath','furniture','kids'];
+  // Render featured — wait for products to load
+  function initHomePage() {
+    var cats = ['nets','duvets','kitchenware','carpets','seatcovers',
+                'bath','furniture','kids','electronics','cookware','travel','decor'];
     var featured = cats.map(function(cat) {
-      return PRODUCTS.find(function(p) {
-        return p.cat === cat && p.img.indexOf('http') === -1;
-      });
+      return PRODUCTS.find(function(p) { return p.cat === cat; });
     }).filter(Boolean);
 
     var grid = document.getElementById('featured-grid');
     if (grid) grid.innerHTML = featured.map(buildCard).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof PRODUCTS !== 'undefined' && PRODUCTS.length > 0) {
+      initHomePage();
+    } else {
+      document.addEventListener('productsLoaded', initHomePage);
+    }
   });
 </script>
 </body>

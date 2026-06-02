@@ -476,20 +476,53 @@
       </button>
     </div>
 
-    <!-- Upload Images -->
+    <!-- Upload Images with Auto Rename -->
     <div class="card">
       <h3>📸 Upload Product Images</h3>
       <p style="font-size:12.5px;color:var(--muted);margin-bottom:16px;">
-        Upload photos directly to GitHub. Name your file correctly before uploading e.g. <strong>carpet.10.jpg</strong>
+        Select your photos from WhatsApp or camera. The panel will <strong>automatically rename them</strong> to the correct filename — no manual renaming needed!
       </p>
 
+      <!-- Step 1: Choose category -->
       <div class="fg">
-        <label>Select Images to Upload</label>
+        <label>Step 1 — Select Category</label>
+        <select id="upload-cat" onchange="updateUploadPreview()">
+          <option value="">— Choose category —</option>
+          <option value="net">🦟 Mosquito Nets (net.)</option>
+          <option value="duvet">🛏️ Duvets (duvet.)</option>
+          <option value="kitchenware">🍽️ Kitchenware (kitchenware.)</option>
+          <option value="carpet">🪵 Carpets (carpet.)</option>
+          <option value="seatcover">🛋️ Seat Covers (seatcover.)</option>
+          <option value="bath">🛁 Bath & Towels (bath.)</option>
+          <option value="furniture">🪑 Furniture (furniture.)</option>
+          <option value="kid">👦 Kids (kid.)</option>
+          <option value="electronics">🔌 Electronics (electronics.)</option>
+          <option value="cookware">🍳 Cookware (cookware.)</option>
+          <option value="travel">🧳 Travel (travel.)</option>
+          <option value="decor">🏡 Home Decor (decor.)</option>
+        </select>
+      </div>
+
+      <!-- Step 2: Product number -->
+      <div class="fg">
+        <label>Step 2 — Product Number <span style="font-weight:400;text-transform:none;letter-spacing:0;">(e.g. if adding carpet 11, type 11)</span></label>
+        <input type="number" id="upload-num" placeholder="e.g. 11" min="1" oninput="updateUploadPreview()"/>
+      </div>
+
+      <!-- Preview of names -->
+      <div id="upload-name-preview" style="display:none;background:rgba(26,61,43,.06);border-radius:8px;padding:12px 14px;margin-bottom:14px;">
+        <p style="font-size:11px;font-weight:700;color:var(--green-dark);margin-bottom:7px;text-transform:uppercase;letter-spacing:1px;">📋 Your photos will be named:</p>
+        <div id="upload-name-list" style="display:flex;flex-direction:column;gap:5px;"></div>
+      </div>
+
+      <!-- Step 3: Select photos -->
+      <div class="fg">
+        <label>Step 3 — Select Photos (max 4)</label>
         <div class="photo-upload" id="img-upload-area" onclick="document.getElementById('img-upload-in').click()">
           <input type="file" id="img-upload-in" accept="image/*" multiple onchange="handleImgUpload(this)"/>
-          <div style="font-size:2rem;margin-bottom:6px;">📁</div>
-          <p style="font-size:12px;font-weight:600;color:var(--green-dark);">Tap to select images</p>
-          <p style="font-size:11px;color:var(--muted);">Select one or multiple images at once</p>
+          <div style="font-size:2rem;margin-bottom:6px;">📱</div>
+          <p style="font-size:12px;font-weight:600;color:var(--green-dark);">Tap to select photos</p>
+          <p style="font-size:11px;color:var(--muted);">From camera, gallery or WhatsApp — any name is fine!</p>
         </div>
       </div>
 
@@ -497,7 +530,7 @@
       <div id="upload-queue" style="margin-bottom:14px;"></div>
 
       <button class="btn-save" id="btn-upload-imgs" onclick="uploadImages()" style="display:none;">
-        📤 Upload All Images to GitHub
+        📤 Upload &amp; Auto-Rename to GitHub
       </button>
     </div>
 
@@ -1041,22 +1074,60 @@
     showMsg('Token cleared. Please add a new token to save products.', 'error');
   }
 
-  /* ── IMAGE UPLOAD ── */
+  /* ── IMAGE UPLOAD WITH AUTO RENAME ── */
   var uploadFiles = [];
+  var uploadNames = [];
+
+  var COLOUR_SUFFIXES = ['', 'b', 'c', 'd'];
+
+  function updateUploadPreview() {
+    var cat = document.getElementById('upload-cat').value;
+    var num = document.getElementById('upload-num').value.trim();
+    var preview = document.getElementById('upload-name-preview');
+    var list    = document.getElementById('upload-name-list');
+    if (!cat || !num) { preview.style.display='none'; return; }
+
+    var colours = ['Main colour', '2nd colour', '3rd colour', '4th colour'];
+    var names = COLOUR_SUFFIXES.map(function(s, i) {
+      return { name: cat + '.' + num + s + '.jpg', label: colours[i] };
+    });
+    uploadNames = names.map(function(n){ return n.name; });
+
+    list.innerHTML = names.map(function(n) {
+      return '<div style="display:flex;align-items:center;gap:8px;font-size:12px;">' +
+        '<span style="color:var(--green);font-size:10px;">●</span>' +
+        '<code style="color:var(--green);font-weight:700;">' + n.name + '</code>' +
+        '<span style="color:var(--muted);">← ' + n.label + '</span>' +
+      '</div>';
+    }).join('');
+
+    preview.style.display = 'block';
+    // Re-render queue if files already selected
+    if (uploadFiles.length) renderUploadQueue();
+  }
 
   function handleImgUpload(input) {
-    uploadFiles = Array.from(input.files);
+    uploadFiles = Array.from(input.files).slice(0, 4);
+    renderUploadQueue();
+  }
+
+  function renderUploadQueue() {
     var queue = document.getElementById('upload-queue');
     var btn   = document.getElementById('btn-upload-imgs');
-
     if (!uploadFiles.length) { queue.innerHTML = ''; btn.style.display='none'; return; }
 
+    var cat = document.getElementById('upload-cat').value;
+    var num = document.getElementById('upload-num').value.trim();
+
     queue.innerHTML = uploadFiles.map(function(f, i) {
+      var newName = (cat && num) ? uploadNames[i] || f.name : f.name;
+      var renamed = newName !== f.name;
       return '<div id="uq-' + i + '" style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--bg);border-radius:7px;margin-bottom:6px;">' +
-        '<span style="font-size:1.2rem;">🖼️</span>' +
+        '<span style="font-size:1.4rem;">🖼️</span>' +
         '<div style="flex:1;">' +
-          '<div style="font-size:12.5px;font-weight:600;color:var(--green-dark);">' + f.name + '</div>' +
-          '<div style="font-size:11px;color:var(--muted);">' + (f.size/1024).toFixed(0) + ' KB</div>' +
+          '<div style="font-size:11px;color:var(--muted);text-decoration:line-through;">' + f.name + '</div>' +
+          '<div style="font-size:12.5px;font-weight:700;color:var(--green);">' + newName + '</div>' +
+          (renamed ? '<div style="font-size:9.5px;color:var(--gold);">✨ Auto renamed</div>' : '') +
         '</div>' +
         '<span id="uq-status-' + i + '" style="font-size:11px;color:var(--muted);">Ready</span>' +
       '</div>';
@@ -1066,57 +1137,51 @@
   }
 
   function uploadImages() {
-    if (!githubToken) { showMsg('Please add your GitHub token first in the Settings tab', 'error'); return; }
+    if (!githubToken) { showMsg('Please add your GitHub token in Settings first', 'error'); return; }
     if (!uploadFiles.length) { showMsg('Please select images first', 'error'); return; }
+
+    var cat = document.getElementById('upload-cat').value;
+    var num = document.getElementById('upload-num').value.trim();
+    if (!cat || !num) { showMsg('Please select category and product number first', 'error'); return; }
 
     var btn = document.getElementById('btn-upload-imgs');
     btn.disabled = true;
-    btn.innerHTML = '<div class="spinner"></div> Uploading...';
+    btn.innerHTML = '<div class="spinner"></div> Uploading & Renaming...';
 
     var promises = uploadFiles.map(function(file, i) {
+      var newName = uploadNames[i] || file.name;
       return new Promise(function(resolve, reject) {
         var reader = new FileReader();
         reader.onload = function(e) {
-          // Convert to base64 without data URL prefix
           var base64 = e.target.result.split(',')[1];
           var statusEl = document.getElementById('uq-status-' + i);
           if (statusEl) statusEl.textContent = 'Uploading...';
 
-          // Check if file exists to get SHA
-          fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + file.name, {
+          // Check if file already exists (to get SHA for overwrite)
+          fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + newName, {
             headers: { 'Authorization': 'token ' + githubToken }
           })
           .then(function(r) { return r.ok ? r.json() : null; })
           .then(function(existing) {
             var body = {
-              message: 'Upload image: ' + file.name,
+              message: 'Upload image: ' + newName,
               content: base64,
               branch: GITHUB_BRANCH
             };
             if (existing && existing.sha) body.sha = existing.sha;
-
-            return fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + file.name, {
+            return fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + newName, {
               method: 'PUT',
-              headers: {
-                'Authorization': 'token ' + githubToken,
-                'Content-Type': 'application/json'
-              },
+              headers: { 'Authorization': 'token ' + githubToken, 'Content-Type': 'application/json' },
               body: JSON.stringify(body)
             });
           })
           .then(function(r) {
-            if (!r.ok) throw new Error('Upload failed');
-            if (statusEl) {
-              statusEl.textContent = '✅ Done';
-              statusEl.style.color = '#22c55e';
-            }
-            resolve(file.name);
+            if (!r.ok) throw new Error('Upload failed ' + r.status);
+            if (statusEl) { statusEl.textContent = '✅ Done'; statusEl.style.color = '#22c55e'; }
+            resolve(newName);
           })
           .catch(function(err) {
-            if (statusEl) {
-              statusEl.textContent = '❌ Failed';
-              statusEl.style.color = 'var(--red)';
-            }
+            if (statusEl) { statusEl.textContent = '❌ Failed'; statusEl.style.color = 'var(--red)'; }
             reject(err);
           });
         };
@@ -1125,19 +1190,20 @@
     });
 
     Promise.allSettled(promises).then(function(results) {
-      var success = results.filter(function(r){ return r.status === 'fulfilled'; }).length;
-      var failed  = results.filter(function(r){ return r.status === 'rejected'; }).length;
+      var ok   = results.filter(function(r){ return r.status==='fulfilled'; });
+      var fail = results.filter(function(r){ return r.status==='rejected'; });
 
       btn.disabled = false;
-      btn.innerHTML = '📤 Upload All Images to GitHub';
+      btn.innerHTML = '📤 Upload & Auto-Rename to GitHub';
       uploadFiles = [];
+      uploadNames = [];
       document.getElementById('img-upload-in').value = '';
 
-      if (failed === 0) {
-        showMsg('✅ All ' + success + ' images uploaded successfully!', 'success');
-        showToast('✅ ' + success + ' images uploaded!');
+      if (fail.length === 0) {
+        showMsg('✅ ' + ok.length + ' images uploaded and renamed successfully!', 'success');
+        showToast('✅ Images uploaded: ' + ok.map(function(r){ return r.value; }).join(', '));
       } else {
-        showMsg('⚠️ ' + success + ' uploaded, ' + failed + ' failed. Check your token.', 'error');
+        showMsg('⚠️ ' + ok.length + ' uploaded, ' + fail.length + ' failed. Check your token.', 'error');
       }
     });
   }

@@ -191,9 +191,15 @@ function loadProducts(callback) {
       PRODUCTS = data;
       PRODUCTS_LOADED = true;
       if (callback) callback();
+      // Fire event so page-specific scripts can react
+      document.dispatchEvent(new CustomEvent('productsLoaded'));
     })
     .catch(function(err) {
       console.error('Failed to load products:', err);
+      // Try fallback - fire event with empty products so page doesnt hang
+      PRODUCTS_LOADED = true;
+      if (callback) callback();
+      document.dispatchEvent(new CustomEvent('productsLoaded'));
     });
 }
 
