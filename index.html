@@ -537,11 +537,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    if (typeof PRODUCTS !== 'undefined' && PRODUCTS.length > 0) {
-      initHomePage();
-    } else {
-      document.addEventListener('productsLoaded', initHomePage);
-    }
+    document.addEventListener('productsLoaded', initHomePage);
   });
 </script>
 </body>

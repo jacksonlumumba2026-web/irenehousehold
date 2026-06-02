@@ -416,28 +416,46 @@
 </div>
 
 
+
 <script>
-  // Show popup after 30 seconds — only once per session
-  setTimeout(function() {
+  // WhatsApp Community Popup — shows 3 times in 3 minutes
+  var popupCount = 0;
+  var maxPopups  = 3;
+  var popupDelay = 60000; // 60 seconds between each
+
+  function showWaPopup() {
+    if (popupCount >= maxPopups) return;
     try {
-      if (!sessionStorage.getItem('wa_popup_shown')) {
-        document.getElementById('wa-popup-overlay').classList.add('show');
-      }
-    } catch(e) {
-      document.getElementById('wa-popup-overlay').classList.add('show');
-    }
-  }, 30000);
+      var shown = parseInt(sessionStorage.getItem('wa_popup_count') || '0');
+      if (shown >= maxPopups) return;
+    } catch(e) {}
+    document.getElementById('wa-popup-overlay').classList.add('show');
+  }
 
   function closeWaPopup() {
     document.getElementById('wa-popup-overlay').classList.remove('show');
-    try { sessionStorage.setItem('wa_popup_shown', '1'); } catch(e) {}
+    popupCount++;
+    try { sessionStorage.setItem('wa_popup_count', popupCount); } catch(e) {}
+    // Schedule next popup if not done
+    if (popupCount < maxPopups) {
+      setTimeout(showWaPopup, popupDelay);
+    }
   }
 
+  // First popup after 30 seconds
+  setTimeout(showWaPopup, 30000);
+
   // Close on overlay click
-  document.getElementById('wa-popup-overlay').addEventListener('click', function(e) {
-    if (e.target === this) closeWaPopup();
+  document.addEventListener('DOMContentLoaded', function() {
+    var overlay = document.getElementById('wa-popup-overlay');
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === this) closeWaPopup();
+      });
+    }
   });
 </script>
+
 
 <script src="script.js"></script>
 <script>
@@ -618,27 +636,25 @@
     setTimeout(initZoom, 100);
   }
 
-  // Init
-  document.addEventListener('DOMContentLoaded', function() {
+  // Init — run after products are loaded
+  function initShop() {
     var params = new URLSearchParams(window.location.search);
-    var cat = params.get('cat');
-    var q   = params.get('q');
+    var cat    = params.get('cat');
+    var q      = params.get('q');
 
     if (cat) {
       activeCat = cat;
       var label = document.getElementById('browse-label');
       if (label) label.textContent = '📦 ' + (CAT_LABELS[cat] || cat);
-      // Highlight cat strip
       document.querySelectorAll('.cat-strip-item').forEach(function(b) {
         var active = b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + cat + "'");
         b.classList.toggle('active', active);
       });
-      applyFilters();
-      return;
     }
 
     if (q) {
-      document.getElementById('search-input').value = q;
+      var inp = document.getElementById('search-input');
+      if (inp) inp.value = q;
       filteredList = PRODUCTS.filter(function(p) {
         return p.name.toLowerCase().includes(q.toLowerCase()) ||
                p.cat.toLowerCase().includes(q.toLowerCase());
@@ -648,6 +664,11 @@
     } else {
       applyFilters();
     }
+  }
+
+  // Wait for products.json to load before initialising
+  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('productsLoaded', initShop);
   });
 </script>
 </body>

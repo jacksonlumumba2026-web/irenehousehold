@@ -184,7 +184,11 @@ var PRODUCTS = [];
 var PRODUCTS_LOADED = false;
 
 function loadProducts(callback) {
-  if (PRODUCTS_LOADED) { if (callback) callback(); return; }
+  if (PRODUCTS_LOADED) {
+    if (callback) callback();
+    document.dispatchEvent(new CustomEvent('productsLoaded'));
+    return;
+  }
   fetch('products.json?v=' + Date.now())
     .then(function(r) { return r.json(); })
     .then(function(data) {
@@ -898,7 +902,11 @@ var PRODUCTS = [];
 var PRODUCTS_LOADED = false;
 
 function loadProducts(callback) {
-  if (PRODUCTS_LOADED) { if (callback) callback(); return; }
+  if (PRODUCTS_LOADED) {
+    if (callback) callback();
+    document.dispatchEvent(new CustomEvent('productsLoaded'));
+    return;
+  }
   fetch('products.json?v=' + Date.now())
     .then(function(r) { return r.json(); })
     .then(function(data) {
