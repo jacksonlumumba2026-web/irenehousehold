@@ -609,7 +609,7 @@ function buildCard(p) {
     '</div>' +
     thumbs +
     '<div class="card-body">' +
-      '<div class="card-location">Nairobi, Kenya</div>' +
+      '<div class="card-location">Kenya\'s Favourite Store</div>' +
       '<div class="card-cat">' + (CAT_LABELS[p.cat] || p.cat) + '</div>' +
       '<div class="card-name">' + p.name + '</div>' +
       '<div class="card-note">' + p.note + '</div>' +
@@ -814,207 +814,67 @@ const counterObserver = new IntersectionObserver(entries => {
 ═══════════════════════════════════════ */
 var FREE_DELIVERY_THRESHOLD = 5000;
 
-function updateDeliveryBar() {
-  var bar     = document.getElementById('delivery-bar');
-  var msg     = document.getElementById('delivery-msg');
-  var barWrap = document.getElementById('delivery-bar-wrap');
-  if (!bar || !msg) return;
-
-  var total = cart.reduce(function(s, i) { return s + i.price * i.qty; }, 0);
-  var pct   = Math.min((total / FREE_DELIVERY_THRESHOLD) * 100, 100);
-  var remaining = FREE_DELIVERY_THRESHOLD - total;
-
-  bar.style.width = pct + '%';
-
-  if (total >= FREE_DELIVERY_THRESHOLD) {
-    bar.style.background = '#22c55e';
-    msg.innerHTML = '<span style="color:#22c55e;font-weight:700;">🎉 You qualify for FREE delivery!</span>';
-  } else {
-    bar.style.background = 'var(--gold)';
-    msg.innerHTML = 'Add <strong style="color:var(--green);">KSh ' + remaining.toLocaleString() + '</strong> more for <strong style="color:var(--green);">FREE delivery</strong> 🚚';
-  }
-}
-
-
 /* ═══════════════════════════════════════
-   FEATURE 4 — FLASH SALE COUNTDOWN TIMER
+   DOM READY — Initialize page
 ═══════════════════════════════════════ */
-function startFlashSaleTimer() {
-  var timerEl = document.getElementById('flash-timer');
-  if (!timerEl) return;
+document.addEventListener('DOMContentLoaded', function() {
+  loadProducts(function() {
 
-  // Sale ends at midnight tonight
-  function getEndTime() {
-    var end = new Date();
-    end.setHours(23, 59, 59, 0);
-    return end;
-  }
+    // Start flash sale timer
+    startFlashSaleTimer();
 
-  function updateTimer() {
-    var now  = new Date();
-    var end  = getEndTime();
-    var diff = end - now;
+    // Init zoom
+    setTimeout(initZoom, 500);
 
-    if (diff <= 0) {
-      timerEl.innerHTML = '<span>Sale Ended</span>';
-      return;
-    }
+    // Scroll reveal
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) e.target.classList.add('on');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.rev').forEach(function(el) { observer.observe(el); });
 
-    var h = Math.floor(diff / 3600000);
-    var m = Math.floor((diff % 3600000) / 60000);
-    var s = Math.floor((diff % 60000) / 1000);
-
-    var pad = function(n) { return n < 10 ? '0' + n : n; };
-
-    timerEl.innerHTML =
-      '<div class="timer-block"><span class="timer-num">' + pad(h) + '</span><span class="timer-label">HRS</span></div>' +
-      '<span class="timer-sep">:</span>' +
-      '<div class="timer-block"><span class="timer-num">' + pad(m) + '</span><span class="timer-label">MIN</span></div>' +
-      '<span class="timer-sep">:</span>' +
-      '<div class="timer-block"><span class="timer-num">' + pad(s) + '</span><span class="timer-label">SEC</span></div>';
-  }
-
-  updateTimer();
-  setInterval(updateTimer, 1000);
-}
-
-
-/* ═══════════════════════════════════════
-   FEATURE 3 — RECENTLY VIEWED PRODUCTS
-═══════════════════════════════════════ */
-var recentlyViewed = [];
-
-function trackView(id) {
-  recentlyViewed = recentlyViewed.filter(function(i) { return i !== id; });
-  recentlyViewed.unshift(id);
-  if (recentlyViewed.length > 4) recentlyViewed = recentlyViewed.slice(0, 4);
-  renderRecentlyViewed();
-}
-
-function renderRecentlyViewed() {
-  var container = document.getElementById('recently-viewed-grid');
-  if (!container) return;
-
-  var items = recentlyViewed
-    .map(function(id) { return PRODUCTS.find(function(p) { return p.id === id; }); })
-    .filter(Boolean);
-
-  if (!items.length) {
-    var section = document.getElementById('recently-viewed-section');
-    if (section) section.style.display = 'none';
-    return;
-  }
-
-  var section = document.getElementById('recently-viewed-section');
-  if (section) section.style.display = 'block';
-  container.innerHTML = items.map(buildCard).join('');
-  setTimeout(initZoom, 100);
-}
-
-
-/* ═══════════════════════════════════════
-   FEATURE 2 — PRODUCT IMAGE ZOOM
-═══════════════════════════════════════ */
-function initZoom() {
-  document.querySelectorAll('.card-img img').forEach(function(img) {
-    if (img.dataset.zoomInit) return;
-    img.dataset.zoomInit = '1';
-
-    img.addEventListener('mouseenter', function() {
-      this.style.transform = 'scale(1.12)';
-      this.style.transition = 'transform .4s ease';
-    });
-    img.addEventListener('mouseleave', function() {
-      this.style.transform = 'scale(1)';
+    // Progress ring
+    window.addEventListener('scroll', function() {
+      var scrolled = window.scrollY;
+      var total    = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = total > 0 ? scrolled / total : 0;
+      var ring     = document.getElementById('progress-ring');
+      var circle   = document.getElementById('ring-circle');
+      if (ring)   ring.classList.toggle('show', scrolled > 300);
+      if (circle) circle.style.strokeDashoffset = 113.1 * (1 - progress);
+      var nav = document.getElementById('main-nav');
+      if (nav) nav.classList.toggle('scrolled', scrolled > 40);
     });
 
-    // Mobile: tap to open full zoom
-    img.addEventListener('click', function(e) {
-      if (window.innerWidth > 768) return;
-      openZoomModal(this.src, this.alt);
+    // Cookie bar
+    setTimeout(function() {
+      try {
+        if (!localStorage.getItem('ihc_cookie')) {
+          var cb = document.getElementById('cookie-bar');
+          if (cb) cb.classList.add('show');
+        }
+      } catch(e) {
+        var cb = document.getElementById('cookie-bar');
+        if (cb) cb.classList.add('show');
+      }
+    }, 2500);
+
+    // Cart & wishlist overlays
+    var cartOv = document.getElementById('cart-overlay');
+    if (cartOv) cartOv.addEventListener('click', closeCart);
+    var wlOv = document.getElementById('wl-overlay');
+    if (wlOv) wlOv.addEventListener('click', closeWishlist);
+
+    // Quick view modal
+    var modal = document.getElementById('qv-modal');
+    if (modal) modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeQuickView();
     });
+
+    // Update badges
+    updateCartUI();
+    updateWishlistUI();
+
   });
-}
-
-function openZoomModal(src, alt) {
-  var existing = document.getElementById('zoom-modal');
-  if (existing) existing.remove();
-
-  var modal = document.createElement('div');
-  modal.id = 'zoom-modal';
-  modal.innerHTML =
-    '<div style="position:fixed;inset:0;z-index:5000;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:16px;" onclick="this.parentElement.remove()">' +
-    '<img src="' + src + '" alt="' + alt + '" style="max-width:95vw;max-height:90vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);"/>' +
-    '<button style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,.2);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;" onclick="document.getElementById(\"zoom-modal\").remove()">✕</button>' +
-    '<p style="position:absolute;bottom:20px;color:rgba(255,255,255,.5);font-size:12px;">Tap anywhere to close</p>' +
-    '</div>';
-  document.body.appendChild(modal);
-}
-
-/* ═══════════════════════════════════════
-   IRENE HOUSEHOLD COLLECTIONS — script.js
-   ═══════════════════════════════════════
-   
-   ➕ HOW TO ADD NEW PRODUCTS:
-   
-   1. Upload photo to GitHub (e.g. carpet.10.jpg)
-   
-   2. Find the PRODUCTS array below
-   
-   3. Add a new line at the END (before the ];)
-      Copy this template and fill it in:
-   
-   { id:96, cat:'duvets', name:'Egyptian Duvet Cover', note:'Size 6x7 and 6x6 — 1 duvet cover, 1 bedsheet and 2 pillowcases', price:4000, old:0, img:'duvet.22.jpg', imgs:['duvet.22.jpg','duvet.22b.jpg','duvet.22c.jpg','duvet.22d.jpg'], badge:'HOT', badgeType:'hot' },
-   
-   CATEGORIES: nets | duvets | kitchenware |
-               carpets | seatcovers | bath |
-               furniture | kids
-   
-   BADGES: HOT/hot | SALE/sale | NEW/new |
-           HOTEL/hotel | leave blank for none
-   
-   ID: Always use next number (last is 95)
-   OLD PRICE: Set old:0 for no strikethrough
-═══════════════════════════════════════ */
-
-/* ═══════════════════════════════════════
-   IRENE HOUSEHOLD COLLECTIONS
-   Main JavaScript File
-═══════════════════════════════════════ */
-
-/* ═══════════════════════════════════════
-   PRODUCTS DATABASE
-═══════════════════════════════════════ */
-/* ═══════════════════════════════════════
-   PRODUCTS — Loaded from products.json
-   To add/edit/delete products use:
-   irenehousehold.co.ke/admin.html
-═══════════════════════════════════════ */
-var PRODUCTS = [];
-var PRODUCTS_LOADED = false;
-
-function loadProducts(callback) {
-  if (PRODUCTS_LOADED) { if (callback) callback(); return; }
-  fetch('products.json?v=' + Date.now())
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      PRODUCTS = data;
-      PRODUCTS_LOADED = true;
-      if (callback) callback();
-    })
-    .catch(function(err) {
-      console.error('Failed to load products:', err);
-    });
-}
-
-
-
-/* ═══════════════════════════════════════
-   FEATURE 1 — WHATSAPP SHARE
-═══════════════════════════════════════ */
-function shareOnWhatsApp(name, price, img) {
-  var p = price > 0 ? 'KSh ' + price.toLocaleString() : 'Call for Price';
-  var msg = 'Hi! Check out ' + name + ' (' + p + ') from Irene Household Collections. Shop at irenehousehold.co.ke or order on WhatsApp: wa.me/254716060029';
-  window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
-}
-
+});

@@ -241,6 +241,7 @@
     <button class="tab" onclick="showTab('edit',this)">✏️ Edit</button>
     <button class="tab" onclick="showTab('delete',this)">🗑️ Delete</button>
     <button class="tab" onclick="showTab('list',this)">📋 Products</button>
+    <button class="tab" onclick="showTab('settings',this)">⚙️ Settings</button>
     <button class="tab" onclick="showTab('guide',this)">📖 Guide</button>
   </div>
 
@@ -431,6 +432,77 @@
     </div>
   </div>
 
+
+  <!-- ══ SETTINGS ══ -->
+  <div class="section" id="sec-settings">
+
+    <!-- Change PIN -->
+    <div class="card">
+      <h3>🔐 Change Admin PIN</h3>
+      <div class="fg">
+        <label>Current PIN</label>
+        <input type="password" id="cur-pin" placeholder="Enter current PIN"/>
+      </div>
+      <div class="row2">
+        <div class="fg">
+          <label>New PIN</label>
+          <input type="password" id="new-pin" placeholder="New PIN (4-6 digits)"/>
+        </div>
+        <div class="fg">
+          <label>Confirm New PIN</label>
+          <input type="password" id="con-pin" placeholder="Repeat new PIN"/>
+        </div>
+      </div>
+      <button class="btn-save" onclick="changePin()">🔐 Change PIN</button>
+    </div>
+
+    <!-- GitHub Token -->
+    <div class="card">
+      <h3>🔑 GitHub Token</h3>
+      <p style="font-size:12.5px;color:var(--muted);margin-bottom:14px;">
+        This token lets the admin panel save products directly to your website. Keep it private.
+      </p>
+      <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--bg);border-radius:8px;margin-bottom:14px;">
+        <div class="token-dot" id="settings-token-dot"></div>
+        <span style="font-size:12.5px;font-weight:600;color:var(--green-dark);" id="settings-token-label">Checking...</span>
+      </div>
+      <div class="fg">
+        <label>Paste New Token</label>
+        <input type="password" id="new-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"/>
+      </div>
+      <button class="btn-save" onclick="updateToken()">🔑 Save New Token</button>
+      <button onclick="clearToken()" style="width:100%;margin-top:8px;background:none;border:1.5px solid #e0e0e0;color:var(--muted);padding:11px;border-radius:8px;font-size:12px;cursor:pointer;">
+        🗑️ Clear Saved Token
+      </button>
+    </div>
+
+    <!-- Upload Images -->
+    <div class="card">
+      <h3>📸 Upload Product Images</h3>
+      <p style="font-size:12.5px;color:var(--muted);margin-bottom:16px;">
+        Upload photos directly to GitHub. Name your file correctly before uploading e.g. <strong>carpet.10.jpg</strong>
+      </p>
+
+      <div class="fg">
+        <label>Select Images to Upload</label>
+        <div class="photo-upload" id="img-upload-area" onclick="document.getElementById('img-upload-in').click()">
+          <input type="file" id="img-upload-in" accept="image/*" multiple onchange="handleImgUpload(this)"/>
+          <div style="font-size:2rem;margin-bottom:6px;">📁</div>
+          <p style="font-size:12px;font-weight:600;color:var(--green-dark);">Tap to select images</p>
+          <p style="font-size:11px;color:var(--muted);">Select one or multiple images at once</p>
+        </div>
+      </div>
+
+      <!-- Upload queue -->
+      <div id="upload-queue" style="margin-bottom:14px;"></div>
+
+      <button class="btn-save" id="btn-upload-imgs" onclick="uploadImages()" style="display:none;">
+        📤 Upload All Images to GitHub
+      </button>
+    </div>
+
+  </div>
+
   <!-- ══ GUIDE ══ -->
   <div class="section" id="sec-guide">
     <div class="card">
@@ -529,9 +601,11 @@
 
   /* ── INIT ── */
   function initAdmin() {
-    // Load saved token
+    // Load saved token and PIN
     try {
       githubToken = localStorage.getItem('ihc_token') || '';
+      var savedPin = localStorage.getItem('ihc_pin');
+      if (savedPin) ADMIN_PIN = savedPin;
     } catch(e) { githubToken = ''; }
 
     updateTokenStatus();
@@ -651,6 +725,7 @@
     document.getElementById('sec-' + name).classList.add('active');
     if (btn) btn.classList.add('active');
     if (name === 'list') renderList(allProducts, 'list-results', 'view');
+    if (name === 'settings') initSettings();
   }
 
   /* ── PHOTOS ── */
@@ -907,6 +982,166 @@
     setTimeout(function(){ bar.style.display = 'none'; }, 5000);
     bar.scrollIntoView({behavior:'smooth',block:'nearest'});
   }
+
+
+  /* ── SETTINGS ── */
+
+  // Init settings tab
+  function initSettings() {
+    var dot   = document.getElementById('settings-token-dot');
+    var label = document.getElementById('settings-token-label');
+    if (githubToken) {
+      dot.className   = 'token-dot ok';
+      label.textContent = 'Token saved and active';
+    } else {
+      dot.className   = 'token-dot no';
+      label.textContent = 'No token saved';
+    }
+  }
+
+  // Change PIN
+  function changePin() {
+    var cur = document.getElementById('cur-pin').value;
+    var nw  = document.getElementById('new-pin').value;
+    var con = document.getElementById('con-pin').value;
+    if (cur !== ADMIN_PIN) { showMsg('Current PIN is incorrect', 'error'); return; }
+    if (!nw || nw.length < 4) { showMsg('New PIN must be at least 4 digits', 'error'); return; }
+    if (nw !== con) { showMsg('PINs do not match', 'error'); return; }
+    ADMIN_PIN = nw;
+    try { localStorage.setItem('ihc_pin', nw); } catch(e) {}
+    document.getElementById('cur-pin').value = '';
+    document.getElementById('new-pin').value = '';
+    document.getElementById('con-pin').value = '';
+    showMsg('✅ PIN changed successfully!', 'success');
+    showToast('✅ PIN updated!');
+  }
+
+  // Update token
+  function updateToken() {
+    var t = document.getElementById('new-token').value.trim();
+    if (!t) { showMsg('Please paste your GitHub token', 'error'); return; }
+    githubToken = t;
+    try { localStorage.setItem('ihc_token', t); } catch(e) {}
+    document.getElementById('new-token').value = '';
+    document.getElementById('setup-banner').style.display = 'none';
+    updateTokenStatus();
+    initSettings();
+    getFileSha();
+    showMsg('✅ Token saved!', 'success');
+    showToast('✅ GitHub token saved!');
+  }
+
+  // Clear token
+  function clearToken() {
+    githubToken = '';
+    try { localStorage.removeItem('ihc_token'); } catch(e) {}
+    updateTokenStatus();
+    initSettings();
+    document.getElementById('setup-banner').style.display = 'block';
+    showMsg('Token cleared. Please add a new token to save products.', 'error');
+  }
+
+  /* ── IMAGE UPLOAD ── */
+  var uploadFiles = [];
+
+  function handleImgUpload(input) {
+    uploadFiles = Array.from(input.files);
+    var queue = document.getElementById('upload-queue');
+    var btn   = document.getElementById('btn-upload-imgs');
+
+    if (!uploadFiles.length) { queue.innerHTML = ''; btn.style.display='none'; return; }
+
+    queue.innerHTML = uploadFiles.map(function(f, i) {
+      return '<div id="uq-' + i + '" style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--bg);border-radius:7px;margin-bottom:6px;">' +
+        '<span style="font-size:1.2rem;">🖼️</span>' +
+        '<div style="flex:1;">' +
+          '<div style="font-size:12.5px;font-weight:600;color:var(--green-dark);">' + f.name + '</div>' +
+          '<div style="font-size:11px;color:var(--muted);">' + (f.size/1024).toFixed(0) + ' KB</div>' +
+        '</div>' +
+        '<span id="uq-status-' + i + '" style="font-size:11px;color:var(--muted);">Ready</span>' +
+      '</div>';
+    }).join('');
+
+    btn.style.display = 'flex';
+  }
+
+  function uploadImages() {
+    if (!githubToken) { showMsg('Please add your GitHub token first in the Settings tab', 'error'); return; }
+    if (!uploadFiles.length) { showMsg('Please select images first', 'error'); return; }
+
+    var btn = document.getElementById('btn-upload-imgs');
+    btn.disabled = true;
+    btn.innerHTML = '<div class="spinner"></div> Uploading...';
+
+    var promises = uploadFiles.map(function(file, i) {
+      return new Promise(function(resolve, reject) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          // Convert to base64 without data URL prefix
+          var base64 = e.target.result.split(',')[1];
+          var statusEl = document.getElementById('uq-status-' + i);
+          if (statusEl) statusEl.textContent = 'Uploading...';
+
+          // Check if file exists to get SHA
+          fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + file.name, {
+            headers: { 'Authorization': 'token ' + githubToken }
+          })
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(existing) {
+            var body = {
+              message: 'Upload image: ' + file.name,
+              content: base64,
+              branch: GITHUB_BRANCH
+            };
+            if (existing && existing.sha) body.sha = existing.sha;
+
+            return fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + file.name, {
+              method: 'PUT',
+              headers: {
+                'Authorization': 'token ' + githubToken,
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(body)
+            });
+          })
+          .then(function(r) {
+            if (!r.ok) throw new Error('Upload failed');
+            if (statusEl) {
+              statusEl.textContent = '✅ Done';
+              statusEl.style.color = '#22c55e';
+            }
+            resolve(file.name);
+          })
+          .catch(function(err) {
+            if (statusEl) {
+              statusEl.textContent = '❌ Failed';
+              statusEl.style.color = 'var(--red)';
+            }
+            reject(err);
+          });
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    Promise.allSettled(promises).then(function(results) {
+      var success = results.filter(function(r){ return r.status === 'fulfilled'; }).length;
+      var failed  = results.filter(function(r){ return r.status === 'rejected'; }).length;
+
+      btn.disabled = false;
+      btn.innerHTML = '📤 Upload All Images to GitHub';
+      uploadFiles = [];
+      document.getElementById('img-upload-in').value = '';
+
+      if (failed === 0) {
+        showMsg('✅ All ' + success + ' images uploaded successfully!', 'success');
+        showToast('✅ ' + success + ' images uploaded!');
+      } else {
+        showMsg('⚠️ ' + success + ' uploaded, ' + failed + ' failed. Check your token.', 'error');
+      }
+    });
+  }
+
 
   function goSearch() {}
 </script>
