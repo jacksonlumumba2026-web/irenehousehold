@@ -1055,3 +1055,168 @@ img { max-width:100%; }
   transform: scale(1.08);
   transition: all .2s;
 }
+
+/* ═══════════════════════════════════════
+   TRUST BADGES STRIP
+═══════════════════════════════════════ */
+.trust-strip {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.trust-strip::-webkit-scrollbar { display: none; }
+.trust-strip-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 4%;
+  min-width: 100%;
+}
+.trust-item-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green-dark);
+  white-space: nowrap;
+  border-right: 1px solid #f0f0f0;
+  flex-shrink: 0;
+}
+.trust-item-badge:last-child { border-right: none; }
+.trust-item-badge span { font-size: 15px; }
+.trust-item-badge em {
+  color: var(--green);
+  font-style: normal;
+  font-size: 10px;
+  display: block;
+  font-weight: 400;
+}
+
+/* ═══════════════════════════════════════
+   WHATSAPP COMMUNITY POPUP
+═══════════════════════════════════════ */
+.wa-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 6000;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+  padding-bottom: 70px;
+}
+.wa-popup-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+.wa-popup {
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+  width: 100%;
+  max-width: 480px;
+  padding: 24px 20px 20px;
+  position: relative;
+  transform: translateY(100%);
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 -8px 40px rgba(0,0,0,.2);
+}
+.wa-popup-overlay.show .wa-popup {
+  transform: translateY(0);
+}
+.wa-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: #f0f0f0;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+.wa-popup-icon {
+  width: 54px;
+  height: 54px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  font-size: 1.6rem;
+}
+.wa-popup h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--green-dark);
+  text-align: center;
+  margin-bottom: 6px;
+}
+.wa-popup p {
+  font-size: 12.5px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+.wa-popup-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wa-popup-join {
+  width: 100%;
+  background: #25d366;
+  color: #fff;
+  border: none;
+  padding: 13px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: background .2s;
+}
+.wa-popup-join:hover { background: #1da851; }
+.wa-popup-later {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 8px;
+  cursor: pointer;
+}
+.wa-popup-later:hover { color: var(--green-dark); }
+.wa-popup-perks {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.wa-popup-perk {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--muted);
+}

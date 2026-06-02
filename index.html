@@ -24,6 +24,19 @@
   <span>|</span> 📞 <a href="https://wa.me/254716060029">+254 716 060029</a>
 </div>
 
+
+<!-- TRUST BADGES -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-item-badge"><span>🚚</span><div><b>Free Delivery</b><em>Orders over KSh 5,000</em></div></div>
+    <div class="trust-item-badge"><span>🔒</span><div><b>M-Pesa Secure</b><em>Safe payments</em></div></div>
+    <div class="trust-item-badge"><span>✅</span><div><b>Quality Verified</b><em>All products checked</em></div></div>
+    <div class="trust-item-badge"><span>⚡</span><div><b>Same Day Delivery</b><em>Nairobi orders</em></div></div>
+    <div class="trust-item-badge"><span>💬</span><div><b>24/7 Support</b><em>WhatsApp us anytime</em></div></div>
+    <div class="trust-item-badge"><span>🏨</span><div><b>Hotel Packages</b><em>Bulk pricing available</em></div></div>
+  </div>
+</div>
+
 <!-- TOP NAV — JIJI STYLE -->
 <nav class="top-nav" id="main-nav">
   <a href="index.html" class="nav-logo-wrap">
@@ -408,6 +421,54 @@
     <a href="contact.html" class="bnav-item"><span class="bicon">💬</span><span>Chat</span></a>
   </div>
 </nav>
+
+
+<!-- WHATSAPP COMMUNITY POPUP -->
+<div class="wa-popup-overlay" id="wa-popup-overlay">
+  <div class="wa-popup">
+    <button class="wa-popup-close" onclick="closeWaPopup()">✕</button>
+    <div class="wa-popup-icon">💬</div>
+    <h3>Join Our WhatsApp Community!</h3>
+    <p>Be the first to get exclusive deals, new arrivals and special discounts straight to your WhatsApp.</p>
+    <div class="wa-popup-perks">
+      <div class="wa-popup-perk">🎁 Exclusive deals</div>
+      <div class="wa-popup-perk">🔥 Flash sales</div>
+      <div class="wa-popup-perk">✨ New arrivals</div>
+    </div>
+    <div class="wa-popup-btns">
+      <a href="https://chat.whatsapp.com/KLvRlQ1YQR5IRYfzxB8rxA" target="_blank"
+        class="wa-popup-join" onclick="closeWaPopup()">
+        💬 Join Community Now
+      </a>
+      <button class="wa-popup-later" onclick="closeWaPopup()">Maybe later</button>
+    </div>
+    <p style="font-size:10px;color:#ccc;text-align:center;margin-top:8px;">Free to join • No spam • Leave anytime</p>
+  </div>
+</div>
+
+
+<script>
+  // Show popup after 30 seconds — only once per session
+  setTimeout(function() {
+    try {
+      if (!sessionStorage.getItem('wa_popup_shown')) {
+        document.getElementById('wa-popup-overlay').classList.add('show');
+      }
+    } catch(e) {
+      document.getElementById('wa-popup-overlay').classList.add('show');
+    }
+  }, 30000);
+
+  function closeWaPopup() {
+    document.getElementById('wa-popup-overlay').classList.remove('show');
+    try { sessionStorage.setItem('wa_popup_shown', '1'); } catch(e) {}
+  }
+
+  // Close on overlay click
+  document.getElementById('wa-popup-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeWaPopup();
+  });
+</script>
 
 <script src="script.js"></script>
 <script>
