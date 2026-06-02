@@ -11,10 +11,13 @@
       "net.2.jpg",
       "net.2b.jpg",
       "net.2c.jpg",
-      "net.2d.jpg"
+      "net.2d.jpg",
+      "net.2e.jpg",
+      "net.2f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 1,
@@ -28,10 +31,13 @@
       "net.1.jpg",
       "net.1b.jpg",
       "net.1c.jpg",
-      "net.1d.jpg"
+      "net.1d.jpg",
+      "net.1e.jpg",
+      "net.1f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 3,
@@ -45,10 +51,13 @@
       "net.3.jpg",
       "net.3b.jpg",
       "net.3c.jpg",
-      "net.3d.jpg"
+      "net.3d.jpg",
+      "net.3e.jpg",
+      "net.3f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 4,
@@ -62,10 +71,13 @@
       "net.4.jpg",
       "net.4b.jpg",
       "net.4c.jpg",
-      "net.4d.jpg"
+      "net.4d.jpg",
+      "net.4e.jpg",
+      "net.4f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 5,
@@ -79,10 +91,13 @@
       "net.5.jpg",
       "net.5b.jpg",
       "net.5c.jpg",
-      "net.5d.jpg"
+      "net.5d.jpg",
+      "net.5e.jpg",
+      "net.5f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 6,
@@ -96,10 +111,13 @@
       "duvet.1.jpg",
       "duvet.1b.jpg",
       "duvet.1c.jpg",
-      "duvet.1d.jpg"
+      "duvet.1d.jpg",
+      "duvet.1e.jpg",
+      "duvet.1f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 7,
@@ -113,10 +131,13 @@
       "duvet.2.jpg",
       "duvet.2b.jpg",
       "duvet.2c.jpg",
-      "duvet.2d.jpg"
+      "duvet.2d.jpg",
+      "duvet.2e.jpg",
+      "duvet.2f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 8,
@@ -130,10 +151,13 @@
       "duvet.3.jpg",
       "duvet.3b.jpg",
       "duvet.3c.jpg",
-      "duvet.3d.jpg"
+      "duvet.3d.jpg",
+      "duvet.3e.jpg",
+      "duvet.3f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 9,
@@ -147,10 +171,13 @@
       "duvet.4.jpg",
       "duvet.4b.jpg",
       "duvet.4c.jpg",
-      "duvet.4d.jpg"
+      "duvet.4d.jpg",
+      "duvet.4e.jpg",
+      "duvet.4f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 10,
@@ -164,10 +191,13 @@
       "duvet.5.jpg",
       "duvet.5b.jpg",
       "duvet.5c.jpg",
-      "duvet.5d.jpg"
+      "duvet.5d.jpg",
+      "duvet.5e.jpg",
+      "duvet.5f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 11,
@@ -181,10 +211,13 @@
       "duvet.6.jpg",
       "duvet.6b.jpg",
       "duvet.6c.jpg",
-      "duvet.6d.jpg"
+      "duvet.6d.jpg",
+      "duvet.6e.jpg",
+      "duvet.6f.jpg"
     ],
     "badge": "HOTEL",
-    "badgeType": "hotel"
+    "badgeType": "hotel",
+    "inStock": true
   },
   {
     "id": 12,
@@ -198,10 +231,13 @@
       "duvet.7.jpg",
       "duvet.7b.jpg",
       "duvet.7c.jpg",
-      "duvet.7d.jpg"
+      "duvet.7d.jpg",
+      "duvet.7e.jpg",
+      "duvet.7f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 13,
@@ -215,10 +251,13 @@
       "duvet.8.jpg",
       "duvet.8b.jpg",
       "duvet.8c.jpg",
-      "duvet.8d.jpg"
+      "duvet.8d.jpg",
+      "duvet.8e.jpg",
+      "duvet.8f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 14,
@@ -232,10 +271,13 @@
       "duvet.9.jpg",
       "duvet.9b.jpg",
       "duvet.9c.jpg",
-      "duvet.9d.jpg"
+      "duvet.9d.jpg",
+      "duvet.9e.jpg",
+      "duvet.9f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 15,
@@ -249,10 +291,13 @@
       "duvet.10.jpg",
       "duvet.10b.jpg",
       "duvet.10c.jpg",
-      "duvet.10d.jpg"
+      "duvet.10d.jpg",
+      "duvet.10e.jpg",
+      "duvet.10f.jpg"
     ],
     "badge": "HOTEL",
-    "badgeType": "hotel"
+    "badgeType": "hotel",
+    "inStock": true
   },
   {
     "id": 16,
@@ -266,10 +311,13 @@
       "duvet.11.jpg",
       "duvet.11b.jpg",
       "duvet.11c.jpg",
-      "duvet.11d.jpg"
+      "duvet.11d.jpg",
+      "duvet.11e.jpg",
+      "duvet.11f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 17,
@@ -283,10 +331,13 @@
       "duvet.12.jpg",
       "duvet.12b.jpg",
       "duvet.12c.jpg",
-      "duvet.12d.jpg"
+      "duvet.12d.jpg",
+      "duvet.12e.jpg",
+      "duvet.12f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 18,
@@ -300,10 +351,13 @@
       "duvet.13.jpg",
       "duvet.13b.jpg",
       "duvet.13c.jpg",
-      "duvet.13d.jpg"
+      "duvet.13d.jpg",
+      "duvet.13e.jpg",
+      "duvet.13f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 19,
@@ -317,10 +371,13 @@
       "duvet.14.jpg",
       "duvet.14b.jpg",
       "duvet.14c.jpg",
-      "duvet.14d.jpg"
+      "duvet.14d.jpg",
+      "duvet.14e.jpg",
+      "duvet.14f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 20,
@@ -334,10 +391,13 @@
       "duvet.15.jpg",
       "duvet.15b.jpg",
       "duvet.15c.jpg",
-      "duvet.15d.jpg"
+      "duvet.15d.jpg",
+      "duvet.15e.jpg",
+      "duvet.15f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 21,
@@ -351,10 +411,13 @@
       "duvet.16.jpg",
       "duvet.16b.jpg",
       "duvet.16c.jpg",
-      "duvet.16d.jpg"
+      "duvet.16d.jpg",
+      "duvet.16e.jpg",
+      "duvet.16f.jpg"
     ],
     "badge": "HOTEL",
-    "badgeType": "hotel"
+    "badgeType": "hotel",
+    "inStock": true
   },
   {
     "id": 22,
@@ -368,10 +431,13 @@
       "duvet.17.jpg",
       "duvet.17b.jpg",
       "duvet.17c.jpg",
-      "duvet.17d.jpg"
+      "duvet.17d.jpg",
+      "duvet.17e.jpg",
+      "duvet.17f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 23,
@@ -385,10 +451,13 @@
       "duvet.18.jpg",
       "duvet.18b.jpg",
       "duvet.18c.jpg",
-      "duvet.18d.jpg"
+      "duvet.18d.jpg",
+      "duvet.18e.jpg",
+      "duvet.18f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 24,
@@ -402,10 +471,13 @@
       "duvet.19.jpg",
       "duvet.19b.jpg",
       "duvet.19c.jpg",
-      "duvet.19d.jpg"
+      "duvet.19d.jpg",
+      "duvet.19e.jpg",
+      "duvet.19f.jpg"
     ],
     "badge": "HOTEL",
-    "badgeType": "hotel"
+    "badgeType": "hotel",
+    "inStock": true
   },
   {
     "id": 25,
@@ -419,10 +491,13 @@
       "duvet.20.jpg",
       "duvet.20b.jpg",
       "duvet.20c.jpg",
-      "duvet.20d.jpg"
+      "duvet.20d.jpg",
+      "duvet.20e.jpg",
+      "duvet.20f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 26,
@@ -436,10 +511,13 @@
       "duvet.21.jpg",
       "duvet.21b.jpg",
       "duvet.21c.jpg",
-      "duvet.21d.jpg"
+      "duvet.21d.jpg",
+      "duvet.21e.jpg",
+      "duvet.21f.jpg"
     ],
     "badge": "HOTEL",
-    "badgeType": "hotel"
+    "badgeType": "hotel",
+    "inStock": true
   },
   {
     "id": 27,
@@ -453,10 +531,13 @@
       "kitchenware.1.jpg",
       "kitchenware.1b.jpg",
       "kitchenware.1c.jpg",
-      "kitchenware.1d.jpg"
+      "kitchenware.1d.jpg",
+      "kitchenware.1e.jpg",
+      "kitchenware.1f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 28,
@@ -470,10 +551,13 @@
       "kitchenware.2.jpg",
       "kitchenware.2b.jpg",
       "kitchenware.2c.jpg",
-      "kitchenware.2d.jpg"
+      "kitchenware.2d.jpg",
+      "kitchenware.2e.jpg",
+      "kitchenware.2f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 29,
@@ -487,10 +571,13 @@
       "kitchenware.3.jpg",
       "kitchenware.3b.jpg",
       "kitchenware.3c.jpg",
-      "kitchenware.3d.jpg"
+      "kitchenware.3d.jpg",
+      "kitchenware.3e.jpg",
+      "kitchenware.3f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 30,
@@ -504,10 +591,13 @@
       "kitchenware.4.jpg",
       "kitchenware.4b.jpg",
       "kitchenware.4c.jpg",
-      "kitchenware.4d.jpg"
+      "kitchenware.4d.jpg",
+      "kitchenware.4e.jpg",
+      "kitchenware.4f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 31,
@@ -521,10 +611,13 @@
       "kitchenware.5.jpg",
       "kitchenware.5b.jpg",
       "kitchenware.5c.jpg",
-      "kitchenware.5d.jpg"
+      "kitchenware.5d.jpg",
+      "kitchenware.5e.jpg",
+      "kitchenware.5f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 32,
@@ -538,10 +631,13 @@
       "kitchenware.6.jpg",
       "kitchenware.6b.jpg",
       "kitchenware.6c.jpg",
-      "kitchenware.6d.jpg"
+      "kitchenware.6d.jpg",
+      "kitchenware.6e.jpg",
+      "kitchenware.6f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 33,
@@ -555,10 +651,13 @@
       "kitchenware.7.jpg",
       "kitchenware.7b.jpg",
       "kitchenware.7c.jpg",
-      "kitchenware.7d.jpg"
+      "kitchenware.7d.jpg",
+      "kitchenware.7e.jpg",
+      "kitchenware.7f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 34,
@@ -572,10 +671,13 @@
       "kitchenware.8.jpg",
       "kitchenware.8b.jpg",
       "kitchenware.8c.jpg",
-      "kitchenware.8d.jpg"
+      "kitchenware.8d.jpg",
+      "kitchenware.8e.jpg",
+      "kitchenware.8f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 35,
@@ -589,10 +691,13 @@
       "kitchenware.9.jpg",
       "kitchenware.9b.jpg",
       "kitchenware.9c.jpg",
-      "kitchenware.9d.jpg"
+      "kitchenware.9d.jpg",
+      "kitchenware.9e.jpg",
+      "kitchenware.9f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 36,
@@ -606,10 +711,13 @@
       "kitchenware.10.jpg",
       "kitchenware.10b.jpg",
       "kitchenware.10c.jpg",
-      "kitchenware.10d.jpg"
+      "kitchenware.10d.jpg",
+      "kitchenware.10e.jpg",
+      "kitchenware.10f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 37,
@@ -623,10 +731,13 @@
       "kitchenware.11.jpg",
       "kitchenware.11b.jpg",
       "kitchenware.11c.jpg",
-      "kitchenware.11d.jpg"
+      "kitchenware.11d.jpg",
+      "kitchenware.11e.jpg",
+      "kitchenware.11f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 38,
@@ -640,10 +751,13 @@
       "kitchenware.12.jpg",
       "kitchenware.12b.jpg",
       "kitchenware.12c.jpg",
-      "kitchenware.12d.jpg"
+      "kitchenware.12d.jpg",
+      "kitchenware.12e.jpg",
+      "kitchenware.12f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 39,
@@ -657,10 +771,13 @@
       "kitchenware.13.jpg",
       "kitchenware.13b.jpg",
       "kitchenware.13c.jpg",
-      "kitchenware.13d.jpg"
+      "kitchenware.13d.jpg",
+      "kitchenware.13e.jpg",
+      "kitchenware.13f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 40,
@@ -674,10 +791,13 @@
       "kitchenware.14.jpg",
       "kitchenware.14b.jpg",
       "kitchenware.14c.jpg",
-      "kitchenware.14d.jpg"
+      "kitchenware.14d.jpg",
+      "kitchenware.14e.jpg",
+      "kitchenware.14f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 41,
@@ -691,10 +811,13 @@
       "kitchenware.15.jpg",
       "kitchenware.15b.jpg",
       "kitchenware.15c.jpg",
-      "kitchenware.15d.jpg"
+      "kitchenware.15d.jpg",
+      "kitchenware.15e.jpg",
+      "kitchenware.15f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 42,
@@ -708,10 +831,13 @@
       "kitchenware.16.jpg",
       "kitchenware.16b.jpg",
       "kitchenware.16c.jpg",
-      "kitchenware.16d.jpg"
+      "kitchenware.16d.jpg",
+      "kitchenware.16e.jpg",
+      "kitchenware.16f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 43,
@@ -725,10 +851,13 @@
       "kitchenware.17.jpg",
       "kitchenware.17b.jpg",
       "kitchenware.17c.jpg",
-      "kitchenware.17d.jpg"
+      "kitchenware.17d.jpg",
+      "kitchenware.17e.jpg",
+      "kitchenware.17f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 44,
@@ -742,10 +871,13 @@
       "kitchenware.18.jpg",
       "kitchenware.18b.jpg",
       "kitchenware.18c.jpg",
-      "kitchenware.18d.jpg"
+      "kitchenware.18d.jpg",
+      "kitchenware.18e.jpg",
+      "kitchenware.18f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 45,
@@ -759,10 +891,13 @@
       "kitchenware.19.jpg",
       "kitchenware.19b.jpg",
       "kitchenware.19c.jpg",
-      "kitchenware.19d.jpg"
+      "kitchenware.19d.jpg",
+      "kitchenware.19e.jpg",
+      "kitchenware.19f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 46,
@@ -776,10 +911,13 @@
       "kitchenware.20.jpg",
       "kitchenware.20b.jpg",
       "kitchenware.20c.jpg",
-      "kitchenware.20d.jpg"
+      "kitchenware.20d.jpg",
+      "kitchenware.20e.jpg",
+      "kitchenware.20f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 47,
@@ -793,10 +931,13 @@
       "kitchenware.21.jpg",
       "kitchenware.21b.jpg",
       "kitchenware.21c.jpg",
-      "kitchenware.21d.jpg"
+      "kitchenware.21d.jpg",
+      "kitchenware.21e.jpg",
+      "kitchenware.21f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 48,
@@ -810,10 +951,13 @@
       "kitchenware.22.jpg",
       "kitchenware.22b.jpg",
       "kitchenware.22c.jpg",
-      "kitchenware.22d.jpg"
+      "kitchenware.22d.jpg",
+      "kitchenware.22e.jpg",
+      "kitchenware.22f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 49,
@@ -827,10 +971,13 @@
       "kitchenware.23.jpg",
       "kitchenware.23b.jpg",
       "kitchenware.23c.jpg",
-      "kitchenware.23d.jpg"
+      "kitchenware.23d.jpg",
+      "kitchenware.23e.jpg",
+      "kitchenware.23f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 50,
@@ -844,10 +991,13 @@
       "kitchenware.24.jpg",
       "kitchenware.24b.jpg",
       "kitchenware.24c.jpg",
-      "kitchenware.24d.jpg"
+      "kitchenware.24d.jpg",
+      "kitchenware.24e.jpg",
+      "kitchenware.24f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 51,
@@ -861,10 +1011,13 @@
       "carpet.1.jpg",
       "carpet.1b.jpg",
       "carpet.1c.jpg",
-      "carpet.1d.jpg"
+      "carpet.1d.jpg",
+      "carpet.1e.jpg",
+      "carpet.1f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 52,
@@ -878,10 +1031,13 @@
       "carpet.2.jpg",
       "carpet.2b.jpg",
       "carpet.2c.jpg",
-      "carpet.2d.jpg"
+      "carpet.2d.jpg",
+      "carpet.2e.jpg",
+      "carpet.2f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 53,
@@ -895,10 +1051,13 @@
       "carpet.3.jpg",
       "carpet.3b.jpg",
       "carpet.3c.jpg",
-      "carpet.3d.jpg"
+      "carpet.3d.jpg",
+      "carpet.3e.jpg",
+      "carpet.3f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 54,
@@ -912,10 +1071,13 @@
       "carpet.4.jpg",
       "carpet.4b.jpg",
       "carpet.4c.jpg",
-      "carpet.4d.jpg"
+      "carpet.4d.jpg",
+      "carpet.4e.jpg",
+      "carpet.4f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 55,
@@ -929,10 +1091,13 @@
       "carpet.5.jpg",
       "carpet.5b.jpg",
       "carpet.5c.jpg",
-      "carpet.5d.jpg"
+      "carpet.5d.jpg",
+      "carpet.5e.jpg",
+      "carpet.5f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 56,
@@ -946,10 +1111,13 @@
       "carpet.6.jpg",
       "carpet.6b.jpg",
       "carpet.6c.jpg",
-      "carpet.6d.jpg"
+      "carpet.6d.jpg",
+      "carpet.6e.jpg",
+      "carpet.6f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 57,
@@ -963,10 +1131,13 @@
       "carpet.7.jpg",
       "carpet.7b.jpg",
       "carpet.7c.jpg",
-      "carpet.7d.jpg"
+      "carpet.7d.jpg",
+      "carpet.7e.jpg",
+      "carpet.7f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 58,
@@ -980,10 +1151,13 @@
       "carpet.8.jpg",
       "carpet.8b.jpg",
       "carpet.8c.jpg",
-      "carpet.8d.jpg"
+      "carpet.8d.jpg",
+      "carpet.8e.jpg",
+      "carpet.8f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 59,
@@ -997,10 +1171,13 @@
       "carpet.9.jpg",
       "carpet.9b.jpg",
       "carpet.9c.jpg",
-      "carpet.9d.jpg"
+      "carpet.9d.jpg",
+      "carpet.9e.jpg",
+      "carpet.9f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 60,
@@ -1014,10 +1191,13 @@
       "seatcover.1.jpg",
       "seatcover.1b.jpg",
       "seatcover.1c.jpg",
-      "seatcover.1d.jpg"
+      "seatcover.1d.jpg",
+      "seatcover.1e.jpg",
+      "seatcover.1f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 61,
@@ -1031,16 +1211,19 @@
       "seatcover.2.jpg",
       "seatcover.2b.jpg",
       "seatcover.2c.jpg",
-      "seatcover.2d.jpg"
+      "seatcover.2d.jpg",
+      "seatcover.2e.jpg",
+      "seatcover.2f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 131,
     "cat": "seatcovers",
     "name": "5 Seater Seat Cover Set 3-1-1",
-    "note": "Full 5 seater set — Stretchable material — Multiple colours",
+    "note": "Full 5 seater set \u2014 Stretchable material \u2014 Multiple colours",
     "price": 7500,
     "old": 0,
     "img": "seatcover.3.jpg",
@@ -1048,16 +1231,19 @@
       "seatcover.3.jpg",
       "seatcover.3b.jpg",
       "seatcover.3c.jpg",
-      "seatcover.3d.jpg"
+      "seatcover.3d.jpg",
+      "seatcover.3e.jpg",
+      "seatcover.3f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 132,
     "cat": "seatcovers",
     "name": "5 Seater Seat Cover Set 3-2",
-    "note": "Full 5 seater set — Stretchable material — Multiple colours",
+    "note": "Full 5 seater set \u2014 Stretchable material \u2014 Multiple colours",
     "price": 6300,
     "old": 0,
     "img": "seatcover.4.jpg",
@@ -1065,58 +1251,73 @@
       "seatcover.4.jpg",
       "seatcover.4b.jpg",
       "seatcover.4c.jpg",
-      "seatcover.4d.jpg"
+      "seatcover.4d.jpg",
+      "seatcover.4e.jpg",
+      "seatcover.4f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 133,
     "cat": "seatcovers",
     "name": "3 Seater Seat Cover",
-    "note": "Single 3 seater cover — Multiple colours available",
+    "note": "Single 3 seater cover \u2014 Multiple colours available",
     "price": 3300,
     "old": 0,
     "img": "seatcover.5.jpg",
     "imgs": [
       "seatcover.5.jpg",
       "seatcover.5b.jpg",
-      "seatcover.5c.jpg"
+      "seatcover.5c.jpg",
+      "seatcover.5d.jpg",
+      "seatcover.5e.jpg",
+      "seatcover.5f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 134,
     "cat": "seatcovers",
     "name": "2 Seater Seat Cover",
-    "note": "Single 2 seater cover — Multiple colours available",
+    "note": "Single 2 seater cover \u2014 Multiple colours available",
     "price": 3000,
     "old": 0,
     "img": "seatcover.6.jpg",
     "imgs": [
       "seatcover.6.jpg",
       "seatcover.6b.jpg",
-      "seatcover.6c.jpg"
+      "seatcover.6c.jpg",
+      "seatcover.6d.jpg",
+      "seatcover.6e.jpg",
+      "seatcover.6f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 135,
     "cat": "seatcovers",
     "name": "1 Seater Seat Cover",
-    "note": "Single 1 seater cover — Multiple colours available",
+    "note": "Single 1 seater cover \u2014 Multiple colours available",
     "price": 2500,
     "old": 0,
     "img": "seatcover.7.jpg",
     "imgs": [
       "seatcover.7.jpg",
       "seatcover.7b.jpg",
-      "seatcover.7c.jpg"
+      "seatcover.7c.jpg",
+      "seatcover.7d.jpg",
+      "seatcover.7e.jpg",
+      "seatcover.7f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 62,
@@ -1130,10 +1331,13 @@
       "bath.1.jpg",
       "bath.1b.jpg",
       "bath.1c.jpg",
-      "bath.1d.jpg"
+      "bath.1d.jpg",
+      "bath.1e.jpg",
+      "bath.1f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 63,
@@ -1147,10 +1351,13 @@
       "bath.2.jpg",
       "bath.2b.jpg",
       "bath.2c.jpg",
-      "bath.2d.jpg"
+      "bath.2d.jpg",
+      "bath.2e.jpg",
+      "bath.2f.jpg"
     ],
     "badge": "HOTEL",
-    "badgeType": "hotel"
+    "badgeType": "hotel",
+    "inStock": true
   },
   {
     "id": 64,
@@ -1164,10 +1371,13 @@
       "bath.3.jpg",
       "bath.3b.jpg",
       "bath.3c.jpg",
-      "bath.3d.jpg"
+      "bath.3d.jpg",
+      "bath.3e.jpg",
+      "bath.3f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 65,
@@ -1181,10 +1391,13 @@
       "bath.4.jpg",
       "bath.4b.jpg",
       "bath.4c.jpg",
-      "bath.4d.jpg"
+      "bath.4d.jpg",
+      "bath.4e.jpg",
+      "bath.4f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 66,
@@ -1198,10 +1411,13 @@
       "bath.5.jpg",
       "bath.5b.jpg",
       "bath.5c.jpg",
-      "bath.5d.jpg"
+      "bath.5d.jpg",
+      "bath.5e.jpg",
+      "bath.5f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 67,
@@ -1215,10 +1431,13 @@
       "bath.6.jpg",
       "bath.6b.jpg",
       "bath.6c.jpg",
-      "bath.6d.jpg"
+      "bath.6d.jpg",
+      "bath.6e.jpg",
+      "bath.6f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 68,
@@ -1232,10 +1451,13 @@
       "bath.7.jpg",
       "bath.7b.jpg",
       "bath.7c.jpg",
-      "bath.7d.jpg"
+      "bath.7d.jpg",
+      "bath.7e.jpg",
+      "bath.7f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 69,
@@ -1249,10 +1471,13 @@
       "bath.8.jpg",
       "bath.8b.jpg",
       "bath.8c.jpg",
-      "bath.8d.jpg"
+      "bath.8d.jpg",
+      "bath.8e.jpg",
+      "bath.8f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 70,
@@ -1266,10 +1491,13 @@
       "furniture.1.jpg",
       "furniture.1b.jpg",
       "furniture.1c.jpg",
-      "furniture.1d.jpg"
+      "furniture.1d.jpg",
+      "furniture.1e.jpg",
+      "furniture.1f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 71,
@@ -1283,10 +1511,13 @@
       "furniture.2.jpg",
       "furniture.2b.jpg",
       "furniture.2c.jpg",
-      "furniture.2d.jpg"
+      "furniture.2d.jpg",
+      "furniture.2e.jpg",
+      "furniture.2f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 72,
@@ -1300,10 +1531,13 @@
       "furniture.3.jpg",
       "furniture.3b.jpg",
       "furniture.3c.jpg",
-      "furniture.3d.jpg"
+      "furniture.3d.jpg",
+      "furniture.3e.jpg",
+      "furniture.3f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 73,
@@ -1317,10 +1551,13 @@
       "furniture.4.jpg",
       "furniture.4b.jpg",
       "furniture.4c.jpg",
-      "furniture.4d.jpg"
+      "furniture.4d.jpg",
+      "furniture.4e.jpg",
+      "furniture.4f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 74,
@@ -1334,10 +1571,13 @@
       "furniture.5.jpg",
       "furniture.5b.jpg",
       "furniture.5c.jpg",
-      "furniture.5d.jpg"
+      "furniture.5d.jpg",
+      "furniture.5e.jpg",
+      "furniture.5f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 75,
@@ -1351,10 +1591,13 @@
       "furniture.6.jpg",
       "furniture.6b.jpg",
       "furniture.6c.jpg",
-      "furniture.6d.jpg"
+      "furniture.6d.jpg",
+      "furniture.6e.jpg",
+      "furniture.6f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 77,
@@ -1368,10 +1611,13 @@
       "furniture.8.jpg",
       "furniture.8b.jpg",
       "furniture.8c.jpg",
-      "furniture.8d.jpg"
+      "furniture.8d.jpg",
+      "furniture.8e.jpg",
+      "furniture.8f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 78,
@@ -1385,10 +1631,13 @@
       "furniture.9.jpg",
       "furniture.9b.jpg",
       "furniture.9c.jpg",
-      "furniture.9d.jpg"
+      "furniture.9d.jpg",
+      "furniture.9e.jpg",
+      "furniture.9f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 79,
@@ -1402,10 +1651,13 @@
       "furniture.10.jpg",
       "furniture.10b.jpg",
       "furniture.10c.jpg",
-      "furniture.10d.jpg"
+      "furniture.10d.jpg",
+      "furniture.10e.jpg",
+      "furniture.10f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 80,
@@ -1419,10 +1671,13 @@
       "furniture.11.jpg",
       "furniture.11b.jpg",
       "furniture.11c.jpg",
-      "furniture.11d.jpg"
+      "furniture.11d.jpg",
+      "furniture.11e.jpg",
+      "furniture.11f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 81,
@@ -1436,10 +1691,13 @@
       "furniture.12.jpg",
       "furniture.12b.jpg",
       "furniture.12c.jpg",
-      "furniture.12d.jpg"
+      "furniture.12d.jpg",
+      "furniture.12e.jpg",
+      "furniture.12f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 82,
@@ -1453,10 +1711,13 @@
       "furniture.13.jpg",
       "furniture.13b.jpg",
       "furniture.13c.jpg",
-      "furniture.13d.jpg"
+      "furniture.13d.jpg",
+      "furniture.13e.jpg",
+      "furniture.13f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 83,
@@ -1470,10 +1731,13 @@
       "furniture.14.jpg",
       "furniture.14b.jpg",
       "furniture.14c.jpg",
-      "furniture.14d.jpg"
+      "furniture.14d.jpg",
+      "furniture.14e.jpg",
+      "furniture.14f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 84,
@@ -1487,10 +1751,13 @@
       "furniture.15.jpg",
       "furniture.15b.jpg",
       "furniture.15c.jpg",
-      "furniture.15d.jpg"
+      "furniture.15d.jpg",
+      "furniture.15e.jpg",
+      "furniture.15f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 85,
@@ -1504,10 +1771,13 @@
       "furniture.16.jpg",
       "furniture.16b.jpg",
       "furniture.16c.jpg",
-      "furniture.16d.jpg"
+      "furniture.16d.jpg",
+      "furniture.16e.jpg",
+      "furniture.16f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 86,
@@ -1521,10 +1791,13 @@
       "furniture.17.jpg",
       "furniture.17b.jpg",
       "furniture.17c.jpg",
-      "furniture.17d.jpg"
+      "furniture.17d.jpg",
+      "furniture.17e.jpg",
+      "furniture.17f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 87,
@@ -1538,10 +1811,13 @@
       "furniture.18.jpg",
       "furniture.18b.jpg",
       "furniture.18c.jpg",
-      "furniture.18d.jpg"
+      "furniture.18d.jpg",
+      "furniture.18e.jpg",
+      "furniture.18f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 88,
@@ -1555,10 +1831,13 @@
       "furniture.19.jpg",
       "furniture.19b.jpg",
       "furniture.19c.jpg",
-      "furniture.19d.jpg"
+      "furniture.19d.jpg",
+      "furniture.19e.jpg",
+      "furniture.19f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 89,
@@ -1572,10 +1851,13 @@
       "furniture.20.jpg",
       "furniture.20b.jpg",
       "furniture.20c.jpg",
-      "furniture.20d.jpg"
+      "furniture.20d.jpg",
+      "furniture.20e.jpg",
+      "furniture.20f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 90,
@@ -1589,10 +1871,13 @@
       "furniture.21.jpg",
       "furniture.21b.jpg",
       "furniture.21c.jpg",
-      "furniture.21d.jpg"
+      "furniture.21d.jpg",
+      "furniture.21e.jpg",
+      "furniture.21f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 91,
@@ -1606,10 +1891,13 @@
       "furniture.22.jpg",
       "furniture.22b.jpg",
       "furniture.22c.jpg",
-      "furniture.22d.jpg"
+      "furniture.22d.jpg",
+      "furniture.22e.jpg",
+      "furniture.22f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 92,
@@ -1623,10 +1911,13 @@
       "kid.1.jpg",
       "kid.1b.jpg",
       "kid.1c.jpg",
-      "kid.1d.jpg"
+      "kid.1d.jpg",
+      "kid.1e.jpg",
+      "kid.1f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 93,
@@ -1640,10 +1931,13 @@
       "kid.2.jpg",
       "kid.2b.jpg",
       "kid.2c.jpg",
-      "kid.2d.jpg"
+      "kid.2d.jpg",
+      "kid.2e.jpg",
+      "kid.2f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 94,
@@ -1657,10 +1951,13 @@
       "kid.3.jpg",
       "kid.3b.jpg",
       "kid.3c.jpg",
-      "kid.3d.jpg"
+      "kid.3d.jpg",
+      "kid.3e.jpg",
+      "kid.3f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 95,
@@ -1674,16 +1971,19 @@
       "kid.4.jpg",
       "kid.4b.jpg",
       "kid.4c.jpg",
-      "kid.4d.jpg"
+      "kid.4d.jpg",
+      "kid.4e.jpg",
+      "kid.4f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 97,
     "cat": "electronics",
     "name": "Q7S Smart WiFi Camera V380",
-    "note": "Pan & Tilt 355° — Night Vision — Motion Detection — Two-Way Audio",
+    "note": "Pan & Tilt 355\u00b0 \u2014 Night Vision \u2014 Motion Detection \u2014 Two-Way Audio",
     "price": 2800,
     "old": 0,
     "img": "electronics.1.jpg",
@@ -1691,16 +1991,19 @@
       "electronics.1.jpg",
       "electronics.1b.jpg",
       "electronics.1c.jpg",
-      "electronics.1d.jpg"
+      "electronics.1d.jpg",
+      "electronics.1e.jpg",
+      "electronics.1f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 98,
     "cat": "electronics",
     "name": "Cute Cat Kids Watch Combo",
-    "note": "Watch + Wireless Earbuds + Cute Case — Perfect gift for kids",
+    "note": "Watch + Wireless Earbuds + Cute Case \u2014 Perfect gift for kids",
     "price": 1350,
     "old": 0,
     "img": "electronics.2.jpg",
@@ -1708,16 +2011,19 @@
       "electronics.2.jpg",
       "electronics.2b.jpg",
       "electronics.2c.jpg",
-      "electronics.2d.jpg"
+      "electronics.2d.jpg",
+      "electronics.2e.jpg",
+      "electronics.2f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 99,
     "cat": "travel",
     "name": "Neck Pillow with Phone Holder Pocket",
-    "note": "Built-in side pocket for your phone — Travel essential",
+    "note": "Built-in side pocket for your phone \u2014 Travel essential",
     "price": 950,
     "old": 0,
     "img": "electronics.3.jpg",
@@ -1725,16 +2031,19 @@
       "electronics.3.jpg",
       "electronics.3b.jpg",
       "electronics.3c.jpg",
-      "electronics.3d.jpg"
+      "electronics.3d.jpg",
+      "electronics.3e.jpg",
+      "electronics.3f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 100,
     "cat": "cookware",
     "name": "Edenberg 12pcs Stainless Cookware",
-    "note": "Capacities: 2.1L 2.9L 3.9L 5.1L 6.5L 8.2L — Code 4037",
+    "note": "Capacities: 2.1L 2.9L 3.9L 5.1L 6.5L 8.2L \u2014 Code 4037",
     "price": 9500,
     "old": 0,
     "img": "cookware.1.jpg",
@@ -1742,16 +2051,19 @@
       "cookware.1.jpg",
       "cookware.1b.jpg",
       "cookware.1c.jpg",
-      "cookware.1d.jpg"
+      "cookware.1d.jpg",
+      "cookware.1e.jpg",
+      "cookware.1f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 101,
     "cat": "cookware",
     "name": "Nunix 50x55 Standing Cooker 3+1",
-    "note": "3 Gas + 1 Electric burner — New model with gas oven",
+    "note": "3 Gas + 1 Electric burner \u2014 New model with gas oven",
     "price": 18999,
     "old": 0,
     "img": "cookware.2.jpg",
@@ -1759,16 +2071,19 @@
       "cookware.2.jpg",
       "cookware.2b.jpg",
       "cookware.2c.jpg",
-      "cookware.2d.jpg"
+      "cookware.2d.jpg",
+      "cookware.2e.jpg",
+      "cookware.2f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 102,
     "cat": "cookware",
     "name": "Nunix Table Top Cooker 3+1",
-    "note": "3 Gas + 1 Electric burner — Compact tabletop design",
+    "note": "3 Gas + 1 Electric burner \u2014 Compact tabletop design",
     "price": 6000,
     "old": 0,
     "img": "cookware.3.jpg",
@@ -1776,16 +2091,19 @@
       "cookware.3.jpg",
       "cookware.3b.jpg",
       "cookware.3c.jpg",
-      "cookware.3d.jpg"
+      "cookware.3d.jpg",
+      "cookware.3e.jpg",
+      "cookware.3f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 103,
     "cat": "cookware",
     "name": "Nunix Full Gas Standing Cooker",
-    "note": "Full gas cooker with shelf — Ideal for home and kitchen",
+    "note": "Full gas cooker with shelf \u2014 Ideal for home and kitchen",
     "price": 7900,
     "old": 0,
     "img": "cookware.4.jpg",
@@ -1793,16 +2111,19 @@
       "cookware.4.jpg",
       "cookware.4b.jpg",
       "cookware.4c.jpg",
-      "cookware.4d.jpg"
+      "cookware.4d.jpg",
+      "cookware.4e.jpg",
+      "cookware.4f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 104,
     "cat": "travel",
     "name": "Unbreakable PP 3-in-1 Suitcase Set",
-    "note": "3 sizes — 360° wheels — Double zip — Scratch resistant — 4 colours",
+    "note": "3 sizes \u2014 360\u00b0 wheels \u2014 Double zip \u2014 Scratch resistant \u2014 4 colours",
     "price": 7999,
     "old": 0,
     "img": "travel.1.jpg",
@@ -1810,16 +2131,19 @@
       "travel.1.jpg",
       "travel.1b.jpg",
       "travel.1c.jpg",
-      "travel.1d.jpg"
+      "travel.1d.jpg",
+      "travel.1e.jpg",
+      "travel.1f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 105,
     "cat": "travel",
     "name": "Waterproof Outdoor Picnic Mat",
-    "note": "150x200cm — Available in 4 colours — Foldable and portable",
+    "note": "150x200cm \u2014 Available in 4 colours \u2014 Foldable and portable",
     "price": 750,
     "old": 0,
     "img": "travel.2.jpg",
@@ -1827,32 +2151,39 @@
       "travel.2.jpg",
       "travel.2b.jpg",
       "travel.2c.jpg",
-      "travel.2d.jpg"
+      "travel.2d.jpg",
+      "travel.2e.jpg",
+      "travel.2f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 106,
     "cat": "decor",
     "name": "Plain Coral Fleece Throw Blanket",
-    "note": "Sizes 4/5, 5/6, 6/6 — Soft and cosy — Multiple colours",
+    "note": "Sizes 4/5, 5/6, 6/6 \u2014 Soft and cosy \u2014 Multiple colours",
     "price": 999,
     "old": 0,
     "img": "decor.1.jpg",
     "imgs": [
       "decor.1.jpg",
       "decor.1b.jpg",
-      "decor.1c.jpg"
+      "decor.1c.jpg",
+      "decor.1d.jpg",
+      "decor.1e.jpg",
+      "decor.1f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 107,
     "cat": "decor",
     "name": "3pcs 3D Non-Slip Toilet Mat Set",
-    "note": "Heavy grip rubber underside — Size 45x75cm + 2pcs 40x45cm",
+    "note": "Heavy grip rubber underside \u2014 Size 45x75cm + 2pcs 40x45cm",
     "price": 850,
     "old": 0,
     "img": "decor.2.jpg",
@@ -1860,31 +2191,39 @@
       "decor.2.jpg",
       "decor.2b.jpg",
       "decor.2c.jpg",
-      "decor.2d.jpg"
+      "decor.2d.jpg",
+      "decor.2e.jpg",
+      "decor.2f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 108,
     "cat": "decor",
     "name": "3-Layer Oval Trolley Rack Table",
-    "note": "60x30x67cm — Black or white marble — 2 round top shelves",
+    "note": "60x30x67cm \u2014 Black or white marble \u2014 2 round top shelves",
     "price": 2999,
     "old": 0,
     "img": "decor.3.jpg",
     "imgs": [
       "decor.3.jpg",
-      "decor.3b.jpg"
+      "decor.3b.jpg",
+      "decor.3c.jpg",
+      "decor.3d.jpg",
+      "decor.3e.jpg",
+      "decor.3f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 109,
     "cat": "decor",
     "name": "Wave Pillow Case",
-    "note": "Size 45x45cm — Case only",
+    "note": "Size 45x45cm \u2014 Case only",
     "price": 200,
     "old": 0,
     "img": "decor.4.jpg",
@@ -1892,16 +2231,19 @@
       "decor.4.jpg",
       "decor.4b.jpg",
       "decor.4c.jpg",
-      "decor.4d.jpg"
+      "decor.4d.jpg",
+      "decor.4e.jpg",
+      "decor.4f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 110,
     "cat": "decor",
     "name": "Wave Pillow Insert",
-    "note": "Size 45x45cm — Insert only",
+    "note": "Size 45x45cm \u2014 Insert only",
     "price": 200,
     "old": 0,
     "img": "decor.4b.jpg",
@@ -1909,16 +2251,19 @@
       "decor.4b.jpg",
       "decor.4bb.jpg",
       "decor.4bc.jpg",
-      "decor.4bd.jpg"
+      "decor.4bd.jpg",
+      "decor.4be.jpg",
+      "decor.4bf.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 111,
     "cat": "decor",
     "name": "Wave Pillow + Case Set",
-    "note": "Size 45x45cm — Pillow and case included",
+    "note": "Size 45x45cm \u2014 Pillow and case included",
     "price": 400,
     "old": 0,
     "img": "decor.4c.jpg",
@@ -1926,16 +2271,19 @@
       "decor.4c.jpg",
       "decor.4cb.jpg",
       "decor.4cc.jpg",
-      "decor.4cd.jpg"
+      "decor.4cd.jpg",
+      "decor.4ce.jpg",
+      "decor.4cf.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 112,
     "cat": "decor",
     "name": "Knot Pillow",
-    "note": "Size 22cm width — Decorative knot design",
+    "note": "Size 22cm width \u2014 Decorative knot design",
     "price": 850,
     "old": 0,
     "img": "decor.5.jpg",
@@ -1943,33 +2291,39 @@
       "decor.5.jpg",
       "decor.5b.jpg",
       "decor.5c.jpg",
-      "decor.5d.jpg"
+      "decor.5d.jpg",
+      "decor.5e.jpg",
+      "decor.5f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 113,
     "cat": "decor",
     "name": "Tufted Bohemian Throw Pillow Cover",
-    "note": "Square 45x45cm or Lumbar 30x50cm — @750 each",
+    "note": "Square 45x45cm or Lumbar 30x50cm \u2014 @750 each",
     "price": 750,
-    "old": 650,
+    "old": 0,
     "img": "decor.6.jpg",
     "imgs": [
       "decor.6.jpg",
       "decor.6b.jpg",
       "decor.6c.jpg",
-      "decor.6d.jpg"
+      "decor.6d.jpg",
+      "decor.6e.jpg",
+      "decor.6f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 114,
     "cat": "carpets",
     "name": "Heavy Plastic Doormat",
-    "note": "Size 50x80cm — Durable heavy duty",
+    "note": "Size 50x80cm \u2014 Durable heavy duty",
     "price": 1200,
     "old": 0,
     "img": "carpet.10.jpg",
@@ -1977,16 +2331,19 @@
       "carpet.10.jpg",
       "carpet.10b.jpg",
       "carpet.10c.jpg",
-      "carpet.10d.jpg"
+      "carpet.10d.jpg",
+      "carpet.10e.jpg",
+      "carpet.10f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 115,
     "cat": "carpets",
     "name": "Turkish Doormat",
-    "note": "Size 50x80cm — Premium Turkish design",
+    "note": "Size 50x80cm \u2014 Premium Turkish design",
     "price": 1300,
     "old": 0,
     "img": "carpet.11.jpg",
@@ -1994,10 +2351,13 @@
       "carpet.11.jpg",
       "carpet.11b.jpg",
       "carpet.11c.jpg",
-      "carpet.11d.jpg"
+      "carpet.11d.jpg",
+      "carpet.11e.jpg",
+      "carpet.11f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 116,
@@ -2011,16 +2371,19 @@
       "carpet.12.jpg",
       "carpet.12b.jpg",
       "carpet.12c.jpg",
-      "carpet.12d.jpg"
+      "carpet.12d.jpg",
+      "carpet.12e.jpg",
+      "carpet.12f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 117,
     "cat": "carpets",
     "name": "3D Smooth Doormat",
-    "note": "Size 50x80cm — Stylish 3D design",
+    "note": "Size 50x80cm \u2014 Stylish 3D design",
     "price": 600,
     "old": 0,
     "img": "carpet.13.jpg",
@@ -2028,16 +2391,19 @@
       "carpet.13.jpg",
       "carpet.13b.jpg",
       "carpet.13c.jpg",
-      "carpet.13d.jpg"
+      "carpet.13d.jpg",
+      "carpet.13e.jpg",
+      "carpet.13f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 118,
     "cat": "carpets",
     "name": "Rubber Absorbent Mat",
-    "note": "Size 50x80cm — Non-slip rubber base",
+    "note": "Size 50x80cm \u2014 Non-slip rubber base",
     "price": 850,
     "old": 0,
     "img": "carpet.14.jpg",
@@ -2045,10 +2411,13 @@
       "carpet.14.jpg",
       "carpet.14b.jpg",
       "carpet.14c.jpg",
-      "carpet.14d.jpg"
+      "carpet.14d.jpg",
+      "carpet.14e.jpg",
+      "carpet.14f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 119,
@@ -2062,10 +2431,13 @@
       "carpet.15.jpg",
       "carpet.15b.jpg",
       "carpet.15c.jpg",
-      "carpet.15d.jpg"
+      "carpet.15d.jpg",
+      "carpet.15e.jpg",
+      "carpet.15f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 120,
@@ -2079,16 +2451,19 @@
       "carpet.16.jpg",
       "carpet.16b.jpg",
       "carpet.16c.jpg",
-      "carpet.16d.jpg"
+      "carpet.16d.jpg",
+      "carpet.16e.jpg",
+      "carpet.16f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 121,
     "cat": "carpets",
     "name": "Heavy Large Plastic Outdoor Doormat",
-    "note": "Size 60x90cm — Extra large heavy duty",
+    "note": "Size 60x90cm \u2014 Extra large heavy duty",
     "price": 1500,
     "old": 0,
     "img": "carpet.17.jpg",
@@ -2096,16 +2471,19 @@
       "carpet.17.jpg",
       "carpet.17b.jpg",
       "carpet.17c.jpg",
-      "carpet.17d.jpg"
+      "carpet.17d.jpg",
+      "carpet.17e.jpg",
+      "carpet.17f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
-    "note": "Size 4x6 and 5x6 — 1 fluffy fleece duvet",
+    "note": "Size 4x6 and 5x6 \u2014 1 fluffy fleece duvet",
     "price": 2999,
     "old": 0,
     "img": "duvet.23.jpg",
@@ -2113,16 +2491,19 @@
       "duvet.23.jpg",
       "duvet.23b.jpg",
       "duvet.23c.jpg",
-      "duvet.23d.jpg"
+      "duvet.23d.jpg",
+      "duvet.23e.jpg",
+      "duvet.23f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 124,
     "cat": "duvets",
     "name": "6pc Luxury Velvet Plush Duvet Set",
-    "note": "Size 6x6 and 6x7 — 1 duvet, 1 bedsheet, 4 pillowcases",
+    "note": "Size 6x6 and 6x7 \u2014 1 duvet, 1 bedsheet, 4 pillowcases",
     "price": 4300,
     "old": 0,
     "img": "duvet.24.jpg",
@@ -2130,16 +2511,19 @@
       "duvet.24.jpg",
       "duvet.24b.jpg",
       "duvet.24c.jpg",
-      "duvet.24d.jpg"
+      "duvet.24d.jpg",
+      "duvet.24e.jpg",
+      "duvet.24f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 125,
     "cat": "duvets",
     "name": "Fleece Blanket",
-    "note": "Size 6x6 — Soft and warm",
+    "note": "Size 6x6 \u2014 Soft and warm",
     "price": 999,
     "old": 0,
     "img": "duvet.25.jpg",
@@ -2147,16 +2531,19 @@
       "duvet.25.jpg",
       "duvet.25b.jpg",
       "duvet.25c.jpg",
-      "duvet.25d.jpg"
+      "duvet.25d.jpg",
+      "duvet.25e.jpg",
+      "duvet.25f.jpg"
     ],
     "badge": "",
-    "badgeType": ""
+    "badgeType": "",
+    "inStock": true
   },
   {
     "id": 126,
     "cat": "furniture",
     "name": "Kids Fashion Plastic Wardrobe",
-    "note": "Colourful kids wardrobe — Multiple sections",
+    "note": "Colourful kids wardrobe \u2014 Multiple sections",
     "price": 4999,
     "old": 0,
     "img": "furniture.23.jpg",
@@ -2164,16 +2551,19 @@
       "furniture.23.jpg",
       "furniture.23b.jpg",
       "furniture.23c.jpg",
-      "furniture.23d.jpg"
+      "furniture.23d.jpg",
+      "furniture.23e.jpg",
+      "furniture.23f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
-    "note": "Powerful hand mixer — Perfect for baking",
+    "note": "Powerful hand mixer \u2014 Perfect for baking",
     "price": 1299,
     "old": 0,
     "img": "cookware.5.jpg",
@@ -2181,16 +2571,19 @@
       "cookware.5.jpg",
       "cookware.5b.jpg",
       "cookware.5c.jpg",
-      "cookware.5d.jpg"
+      "cookware.5d.jpg",
+      "cookware.5e.jpg",
+      "cookware.5f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   },
   {
     "id": 128,
     "cat": "cookware",
     "name": "9.5L Tea Urn Double Tap",
-    "note": "Large capacity — Double tap for easy serving",
+    "note": "Large capacity \u2014 Double tap for easy serving",
     "price": 2999,
     "old": 0,
     "img": "cookware.6.jpg",
@@ -2198,16 +2591,19 @@
       "cookware.6.jpg",
       "cookware.6b.jpg",
       "cookware.6c.jpg",
-      "cookware.6d.jpg"
+      "cookware.6d.jpg",
+      "cookware.6e.jpg",
+      "cookware.6f.jpg"
     ],
     "badge": "SALE",
-    "badgeType": "sale"
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 129,
     "cat": "cookware",
     "name": "Unique Knife Set",
-    "note": "Premium quality — Full knife set",
+    "note": "Premium quality \u2014 Full knife set",
     "price": 2999,
     "old": 0,
     "img": "cookware.7.jpg",
@@ -2215,16 +2611,19 @@
       "cookware.7.jpg",
       "cookware.7b.jpg",
       "cookware.7c.jpg",
-      "cookware.7d.jpg"
+      "cookware.7d.jpg",
+      "cookware.7e.jpg",
+      "cookware.7f.jpg"
     ],
     "badge": "HOT",
-    "badgeType": "hot"
+    "badgeType": "hot",
+    "inStock": true
   },
   {
     "id": 130,
     "cat": "nets",
     "name": "Double Decker Mosquito Net",
-    "note": "Size 4x6 — Colours: Purple, Pink, White and Cream",
+    "note": "Size 4x6 \u2014 Colours: Purple, Pink, White and Cream",
     "price": 1700,
     "old": 0,
     "img": "net.6.jpg",
@@ -2232,26 +2631,12 @@
       "net.6.jpg",
       "net.6b.jpg",
       "net.6c.jpg",
-      "net.6d.jpg"
+      "net.6d.jpg",
+      "net.6e.jpg",
+      "net.6f.jpg"
     ],
     "badge": "NEW",
-    "badgeType": "new"
-  },
-  {
-    "id": 136,
-    "cat": "decor",
-    "name": "Tufted Bohemian Throw Pillow Cover",
-    "note": "All colours available",
-    "price": 750,
-    "old": 0,
-    "img": "decor.6.jpg",
-    "imgs": [
-      "decor.6.jpg",
-      "decor.6b.jpg",
-      "decor.6c.jpg",
-      "decor.6d.jpg"
-    ],
-    "badge": "NEW",
-    "badgeType": "new"
+    "badgeType": "new",
+    "inStock": true
   }
 ]

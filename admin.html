@@ -259,11 +259,13 @@
           <p style="font-size:12px;font-weight:600;color:var(--green-dark);">Tap to select photos from your phone</p>
           <p style="font-size:11px;color:var(--muted);">Any filename is fine — photos upload automatically when you save ✅</p>
         </div>
-        <div class="photo-grid" id="photo-grid">
+        <div class="photo-grid" id="photo-grid" style="grid-template-columns:repeat(3,1fr);">
           <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Main</small></div>
           <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Colour 2</small></div>
           <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Colour 3</small></div>
           <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Colour 4</small></div>
+          <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Colour 5</small></div>
+          <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Colour 6</small></div>
         </div>
         <div id="photo-upload-status" style="display:none;background:rgba(26,61,43,.06);border-radius:7px;padding:10px 12px;margin-top:8px;font-size:12px;color:var(--green-dark);">
           📸 <span id="photo-status-text">Photos ready to upload</span>
@@ -308,6 +310,20 @@
         <div class="fg">
           <label>Old Price (KSh)</label>
           <input type="number" id="a-old" placeholder="Leave blank if none"/>
+        </div>
+      </div>
+
+      <div class="fg">
+        <label>Stock Status</label>
+        <div style="display:flex;gap:10px;align-items:center;padding:10px 12px;background:var(--bg);border-radius:8px;">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:500;">
+            <input type="radio" name="a-stock" id="a-in-stock" value="true" checked style="accent-color:var(--green);width:16px;height:16px;"/>
+            <span style="color:var(--green);font-weight:600;">✅ In Stock</span>
+          </label>
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:500;">
+            <input type="radio" name="a-stock" id="a-out-stock" value="false" style="accent-color:var(--red);width:16px;height:16px;"/>
+            <span style="color:var(--red);font-weight:600;">❌ Out of Stock</span>
+          </label>
         </div>
       </div>
 
@@ -370,6 +386,20 @@
           <div class="fg"><label>Price (KSh)</label><input type="number" id="e-price"/></div>
           <div class="fg"><label>Old Price (KSh)</label><input type="number" id="e-old"/></div>
         </div>
+        <div class="fg">
+          <label>Stock Status</label>
+          <div style="display:flex;gap:10px;align-items:center;padding:10px 12px;background:var(--bg);border-radius:8px;">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:500;">
+              <input type="radio" name="e-stock" id="e-in-stock" value="true" style="accent-color:var(--green);width:16px;height:16px;"/>
+              <span style="color:var(--green);font-weight:600;">✅ In Stock</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:500;">
+              <input type="radio" name="e-stock" id="e-out-stock" value="false" style="accent-color:var(--red);width:16px;height:16px;"/>
+              <span style="color:var(--red);font-weight:600;">❌ Out of Stock</span>
+            </label>
+          </div>
+        </div>
+
         <div class="fg">
           <label>Badge</label>
           <div class="badge-sel" id="edit-badges">
@@ -766,9 +796,9 @@
 
   /* ── PHOTOS ── */
   function handlePhotos(input) {
-    addPhotos = Array.from(input.files).slice(0, 4);
+    addPhotos = Array.from(input.files).slice(0, 6);
     var grid = document.getElementById('photo-grid');
-    var labels = ['Main', 'Colour 2', 'Colour 3', 'Colour 4'];
+    var labels = ['Main', 'Colour 2', 'Colour 3', 'Colour 4', 'Colour 5', 'Colour 6'];
     grid.innerHTML = '';
     for (var i = 0; i < 4; i++) {
       if (addPhotos[i]) {
@@ -859,7 +889,7 @@
     var btn = document.getElementById('btn-add-save');
     btn.disabled = true;
 
-    var suffixes = ['', 'b', 'c', 'd'];
+    var suffixes = ['', 'b', 'c', 'd', 'e', 'f'];
     var imgs = suffixes.map(function(s) { return imgB + s + '.jpg'; });
 
     var maxId = allProducts.length ? Math.max.apply(null, allProducts.map(function(p){ return p.id; })) : 0;
@@ -986,6 +1016,14 @@
       b.classList.toggle('sel', b.dataset.v === editBadge);
     });
 
+    // Stock status
+    var inStockEl  = document.getElementById('e-in-stock');
+    var outStockEl = document.getElementById('e-out-stock');
+    if (inStockEl && outStockEl) {
+      inStockEl.checked  = p.inStock !== false;
+      outStockEl.checked = p.inStock === false;
+    }
+
     document.getElementById('edit-form').scrollIntoView({behavior:'smooth',block:'start'});
     showToast('Loaded: ' + p.name);
   }
@@ -1001,14 +1039,16 @@
 
     if (!name || !cat || !imgB) { showMsg('Please fill all required fields', 'error'); return; }
 
+    var eStock = document.getElementById('e-in-stock');
     var updated = allProducts.map(function(p) {
       if (p.id !== editProduct.id) return p;
       return {
         id: p.id, cat: cat, name: name, note: note,
         price: price, old: old,
         img: imgB+'.jpg',
-        imgs: [imgB+'.jpg',imgB+'b.jpg',imgB+'c.jpg',imgB+'d.jpg'],
-        badge: editBadge, badgeType: editBadge.toLowerCase()
+        imgs: [imgB+'.jpg',imgB+'b.jpg',imgB+'c.jpg',imgB+'d.jpg',imgB+'e.jpg',imgB+'f.jpg'],
+        badge: editBadge, badgeType: editBadge.toLowerCase(),
+        inStock: eStock ? eStock.checked : true
       };
     });
 
@@ -1144,7 +1184,7 @@
   var uploadFiles = [];
   var uploadNames = [];
 
-  var COLOUR_SUFFIXES = ['', 'b', 'c', 'd'];
+  var COLOUR_SUFFIXES = ['', 'b', 'c', 'd', 'e', 'f'];
 
   function updateUploadPreview() {
     var cat = document.getElementById('upload-cat').value;
