@@ -256,14 +256,17 @@
         <div class="photo-upload" onclick="document.getElementById('photo-in').click()">
           <input type="file" id="photo-in" accept="image/*" multiple onchange="handlePhotos(this)"/>
           <div style="font-size:2rem;margin-bottom:6px;">📸</div>
-          <p style="font-size:12px;font-weight:600;color:var(--green-dark);">Tap to select photos</p>
-          <p style="font-size:11px;color:var(--muted);">Each photo = one colour option (max 4)</p>
+          <p style="font-size:12px;font-weight:600;color:var(--green-dark);">Tap to select photos from your phone</p>
+          <p style="font-size:11px;color:var(--muted);">Any filename is fine — photos upload automatically when you save ✅</p>
         </div>
         <div class="photo-grid" id="photo-grid">
           <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Main</small></div>
           <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Colour 2</small></div>
           <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Colour 3</small></div>
           <div class="photo-box" onclick="document.getElementById('photo-in').click()"><span class="plus">+</span><small>Colour 4</small></div>
+        </div>
+        <div id="photo-upload-status" style="display:none;background:rgba(26,61,43,.06);border-radius:7px;padding:10px 12px;margin-top:8px;font-size:12px;color:var(--green-dark);">
+          📸 <span id="photo-status-text">Photos ready to upload</span>
         </div>
       </div>
 
@@ -801,7 +804,44 @@
       : '';
   }
 
-  /* ── SAVE NEW PRODUCT ── */
+  /* ── UPLOAD SINGLE PHOTO TO GITHUB ── */
+  function uploadPhotoToGitHub(file, filename) {
+    return new Promise(function(resolve, reject) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var base64 = e.target.result.split(',')[1];
+        // Check if exists first
+        fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + filename, {
+          headers: { 'Authorization': 'token ' + githubToken }
+        })
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(existing) {
+          var body = {
+            message: 'Upload photo: ' + filename,
+            content: base64,
+            branch: GITHUB_BRANCH
+          };
+          if (existing && existing.sha) body.sha = existing.sha;
+          return fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + filename, {
+            method: 'PUT',
+            headers: {
+              'Authorization': 'token ' + githubToken,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+          });
+        })
+        .then(function(r) {
+          if (!r.ok) throw new Error('Photo upload failed: ' + r.status);
+          resolve(filename);
+        })
+        .catch(reject);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /* ── SAVE NEW PRODUCT (with photo upload) ── */
   function saveProduct() {
     var name  = document.getElementById('a-name').value.trim();
     var cat   = document.getElementById('a-cat').value;
@@ -814,6 +854,13 @@
     if (!cat)   { showMsg('Please select a category', 'error'); return; }
     if (!price) { showMsg('Please enter a price', 'error'); return; }
     if (!imgB)  { showMsg('Please enter the image filename', 'error'); return; }
+    if (!githubToken) { showMsg('Please add your GitHub token in Settings first', 'error'); return; }
+
+    var btn = document.getElementById('btn-add-save');
+    btn.disabled = true;
+
+    var suffixes = ['', 'b', 'c', 'd'];
+    var imgs = suffixes.map(function(s) { return imgB + s + '.jpg'; });
 
     var maxId = allProducts.length ? Math.max.apply(null, allProducts.map(function(p){ return p.id; })) : 0;
     var newProduct = {
@@ -823,34 +870,53 @@
       note: note,
       price: price,
       old: old,
-      img: imgB + '.jpg',
-      imgs: [imgB+'.jpg', imgB+'b.jpg', imgB+'c.jpg', imgB+'d.jpg'],
+      img: imgs[0],
+      imgs: imgs,
       badge: addBadge,
       badgeType: addBadge.toLowerCase()
     };
 
-    var btn = document.getElementById('btn-add-save');
-    btn.disabled = true;
-    btn.innerHTML = '<div class="spinner"></div> Saving...';
+    // Step 1: Upload photos if selected
+    var photoPromises = [];
+    if (addPhotos.length > 0) {
+      btn.innerHTML = '<div class="spinner"></div> Uploading photos...';
+      addPhotos.forEach(function(file, i) {
+        if (file && suffixes[i] !== undefined) {
+          photoPromises.push(uploadPhotoToGitHub(file, imgs[i]));
+        }
+      });
+    }
 
-    var updated = allProducts.concat([newProduct]);
-    saveToGitHub(updated, 'Product added: ' + name)
+    Promise.allSettled(photoPromises)
+      .then(function(photoResults) {
+        var uploaded = photoResults.filter(function(r){ return r.status === 'fulfilled'; }).length;
+        if (uploaded > 0) {
+          showToast('📸 ' + uploaded + ' photo(s) uploaded!');
+        }
+
+        // Step 2: Save product to products.json
+        btn.innerHTML = '<div class="spinner"></div> Saving product...';
+        var updated = allProducts.concat([newProduct]);
+        return saveToGitHub(updated, 'Product added: ' + name);
+      })
       .then(function() {
+        showMsg('✅ Product saved and photos uploaded — live on website now!', 'success');
         // Reset form
-        document.getElementById('a-name').value = '';
-        document.getElementById('a-cat').value  = '';
-        document.getElementById('a-note').value = '';
+        document.getElementById('a-name').value  = '';
+        document.getElementById('a-cat').value   = '';
+        document.getElementById('a-note').value  = '';
         document.getElementById('a-price').value = '';
         document.getElementById('a-old').value   = '';
         document.getElementById('a-img').value   = '';
         document.getElementById('a-img-preview').textContent = '';
         addPhotos = [];
-        addBadge = '';
+        addBadge  = '';
         document.querySelectorAll('#add-badges .badge-opt').forEach(function(b,i){ b.classList.toggle('sel',i===0); });
         handlePhotos({files:[]});
       })
       .catch(function(e) {
-        showMsg('❌ Failed to save. Check your GitHub token.', 'error');
+        showMsg('❌ Something failed. Check your GitHub token and try again.', 'error');
+        console.error(e);
       })
       .finally(function() {
         btn.disabled = false;
