@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Product details — Irene Household Collections Nairobi"/>
+  <title id="page-title">Product | Irene Household Collections</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ══════════════════════════════
+       PRODUCT DETAIL PAGE
+    ══════════════════════════════ */
+    .product-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 4% 60px;
+      background: var(--bg);
+    }
+
+    /* Breadcrumb */
+    .product-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: 12px;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+    .product-breadcrumb a { color: var(--green); }
+    .product-breadcrumb span { color: #ccc; }
+
+    /* Main layout */
+    .product-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: start;
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 2px 16px rgba(26,61,43,.08);
+      margin-bottom: 36px;
+    }
+
+    /* ── LEFT: Image Gallery ── */
+    .gallery-wrap {}
+
+    .gallery-main {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #f5f5f5;
+      margin-bottom: 12px;
+    }
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity .3s ease;
+    }
+    .gallery-main img.switching {
+      opacity: 0;
+    }
+
+    /* Arrows for gallery */
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,.9);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,.15);
+      z-index: 2;
+      transition: all .2s;
+    }
+    .gallery-arrow:hover { background: var(--green); color: #fff; }
+    .gallery-arrow.prev { left: 10px; }
+    .gallery-arrow.next { right: 10px; }
+    .gallery-arrow.hidden { display: none; }
+
+    /* Zoom badge */
+    .gallery-zoom {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0,0,0,.45);
+      color: #fff;
+      font-size: 10px;
+      padding: 4px 9px;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    /* Thumbnails */
+    .gallery-thumbs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .gallery-thumb {
+      width: 68px;
+      height: 68px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2.5px solid #eee;
+      cursor: pointer;
+      transition: all .2s;
+      flex-shrink: 0;
+      background: #f5f5f5;
+    }
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery-thumb:hover { border-color: var(--green); transform: scale(1.05); }
+    .gallery-thumb.active { border-color: var(--green); box-shadow: 0 0 0 2px rgba(26,61,43,.2); }
+    .gallery-thumb.hidden { display: none; }
+
+    /* Colour label */
+    .colour-label {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 8px;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+    .colour-label span { color: var(--green); }
+
+    /* ── RIGHT: Product Info ── */
+    .product-info {}
+
+    .product-cat-tag {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .product-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: var(--green-dark);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .product-note {
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .product-location {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* Price */
+    .product-price-wrap {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      border-left: 4px solid var(--gold);
+    }
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+    }
+    .product-old-price {
+      font-size: 13px;
+      color: #bbb;
+      text-decoration: line-through;
+      margin-top: 3px;
+    }
+    .product-save {
+      font-size: 11px;
+      color: var(--red);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* Colour selector label */
+    .colour-select-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .colour-select-label span { color: var(--green); font-weight: 600; text-transform: none; letter-spacing: 0; }
+
+    /* Action buttons */
+    .product-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .btn-order-wa {
+      width: 100%;
+      background: #25d366;
+      color: #fff;
+      border: none;
+      padding: 15px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background .2s;
+    }
+    .btn-order-wa:hover { background: #1da851; }
+    .btn-add-cart {
+      width: 100%;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 13px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background .2s;
+    }
+    .btn-add-cart:hover { background: var(--green2); }
+    .btn-add-cart.added { background: var(--green2); }
+    .btn-wishlist-full {
+      width: 100%;
+      background: #fff;
+      color: var(--green-dark);
+      border: 1.5px solid var(--border);
+      padding: 11px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all .2s;
+    }
+    .btn-wishlist-full:hover { border-color: var(--red); color: var(--red); }
+    .btn-wishlist-full.active { background: #fff0f0; border-color: var(--red); color: var(--red); }
+
+    /* Features list */
+    .product-features {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      margin-top: 4px;
+    }
+    .product-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 12.5px;
+      color: var(--muted);
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .product-feature:last-child { border-bottom: none; }
+    .feature-icon { font-size: 16px; flex-shrink: 0; }
+
+    /* Share row */
+    .share-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .share-row span { font-size: 12px; color: var(--muted); font-weight: 600; }
+    .share-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .share-btn:hover { border-color: var(--green); transform: scale(1.1); }
+
+    /* ── RELATED PRODUCTS ── */
+    .related-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 16px rgba(26,61,43,.08);
+    }
+    .related-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .related-head h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--green-dark);
+    }
+    .related-head a {
+      font-size: 12px;
+      color: var(--green);
+      font-weight: 600;
+      border: 1px solid var(--green);
+      padding: 4px 12px;
+      border-radius: 5px;
+    }
+
+    /* Full screen zoom */
+    .zoom-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      background: rgba(0,0,0,.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .zoom-overlay.open { display: flex; }
+    .zoom-overlay img {
+      max-width: 95vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .zoom-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255,255,255,.2);
+      border: none;
+      color: #fff;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    .zoom-hint {
+      position: absolute;
+      bottom: 20px;
+      color: rgba(255,255,255,.5);
+      font-size: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .product-layout {
+        grid-template-columns: 1fr;
+        padding: 16px;
+        gap: 20px;
+      }
+      .gallery-thumb { width: 56px; height: 56px; }
+      .product-title { font-size: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      .product-page { padding: 12px 3% 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <img src="logo.jpg" alt="IHC"/>
+  <h2>Irene Household</h2>
+  <small>Collections</small>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- PROMO BAR -->
+<div class="promo-bar">
+  🔥 FREE DELIVERY on orders over KSh 5,000 in Nairobi
+  <span>|</span> 🏨 Hotel &amp; Airbnb Packages
+  <span>|</span> 📞 <a href="https://wa.me/254716060029">+254 716 060029</a>
+</div>
+
+<!-- TOP NAV -->
+<nav class="top-nav" id="main-nav">
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="logo.jpg" alt="IHC"/>
+    <div class="nav-logo-text">
+      <b>Irene Household</b>
+      <small>Collections</small>
+    </div>
+  </a>
+  <div class="nav-search-wrap">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" placeholder="Search products..."
+      id="search-input" onkeydown="if(event.key==='Enter')goSearch()"/>
+    <button class="nav-search-btn" onclick="goSearch()">Search</button>
+  </div>
+  <div class="nav-icons">
+    <button class="nav-icon-btn" onclick="openWishlist()">❤️<span class="nav-badge" id="wl-badge">0</span></button>
+    <button class="nav-icon-btn" onclick="openCart()">🛒<span class="nav-badge" id="cart-badge">0</span></button>
+    <div class="nav-ham nav-icon-btn" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-nav">
+  <a href="index.html"          onclick="closeMobileNav()">🏠 Home</a>
+  <a href="shop.html"           onclick="closeMobileNav()">🛍️ Shop All Products</a>
+  <a href="index.html#payment"  onclick="closeMobileNav()">💳 M-Pesa Payment</a>
+  <a href="index.html#hotel"    onclick="closeMobileNav()">🏨 Hotel / Airbnb</a>
+  <a href="index.html#community"onclick="closeMobileNav()">🌍 Community</a>
+  <a href="about.html"          onclick="closeMobileNav()">ℹ️ About Us</a>
+  <a href="contact.html"        onclick="closeMobileNav()">📞 Contact</a>
+  <a href="https://wa.me/254716060029" target="_blank">💬 WhatsApp Us</a>
+</div>
+
+<!-- PRODUCT PAGE -->
+<div class="product-page" id="product-page">
+
+  <!-- Breadcrumb -->
+  <div class="product-breadcrumb" id="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>›</span>
+    <a href="shop.html">Shop</a>
+    <span>›</span>
+    <span id="breadcrumb-cat">Category</span>
+    <span>›</span>
+    <span id="breadcrumb-name">Product</span>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="product-layout">
+
+    <!-- LEFT: Gallery -->
+    <div class="gallery-wrap">
+      <div class="gallery-main" id="gallery-main">
+        <img id="main-img" src="" alt="Product"/>
+        <button class="gallery-arrow prev" id="arrow-prev" onclick="galleryPrev()">‹</button>
+        <button class="gallery-arrow next" id="arrow-next" onclick="galleryNext()">›</button>
+        <div class="gallery-zoom">🔍 Tap to zoom</div>
+      </div>
+      <div class="colour-label">Colour: <span id="colour-current">Default</span></div>
+      <div class="gallery-thumbs" id="gallery-thumbs"></div>
+    </div>
+
+    <!-- RIGHT: Info -->
+    <div class="product-info">
+      <span class="product-cat-tag" id="product-cat">Category</span>
+      <h1 class="product-title" id="product-name">Loading...</h1>
+      <p class="product-note" id="product-note"></p>
+      <div class="product-location">📍 Nairobi, Kenya</div>
+
+      <!-- Price -->
+      <div class="product-price-wrap">
+        <div class="product-price" id="product-price">KSh 0</div>
+        <div class="product-old-price" id="product-old"></div>
+        <div class="product-save" id="product-save"></div>
+      </div>
+
+      <!-- Colour label -->
+      <span class="colour-select-label">
+        Select Colour: <span id="colour-name-label">Default</span>
+      </span>
+
+      <!-- Action Buttons -->
+      <div class="product-actions">
+        <button class="btn-order-wa" id="btn-wa" onclick="orderOnWhatsApp()">
+          💬 Order on WhatsApp
+        </button>
+        <button class="btn-add-cart" id="btn-cart" onclick="addProductToCart()">
+          🛒 Add to Cart
+        </button>
+        <button class="btn-wishlist-full" id="btn-wl" onclick="toggleProductWishlist()">
+          ♡ Save to Wishlist
+        </button>
+      </div>
+
+      <!-- Features -->
+      <div class="product-features">
+        <div class="product-feature">
+          <span class="feature-icon">🚚</span>
+          Free delivery on orders over KSh 5,000 in Nairobi
+        </div>
+        <div class="product-feature">
+          <span class="feature-icon">💳</span>
+          Pay via M-Pesa Paybill 522533 — Account 5997131
+        </div>
+        <div class="product-feature">
+          <span class="feature-icon">✅</span>
+          Quality verified — all products checked before delivery
+        </div>
+        <div class="product-feature">
+          <span class="feature-icon">🔄</span>
+          Contact us within 24hrs if product arrives damaged
+        </div>
+      </div>
+
+      <!-- Share -->
+      <div class="share-row">
+        <span>Share:</span>
+        <a class="share-btn" id="share-wa" href="#" target="_blank" title="Share on WhatsApp">💬</a>
+        <a class="share-btn" id="share-fb" href="#" target="_blank" title="Share on Facebook">📘</a>
+        <button class="share-btn" onclick="copyLink()" title="Copy Link">🔗</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Related Products -->
+  <div class="related-section">
+    <div class="related-head">
+      <h3>More from this Category</h3>
+      <a href="shop.html" id="related-link">View All →</a>
+    </div>
+    <div class="products-grid" id="related-grid"></div>
+  </div>
+
+</div>
+
+<!-- ZOOM OVERLAY -->
+<div class="zoom-overlay" id="zoom-overlay" onclick="closeZoom()">
+  <button class="zoom-close" onclick="closeZoom()">✕</button>
+  <img id="zoom-img" src="" alt=""/>
+  <span class="zoom-hint">Tap anywhere to close</span>
+</div>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="cart-overlay"></div>
+<div class="drawer" id="cart-drawer">
+  <div class="drawer-head" style="background:var(--green);">
+    <div><h3 style="color:#fff;">🛒 Cart</h3><span id="cart-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span></div>
+    <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeCart()">✕</button>
+  </div>
+  <div class="drawer-items" id="cart-items">
+    <div class="drawer-empty"><div class="drawer-empty-icon">🛒</div><p>Your cart is empty</p></div>
+  </div>
+  <div class="drawer-footer">
+    <div class="delivery-bar-wrap">
+      <p class="delivery-msg" id="delivery-msg">Add <strong style="color:var(--green);">KSh 5,000</strong> more for <strong style="color:var(--green);">FREE delivery</strong> 🚚</p>
+      <div class="delivery-track"><div class="delivery-fill" id="delivery-fill"></div></div>
+    </div>
+    <span class="pay-label">Payment Status</span>
+    <div class="pay-opts">
+      <div class="pay-opt" id="opt-paid" onclick="selectPayStatus('paid')"><span class="pay-opt-icon">✅</span><div class="pay-opt-title">Already Paid</div><div class="pay-opt-sub">M-Pesa sent</div></div>
+      <div class="pay-opt" id="opt-nopay" onclick="selectPayStatus('nopay')"><span class="pay-opt-icon">💵</span><div class="pay-opt-title">Pay on Delivery</div><div class="pay-opt-sub">Cash / M-Pesa later</div></div>
+    </div>
+    <div class="cart-total-row"><span>Total</span><strong id="cart-total">KSh 0</strong></div>
+    <button class="btn-checkout" onclick="checkout()">💬 Order via WhatsApp</button>
+    <button class="btn-clear" onclick="clearCart()">🗑 Clear Cart</button>
+  </div>
+</div>
+
+<!-- WISHLIST -->
+<div class="overlay" id="wl-overlay"></div>
+<div class="drawer" id="wl-drawer">
+  <div class="drawer-head" style="background:#e53e3e;">
+    <div><h3 style="color:#fff;">❤️ Wishlist</h3><span id="wl-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span></div>
+    <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeWishlist()">✕</button>
+  </div>
+  <div class="drawer-items" id="wl-items">
+    <div class="drawer-empty"><div class="drawer-empty-icon">♡</div><p>Wishlist is empty</p></div>
+  </div>
+</div>
+
+<!-- PROGRESS RING -->
+<div class="progress-ring" id="progress-ring" onclick="scrollToTop()">
+  <svg width="42" height="42" viewBox="0 0 44 44">
+    <circle cx="22" cy="22" r="18" fill="none" stroke="#e8e0d0" stroke-width="3"/>
+    <circle id="ring-circle" cx="22" cy="22" r="18" fill="none" stroke="#c8a951"
+      stroke-width="3" stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round"/>
+  </svg>
+  <div class="progress-ring-inner">↑</div>
+</div>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/254716060029" class="wa-float" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div class="toast" id="toast"></div>
+<div class="cookie-bar" id="cookie-bar">
+  <p>🍪 We use cookies to improve your experience on <strong>Irene Household Collections</strong>.</p>
+  <div class="cookie-btns">
+    <button class="ck-no" onclick="declineCookie()">Decline</button>
+    <button class="ck-yes" onclick="acceptCookie()">Accept ✓</button>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-items">
+    <a href="index.html" class="bnav-item"><span class="bicon">🏠</span><span>Home</span></a>
+    <a href="shop.html" class="bnav-item"><span class="bicon">🛍️</span><span>Shop</span></a>
+    <a href="#" class="bnav-item" onclick="openWishlist();return false;"><span class="bicon">❤️</span><span>Saved</span><span class="bnav-badge" id="wl-badge-bottom">0</span></a>
+    <a href="#" class="bnav-item" onclick="openCart();return false;"><span class="bicon">🛒</span><span>Cart</span><span class="bnav-badge" id="cart-badge-bottom">0</span></a>
+    <a href="contact.html" class="bnav-item"><span class="bicon">💬</span><span>Chat</span></a>
+  </div>
+</nav>
+
+<script src="script.js"></script>
+<script>
+  var currentProduct = null;
+  var currentImgIndex = 0;
+  var currentImgs = [];
+
+  // ── Load product from URL param ──
+  function loadProduct() {
+    var params = new URLSearchParams(window.location.search);
+    var id = parseInt(params.get('id'));
+    if (!id) { window.location = 'shop.html'; return; }
+
+    var p = PRODUCTS.find(function(p) { return p.id === id; });
+    if (!p) { window.location = 'shop.html'; return; }
+
+    currentProduct = p;
+    currentImgs = (p.imgs || [p.img]).filter(Boolean).slice(0, 4);
+    currentImgIndex = 0;
+
+    // Set page title
+    document.title = p.name + ' | Irene Household Collections';
+    document.getElementById('page-title').textContent = p.name + ' | Irene Household Collections';
+
+    // Breadcrumb
+    var catLabels = {
+      nets:'Mosquito Nets', duvets:'Duvets & Covers', kitchenware:'Kitchenware',
+      carpets:'Carpets & Mats', seatcovers:'Seat Covers', bath:'Bath & Towels',
+      furniture:'Furniture', kids:'Kids Corner', electronics:'Electronics',
+      cookware:'Cookware', travel:'Travel & Luggage', decor:'Home Décor'
+    };
+    document.getElementById('breadcrumb-cat').textContent = catLabels[p.cat] || p.cat;
+    document.getElementById('breadcrumb-name').textContent = p.name;
+
+    // Category tag
+    document.getElementById('product-cat').textContent = catLabels[p.cat] || p.cat;
+
+    // Name and note
+    document.getElementById('product-name').textContent = p.name;
+    document.getElementById('product-note').textContent = p.note;
+
+    // Price
+    var priceText = p.price > 0 ? 'KSh ' + p.price.toLocaleString() : 'Call for Price';
+    document.getElementById('product-price').textContent = priceText;
+    if (p.old) {
+      document.getElementById('product-old').textContent = 'KSh ' + p.old.toLocaleString();
+      var save = p.old - p.price;
+      document.getElementById('product-save').textContent = 'You save KSh ' + save.toLocaleString();
+    }
+
+    // Build gallery
+    buildGallery();
+
+    // Related link
+    var relLink = document.getElementById('related-link');
+    if (relLink) relLink.href = 'shop.html?cat=' + p.cat;
+
+    // Related products
+    var related = PRODUCTS.filter(function(r) {
+      return r.cat === p.cat && r.id !== p.id;
+    }).slice(0, 4);
+    var relGrid = document.getElementById('related-grid');
+    if (relGrid) relGrid.innerHTML = related.map(buildCard).join('');
+
+    // Share links
+    var pageUrl = 'https://irenehousehold.co.ke/product.html?id=' + p.id;
+    var waText = 'Check out ' + p.name + ' (' + priceText + ') at Irene Household Collections! ' + pageUrl;
+    document.getElementById('share-wa').href = 'https://wa.me/?text=' + encodeURIComponent(waText);
+    document.getElementById('share-fb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(pageUrl);
+
+    // Wishlist state
+    updateWishlistBtn();
+  }
+
+  // ── Gallery ──
+  function buildGallery() {
+    var mainImg = document.getElementById('main-img');
+    var thumbsWrap = document.getElementById('gallery-thumbs');
+
+    if (!currentImgs.length) return;
+
+    // Set main image
+    mainImg.src = currentImgs[0];
+    mainImg.onclick = function() { openZoom(currentImgs[currentImgIndex]); };
+
+    // Build thumbs
+    thumbsWrap.innerHTML = '';
+    currentImgs.forEach(function(img, i) {
+      var div = document.createElement('div');
+      div.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
+      div.dataset.index = i;
+      div.innerHTML = '<img src="' + img + '" loading="lazy" onerror="this.parentElement.classList.add(\'hidden\')"/>';
+      div.onclick = function() { switchImage(i); };
+      thumbsWrap.appendChild(div);
+    });
+
+    // Colour label
+    updateColourLabel(0);
+
+    // Arrows
+    updateArrows();
+  }
+
+  function switchImage(idx) {
+    if (idx < 0 || idx >= currentImgs.length) return;
+    currentImgIndex = idx;
+
+    var mainImg = document.getElementById('main-img');
+    mainImg.classList.add('switching');
+    setTimeout(function() {
+      mainImg.src = currentImgs[idx];
+      mainImg.classList.remove('switching');
+    }, 150);
+
+    // Update thumbs
+    document.querySelectorAll('.gallery-thumb').forEach(function(t, i) {
+      t.classList.toggle('active', i === idx);
+    });
+
+    updateColourLabel(idx);
+    updateArrows();
+  }
+
+  function galleryPrev() { switchImage(currentImgIndex - 1); }
+  function galleryNext() { switchImage(currentImgIndex + 1); }
+
+  function updateArrows() {
+    var prev = document.getElementById('arrow-prev');
+    var next = document.getElementById('arrow-next');
+    if (prev) prev.classList.toggle('hidden', currentImgIndex === 0);
+    if (next) next.classList.toggle('hidden', currentImgIndex >= currentImgs.length - 1);
+  }
+
+  function updateColourLabel(idx) {
+    var labels = ['Default', 'Colour 2', 'Colour 3', 'Colour 4'];
+    var cur = document.getElementById('colour-current');
+    var label = document.getElementById('colour-name-label');
+    if (cur)   cur.textContent   = labels[idx] || 'Colour ' + (idx + 1);
+    if (label) label.textContent = labels[idx] || 'Colour ' + (idx + 1);
+  }
+
+  // ── Zoom ──
+  function openZoom(src) {
+    document.getElementById('zoom-img').src = src;
+    document.getElementById('zoom-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeZoom() {
+    document.getElementById('zoom-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ── Order on WhatsApp ──
+  function orderOnWhatsApp() {
+    if (!currentProduct) return;
+    var p = currentProduct;
+    var price = p.price > 0 ? 'KSh ' + p.price.toLocaleString() : 'call for price';
+    var colour = ['Default', 'Colour 2', 'Colour 3', 'Colour 4'][currentImgIndex] || 'Default';
+    var msg = 'Hi Irene! I want to order:\n\n' +
+      'Product: ' + p.name + '\n' +
+      'Colour: ' + colour + '\n' +
+      'Price: ' + price + '\n\n' +
+      'Please confirm availability and delivery. Thank you!';
+    window.open('https://wa.me/254716060029?text=' + encodeURIComponent(msg), '_blank');
+  }
+
+  // ── Add to Cart ──
+  function addProductToCart() {
+    if (!currentProduct) return;
+    var btn = document.getElementById('btn-cart');
+    addToCart(btn, currentProduct.id, currentProduct.name, currentProduct.cat, currentProduct.price, currentProduct.img);
+    openCart();
+  }
+
+  // ── Wishlist ──
+  function toggleProductWishlist() {
+    if (!currentProduct) return;
+    var p = currentProduct;
+    var btn = document.getElementById('btn-wl');
+    var inWL = wishlist.some(function(i) { return i.id === p.id; });
+    if (inWL) {
+      wishlist = wishlist.filter(function(i) { return i.id !== p.id; });
+      showToast('Removed from wishlist');
+    } else {
+      wishlist.push({ id: p.id, name: p.name, cat: p.cat, price: p.price, img: p.img });
+      showToast('❤️ Saved to wishlist!');
+    }
+    updateWishlistUI();
+    updateWishlistBtn();
+  }
+
+  function updateWishlistBtn() {
+    if (!currentProduct) return;
+    var btn = document.getElementById('btn-wl');
+    var inWL = wishlist.some(function(i) { return i.id === currentProduct.id; });
+    if (btn) {
+      btn.innerHTML = inWL ? '❤️ Saved to Wishlist' : '♡ Save to Wishlist';
+      btn.classList.toggle('active', inWL);
+    }
+  }
+
+  // ── Copy link ──
+  function copyLink() {
+    var url = window.location.href;
+    navigator.clipboard.writeText(url).catch(function() {
+      var el = document.createElement('textarea');
+      el.value = url;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+    });
+    showToast('🔗 Link copied!');
+  }
+
+  // ── Search ──
+  function goSearch() {
+    var q = document.getElementById('search-input').value.trim();
+    window.location = q ? 'shop.html?q=' + encodeURIComponent(q) : 'shop.html';
+  }
+
+  // ── Init ──
+  document.addEventListener('DOMContentLoaded', loadProduct);
+</script>
+
+</body>
+</html>

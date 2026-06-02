@@ -359,6 +359,26 @@ const PRODUCTS = [
 
   { id:130, cat:'nets', name:'Double Decker Mosquito Net', note:'Size 4x6 — Colours: Purple, Pink, White and Cream', price:1700, old:0, img:'net.6.jpg', imgs:['net.6.jpg','net.6b.jpg','net.6c.jpg','net.6d.jpg'], badge:'NEW', badgeType:'new' },
 
+  // ── NEW CATEGORY: ELECTRONICS ──
+  { id:97,  cat:'electronics', name:'Q7S Smart WiFi Camera V380',        note:'Two-way audio, pan & tilt 355°, night vision, motion detection, supports MicroSD up to 128GB', price:2800, old:0, img:'electronics.1.jpg', imgs:['electronics.1.jpg','electronics.1b.jpg','electronics.1c.jpg','electronics.1d.jpg'], badge:'NEW', badgeType:'new' },
+  { id:98,  cat:'electronics', name:'Cute Cat Kids Watch Combo',          note:'Watch + wireless earbuds + cute case — perfect gift for kids', price:1350, old:0, img:'electronics.2.jpg', imgs:['electronics.2.jpg','electronics.2b.jpg','electronics.2c.jpg','electronics.2d.jpg'], badge:'HOT', badgeType:'hot' },
+
+  // ── NEW CATEGORY: COOKWARE ──
+  { id:99,  cat:'cookware',    name:'Edenberg Stainless Sufurias 12pcs',  note:'6 sizes: 2.1L, 2.9L, 3.9L, 5.1L, 6.5L, 8.2L — best cookware in the market', price:9500, old:0, img:'cookware.1.jpg', imgs:['cookware.1.jpg','cookware.1b.jpg','cookware.1c.jpg','cookware.1d.jpg'], badge:'HOT', badgeType:'hot' },
+  { id:100, cat:'cookware',    name:'Nunix 3+1 Standing Cooker with Gas Oven', note:'50x55cm new model, 3 gas burners + 1 electric burner with oven', price:18999, old:0, img:'cookware.2.jpg', imgs:['cookware.2.jpg','cookware.2b.jpg','cookware.2c.jpg','cookware.2d.jpg'], badge:'NEW', badgeType:'new' },
+  { id:101, cat:'cookware',    name:'Nunix Table Top Cooker',              note:'3 gas burners + 1 electric burner', price:6000, old:0, img:'cookware.3.jpg', imgs:['cookware.3.jpg','cookware.3b.jpg','cookware.3c.jpg','cookware.3d.jpg'], badge:'',    badgeType:'' },
+  { id:102, cat:'cookware',    name:'Nunix Full Gas Standing Cooker',      note:'With shelf — full gas cooker', price:7900, old:0, img:'cookware.4.jpg', imgs:['cookware.4.jpg','cookware.4b.jpg','cookware.4c.jpg','cookware.4d.jpg'], badge:'',    badgeType:'' },
+
+  // ── NEW CATEGORY: TRAVEL & LUGGAGE ──
+  { id:103, cat:'travel',      name:'Unbreakable PP Suitcase Set 3pcs',   note:'Double zip rubber, scratch resistant, 360° wheels, 3-digit combination lock, double compartment — beautiful colours', price:7999, old:0, img:'travel.1.jpg', imgs:['travel.1.jpg','travel.1b.jpg','travel.1c.jpg','travel.1d.jpg'], badge:'HOT', badgeType:'hot' },
+  { id:104, cat:'travel',      name:'Neck Pillow with Phone Holder',       note:'Side phone holder pocket — comfortable travel neck pillow', price:950, old:0, img:'travel.2.jpg', imgs:['travel.2.jpg','travel.2b.jpg','travel.2c.jpg','travel.2d.jpg'], badge:'NEW', badgeType:'new' },
+  { id:105, cat:'travel',      name:'Waterproof Outdoor Picnic Mat',       note:'150x200cm — available in 4 colours', price:750, old:0, img:'travel.3.jpg', imgs:['travel.3.jpg','travel.3b.jpg','travel.3c.jpg','travel.3d.jpg'], badge:'',    badgeType:'' },
+
+  // ── NEW CATEGORY: HOME DECOR ──
+  { id:106, cat:'decor',       name:'Plain Coral Fleece Throw Blanket',   note:'Sizes 4x5, 5x6, 6x6 — use in sitting room, bedroom, car or outdoor', price:999, old:0, img:'decor.1.jpg', imgs:['decor.1.jpg','decor.1b.jpg','decor.1c.jpg','decor.1d.jpg'], badge:'NEW', badgeType:'new' },
+  { id:107, cat:'decor',       name:'3D Toilet Mat Non-Slip 3pcs Set',    note:'Heavy grip rubber underside — 1pc 45x75cm + 2pcs 40x45cm, thickness 4mm', price:850, old:0, img:'decor.2.jpg', imgs:['decor.2.jpg','decor.2b.jpg','decor.2c.jpg','decor.2d.jpg'], badge:'',    badgeType:'' },
+  { id:108, cat:'decor',       name:'3 Layer Oval Trolley Rack Table',     note:'60x30x67cm — available in black or white marble, 2 oval round top', price:2999, old:0, img:'decor.3.jpg', imgs:['decor.3.jpg','decor.3b.jpg','decor.3c.jpg','decor.3d.jpg'], badge:'NEW', badgeType:'new' },
+
 ];
 
 
@@ -711,6 +731,14 @@ function qvToggleWishlist() {
 /* ═══════════════════════════════════════
    PRODUCT CARD BUILDER
 ═══════════════════════════════════════ */
+
+/* ═══════════════════════════════════════
+   NAVIGATE TO PRODUCT PAGE
+═══════════════════════════════════════ */
+function goToProduct(id) {
+  window.location = 'product.html?id=' + id;
+}
+
 function buildCard(p) {
   var badge = p.badge ? '<span class="badge-tag badge-' + p.badgeType + '">' + p.badge + '</span>' : '';
   var oldPrice = p.old ? '<span style="font-size:11px;color:#bbb;text-decoration:line-through;">KSh ' + p.old.toLocaleString() + '</span>' : '';
@@ -736,7 +764,7 @@ function buildCard(p) {
     thumbs += '</div>';
   }
 
-  return '<div class="product-card">' +
+  return '<div class="product-card" style="cursor:pointer;" onclick="goToProduct(' + p.id + ')">' +
     '<div class="card-img">' +
       '<img id="' + mainImgId + '" src="' + p.img + '" alt="' + n + '" loading="lazy"/>' +
       badge +
