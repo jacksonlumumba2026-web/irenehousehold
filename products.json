@@ -1022,21 +1022,21 @@
   {
     "id": 142,
     "cat": "kitchenware",
-    "name": "Unbreakable J.P Flask",
-    "note": "2:0 litres\nBlack and white",
-    "price": 1400,
-    "old": 1600,
-    "img": "Flask 1...jpg",
+    "name": "Vacuum flask",
+    "note": "3 ltrs vacuum flask @1700\n2 ltrs vacuum flask @1500",
+    "price": 1700,
+    "old": 1900,
+    "img": "Flask2...jpg",
     "imgs": [
-      "Flask 1...jpg",
-      "Flask 1..b.jpg",
-      "Flask 1..c.jpg",
-      "Flask 1..d.jpg",
-      "Flask 1..e.jpg",
-      "Flask 1..f.jpg"
+      "Flask2...jpg",
+      "Flask2..b.jpg",
+      "Flask2..c.jpg",
+      "Flask2..d.jpg",
+      "Flask2..e.jpg",
+      "Flask2..f.jpg"
     ],
-    "badge": "HOT",
-    "badgeType": "hot",
+    "badge": "SALE",
+    "badgeType": "sale",
     "inStock": true
   },
   {
