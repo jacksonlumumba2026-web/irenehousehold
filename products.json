@@ -2660,6 +2660,26 @@
     "inStock": true
   },
   {
+    "id": 146,
+    "cat": "furniture",
+    "name": "Bar stools",
+    "note": "Upgrade your home bar with our stylish and comfortable barstools! Crafted with high-quality materials and available in a range of designs, our barstools are perfect for any decor. Enjoy unbeatable comfort and modern elegance—shop now and elevate your space!\n\nGrey  blue  Black",
+    "price": 8499,
+    "old": 0,
+    "img": "furniture.26.jpg",
+    "imgs": [
+      "furniture.26.jpg",
+      "furniture.26b.jpg",
+      "furniture.26c.jpg",
+      "furniture.26d.jpg",
+      "furniture.26e.jpg",
+      "furniture.26f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
