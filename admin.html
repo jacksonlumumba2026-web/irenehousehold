@@ -675,14 +675,12 @@
 
   /* ══ GITHUB ══ */
   function getFileShas() {
-    // Get products.json SHA
+    // Only fetch products.json SHA on init (script.js SHA fetched lazily)
     fetch('https://api.github.com/repos/'+GITHUB_OWNER+'/'+GITHUB_REPO+'/contents/'+GITHUB_FILE, {
       headers: {'Authorization':'token '+githubToken}
-    }).then(function(r){return r.json();}).then(function(d){ fileSha = d.sha||''; }).catch(function(){});
-    // Get script.js SHA
-    fetch('https://api.github.com/repos/'+GITHUB_OWNER+'/'+GITHUB_REPO+'/contents/script.js', {
-      headers: {'Authorization':'token '+githubToken}
-    }).then(function(r){return r.json();}).then(function(d){ scriptJsSha = d.sha||''; }).catch(function(){});
+    }).then(function(r){return r.json();})
+    .then(function(d){ fileSha = d.sha||''; })
+    .catch(function(){});
   }
 
   function fetchWithTimeout(url, options, ms) {
@@ -705,7 +703,7 @@
       return Promise.reject('no token');
     }
 
-    showMsg('⏳ Saving...', 'ok');
+    showMsg('⏳ Saving to GitHub... Please wait.', 'ok');
 
     var content = btoa(unescape(encodeURIComponent(JSON.stringify(newProducts, null, 2))));
     var body    = { message: 'Admin: ' + msg, content: content, branch: GITHUB_BRANCH };
