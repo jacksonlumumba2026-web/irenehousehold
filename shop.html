@@ -239,10 +239,6 @@
 
 <!-- PRODUCTS -->
 <div class="products-wrap shop-page-wrap">
-  <div id="debug-panel" style="background:#fff3cd;border:2px solid #ffc107;border-radius:8px;padding:14px;margin-bottom:14px;font-size:12px;font-family:monospace;">
-    <strong>Debug Info:</strong><br/>
-    <span id="debug-text">Checking...</span>
-  </div>
   <div class="products-grid" id="shop-grid"></div>
 </div>
 
@@ -628,34 +624,6 @@
         var active = b.getAttribute('onclick') && b.getAttribute('onclick').indexOf("'" + cat + "'") !== -1;
         b.classList.toggle('active', active);
       });
-    }
-
-    // Debug
-    var dbg = document.getElementById('debug-text');
-    if (dbg) {
-      dbg.innerHTML =
-        'PRODUCTS: ' + (typeof PRODUCTS !== 'undefined' ? PRODUCTS.length : 'UNDEFINED') + '<br/>' +
-        'buildCard: ' + typeof buildCard + '<br/>' +
-        'filteredList before: ' + filteredList.length;
-    }
-
-    if (q) {
-      var inp = document.getElementById('search-input');
-      if (inp) inp.value = q;
-      filteredList = PRODUCTS.filter(function(p) {
-        return p.name.toLowerCase().indexOf(q.toLowerCase()) !== -1 ||
-               p.cat.toLowerCase().indexOf(q.toLowerCase())  !== -1;
-      });
-      currentPage = 1;
-      renderShop();
-    } else {
-      applyFilters();
-    }
-
-    // Debug after
-    if (dbg) {
-      dbg.innerHTML += '<br/>filteredList after: ' + filteredList.length +
-        '<br/>grid innerHTML length: ' + (document.getElementById('shop-grid') ? document.getElementById('shop-grid').innerHTML.length : 'NO GRID');
     }
   })();
 </script>

@@ -1220,3 +1220,30 @@ img { max-width:100%; }
   font-size: 11px;
   color: var(--muted);
 }
+
+/* ═══════════════════════════════════════
+   SHOP PAGE — Missing classes fix
+═══════════════════════════════════════ */
+.products-wrap   { padding:14px 4% 28px; }
+.shop-page-wrap  { max-width:1200px; margin:0 auto; }
+
+.badge-tag {
+  position:absolute; top:7px; left:7px; z-index:2;
+  font-size:9px; font-weight:700; letter-spacing:.8px;
+  text-transform:uppercase; padding:3px 7px; border-radius:3px;
+}
+.badge-hot   { background:var(--gold);  color:var(--green-dark); }
+.badge-sale  { background:var(--red);   color:#fff; }
+.badge-new   { background:var(--green); color:#fff; }
+.badge-hotel { background:#7c3aed;      color:#fff; }
+
+.card-note { font-size:10.5px; color:var(--muted); }
+.card-price-row { display:flex; align-items:center; gap:6px; }
+.card-old-price { font-size:11px; color:#bbb; text-decoration:line-through; }
+
+.no-results {
+  grid-column:1/-1; text-align:center;
+  padding:56px 20px; background:#fff; border-radius:10px;
+}
+.no-results .nr-icon { font-size:3rem; margin-bottom:12px; display:block; }
+.no-results p { font-size:14px; color:var(--muted); margin-bottom:16px; }
