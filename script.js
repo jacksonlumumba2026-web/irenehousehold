@@ -553,40 +553,69 @@ function openQuickView(id) {
   }, 10);
   document.body.style.overflow = 'hidden';
 
-  /* Auto slideshow — cycles through colour photos every 2.5s */
+  /* Auto slideshow — only cycles through images that actually loaded */
   if (imgs.length > 1) {
-    var slideIdx   = 0;
-    var userPaused = false;
+    var userPaused  = false;
+    var loadedImgs  = []; /* only confirmed loaded images */
+    var slideIdx    = 0;
+    var slideTimer  = null;
 
-    var slideTimer = setInterval(function(){
-      if (userPaused) return;
-      if (!document.getElementById('qv-modal')) {
-        clearInterval(slideTimer);
-        return;
-      }
+    /* Pre-check which images actually exist */
+    var checked = 0;
+    imgs.forEach(function(src, i) {
+      var tester   = new Image();
+      tester.onload = function(){
+        loadedImgs.push({ src: src, idx: i });
+        loadedImgs.sort(function(a,b){ return a.idx - b.idx; });
+        checked++;
+        if (checked === imgs.length) startSlideshow();
+      };
+      tester.onerror = function(){
+        checked++;
+        if (checked === imgs.length) startSlideshow();
+      };
+      tester.src = src;
+    });
 
-      slideIdx = (slideIdx + 1) % imgs.length;
-      var mImg = document.getElementById('qv-main-img');
-      if (!mImg) { clearInterval(slideTimer); return; }
+    function startSlideshow() {
+      /* Need at least 2 working images to slideshow */
+      if (loadedImgs.length < 2) return;
 
-      /* Fade out → switch src → fade in */
-      mImg.style.transition = 'opacity .35s ease';
-      mImg.style.opacity    = '0';
-      var newSrc = imgs[slideIdx];
-      setTimeout(function(){
-        mImg.src           = newSrc;
-        mImg.style.opacity = '1';
-      }, 350);
+      slideTimer = setInterval(function(){
+        if (userPaused) return;
+        if (!document.getElementById('qv-modal')) {
+          clearInterval(slideTimer);
+          return;
+        }
 
-      /* Sync thumbnail highlight */
-      var allThumbs = document.querySelectorAll('#qv-modal .qv-thumb');
-      allThumbs.forEach(function(t, i){
-        t.style.borderColor = (i === slideIdx) ? '#1a3d2b' : '#e0e0e0';
-        t.style.transform   = (i === slideIdx) ? 'scale(1.08)' : 'scale(1)';
-      });
-    }, 2500);
+        /* Move to next — wrap back to 0 at end */
+        slideIdx = (slideIdx + 1) % loadedImgs.length;
+        var newSrc  = loadedImgs[slideIdx].src;
+        var origIdx = loadedImgs[slideIdx].idx;
+        var mImg    = document.getElementById('qv-main-img');
+        if (!mImg) { clearInterval(slideTimer); return; }
 
-    /* When user taps a thumb — pause slideshow */
+        /* Smooth fade transition */
+        mImg.style.transition = 'opacity .35s ease';
+        mImg.style.opacity    = '0';
+        setTimeout(function(){
+          mImg.src           = newSrc;
+          mImg.style.opacity = '1';
+        }, 350);
+
+        /* Sync thumbnail highlight */
+        var allThumbs = document.querySelectorAll('#qv-modal .qv-thumb');
+        allThumbs.forEach(function(t, i){
+          t.style.borderColor = (i === origIdx) ? '#1a3d2b' : '#e0e0e0';
+          t.style.transform   = (i === origIdx) ? 'scale(1.08)' : 'scale(1)';
+        });
+
+      }, 2500);
+
+      modal._slideTimer = slideTimer;
+    }
+
+    /* Pause when user taps a thumbnail */
     var allThumbs = document.querySelectorAll('#qv-modal .qv-thumb');
     allThumbs.forEach(function(th){
       var orig = th.onclick;
@@ -595,8 +624,6 @@ function openQuickView(id) {
         if (orig) orig.call(this);
       };
     });
-
-    modal._slideTimer = slideTimer;
   }
 }
 
