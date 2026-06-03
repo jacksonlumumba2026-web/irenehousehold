@@ -373,7 +373,6 @@ function openQuickView(id) {
   if (!p) return;
   qvProduct = p;
 
-  // Track view
   if (recentlyViewed.indexOf(id) === -1) recentlyViewed.unshift(id);
   if (recentlyViewed.length > 10) recentlyViewed.pop();
 
@@ -381,14 +380,19 @@ function openQuickView(id) {
   var imgs     = (p.imgs || [p.img]).filter(Boolean).slice(0, 6);
   var catLabel = CAT_LABELS[p.cat] || p.cat;
   var inWL     = wishlist.some(function(w){ return w.id === p.id; });
-  var waMsg    = encodeURIComponent('Hi Irene! I want to order: ' + p.name + ' - ' + price + '. Please confirm availability.');
+  var waMsg    = encodeURIComponent('Hi Irene! I want to order:\nProduct: ' + p.name + '\nPrice: ' + price + '\nPlease confirm availability. Thank you!');
 
-  // Get or create modal
+  /* ── Create / reuse modal ── */
   var modal = document.getElementById('qv-modal');
   if (!modal) {
     modal = document.createElement('div');
     modal.id = 'qv-modal';
-    modal.style.cssText = 'position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.6);display:none;align-items:flex-end;justify-content:center;transition:opacity .3s;';
+    modal.style.cssText = [
+      'position:fixed;inset:0;z-index:3000',
+      'background:rgba(0,0,0,.65)',
+      'display:none;align-items:flex-end;justify-content:center',
+      'opacity:0;transition:opacity .25s'
+    ].join(';');
     modal.onclick = function(e){ if (e.target === modal) closeQuickView(); };
     document.body.appendChild(modal);
   }
@@ -397,103 +401,228 @@ function openQuickView(id) {
   if (!box) {
     box = document.createElement('div');
     box.id = 'qv-modal-box';
-    box.style.cssText = 'background:#fff;border-radius:16px 16px 0 0;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;position:relative;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);';
+    box.style.cssText = [
+      'background:#fff',
+      'border-radius:18px 18px 0 0',
+      'width:100%;max-width:520px',
+      'height:92vh',           /* fixed height */
+      'display:flex;flex-direction:column', /* flex column */
+      'position:relative',
+      'transform:translateY(100%)',
+      'transition:transform .35s cubic-bezier(.4,0,.2,1)',
+      'overflow:hidden'        /* children control their own scroll */
+    ].join(';');
     modal.appendChild(box);
   }
 
-  // Build content
   box.innerHTML = '';
 
-  // Close button
+  /* ── TOP FIXED SECTION (image + thumbs) ── */
+  var topSection = document.createElement('div');
+  topSection.style.cssText = 'flex-shrink:0;position:relative;background:#f5f5f5;';
+
+  /* Close button */
   var closeBtn = document.createElement('button');
   closeBtn.innerHTML = '&#10005;';
   closeBtn.onclick = closeQuickView;
-  closeBtn.style.cssText = 'position:absolute;top:10px;right:10px;z-index:10;background:rgba(0,0,0,.3);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:15px;cursor:pointer;';
-  box.appendChild(closeBtn);
+  closeBtn.style.cssText = [
+    'position:absolute;top:10px;right:10px;z-index:20',
+    'background:rgba(0,0,0,.35);backdrop-filter:blur(4px)',
+    'border:none;color:#fff;width:34px;height:34px',
+    'border-radius:50%;font-size:15px;cursor:pointer'
+  ].join(';');
+  topSection.appendChild(closeBtn);
 
-  // Main image
+  /* Main image — fixed square */
   var imgWrap = document.createElement('div');
-  imgWrap.style.cssText = 'position:relative;aspect-ratio:1;background:#f5f5f5;overflow:hidden;';
+  imgWrap.style.cssText = 'position:relative;width:100%;aspect-ratio:1;max-height:52vw;overflow:hidden;background:#f5f5f5;';
+
   var mainImg = document.createElement('img');
   mainImg.id  = 'qv-main-img';
   mainImg.src = imgs[0];
-  mainImg.onerror = function() {
+  mainImg.alt = p.name;
+  mainImg.style.cssText = 'width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:opacity .2s;';
+  mainImg.onclick  = function(){ openZoom(this.src); };
+  mainImg.onerror  = function(){
     this.style.display = 'none';
     imgWrap.style.background = 'linear-gradient(135deg,#e8f5ee,#d0e4d0)';
-    imgWrap.style.display = 'flex';
-    imgWrap.style.alignItems = 'center';
-    imgWrap.style.justifyContent = 'center';
-    imgWrap.innerHTML += '<span style="font-size:3rem;opacity:.3;">&#128247;</span>';
   };
-  mainImg.alt = p.name;
-  mainImg.style.cssText = 'width:100%;height:100%;object-fit:cover;cursor:zoom-in;';
-  mainImg.onclick = function() { openZoom(this.src); };
   imgWrap.appendChild(mainImg);
 
+  /* Zoom hint */
+  var zoomHint = document.createElement('div');
+  zoomHint.innerHTML = '&#128269; Tap to zoom';
+  zoomHint.style.cssText = [
+    'position:absolute;bottom:8px;right:8px',
+    'background:rgba(0,0,0,.45);color:#fff',
+    'font-size:9px;padding:3px 8px;border-radius:4px',
+    'pointer-events:none'
+  ].join(';');
+  imgWrap.appendChild(zoomHint);
+
+  /* Badge */
   if (p.badge) {
     var bdg = document.createElement('span');
     bdg.textContent = p.badge;
-    bdg.style.cssText = 'position:absolute;top:10px;left:10px;background:' +
-      (p.badge==='HOT'?'#c8a951':p.badge==='SALE'?'#e53e3e':p.badge==='NEW'?'#1a3d2b':'#7c3aed') +
-      ';color:' + (p.badge==='HOT'?'#0d1f16':'#fff') +
-      ';font-size:9px;font-weight:700;padding:3px 9px;border-radius:3px;';
+    bdg.style.cssText = 'position:absolute;top:10px;left:10px;z-index:5;' +
+      'background:' + (p.badge==='HOT'?'#c8a951':p.badge==='SALE'?'#e53e3e':p.badge==='NEW'?'#1a3d2b':'#7c3aed') + ';' +
+      'color:' + (p.badge==='HOT'?'#0d1f16':'#fff') + ';' +
+      'font-size:9px;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.5px;';
     imgWrap.appendChild(bdg);
   }
-  box.appendChild(imgWrap);
+  topSection.appendChild(imgWrap);
 
-  // Thumbnails
+  /* Thumbnail strip — horizontal scroll, fixed below image */
+  var activeThumbIdx = 0;
   if (imgs.length > 1) {
-    var thumbRow = document.createElement('div');
-    thumbRow.style.cssText = 'display:flex;gap:7px;padding:10px 12px;border-bottom:1px solid #f0f0f0;flex-wrap:wrap;';
+    var thumbStrip = document.createElement('div');
+    thumbStrip.style.cssText = [
+      'display:flex;gap:8px;padding:10px 12px',
+      'overflow-x:auto;-webkit-overflow-scrolling:touch',
+      'background:#fff;border-bottom:1px solid #f0f0f0',
+      'scrollbar-width:none'  /* hide scrollbar */
+    ].join(';');
+
     imgs.forEach(function(src, i) {
       var th = document.createElement('img');
       th.src = src;
-      th.onerror = function(){ this.parentElement && this.parentElement.removeChild(this); };
-      th.style.cssText = 'width:52px;height:52px;object-fit:cover;border-radius:7px;cursor:pointer;border:2.5px solid ' + (i===0?'#1a3d2b':'#eee') + ';flex-shrink:0;';
-      th.onclick = (function(s, el) { return function() {
-        mainImg.style.opacity = '0';
-        setTimeout(function(){ mainImg.src = s; mainImg.style.opacity = '1'; }, 150);
-        thumbRow.querySelectorAll('img').forEach(function(x){ x.style.borderColor = '#eee'; });
-        el.style.borderColor = '#1a3d2b';
-      }; })(src, th);
-      thumbRow.appendChild(th);
+      th.onerror = function(){ this.style.display = 'none'; };
+      th.dataset.idx = i;
+      th.style.cssText = [
+        'width:56px;height:56px;flex-shrink:0',
+        'object-fit:cover;border-radius:8px',
+        'cursor:pointer',
+        'border:2.5px solid ' + (i === 0 ? '#1a3d2b' : '#e0e0e0'),
+        'transition:border-color .2s,transform .2s',
+        'transform:' + (i === 0 ? 'scale(1.05)' : 'scale(1)')
+      ].join(';');
+
+      th.onclick = (function(src, el, idx) {
+        return function() {
+          /* Update main image */
+          mainImg.style.opacity = '0';
+          setTimeout(function(){
+            mainImg.src = src;
+            mainImg.style.opacity = '1';
+          }, 150);
+          /* Update all thumb borders */
+          thumbStrip.querySelectorAll('img').forEach(function(t){
+            t.style.borderColor = '#e0e0e0';
+            t.style.transform   = 'scale(1)';
+          });
+          el.style.borderColor = '#1a3d2b';
+          el.style.transform   = 'scale(1.08)';
+          activeThumbIdx = idx;
+        };
+      })(src, th, i);
+
+      thumbStrip.appendChild(th);
     });
-    box.appendChild(thumbRow);
+    topSection.appendChild(thumbStrip);
   }
 
-  // Info
-  var info = document.createElement('div');
-  info.style.padding = '16px';
-  info.innerHTML =
-    '<span style="display:inline-block;background:#e8f5ee;color:#1a3d2b;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:8px;">' + catLabel + '</span>' +
-    '<h3 style="font-family:Cormorant Garamond,serif;font-size:1.4rem;color:#0d1f16;margin-bottom:4px;">' + p.name + '</h3>' +
-    '<p style="font-size:12.5px;color:#6b7280;line-height:1.65;margin-bottom:10px;">' + p.note + '</p>' +
-    '<div style="background:#f2f2f2;border-radius:8px;padding:12px 14px;border-left:4px solid #c8a951;margin-bottom:14px;">' +
-      '<div style="font-family:Cormorant Garamond,serif;font-size:1.8rem;font-weight:700;color:#1a3d2b;">' + price + (p.old ? ' <span style="font-size:13px;color:#bbb;text-decoration:line-through;font-family:DM Sans,sans-serif;">KSh ' + p.old.toLocaleString() + '</span>' : '') + '</div>' +
-      (p.old && p.price ? '<div style="font-size:11px;color:#e53e3e;font-weight:600;">You save KSh ' + (p.old-p.price).toLocaleString() + '</div>' : '') +
-    '</div>' +
-    '<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">' +
-      '<a href="https://wa.me/254716060029?text=' + waMsg + '" target="_blank" style="background:#25d366;color:#fff;padding:13px;font-size:13px;font-weight:700;border-radius:8px;text-align:center;text-decoration:none;">&#128172; Order on WhatsApp</a>' +
-      '<button id="qv-cart-btn" onclick="qvAddToCart()" style="background:#1a3d2b;color:#fff;border:none;padding:12px;font-size:12px;font-weight:700;border-radius:8px;cursor:pointer;">&#128722; Add to Cart</button>' +
-      '<button id="qv-wl-btn" onclick="qvToggleWishlist()" style="background:#fff;color:#1a3d2b;border:1.5px solid #e0e0e0;padding:10px;font-size:12px;font-weight:600;border-radius:8px;cursor:pointer;">' + (inWL ? '&#10084; Saved' : '&#9825; Save to Wishlist') + '</button>' +
-    '</div>' +
-    '<div style="border-top:1px solid #f0f0f0;padding-top:12px;font-size:12px;color:#6b7280;display:flex;flex-direction:column;gap:6px;">' +
-      '<span>&#128666; Free delivery over KSh 5,000</span>' +
-      '<span>&#128179; M-Pesa Paybill 522533 | Account 5997131</span>' +
-      '<span>&#10003; Quality verified before delivery</span>' +
-    '</div>' +
-    '<a href="product.html?id=' + p.id + '" style="display:block;text-align:center;margin-top:12px;font-size:12px;color:#1a3d2b;font-weight:600;border:1px solid #1a3d2b;padding:9px;border-radius:8px;text-decoration:none;">View Full Page &#8594;</a>';
-  box.appendChild(info);
+  box.appendChild(topSection);
 
-  // Show
+  /* ── BOTTOM SCROLLABLE SECTION (info) ── */
+  var infoSection = document.createElement('div');
+  infoSection.style.cssText = 'flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px;';
+
+  /* Category tag */
+  var catTag = document.createElement('span');
+  catTag.textContent = catLabel;
+  catTag.style.cssText = 'display:inline-block;background:#e8f5ee;color:#1a3d2b;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:8px;';
+  infoSection.appendChild(catTag);
+
+  /* Product name */
+  var title = document.createElement('h3');
+  title.textContent = p.name;
+  title.style.cssText = 'font-family:Cormorant Garamond,serif;font-size:1.45rem;color:#0d1f16;margin-bottom:5px;line-height:1.2;';
+  infoSection.appendChild(title);
+
+  /* Description */
+  var desc = document.createElement('p');
+  desc.textContent = p.note;
+  desc.style.cssText = 'font-size:12.5px;color:#6b7280;line-height:1.65;margin-bottom:12px;';
+  infoSection.appendChild(desc);
+
+  /* Price box */
+  var priceBox = document.createElement('div');
+  priceBox.style.cssText = 'background:#f7f7f7;border-radius:10px;padding:12px 14px;border-left:4px solid #c8a951;margin-bottom:14px;';
+  var priceEl = document.createElement('div');
+  priceEl.style.cssText = 'font-family:Cormorant Garamond,serif;font-size:2rem;font-weight:700;color:#1a3d2b;line-height:1;';
+  priceEl.textContent = price;
+  priceBox.appendChild(priceEl);
+  if (p.old) {
+    var oldEl = document.createElement('div');
+    oldEl.style.cssText = 'font-size:12px;color:#bbb;text-decoration:line-through;margin-top:3px;';
+    oldEl.textContent = 'KSh ' + p.old.toLocaleString();
+    priceBox.appendChild(oldEl);
+    if (p.price > 0) {
+      var saveEl = document.createElement('div');
+      saveEl.style.cssText = 'font-size:11px;color:#e53e3e;font-weight:700;margin-top:2px;';
+      saveEl.textContent = 'You save KSh ' + (p.old - p.price).toLocaleString();
+      priceBox.appendChild(saveEl);
+    }
+  }
+  infoSection.appendChild(priceBox);
+
+  /* Action buttons */
+  var btnWrap = document.createElement('div');
+  btnWrap.style.cssText = 'display:flex;flex-direction:column;gap:9px;margin-bottom:16px;';
+
+  var waBtn = document.createElement('a');
+  waBtn.href = 'https://wa.me/254716060029?text=' + waMsg;
+  waBtn.target = '_blank';
+  waBtn.innerHTML = '&#128172; Order on WhatsApp';
+  waBtn.style.cssText = 'background:#25d366;color:#fff;padding:14px;font-size:13px;font-weight:700;border-radius:10px;text-align:center;text-decoration:none;display:block;';
+  btnWrap.appendChild(waBtn);
+
+  var cartBtn = document.createElement('button');
+  cartBtn.id = 'qv-cart-btn';
+  cartBtn.innerHTML = '&#128722; Add to Cart';
+  cartBtn.onclick = qvAddToCart;
+  cartBtn.style.cssText = 'background:#1a3d2b;color:#fff;border:none;padding:13px;font-size:12px;font-weight:700;border-radius:10px;cursor:pointer;';
+  btnWrap.appendChild(cartBtn);
+
+  var wlBtn = document.createElement('button');
+  wlBtn.id = 'qv-wl-btn';
+  wlBtn.innerHTML = inWL ? '&#10084; Saved to Wishlist' : '&#9825; Save to Wishlist';
+  wlBtn.onclick = qvToggleWishlist;
+  wlBtn.style.cssText = 'background:#fff;color:#1a3d2b;border:1.5px solid #e0e0e0;padding:11px;font-size:12px;font-weight:600;border-radius:10px;cursor:pointer;';
+  btnWrap.appendChild(wlBtn);
+  infoSection.appendChild(btnWrap);
+
+  /* Trust row */
+  var trust = document.createElement('div');
+  trust.style.cssText = 'border-top:1px solid #f0f0f0;padding-top:12px;display:flex;flex-direction:column;gap:7px;margin-bottom:12px;';
+  ['&#128666; Free delivery over KSh 5,000',
+   '&#128179; M-Pesa Paybill 522533 | Account 5997131',
+   '&#10003; Quality verified before delivery'].forEach(function(t){
+    var row = document.createElement('div');
+    row.innerHTML = t;
+    row.style.cssText = 'font-size:12px;color:#6b7280;';
+    trust.appendChild(row);
+  });
+  infoSection.appendChild(trust);
+
+  /* Full page link */
+  var fpLink = document.createElement('a');
+  fpLink.href = 'product.html?id=' + p.id;
+  fpLink.innerHTML = 'View Full Product Page &#8594;';
+  fpLink.style.cssText = 'display:block;text-align:center;font-size:12px;color:#1a3d2b;font-weight:600;border:1.5px solid #1a3d2b;padding:10px;border-radius:10px;text-decoration:none;';
+  infoSection.appendChild(fpLink);
+
+  box.appendChild(infoSection);
+
+  /* ── Show modal ── */
   modal.style.display = 'flex';
-  modal.style.opacity = '0';
   setTimeout(function(){
     modal.style.opacity = '1';
     box.style.transform = 'translateY(0)';
   }, 10);
   document.body.style.overflow = 'hidden';
 }
+
 
 function closeQuickView() {
   var modal = document.getElementById('qv-modal');
