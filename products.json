@@ -1022,21 +1022,21 @@
   {
     "id": 142,
     "cat": "kitchenware",
-    "name": "Vacuum flask",
-    "note": "3 ltrs vacuum flask @1700\n2 ltrs vacuum flask @1500",
-    "price": 1700,
-    "old": 1900,
-    "img": "Flask2...jpg",
+    "name": "Tea urn with marble effect",
+    "note": "📌9.5ltr",
+    "price": 2800,
+    "old": 3500,
+    "img": "Tea urn 2..jpg",
     "imgs": [
-      "Flask2...jpg",
-      "Flask2..b.jpg",
-      "Flask2..c.jpg",
-      "Flask2..d.jpg",
-      "Flask2..e.jpg",
-      "Flask2..f.jpg"
+      "Tea urn 2..jpg",
+      "Tea urn 2.b.jpg",
+      "Tea urn 2.c.jpg",
+      "Tea urn 2.d.jpg",
+      "Tea urn 2.e.jpg",
+      "Tea urn 2.f.jpg"
     ],
-    "badge": "SALE",
-    "badgeType": "sale",
+    "badge": "",
+    "badgeType": "",
     "inStock": true
   },
   {
