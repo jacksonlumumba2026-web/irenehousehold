@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Irene Household Collections — Premium household items in Nairobi. Furniture, beddings, kitchenware, carpets and more."/>
+  <title>Irene Household Collections | Quality. Comfort. Style.</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <img src="logo.jpg" alt="IHC"/>
+  <h2>Irene Household</h2>
+  <small>Collections</small>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- PROMO BAR -->
+<div class="promo-bar">
+  🔥 FREE DELIVERY on orders over KSh 5,000 — Countrywide
+  <span>|</span> 🏨 Hotel &amp; Airbnb Packages
+  <span>|</span> 📞 <a href="https://wa.me/254716060029">+254 716 060029</a>
+</div>
+
+
+<!-- TRUST BADGES -->
+<div class="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-item-badge"><span>🚚</span><div><b>Free Delivery</b><em>Orders over KSh 5,000</em></div></div>
+    <div class="trust-item-badge"><span>🔒</span><div><b>M-Pesa Secure</b><em>Safe payments</em></div></div>
+    <div class="trust-item-badge"><span>✅</span><div><b>Quality Verified</b><em>All products checked</em></div></div>
+    <div class="trust-item-badge"><span>⚡</span><div><b>Same Day Delivery</b><em>Nairobi orders</em></div></div>
+    <div class="trust-item-badge"><span>💬</span><div><b>24/7 Support</b><em>WhatsApp us anytime</em></div></div>
+    <div class="trust-item-badge"><span>🏨</span><div><b>Hotel Packages</b><em>Bulk pricing available</em></div></div>
+  </div>
+</div>
+
+<!-- TOP NAV — JIJI STYLE -->
+<nav class="top-nav" id="main-nav">
+  <a href="index.html" class="nav-logo-wrap">
+    <img src="logo.jpg" alt="IHC"/>
+    <div class="nav-logo-text">
+      <b>Irene Household</b>
+      <small>Collections</small>
+    </div>
+  </a>
+
+  <div class="nav-search-wrap">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" placeholder="Search furniture, duvets, kitchenware..."
+      id="hero-search-input" onkeydown="if(event.key==='Enter')goSearch()"/>
+    <button class="nav-search-btn" onclick="goSearch()">Search</button>
+  </div>
+
+  <div class="nav-icons">
+    <button class="nav-icon-btn" onclick="openWishlist()" title="Wishlist">
+      ❤️<span class="nav-badge" id="wl-badge">0</span>
+    </button>
+    <button class="nav-icon-btn" onclick="openCart()" title="Cart">
+      🛒<span class="nav-badge" id="cart-badge">0</span>
+    </button>
+    <div class="nav-ham nav-icon-btn" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-nav">
+  <a href="index.html"          onclick="closeMobileNav()">🏠 Home</a>
+  <a href="shop.html"           onclick="closeMobileNav()">🛍️ Shop All Products</a>
+  <a href="index.html#payment"  onclick="closeMobileNav()">💳 M-Pesa Payment</a>
+  <a href="index.html#hotel"    onclick="closeMobileNav()">🏨 Hotel / Airbnb</a>
+  <a href="index.html#community"onclick="closeMobileNav()">🌍 Community</a>
+  <a href="about.html"          onclick="closeMobileNav()">ℹ️ About Us</a>
+  <a href="contact.html"        onclick="closeMobileNav()">📞 Contact</a>
+  <a href="https://wa.me/254716060029" target="_blank">💬 WhatsApp Us</a>
+</div>
+
+<!-- HERO BANNER -->
+<div class="hero-banner">
+  <div class="hero-inner">
+    <span class="hero-tag">✦ Quality. Comfort. Style.</span>
+    <h1>Kenya's <em>Favourite</em><br>Household Store</h1>
+    <p>Premium furniture, beddings, kitchenware, carpets and more — delivered across Kenya</p>
+    <div class="hero-search">
+      <input type="text" placeholder="What are you looking for? e.g. fluffy duvet, marble table..."
+        id="main-search" onkeydown="if(event.key==='Enter')goSearch()"/>
+      <button onclick="goSearch()">🔍 Search</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong data-target="95" data-suffix="+">95+</strong>
+        <span>Products</span>
+      </div>
+      <div class="hero-stat">
+        <strong data-target="500" data-suffix="+">500+</strong>
+        <span>Customers</span>
+      </div>
+      <div class="hero-stat">
+        <strong data-target="9" data-suffix="">9</strong>
+        <span>Categories</span>
+      </div>
+      <div class="hero-stat">
+        <strong>🚚</strong>
+        <span>Fast Delivery</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORY STRIP — JIJI SCROLLABLE -->
+<div class="cat-strip-wrap">
+  <div class="cat-strip">
+    <button class="cat-strip-item active" onclick="goShopCat('all',this)">
+      <div class="cat-strip-img">
+        <img src="furniture.1.jpg" alt="All"/>
+      </div>
+      <span class="cat-strip-label">All</span>
+    </button>
+    <button class="cat-strip-item" onclick="goShopCat('furniture',this)">
+      <div class="cat-strip-img"><img src="furniture.1.jpg" alt="Furniture" loading="lazy"/></div>
+      <span class="cat-strip-label">Furniture</span>
+    </button>
+    <button class="cat-strip-item" onclick="goShopCat('duvets',this)">
+      <div class="cat-strip-img"><img src="duvet.1.jpg" alt="Duvets" loading="lazy"/></div>
+      <span class="cat-strip-label">Duvets</span>
+    </button>
+    <button class="cat-strip-item" onclick="goShopCat('kitchenware',this)">
+      <div class="cat-strip-img"><img src="kitchenware.1.jpg" alt="Kitchen" loading="lazy"/></div>
+      <span class="cat-strip-label">Kitchenware</span>
+    </button>
+    <button class="cat-strip-item" onclick="goShopCat('carpets',this)">
+      <div class="cat-strip-img"><img src="carpet.1.jpg" alt="Carpets" loading="lazy"/></div>
+      <span class="cat-strip-label">Carpets</span>
+    </button>
+    <button class="cat-strip-item" onclick="goShopCat('nets',this)">
+      <div class="cat-strip-img"><img src="net.1.jpg" alt="Nets" loading="lazy"/></div>
+      <span class="cat-strip-label">Nets</span>
+    </button>
+    <button class="cat-strip-item" onclick="goShopCat('seatcovers',this)">
+      <div class="cat-strip-img"><img src="seatcover.1.jpg" alt="Seat Covers" loading="lazy"/></div>
+      <span class="cat-strip-label">Seat Covers</span>
+    </button>
+    <button class="cat-strip-item" onclick="goShopCat('bath',this)">
+      <div class="cat-strip-img"><img src="bath.1.jpg" alt="Bath" loading="lazy"/></div>
+      <span class="cat-strip-label">Bath</span>
+    </button>
+    <button class="cat-strip-item" onclick="goShopCat('kids',this)">
+      <div class="cat-strip-img"><img src="kid.1.jpg" alt="Kids" loading="lazy"/></div>
+      <span class="cat-strip-label">Kids</span>
+    </button>
+    <button class="cat-strip-item" onclick="goShopCat('electronics',this)">
+      <div class="cat-strip-img"><img src="electronics.1.jpg" alt="Electronics" loading="lazy"/></div>
+      <span class="cat-strip-label">Electronics</span>
+    </button>
+    <button class="cat-strip-item" onclick="goShopCat('cookware',this)">
+      <div class="cat-strip-img"><img src="cookware.1.jpg" alt="Cookware" loading="lazy"/></div>
+      <span class="cat-strip-label">Cookware</span>
+    </button>
+    <button class="cat-strip-item" onclick="goShopCat('travel',this)">
+      <div class="cat-strip-img"><img src="travel.1.jpg" alt="Travel" loading="lazy"/></div>
+      <span class="cat-strip-label">Travel</span>
+    </button>
+    <button class="cat-strip-item" onclick="goShopCat('decor',this)">
+      <div class="cat-strip-img"><img src="decor.1.jpg" alt="Home Décor" loading="lazy"/></div>
+      <span class="cat-strip-label">Home Décor</span>
+    </button>
+  </div>
+</div>
+
+<!-- FLASH SALE BANNER -->
+<div class="flash-banner">
+  <div class="flash-left">
+    <span style="font-size:1.6rem;">🔥</span>
+    <div>
+      <h3>Flash Sale — Today Only!</h3>
+      <p>Up to 40% off selected items</p>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+    <div id="flash-timer"></div>
+    <a href="shop.html" class="flash-link">Shop Sale →</a>
+  </div>
+</div>
+
+<!-- FEATURED PRODUCTS -->
+<div style="background:var(--bg);">
+  <div class="page-wrap">
+    <div class="section-head">
+      <h2>🏆 Featured Products</h2>
+      <a href="shop.html">View All →</a>
+    </div>
+    <div class="products-grid" id="featured-grid"></div>
+  </div>
+</div>
+
+
+<!-- NEW ARRIVALS -->
+<div style="background:#fff;">
+  <div class="page-wrap">
+    <div class="section-head">
+      <h2>✨ New Arrivals</h2>
+      <a href="shop.html">View All →</a>
+    </div>
+    <div class="products-grid" id="new-arrivals-grid"></div>
+  </div>
+</div>
+
+<!-- PAYMENT SECTION -->
+<div class="section" id="payment" style="background:#fff;">
+  <div class="page-wrap">
+    <span class="sec-label rev">✦ Secure Payment</span>
+    <h2 class="sec-title rev">Pay via M-Pesa</h2>
+    <p class="sec-sub rev">Fast, simple and secure — pay before or on delivery</p>
+    <div class="pay-grid">
+      <div class="pay-card rev">
+        <h3>📱 M-Pesa Paybill</h3>
+        <div class="pay-detail-row">
+          <label>Paybill Number</label>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="pay-val" id="paybill-num">522533</span>
+            <button class="copy-btn" onclick="copyValue('paybill-num',this)">Copy</button>
+          </div>
+        </div>
+        <div class="pay-detail-row">
+          <label>Account Number</label>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span class="pay-val" id="account-num">5997131</span>
+            <button class="copy-btn" onclick="copyValue('account-num',this)">Copy</button>
+          </div>
+        </div>
+        <div class="pay-note">💡 Use your name or phone as the account reference.</div>
+        <br/>
+        <a href="https://wa.me/254716060029?text=Hi%20Irene!%20I%20have%20paid%20via%20M-Pesa%20Paybill%20522533%20Account%205997131."
+          class="btn-gold" target="_blank" style="width:100%;justify-content:center;">💬 Confirm Payment</a>
+      </div>
+      <div class="pay-card rev">
+        <h3>How To Pay</h3>
+        <div class="pay-step"><div class="step-num">1</div><div class="step-info"><strong>Open M-Pesa</strong><span>Go to M-Pesa on your Safaricom line</span></div></div>
+        <div class="pay-step"><div class="step-num">2</div><div class="step-info"><strong>Lipa na M-Pesa</strong><span>Select Pay Bill</span></div></div>
+        <div class="pay-step"><div class="step-num">3</div><div class="step-info"><strong>Business Number</strong><span style="color:var(--green);font-weight:700;font-size:15px;">522533</span></div></div>
+        <div class="pay-step"><div class="step-num">4</div><div class="step-info"><strong>Account Number</strong><span style="color:var(--green);font-weight:700;font-size:15px;">5997131</span></div></div>
+        <div class="pay-step"><div class="step-num">5</div><div class="step-info"><strong>Enter Amount &amp; PIN</strong><span>Confirm payment</span></div></div>
+        <div class="pay-step"><div class="step-num">6</div><div class="step-info"><strong>WhatsApp Confirmation</strong><span>Send M-Pesa SMS to <strong style="color:var(--green);">+254 716 060029</strong></span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOTEL / AIRBNB -->
+<div class="hotel-section" id="hotel">
+  <div class="rev">
+    <span class="sec-label" style="-webkit-text-fill-color:var(--gold);text-align:left;">✦ Special Packages</span>
+    <h2>Hotel &amp; Airbnb Linen Packages</h2>
+    <p>Premium all-white bedding packages for hotels and Airbnb properties across Nairobi. Everything your guests need for a 5-star experience.</p>
+    <div class="hotel-badges">
+      <span class="hotel-badge">✓ White Fitted Bedsheets — KSh 2,900</span>
+      <span class="hotel-badge">✓ White Binded Duvet — KSh 3,500</span>
+      <span class="hotel-badge">✓ Bath Gown — KSh 1,999</span>
+      <span class="hotel-badge">✓ Prestige Towels — KSh 1,350</span>
+      <span class="hotel-badge">✓ Bedrunner — KSh 1,800</span>
+      <span class="hotel-badge">✓ Bulk Pricing Available</span>
+    </div>
+    <br/>
+    <a href="https://wa.me/254716060029?text=Hi%20Irene!%20I%20need%20a%20Hotel%20or%20Airbnb%20linen%20package."
+      class="btn-gold" target="_blank" style="margin-top:14px;">💬 Enquire Now</a>
+  </div>
+  <div style="font-size:5rem;opacity:.1;">🏨</div>
+</div>
+
+
+<!-- COMMUNITY SECTION -->
+<div class="community-section" id="community">
+  <div class="page-wrap">
+    <span class="sec-label" style="-webkit-text-fill-color:var(--gold);">✦ Join Our Family</span>
+    <h2 class="sec-title" style="color:#fff;margin-bottom:8px;">Join the Irene Community</h2>
+    <p class="sec-sub" style="margin-bottom:32px;">Be the first to see new arrivals, get exclusive deals and connect with hundreds of happy customers.</p>
+    <div class="community-cards">
+      <a href="https://chat.whatsapp.com/KLvRlQ1YQR5IRYfzxB8rxA" target="_blank"
+        class="comm-card" style="background:rgba(37,211,102,.1);border:1.5px solid rgba(37,211,102,.3);position:relative;">
+        <span style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#25d366;color:#fff;font-size:9px;font-weight:700;padding:3px 10px;border-radius:10px;white-space:nowrap;">FREE TO JOIN</span>
+        <div class="comm-icon" style="background:#25d366;margin-top:8px;">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="comm-title" style="color:#25d366;">WhatsApp Community</div>
+        <div class="comm-desc">Flash deals and new arrivals straight to your phone</div>
+        <div class="comm-btn" style="background:#25d366;">Join Now →</div>
+      </a>
+      <a href="https://www.facebook.com/irenehouseholdcollections" target="_blank"
+        class="comm-card" style="background:rgba(24,119,242,.1);border:1.5px solid rgba(24,119,242,.3);">
+        <div class="comm-icon" style="background:#1877f2;">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </div>
+        <div class="comm-title" style="color:#4a9eff;">Facebook Page</div>
+        <div class="comm-desc">Join 4,877 people who love Irene Household</div>
+        <div class="comm-btn" style="background:#1877f2;">4,877 Likes →</div>
+      </a>
+      <a href="https://www.instagram.com/jaymieirene" target="_blank"
+        class="comm-card" style="background:rgba(225,48,108,.1);border:1.5px solid rgba(225,48,108,.3);">
+        <div class="comm-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div class="comm-title" style="color:#ff6b9d;">Instagram</div>
+        <div class="comm-desc">Daily product photos and styling tips</div>
+        <div class="comm-btn" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);">@jaymieirene →</div>
+      </a>
+    </div>
+    <div style="text-align:center;background:rgba(255,255,255,.05);border:1.5px solid rgba(200,169,81,.2);border-radius:12px;padding:24px;max-width:520px;margin:0 auto;">
+      <div style="font-size:1.8rem;margin-bottom:8px;">🎁</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;margin-bottom:7px;">Members-Only Deals on WhatsApp</h3>
+      <p style="color:rgba(255,255,255,.6);font-size:13px;margin-bottom:18px;">Join our community and get flash sales and special discounts before anyone else!</p>
+      <a href="https://chat.whatsapp.com/KLvRlQ1YQR5IRYfzxB8rxA" target="_blank"
+        style="background:#25d366;color:#fff;padding:12px 26px;border-radius:7px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+        💬 Join WhatsApp Community
+      </a>
+      <p style="color:rgba(255,255,255,.3);font-size:11px;margin-top:10px;">Free to join • No spam • Leave anytime</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="logo.jpg" alt="IHC"/>
+        <div><b>Irene Household Collections</b><small>Quality. Comfort. Style.</small></div>
+      </div>
+      <p>Premium household items for homes, hotels and Airbnb properties across Nairobi, Kenya.</p>
+      <div class="social-links">
+        <a href="https://wa.me/254716060029" class="soc-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://instagram.com/jaymieirene" class="soc-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://facebook.com/irenehouseholdcollections" class="soc-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="#payment">Payment</a></li></ul></div>
+    <div class="footer-col"><h4>Categories</h4><ul><li><a href="shop.html?cat=furniture">Furniture</a></li><li><a href="shop.html?cat=duvets">Duvets</a></li><li><a href="shop.html?cat=kitchenware">Kitchenware</a></li><li><a href="shop.html?cat=carpets">Carpets</a></li><li><a href="shop.html?cat=nets">Nets</a></li><li><a href="shop.html?cat=bath">Bath</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="https://wa.me/254716060029">+254 716 060029</a></li><li><a href="https://irenehousehold.co.ke" target="_blank">irenehousehold.co.ke</a></li><li><a href="https://instagram.com/jaymieirene">@jaymieirene</a></li><li><span style="color:rgba(255,255,255,.3);font-size:12px;">Mon–Sat 8:30am–7pm</span></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Irene Household Collections. All Rights Reserved.</span>
+    <span>Made with ❤️ in Nairobi, Kenya</span>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="cart-overlay"></div>
+<div class="drawer" id="cart-drawer">
+  <div class="drawer-head" style="background:var(--green);">
+    <div><h3 style="color:#fff;">🛒 Cart</h3><span id="cart-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span></div>
+    <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeCart()">✕</button>
+  </div>
+  <div class="drawer-items" id="cart-items">
+    <div class="drawer-empty"><div class="drawer-empty-icon">🛒</div><p>Your cart is empty</p></div>
+  </div>
+  <div class="drawer-footer">
+    <div class="delivery-bar-wrap">
+      <p class="delivery-msg" id="delivery-msg">Add <strong style="color:var(--green);">KSh 5,000</strong> more for <strong style="color:var(--green);">FREE delivery</strong> 🚚</p>
+      <div class="delivery-track"><div class="delivery-fill" id="delivery-fill"></div></div>
+    </div>
+    <span class="pay-label">Payment Status</span>
+    <div class="pay-opts">
+      <div class="pay-opt" id="opt-paid" onclick="selectPayStatus('paid')"><span class="pay-opt-icon">✅</span><div class="pay-opt-title">Already Paid</div><div class="pay-opt-sub">M-Pesa sent</div></div>
+      <div class="pay-opt" id="opt-nopay" onclick="selectPayStatus('nopay')"><span class="pay-opt-icon">💵</span><div class="pay-opt-title">Pay on Delivery</div><div class="pay-opt-sub">Cash / M-Pesa later</div></div>
+    </div>
+    <div class="cart-total-row"><span>Total</span><strong id="cart-total">KSh 0</strong></div>
+    <button class="btn-checkout" onclick="checkout()">💬 Order via WhatsApp</button>
+    <button class="btn-clear" onclick="clearCart()">🗑 Clear Cart</button>
+  </div>
+</div>
+
+<!-- WISHLIST DRAWER -->
+<div class="overlay" id="wl-overlay"></div>
+<div class="drawer" id="wl-drawer">
+  <div class="drawer-head" style="background:#e53e3e;">
+    <div><h3 style="color:#fff;">❤️ Wishlist</h3><span id="wl-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span></div>
+    <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeWishlist()">✕</button>
+  </div>
+  <div class="drawer-items" id="wl-items">
+    <div class="drawer-empty"><div class="drawer-empty-icon">♡</div><p>Wishlist is empty</p></div>
+  </div>
+</div>
+
+<!-- QUICK VIEW -->
+<div class="modal" id="qv-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeQuickView()">✕</button>
+    <img class="modal-img" id="qv-img" src="" alt=""/>
+    <div class="modal-body">
+      <div class="modal-cat" id="qv-cat"></div>
+      <div class="modal-name" id="qv-name"></div>
+      <div class="modal-note" id="qv-note"></div>
+      <div class="modal-price-row"><span class="modal-price" id="qv-price"></span><span class="modal-old" id="qv-old"></span></div>
+      <div class="modal-actions">
+        <button class="btn-green" onclick="qvAddToCart()" style="flex:1;">🛒 Add to Cart</button>
+        <button class="wishlist-btn" id="qv-wl-btn" onclick="qvToggleWishlist()" style="width:42px;height:42px;border-radius:6px;border:1.5px solid #eee;background:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;">♡</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS RING -->
+<div class="progress-ring" id="progress-ring" onclick="scrollToTop()">
+  <svg width="42" height="42" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="#e8e0d0" stroke-width="3"/><circle id="ring-circle" cx="22" cy="22" r="18" fill="none" stroke="#c8a951" stroke-width="3" stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round"/></svg>
+  <div class="progress-ring-inner">↑</div>
+</div>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/254716060029" class="wa-float" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div class="toast" id="toast"></div>
+
+<div class="cookie-bar" id="cookie-bar">
+  <p>🍪 We use cookies to improve your experience on <strong>Irene Household Collections</strong>.</p>
+  <div class="cookie-btns">
+    <button class="ck-no" onclick="declineCookie()">Decline</button>
+    <button class="ck-yes" onclick="acceptCookie()">Accept ✓</button>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <div class="bottom-nav-items">
+    <a href="index.html" class="bnav-item active"><span class="bicon">🏠</span><span>Home</span></a>
+    <a href="shop.html" class="bnav-item"><span class="bicon">🛍️</span><span>Shop</span></a>
+    <a href="#" class="bnav-item" onclick="openWishlist();return false;"><span class="bicon">❤️</span><span>Saved</span><span class="bnav-badge" id="wl-badge-bottom">0</span></a>
+    <a href="#" class="bnav-item" onclick="openCart();return false;"><span class="bicon">🛒</span><span>Cart</span><span class="bnav-badge" id="cart-badge-bottom">0</span></a>
+    <a href="contact.html" class="bnav-item"><span class="bicon">💬</span><span>Chat</span></a>
+  </div>
+</nav>
+
+
+<!-- WHATSAPP COMMUNITY POPUP -->
+<div class="wa-popup-overlay" id="wa-popup-overlay">
+  <div class="wa-popup">
+    <button class="wa-popup-close" onclick="closeWaPopup()">✕</button>
+    <div class="wa-popup-icon">💬</div>
+    <h3>Join Our WhatsApp Community!</h3>
+    <p>Be the first to get exclusive deals, new arrivals and special discounts straight to your WhatsApp.</p>
+    <div class="wa-popup-perks">
+      <div class="wa-popup-perk">🎁 Exclusive deals</div>
+      <div class="wa-popup-perk">🔥 Flash sales</div>
+      <div class="wa-popup-perk">✨ New arrivals</div>
+    </div>
+    <div class="wa-popup-btns">
+      <a href="https://chat.whatsapp.com/KLvRlQ1YQR5IRYfzxB8rxA" target="_blank"
+        class="wa-popup-join" onclick="closeWaPopup()">
+        💬 Join Community Now
+      </a>
+      <button class="wa-popup-later" onclick="closeWaPopup()">Maybe later</button>
+    </div>
+    <p style="font-size:10px;color:#ccc;text-align:center;margin-top:8px;">Free to join • No spam • Leave anytime</p>
+  </div>
+</div>
+
+
+
+<script>
+  // WhatsApp Community Popup — shows 3 times in 3 minutes
+  var popupCount = 0;
+  var maxPopups  = 3;
+  var popupDelay = 60000; // 60 seconds between each
+
+  function showWaPopup() {
+    if (popupCount >= maxPopups) return;
+    try {
+      var shown = parseInt(sessionStorage.getItem('wa_popup_count') || '0');
+      if (shown >= maxPopups) return;
+    } catch(e) {}
+    document.getElementById('wa-popup-overlay').classList.add('show');
+  }
+
+  function closeWaPopup() {
+    document.getElementById('wa-popup-overlay').classList.remove('show');
+    popupCount++;
+    try { sessionStorage.setItem('wa_popup_count', popupCount); } catch(e) {}
+    // Schedule next popup if not done
+    if (popupCount < maxPopups) {
+      setTimeout(showWaPopup, popupDelay);
+    }
+  }
+
+  // First popup after 30 seconds
+  setTimeout(showWaPopup, 30000);
+
+  // Close on overlay click
+  document.addEventListener('DOMContentLoaded', function() {
+    var overlay = document.getElementById('wa-popup-overlay');
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === this) closeWaPopup();
+      });
+    }
+  });
+</script>
+
+
+<script src="script.js"></script>
+<script>
+  // Nav scroll
+  window.addEventListener('scroll', function() {
+    document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Go to shop with search
+  function goSearch() {
+    var q = (document.getElementById('main-search') || document.getElementById('hero-search-input')).value.trim();
+    if (q) window.location = 'shop.html?q=' + encodeURIComponent(q);
+    else window.location = 'shop.html';
+  }
+
+  // Go to shop with category
+  function goShopCat(cat, btn) {
+    document.querySelectorAll('.cat-strip-item').forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    window.location = cat === 'all' ? 'shop.html' : 'shop.html?cat=' + cat;
+  }
+
+  // Render featured — wait for products to load
+  function initHomePage() {
+    var cats = ['nets','duvets','kitchenware','carpets','seatcovers',
+                'bath','furniture','kids','electronics','cookware','travel','decor'];
+    var featured = cats.map(function(cat) {
+      return PRODUCTS.find(function(p) { return p.cat === cat; });
+    }).filter(Boolean);
+
+    var grid = document.getElementById('featured-grid');
+    if (grid) grid.innerHTML = featured.map(buildCard).join('');
+
+    // New Arrivals — last 8 added
+    renderNewArrivals('new-arrivals-grid');
+  }
+
+</script>
+<script>
+  initHomePage();
+</script>
+</body>
+</html>
