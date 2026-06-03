@@ -1980,6 +1980,26 @@
     "inStock": true
   },
   {
+    "id": 139,
+    "cat": "kids",
+    "name": "Boys High Quality Leather Shoes",
+    "note": "Material leather",
+    "price": 2500,
+    "old": 0,
+    "img": "kid.4.jpg",
+    "imgs": [
+      "kid.4.jpg",
+      "kid.4b.jpg",
+      "kid.4c.jpg",
+      "kid.4d.jpg",
+      "kid.4e.jpg",
+      "kid.4f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
     "id": 97,
     "cat": "electronics",
     "name": "Q7S Smart WiFi Camera V380",
