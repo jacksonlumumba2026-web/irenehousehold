@@ -183,27 +183,45 @@ function openZoomModal(src, alt) {
 var PRODUCTS = [];
 var PRODUCTS_LOADED = false;
 
+/* Callback queue — pages call onProductsReady(fn) */
+var _productCallbacks = [];
+
+function onProductsReady(fn) {
+  if (PRODUCTS_LOADED && PRODUCTS.length > 0) {
+    fn(); // already loaded — run immediately
+  } else {
+    _productCallbacks.push(fn); // queue it
+  }
+}
+
+function _runProductCallbacks() {
+  var cbs = _productCallbacks.slice();
+  _productCallbacks = [];
+  cbs.forEach(function(fn) { try { fn(); } catch(e) { console.error(e); } });
+}
+
 function loadProducts(callback) {
-  if (PRODUCTS_LOADED) {
+  if (PRODUCTS_LOADED && PRODUCTS.length > 0) {
     if (callback) callback();
-    document.dispatchEvent(new CustomEvent('productsLoaded'));
+    _runProductCallbacks();
     return;
   }
   fetch('products.json?v=' + Date.now())
-    .then(function(r) { return r.json(); })
+    .then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
     .then(function(data) {
       PRODUCTS = data;
       PRODUCTS_LOADED = true;
       if (callback) callback();
-      // Fire event so page-specific scripts can react
-      document.dispatchEvent(new CustomEvent('productsLoaded'));
+      _runProductCallbacks();
     })
     .catch(function(err) {
-      console.error('Failed to load products:', err);
-      // Try fallback - fire event with empty products so page doesnt hang
+      console.error('products.json load failed:', err);
       PRODUCTS_LOADED = true;
       if (callback) callback();
-      document.dispatchEvent(new CustomEvent('productsLoaded'));
+      _runProductCallbacks();
     });
 }
 
@@ -221,17 +239,17 @@ function shareOnWhatsApp(name, price, img) {
 /* ═══════════════════════════════════════
    STATE
 ═══════════════════════════════════════ */
-let cart      = [];
-let wishlist  = [];
-let payStatus = '';
-let qvProduct = null;
+var cart      = [];
+var wishlist  = [];
+var payStatus = '';
+var qvProduct = null;
 
 /* ═══════════════════════════════════════
    LOADER
 ═══════════════════════════════════════ */
 window.addEventListener('load', () => {
   setTimeout(() => {
-    const loader = document.getElementById('loader');
+    var loader = document.getElementById('loader');
     if (loader) loader.classList.add('hide');
   }, 1100);
 });
@@ -241,36 +259,36 @@ window.addEventListener('load', () => {
 ═══════════════════════════════════════ */
 window.addEventListener('scroll', () => {
   // Sticky nav
-  const nav = document.getElementById('main-nav');
+  var nav = document.getElementById('main-nav');
   if (nav) nav.classList.toggle('scrolled', window.scrollY > 50);
 
   // Active nav link
-  const sections = ['home','categories','shop','payment','hotel','about','contact'];
-  let current = 'home';
-  sections.forEach(id => {
-    const el = document.getElementById(id);
+  var sections = ['home','categories','shop','payment','hotel','about','contact'];
+  var current = 'home';
+  sections.forEach(function(id){
+    var el = document.getElementById(id);
     if (el && window.scrollY >= el.offsetTop - 110) current = id;
   });
-  document.querySelectorAll('.nav-links a').forEach(a => {
+  document.querySelectorAll('.nav-links a').forEach(function(a){
     a.classList.toggle('active', a.getAttribute('href') === '#' + current);
   });
 
   // Progress ring
-  const ring = document.getElementById('progress-ring');
+  var ring = document.getElementById('progress-ring');
   if (ring) {
-    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-    const circle = document.getElementById('ring-circle');
+    var pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    var circle = document.getElementById('ring-circle');
     if (circle) circle.style.strokeDashoffset = 113.1 - pct * 113.1;
     ring.classList.toggle('show', window.scrollY > 300);
   }
 });
 
 function toggleMobileNav() {
-  const mn = document.getElementById('mobile-nav');
+  var mn = document.getElementById('mobile-nav');
   if (mn) mn.classList.toggle('open');
 }
 function closeMobileNav() {
-  const mn = document.getElementById('mobile-nav');
+  var mn = document.getElementById('mobile-nav');
   if (mn) mn.classList.remove('open');
 }
 function scrollToTop() {
@@ -282,7 +300,7 @@ function scrollToTop() {
 ═══════════════════════════════════════ */
 function addToCart(btn, id, name, cat, price, img) {
   if (price === 0) { showToast('Please call us for this item price'); return; }
-  const existing = cart.find(i => i.id === id);
+  var existing = cart.find(function(i){ return i.id === id; });
   if (existing) {
     existing.qty++;
   } else {
@@ -291,7 +309,7 @@ function addToCart(btn, id, name, cat, price, img) {
   updateCartUI();
   showToast('✓ ' + name + ' added to cart!');
   if (btn) {
-    const orig = btn.innerHTML;
+    var orig = btn.innerHTML;
     btn.innerHTML = '✓ Added!';
     btn.classList.add('added');
     setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('added'); }, 1800);
@@ -299,16 +317,16 @@ function addToCart(btn, id, name, cat, price, img) {
 }
 
 function removeFromCart(id) {
-  cart = cart.filter(i => i.id !== id);
+  cart = cart.filter(function(i){ return i.id !== id; });
   updateCartUI();
   renderCartItems();
 }
 
 function changeQty(id, delta) {
-  const item = cart.find(i => i.id === id);
+  var item = cart.find(function(i){ return i.id === id; });
   if (!item) return;
   item.qty += delta;
-  if (item.qty < 1) cart = cart.filter(i => i.id !== id);
+  if (item.qty < 1) cart = cart.filter(function(i){ return i.id !== id; });
   updateCartUI();
   renderCartItems();
 }
@@ -324,62 +342,58 @@ function sendWhatsAppOrder(msg) {
 function clearCart() {
   cart = [];
   payStatus = '';
-  document.querySelectorAll('.pay-option').forEach(o => o.className = 'pay-option');
+  document.querySelectorAll('.pay-option').forEach(function(o){ return o.className = 'pay-option'; });
   updateCartUI();
   renderCartItems();
 }
 
 function updateCartUI() {
-  const count = cart.reduce((s, i) => s + i.qty, 0);
-  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  var count = cart.reduce((s, i) => s + i.qty, 0);
+  var total = cart.reduce((s, i) => s + i.price * i.qty, 0);
 
   // Badges
-  ['cart-badge', 'cart-badge-bottom'].forEach(id => {
-    const b = document.getElementById(id);
+  ['cart-badge', 'cart-badge-bottom'].forEach(function(id){
+    var b = document.getElementById(id);
     if (!b) return;
     b.textContent = count;
     b.classList.toggle('show', count > 0);
   });
 
   // Count and total text
-  const cc = document.getElementById('cart-count');
+  var cc = document.getElementById('cart-count');
   if (cc) cc.textContent = count + ' item' + (count !== 1 ? 's' : '');
-  const ct = document.getElementById('cart-total');
+  var ct = document.getElementById('cart-total');
   if (ct) ct.textContent = 'KSh ' + total.toLocaleString();
 }
 
 function renderCartItems() {
-  const container = document.getElementById('cart-items');
+  var container = document.getElementById('cart-items');
   if (!container) return;
-
   if (!cart.length) {
-    container.innerHTML = `
-      <div class="drawer-empty">
-        <div class="drawer-empty-icon">🛒</div>
-        <p>Your cart is empty</p>
-        <small style="color:#9ca3af;font-size:11px;margin-top:6px;display:block;">Browse our products and add items!</small>
-      </div>`;
+    container.innerHTML = '<div class="drawer-empty"><div class="drawer-empty-icon">&#128722;</div><p>Your cart is empty</p></div>';
     return;
   }
-
-  container.innerHTML = cart.map(item => `
-    <div class="cart-item">
-      <div class="cart-item-img">
-        <img src="${item.img}" alt="${item.name}" loading="lazy"/>
-      </div>
-      <div class="cart-item-info">
-        <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-cat">${item.cat}</div>
-        <div class="cart-item-price">KSh ${(item.price * item.qty).toLocaleString()}</div>
-      </div>
-      <div class="qty-control">
-        <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
-        <span class="qty-val">${item.qty}</span>
-        <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
-      </div>
-      <button class="remove-btn" onclick="removeFromCart(${item.id})">🗑</button>
-    </div>`).join('');
+  container.innerHTML = cart.map(function(item) {
+    var price = (item.price * item.qty).toLocaleString();
+    return '<div class="cart-item">' +
+      '<div class="cart-item-img"><img src="' + item.img + '" loading="lazy"/></div>' +
+      '<div class="cart-item-info">' +
+        '<div class="cart-item-name">' + item.name + '</div>' +
+        '<div class="cart-item-cat">' + item.cat + '</div>' +
+        '<div class="cart-item-price">KSh ' + price + '</div>' +
+      '</div>' +
+      '<div class="qty-control">' +
+        '<button class="qty-btn" onclick="changeQty(' + item.id + ', -1)">&#8722;</button>' +
+        '<span class="qty-val">' + item.qty + '</span>' +
+        '<button class="qty-btn" onclick="changeQty(' + item.id + ', 1)">+</button>' +
+      '</div>' +
+      '<button class="remove-btn" onclick="removeFromCart(' + item.id + ')">&#128465;</button>' +
+    '</div>';
+  }).join('');
+  updateDeliveryBar();
 }
+
+
 
 function openCart() {
   renderCartItems();
@@ -413,7 +427,7 @@ function checkout() {
    WISHLIST
 ═══════════════════════════════════════ */
 function toggleWishlist(btn, id, name, cat, price, img) {
-  const idx = wishlist.findIndex(i => i.id === id);
+  var idx = wishlist.findIndex(function(i){ return i.id; } === id);
   if (idx > -1) {
     wishlist.splice(idx, 1);
     if (btn) { btn.innerHTML = '♡'; btn.classList.remove('active'); }
@@ -428,60 +442,54 @@ function toggleWishlist(btn, id, name, cat, price, img) {
 }
 
 function updateWishlistUI() {
-  const count = wishlist.length;
-  ['wl-badge', 'wl-badge-bottom'].forEach(id => {
-    const b = document.getElementById(id);
+  var count = wishlist.length;
+  ['wl-badge', 'wl-badge-bottom'].forEach(function(id){
+    var b = document.getElementById(id);
     if (!b) return;
     b.textContent = count;
     b.classList.toggle('show', count > 0);
   });
-  const wc = document.getElementById('wl-count');
+  var wc = document.getElementById('wl-count');
   if (wc) wc.textContent = count + ' item' + (count !== 1 ? 's' : '');
 }
 
 function renderWishlistItems() {
-  const container = document.getElementById('wl-items');
+  var container = document.getElementById('wl-items');
   if (!container) return;
-
   if (!wishlist.length) {
-    container.innerHTML = `
-      <div class="drawer-empty">
-        <div class="drawer-empty-icon">♡</div>
-        <p>Your wishlist is empty</p>
-        <small style="color:#9ca3af;font-size:11px;margin-top:6px;display:block;">Tap ♡ on any product to save it</small>
-      </div>`;
+    container.innerHTML = '<div class="drawer-empty"><div class="drawer-empty-icon">&#9825;</div><p>Wishlist is empty</p></div>';
     return;
   }
-
-  container.innerHTML = wishlist.map(item => `
-    <div class="cart-item">
-      <div class="cart-item-img">
-        <img src="${item.img}" alt="${item.name}" loading="lazy"/>
-      </div>
-      <div class="cart-item-info">
-        <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-cat">${item.cat}</div>
-        <div class="cart-item-price">KSh ${item.price > 0 ? item.price.toLocaleString() : 'Call for Price'}</div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:6px;">
-        <button class="btn-green" style="padding:6px 12px;font-size:10px;" onclick="moveToCart(${item.id})">🛒 Add</button>
-        <button class="remove-btn" onclick="removeFromWishlist(${item.id})">🗑</button>
-      </div>
-    </div>`).join('');
+  container.innerHTML = wishlist.map(function(item) {
+    var price = item.price > 0 ? 'KSh ' + item.price.toLocaleString() : 'Call for Price';
+    return '<div class="cart-item">' +
+      '<div class="cart-item-img"><img src="' + item.img + '" loading="lazy"/></div>' +
+      '<div class="cart-item-info">' +
+        '<div class="cart-item-name">' + item.name + '</div>' +
+        '<div class="cart-item-price">' + price + '</div>' +
+      '</div>' +
+      '<div style="display:flex;gap:5px;">' +
+        '<button class="btn-green" onclick="moveToCart(' + item.id + ')" style="font-size:11px;padding:6px 10px;">Add to Cart</button>' +
+        '<button class="remove-btn" onclick="removeFromWishlist(' + item.id + ')">&#128465;</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
 }
 
+
+
 function moveToCart(id) {
-  const item = wishlist.find(i => i.id === id);
+  var item = wishlist.find(function(i){ return i.id; } === id);
   if (item) addToCart(null, item.id, item.name, item.cat, item.price, item.img);
 }
 
 function removeFromWishlist(id) {
-  wishlist = wishlist.filter(i => i.id !== id);
+  wishlist = wishlist.filter(function(i){ return i.id !== id; });
   updateWishlistUI();
   renderWishlistItems();
 
   // Reset heart button on product card
-  const btn = document.querySelector(`.wishlist-btn[data-id="${id}"]`);
+  var btn = document.querySelector(".wishlist-btn[data-id=\"" + id + "\"]");
   if (btn) { btn.innerHTML = '♡'; btn.classList.remove('active'); }
 }
 
@@ -901,27 +909,45 @@ function openZoomModal(src, alt) {
 var PRODUCTS = [];
 var PRODUCTS_LOADED = false;
 
+/* Callback queue — pages call onProductsReady(fn) */
+var _productCallbacks = [];
+
+function onProductsReady(fn) {
+  if (PRODUCTS_LOADED && PRODUCTS.length > 0) {
+    fn(); // already loaded — run immediately
+  } else {
+    _productCallbacks.push(fn); // queue it
+  }
+}
+
+function _runProductCallbacks() {
+  var cbs = _productCallbacks.slice();
+  _productCallbacks = [];
+  cbs.forEach(function(fn) { try { fn(); } catch(e) { console.error(e); } });
+}
+
 function loadProducts(callback) {
-  if (PRODUCTS_LOADED) {
+  if (PRODUCTS_LOADED && PRODUCTS.length > 0) {
     if (callback) callback();
-    document.dispatchEvent(new CustomEvent('productsLoaded'));
+    _runProductCallbacks();
     return;
   }
   fetch('products.json?v=' + Date.now())
-    .then(function(r) { return r.json(); })
+    .then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
     .then(function(data) {
       PRODUCTS = data;
       PRODUCTS_LOADED = true;
       if (callback) callback();
-      // Fire event so page-specific scripts can react
-      document.dispatchEvent(new CustomEvent('productsLoaded'));
+      _runProductCallbacks();
     })
     .catch(function(err) {
-      console.error('Failed to load products:', err);
-      // Try fallback - fire event with empty products so page doesnt hang
+      console.error('products.json load failed:', err);
       PRODUCTS_LOADED = true;
       if (callback) callback();
-      document.dispatchEvent(new CustomEvent('productsLoaded'));
+      _runProductCallbacks();
     });
 }
 
@@ -939,17 +965,17 @@ function shareOnWhatsApp(name, price, img) {
 /* ═══════════════════════════════════════
    STATE
 ═══════════════════════════════════════ */
-let cart      = [];
-let wishlist  = [];
-let payStatus = '';
-let qvProduct = null;
+var cart      = [];
+var wishlist  = [];
+var payStatus = '';
+var qvProduct = null;
 
 /* ═══════════════════════════════════════
    LOADER
 ═══════════════════════════════════════ */
 window.addEventListener('load', () => {
   setTimeout(() => {
-    const loader = document.getElementById('loader');
+    var loader = document.getElementById('loader');
     if (loader) loader.classList.add('hide');
   }, 1100);
 });
@@ -959,36 +985,36 @@ window.addEventListener('load', () => {
 ═══════════════════════════════════════ */
 window.addEventListener('scroll', () => {
   // Sticky nav
-  const nav = document.getElementById('main-nav');
+  var nav = document.getElementById('main-nav');
   if (nav) nav.classList.toggle('scrolled', window.scrollY > 50);
 
   // Active nav link
-  const sections = ['home','categories','shop','payment','hotel','about','contact'];
-  let current = 'home';
-  sections.forEach(id => {
-    const el = document.getElementById(id);
+  var sections = ['home','categories','shop','payment','hotel','about','contact'];
+  var current = 'home';
+  sections.forEach(function(id){
+    var el = document.getElementById(id);
     if (el && window.scrollY >= el.offsetTop - 110) current = id;
   });
-  document.querySelectorAll('.nav-links a').forEach(a => {
+  document.querySelectorAll('.nav-links a').forEach(function(a){
     a.classList.toggle('active', a.getAttribute('href') === '#' + current);
   });
 
   // Progress ring
-  const ring = document.getElementById('progress-ring');
+  var ring = document.getElementById('progress-ring');
   if (ring) {
-    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-    const circle = document.getElementById('ring-circle');
+    var pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+    var circle = document.getElementById('ring-circle');
     if (circle) circle.style.strokeDashoffset = 113.1 - pct * 113.1;
     ring.classList.toggle('show', window.scrollY > 300);
   }
 });
 
 function toggleMobileNav() {
-  const mn = document.getElementById('mobile-nav');
+  var mn = document.getElementById('mobile-nav');
   if (mn) mn.classList.toggle('open');
 }
 function closeMobileNav() {
-  const mn = document.getElementById('mobile-nav');
+  var mn = document.getElementById('mobile-nav');
   if (mn) mn.classList.remove('open');
 }
 function scrollToTop() {
@@ -1000,7 +1026,7 @@ function scrollToTop() {
 ═══════════════════════════════════════ */
 function addToCart(btn, id, name, cat, price, img) {
   if (price === 0) { showToast('Please call us for this item price'); return; }
-  const existing = cart.find(i => i.id === id);
+  var existing = cart.find(function(i){ return i.id === id; });
   if (existing) {
     existing.qty++;
   } else {
@@ -1009,7 +1035,7 @@ function addToCart(btn, id, name, cat, price, img) {
   updateCartUI();
   showToast('✓ ' + name + ' added to cart!');
   if (btn) {
-    const orig = btn.innerHTML;
+    var orig = btn.innerHTML;
     btn.innerHTML = '✓ Added!';
     btn.classList.add('added');
     setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('added'); }, 1800);
@@ -1017,16 +1043,16 @@ function addToCart(btn, id, name, cat, price, img) {
 }
 
 function removeFromCart(id) {
-  cart = cart.filter(i => i.id !== id);
+  cart = cart.filter(function(i){ return i.id !== id; });
   updateCartUI();
   renderCartItems();
 }
 
 function changeQty(id, delta) {
-  const item = cart.find(i => i.id === id);
+  var item = cart.find(function(i){ return i.id === id; });
   if (!item) return;
   item.qty += delta;
-  if (item.qty < 1) cart = cart.filter(i => i.id !== id);
+  if (item.qty < 1) cart = cart.filter(function(i){ return i.id !== id; });
   updateCartUI();
   renderCartItems();
 }
@@ -1034,61 +1060,39 @@ function changeQty(id, delta) {
 function clearCart() {
   cart = [];
   payStatus = '';
-  document.querySelectorAll('.pay-option').forEach(o => o.className = 'pay-option');
+  document.querySelectorAll('.pay-option').forEach(function(o){ return o.className = 'pay-option'; });
   updateCartUI();
   renderCartItems();
 }
 
 function updateCartUI() {
-  const count = cart.reduce((s, i) => s + i.qty, 0);
-  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  var count = cart.reduce((s, i) => s + i.qty, 0);
+  var total = cart.reduce((s, i) => s + i.price * i.qty, 0);
 
   // Badges
-  ['cart-badge', 'cart-badge-bottom'].forEach(id => {
-    const b = document.getElementById(id);
+  ['cart-badge', 'cart-badge-bottom'].forEach(function(id){
+    var b = document.getElementById(id);
     if (!b) return;
     b.textContent = count;
     b.classList.toggle('show', count > 0);
   });
 
   // Count and total text
-  const cc = document.getElementById('cart-count');
+  var cc = document.getElementById('cart-count');
   if (cc) cc.textContent = count + ' item' + (count !== 1 ? 's' : '');
-  const ct = document.getElementById('cart-total');
+  var ct = document.getElementById('cart-total');
   if (ct) ct.textContent = 'KSh ' + total.toLocaleString();
 }
 
 function renderCartItems() {
-  const container = document.getElementById('cart-items');
+  var container = document.getElementById('cart-items');
   if (!container) return;
 
   if (!cart.length) {
-    container.innerHTML = `
-      <div class="drawer-empty">
-        <div class="drawer-empty-icon">🛒</div>
-        <p>Your cart is empty</p>
-        <small style="color:#9ca3af;font-size:11px;margin-top:6px;display:block;">Browse our products and add items!</small>
-      </div>`;
+    container.innerHTML = '       <div class="drawer-empty">         <div class="drawer-empty-icon">🛒</div>         <p>Your cart is empty</p>         <small style="color:#9ca3af;font-size:11px;margin-top:6px;display:block;">Browse our products and add items!</small>       </div>';
     return;
   }
 
-  container.innerHTML = cart.map(item => `
-    <div class="cart-item">
-      <div class="cart-item-img">
-        <img src="${item.img}" alt="${item.name}" loading="lazy"/>
-      </div>
-      <div class="cart-item-info">
-        <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-cat">${item.cat}</div>
-        <div class="cart-item-price">KSh ${(item.price * item.qty).toLocaleString()}</div>
-      </div>
-      <div class="qty-control">
-        <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
-        <span class="qty-val">${item.qty}</span>
-        <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
-      </div>
-      <button class="remove-btn" onclick="removeFromCart(${item.id})">🗑</button>
-    </div>`).join('');
 }
 
 function openCart() {
@@ -1123,7 +1127,7 @@ function checkout() {
    WISHLIST
 ═══════════════════════════════════════ */
 function toggleWishlist(btn, id, name, cat, price, img) {
-  const idx = wishlist.findIndex(i => i.id === id);
+  var idx = wishlist.findIndex(function(i){ return i.id; } === id);
   if (idx > -1) {
     wishlist.splice(idx, 1);
     if (btn) { btn.innerHTML = '♡'; btn.classList.remove('active'); }
@@ -1138,60 +1142,40 @@ function toggleWishlist(btn, id, name, cat, price, img) {
 }
 
 function updateWishlistUI() {
-  const count = wishlist.length;
-  ['wl-badge', 'wl-badge-bottom'].forEach(id => {
-    const b = document.getElementById(id);
+  var count = wishlist.length;
+  ['wl-badge', 'wl-badge-bottom'].forEach(function(id){
+    var b = document.getElementById(id);
     if (!b) return;
     b.textContent = count;
     b.classList.toggle('show', count > 0);
   });
-  const wc = document.getElementById('wl-count');
+  var wc = document.getElementById('wl-count');
   if (wc) wc.textContent = count + ' item' + (count !== 1 ? 's' : '');
 }
 
 function renderWishlistItems() {
-  const container = document.getElementById('wl-items');
+  var container = document.getElementById('wl-items');
   if (!container) return;
 
   if (!wishlist.length) {
-    container.innerHTML = `
-      <div class="drawer-empty">
-        <div class="drawer-empty-icon">♡</div>
-        <p>Your wishlist is empty</p>
-        <small style="color:#9ca3af;font-size:11px;margin-top:6px;display:block;">Tap ♡ on any product to save it</small>
-      </div>`;
+    container.innerHTML = '       <div class="drawer-empty">         <div class="drawer-empty-icon">♡</div>         <p>Your wishlist is empty</p>         <small style="color:#9ca3af;font-size:11px;margin-top:6px;display:block;">Tap ♡ on any product to save it</small>       </div>';
     return;
   }
 
-  container.innerHTML = wishlist.map(item => `
-    <div class="cart-item">
-      <div class="cart-item-img">
-        <img src="${item.img}" alt="${item.name}" loading="lazy"/>
-      </div>
-      <div class="cart-item-info">
-        <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-cat">${item.cat}</div>
-        <div class="cart-item-price">KSh ${item.price > 0 ? item.price.toLocaleString() : 'Call for Price'}</div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:6px;">
-        <button class="btn-green" style="padding:6px 12px;font-size:10px;" onclick="moveToCart(${item.id})">🛒 Add</button>
-        <button class="remove-btn" onclick="removeFromWishlist(${item.id})">🗑</button>
-      </div>
-    </div>`).join('');
 }
 
 function moveToCart(id) {
-  const item = wishlist.find(i => i.id === id);
+  var item = wishlist.find(function(i){ return i.id; } === id);
   if (item) addToCart(null, item.id, item.name, item.cat, item.price, item.img);
 }
 
 function removeFromWishlist(id) {
-  wishlist = wishlist.filter(i => i.id !== id);
+  wishlist = wishlist.filter(function(i){ return i.id !== id; });
   updateWishlistUI();
   renderWishlistItems();
 
   // Reset heart button on product card
-  const btn = document.querySelector(`.wishlist-btn[data-id="${id}"]`);
+  var btn = document.querySelector(".wishlist-btn[data-id=\"" + id + "\"]");
   if (btn) { btn.innerHTML = '♡'; btn.classList.remove('active'); }
 }
 
@@ -1461,26 +1445,22 @@ function renderProducts(containerId, filter, limit) {
    SEARCH
 ═══════════════════════════════════════ */
 function doSearch(inputId, containerId) {
-  const q = document.getElementById(inputId).value.toLowerCase().trim();
-  const container = document.getElementById(containerId);
+  var q = document.getElementById(inputId).value.toLowerCase().trim();
+  var container = document.getElementById(containerId);
   if (!container) return;
 
-  const results = q
-    ? PRODUCTS.filter(p =>
-        p.name.toLowerCase().includes(q) ||
-        p.cat.toLowerCase().includes(q)  ||
-        p.note.toLowerCase().includes(q))
-    : PRODUCTS;
+
+  var results = q ? PRODUCTS.filter(function(p){ return p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q); }) : PRODUCTS.slice();
+
+
+
 
   container.innerHTML = results.length
     ? results.map(buildCard).join('')
-    : `<div style="text-align:center;padding:60px;color:#6b7280;">
-        <p style="font-size:2rem;margin-bottom:10px;">🔍</p>
-        <p>No products found for "<strong>${q}</strong>"</p>
-       </div>`;
+    : '<div style="text-align:center;padding:60px;color:#6b7280;">         <p style="font-size:2rem;margin-bottom:10px;">🔍</p>         <p>No products found for "<strong>' + q + '</strong>"</p>        </div>';
 
   // Update count
-  const count = document.getElementById('product-count');
+  var count = document.getElementById('product-count');
   if (count) count.textContent = results.length + ' products found';
 }
 
@@ -1489,15 +1469,15 @@ function doSearch(inputId, containerId) {
 ═══════════════════════════════════════ */
 function filterByCategory(cat, btn) {
   // Update active tab
-  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.filter-tab').forEach(function(t){ t.classList.remove('active'); });
   if (btn) btn.classList.add('active');
 
   // Render
   renderProducts('products-grid', cat);
 
   // Update count
-  const count = document.getElementById('product-count');
-  const num = cat === 'all' ? PRODUCTS.length : PRODUCTS.filter(p => p.cat === cat).length;
+  var count = document.getElementById('product-count');
+  var num = cat === 'all' ? PRODUCTS.length : PRODUCTS.filter(function(p){ return p.cat; } === cat).length;
   if (count) count.textContent = num + ' products';
 }
 
@@ -1505,10 +1485,10 @@ function filterByCategory(cat, btn) {
    SORT PRODUCTS
 ═══════════════════════════════════════ */
 function sortProducts(value) {
-  const container = document.getElementById('products-grid');
+  var container = document.getElementById('products-grid');
   if (!container) return;
 
-  let sorted = [...PRODUCTS];
+  var sorted = PRODUCTS.slice();
   if (value === 'price-asc')  sorted.sort((a, b) => a.price - b.price);
   if (value === 'price-desc') sorted.sort((a, b) => b.price - a.price);
   if (value === 'name-asc')   sorted.sort((a, b) => a.name.localeCompare(b.name));
@@ -1520,9 +1500,9 @@ function sortProducts(value) {
    COPY TO CLIPBOARD
 ═══════════════════════════════════════ */
 function copyValue(elementId, btn) {
-  const text = document.getElementById(elementId).textContent;
+  var text = document.getElementById(elementId).textContent;
   navigator.clipboard.writeText(text).catch(() => {
-    const el = document.createElement('textarea');
+    var el = document.createElement('textarea');
     el.value = text;
     document.body.appendChild(el);
     el.select();
@@ -1541,12 +1521,12 @@ function copyValue(elementId, btn) {
    CONTACT FORM
 ═══════════════════════════════════════ */
 function sendContact() {
-  const name  = document.getElementById('contact-name').value  || 'Customer';
-  const phone = document.getElementById('contact-phone').value || '';
-  const cat   = document.getElementById('contact-cat').value   || '';
-  const msg   = document.getElementById('contact-msg').value   || '';
+  var name  = document.getElementById('contact-name').value  || 'Customer';
+  var phone = document.getElementById('contact-phone').value || '';
+  var cat   = document.getElementById('contact-cat').value   || '';
+  var msg   = document.getElementById('contact-msg').value   || '';
 
-  const waMsg = `Hello Irene Household! 👋\nName: ${name}\nPhone: ${phone}\nInterest: ${cat}\n\n${msg}`;
+  var waMsg = 'Hello Irene Household! 👋\nName: ' + name + '\nPhone: ' + phone + '\nInterest: ' + cat + '\n\n' + msg + '';
   window.open('https://wa.me/254716060029?text=' + encodeURIComponent(waMsg), '_blank');
 }
 
@@ -1565,7 +1545,7 @@ function declineCookie() {
    TOAST
 ═══════════════════════════════════════ */
 function showToast(msg) {
-  const toast = document.getElementById('toast');
+  var toast = document.getElementById('toast');
   if (!toast) return;
   toast.textContent = msg;
   toast.classList.remove('show');
@@ -1577,22 +1557,22 @@ function showToast(msg) {
 /* ═══════════════════════════════════════
    SCROLL REVEAL
 ═══════════════════════════════════════ */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+var revealObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('on'); });
 }, { threshold: 0.1, rootMargin: '0px 0px -35px 0px' });
 
 /* ═══════════════════════════════════════
    COUNTER ANIMATION
 ═══════════════════════════════════════ */
-const counterObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
+var counterObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
     if (!e.isIntersecting || !e.target.dataset.target) return;
-    const el  = e.target;
-    const tgt = +el.dataset.target;
-    const sfx = el.dataset.suffix || '';
-    let cur = 0;
-    const step = Math.max(1, Math.ceil(tgt / 50));
-    const timer = setInterval(() => {
+    var el  = e.target;
+    var tgt = +el.dataset.target;
+    var sfx = el.dataset.suffix || '';
+    var cur = 0;
+    var step = Math.max(1, Math.ceil(tgt / 50));
+    var timer = setInterval(() => {
       cur = Math.min(cur + step, tgt);
       el.textContent = cur + sfx;
       if (cur >= tgt) clearInterval(timer);

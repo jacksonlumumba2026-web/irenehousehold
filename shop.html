@@ -519,7 +519,7 @@
   }
 
   function applyFilters() {
-    filteredList = [...PRODUCTS];
+    filteredList = PRODUCTS.slice();
 
     if (activeCat !== 'all') {
       filteredList = filteredList.filter(function(p) { return p.cat === activeCat; });
@@ -668,7 +668,7 @@
 
   // Wait for products.json to load before initialising
   document.addEventListener('DOMContentLoaded', function() {
-    document.addEventListener('productsLoaded', initShop);
+    onProductsReady(initShop);
   });
 </script>
 </body>
