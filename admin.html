@@ -389,34 +389,56 @@
     <div class="card">
       <h3>📸 Upload Product Images</h3>
       <p style="font-size:12.5px;color:var(--muted);margin-bottom:16px;">Select photos from your phone — they are automatically renamed and uploaded to GitHub.</p>
-      <div class="fg"><label>Category</label>
-        <select id="ul-cat" onchange="updateUlPreview()">
-          <option value="">— Select category —</option>
-          <option value="net">🦟 Mosquito Nets (net.)</option>
-          <option value="duvet">🛏️ Duvets (duvet.)</option>
-          <option value="kitchenware">🍽️ Kitchenware (kitchenware.)</option>
-          <option value="carpet">🪵 Carpets (carpet.)</option>
-          <option value="seatcover">🛋️ Seat Covers (seatcover.)</option>
-          <option value="bath">🛁 Bath (bath.)</option>
-          <option value="furniture">🪑 Furniture (furniture.)</option>
-          <option value="kid">👦 Kids (kid.)</option>
-          <option value="electronics">🔌 Electronics (electronics.)</option>
-          <option value="cookware">🍳 Cookware (cookware.)</option>
-          <option value="travel">🧳 Travel (travel.)</option>
-          <option value="decor">🏡 Home Decor (decor.)</option>
-        </select>
+      <div class="row2">
+        <div class="fg"><label>Category</label>
+          <select id="ul-cat" onchange="updateUlPreview()">
+            <option value="">— Select —</option>
+            <option value="net">🦟 Nets (net.)</option>
+            <option value="duvet">🛏️ Duvets (duvet.)</option>
+            <option value="kitchenware">🍽️ Kitchenware</option>
+            <option value="carpet">🪵 Carpets (carpet.)</option>
+            <option value="seatcover">🛋️ Seat Covers</option>
+            <option value="bath">🛁 Bath (bath.)</option>
+            <option value="furniture">🪑 Furniture</option>
+            <option value="kid">👦 Kids (kid.)</option>
+            <option value="electronics">🔌 Electronics</option>
+            <option value="cookware">🍳 Cookware</option>
+            <option value="travel">🧳 Travel (travel.)</option>
+            <option value="decor">🏡 Decor (decor.)</option>
+          </select>
+        </div>
+        <div class="fg"><label>Product Number</label>
+          <input type="number" id="ul-num" placeholder="e.g. 1" oninput="updateUlPreview()"/>
+        </div>
       </div>
-      <div class="fg"><label>Product Number</label><input type="number" id="ul-num" placeholder="e.g. 11" oninput="updateUlPreview()"/></div>
+
+      <!-- Colour slot selector -->
+      <div class="fg" id="ul-slot-wrap" style="display:none;">
+        <label>Which Colour Slot to Replace?</label>
+        <div style="background:var(--bg);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;">
+          <p style="font-size:11.5px;color:var(--muted);margin-bottom:4px;">Select the exact slot you want to replace. You can replace one or multiple.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;" id="slot-grid">
+            <!-- slots rendered by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Preview -->
       <div id="ul-preview" style="display:none;background:rgba(26,61,43,.06);border-radius:8px;padding:12px;margin-bottom:12px;">
-        <p style="font-size:11px;font-weight:700;color:var(--green-dark);margin-bottom:7px;">Files will be named:</p>
-        <div id="ul-names" style="display:flex;flex-direction:column;gap:4px;"></div>
+        <p style="font-size:11px;font-weight:700;color:var(--green-dark);margin-bottom:8px;">📋 Files that will be uploaded:</p>
+        <div id="ul-names" style="display:flex;flex-direction:column;gap:5px;"></div>
       </div>
-      <div class="photo-upload" onclick="document.getElementById('ul-in').click()">
-        <input type="file" id="ul-in" accept="image/*" multiple onchange="handleUlPhotos(this)" style="display:none;"/>
-        <div style="font-size:1.8rem;margin-bottom:6px;">📱</div>
-        <p style="font-size:12px;font-weight:600;color:var(--green-dark);">Tap to select photos</p>
-        <p style="font-size:11px;color:var(--muted);">From camera, gallery or WhatsApp</p>
+
+      <!-- Photo selector -->
+      <div id="ul-photo-wrap" style="display:none;">
+        <div class="photo-upload" onclick="document.getElementById('ul-in').click()">
+          <input type="file" id="ul-in" accept="image/*" multiple onchange="handleUlPhotos(this)" style="display:none;"/>
+          <div style="font-size:1.8rem;margin-bottom:6px;">📱</div>
+          <p style="font-size:12px;font-weight:600;color:var(--green-dark);">Tap to select photo(s)</p>
+          <p style="font-size:11px;color:var(--muted);">From camera, gallery or WhatsApp — any filename is fine</p>
+        </div>
       </div>
+
       <div id="ul-queue" style="margin-bottom:14px;"></div>
       <button class="btn-save" id="btn-ul" onclick="uploadImages()" style="display:none;">📤 Upload to GitHub</button>
     </div>
@@ -830,7 +852,14 @@
     Promise.allSettled(photoJobs).then(function(results) {
       var ok = results.filter(function(r){return r.status==='fulfilled';}).length;
       if (ok > 0) showToast('📸 '+ok+' photo(s) uploaded!');
-      return saveToGitHub(allProducts.concat([newP]), 'Product added: '+name);
+      function insertIntoCategory(products, p) {
+        var lastIdx = -1;
+        for (var i = 0; i < products.length; i++) { if (products[i].cat === p.cat) lastIdx = i; }
+        var result = products.slice();
+        if (lastIdx !== -1) { result.splice(lastIdx + 1, 0, p); } else { result.push(p); }
+        return result;
+      }
+      return saveToGitHub(insertIntoCategory(allProducts, newP), 'Product added: '+name);
     }).then(function(){
       // Reset form
       ['a-name','a-note','a-price','a-old','a-img'].forEach(function(id){
@@ -987,52 +1016,130 @@
     document.getElementById('dr').innerHTML='';
   }
 
-  /* ══ IMAGE UPLOAD (Settings) ══ */
-  var UL_SUFFIXES = ['','b','c','d','e','f'];
+  /* ══ IMAGE UPLOAD (Settings) — Slot-aware ══ */
+  var UL_SUFFIXES   = ['','b','c','d','e','f'];
+  var UL_LABELS     = ['Main Photo','Colour 2','Colour 3','Colour 4','Colour 5','Colour 6'];
+  var selectedSlots = []; // which slots are selected e.g. [0,1,2]
 
   function updateUlPreview() {
-    var cat = document.getElementById('ul-cat').value;
-    var num = document.getElementById('ul-num').value.trim();
+    var cat       = document.getElementById('ul-cat').value;
+    var num       = document.getElementById('ul-num').value.trim();
+    var slotWrap  = document.getElementById('ul-slot-wrap');
+    var photoWrap = document.getElementById('ul-photo-wrap');
+    var prev      = document.getElementById('ul-preview');
+
+    if (!cat || !num) {
+      if (slotWrap)  slotWrap.style.display  = 'none';
+      if (photoWrap) photoWrap.style.display = 'none';
+      if (prev)      prev.style.display      = 'none';
+      return;
+    }
+
+    // Show slot selector
+    slotWrap.style.display = 'block';
+    var grid = document.getElementById('slot-grid');
+    grid.innerHTML = UL_SUFFIXES.map(function(sfx, i) {
+      var filename = cat + '.' + num + sfx + '.jpg';
+      var isSelected = selectedSlots.indexOf(i) !== -1;
+      return '<div id="slot-'+i+'" onclick="toggleSlot('+i+')" style="'+
+        'border:2px solid '+(isSelected?'var(--green)':'#e0e0e0')+';'+
+        'background:'+(isSelected?'rgba(26,61,43,.08)':'#fff')+';'+
+        'border-radius:9px;padding:10px 8px;text-align:center;cursor:pointer;transition:all .2s;">'+
+        '<div style="font-size:1.4rem;margin-bottom:5px;">'+(isSelected?'✅':'📷')+'</div>'+
+        '<code style="font-size:10px;color:'+(isSelected?'var(--green)':'var(--muted)')+';font-weight:700;display:block;word-break:break-all;">'+filename+'</code>'+
+        '<div style="font-size:9px;color:var(--muted);margin-top:3px;">'+UL_LABELS[i]+'</div>'+
+      '</div>';
+    }).join('');
+
+    renderUlNamesPreview();
+  }
+
+  function toggleSlot(idx) {
+    var pos = selectedSlots.indexOf(idx);
+    if (pos !== -1) {
+      selectedSlots.splice(pos, 1);
+    } else {
+      selectedSlots.push(idx);
+      selectedSlots.sort();
+    }
+    updateUlPreview();
+    renderUlQueue();
+
+    // Show/hide photo selector
+    var photoWrap = document.getElementById('ul-photo-wrap');
+    var btn       = document.getElementById('btn-ul');
+    if (selectedSlots.length > 0) {
+      photoWrap.style.display = 'block';
+      // Update file input to accept right number
+      var inp = document.getElementById('ul-in');
+      if (inp) inp.multiple = selectedSlots.length > 1;
+    } else {
+      photoWrap.style.display = 'none';
+      if (btn) btn.style.display = 'none';
+      ulPhotos = [];
+    }
+  }
+
+  function renderUlNamesPreview() {
+    var cat  = document.getElementById('ul-cat').value;
+    var num  = document.getElementById('ul-num').value.trim();
     var prev = document.getElementById('ul-preview');
     var names = document.getElementById('ul-names');
-    if (!cat||!num) { if(prev) prev.style.display='none'; return; }
-    var labels = ['Main','2nd colour','3rd colour','4th colour','5th colour','6th colour'];
-    ulNames = UL_SUFFIXES.map(function(s){return cat+'.'+num+s+'.jpg';});
-    names.innerHTML = ulNames.map(function(n,i){
-      return '<div style="display:flex;align-items:center;gap:8px;font-size:12px;"><span style="color:var(--green);">●</span><code style="color:var(--green);font-weight:700;">'+n+'</code><span style="color:var(--muted);">← '+labels[i]+'</span></div>';
-    }).join('');
+    if (!selectedSlots.length) { prev.style.display='none'; return; }
+
     prev.style.display = 'block';
-    if (ulPhotos.length) renderUlQueue();
+    names.innerHTML = selectedSlots.map(function(slotIdx) {
+      var filename = cat + '.' + num + UL_SUFFIXES[slotIdx] + '.jpg';
+      return '<div style="display:flex;align-items:center;gap:8px;padding:6px 8px;background:#fff;border-radius:6px;">'+
+        '<span style="font-size:1rem;">🖼️</span>'+
+        '<div>'+
+          '<code style="font-size:12px;font-weight:700;color:var(--green);">'+filename+'</code>'+
+          '<span style="font-size:10px;color:var(--muted);margin-left:6px;">'+UL_LABELS[slotIdx]+'</span>'+
+        '</div>'+
+      '</div>';
+    }).join('');
   }
 
   function handleUlPhotos(input) {
-    ulPhotos = Array.from(input.files).slice(0, 6);
+    ulPhotos = Array.from(input.files).slice(0, selectedSlots.length || 6);
     renderUlQueue();
   }
 
   function renderUlQueue() {
     var wrap = document.getElementById('ul-queue');
     var btn  = document.getElementById('btn-ul');
-    if (!ulPhotos.length) { wrap.innerHTML=''; btn.style.display='none'; return; }
+    if (!ulPhotos.length || !selectedSlots.length) {
+      wrap.innerHTML = '';
+      if (btn) btn.style.display = 'none';
+      return;
+    }
     var cat = document.getElementById('ul-cat').value;
     var num = document.getElementById('ul-num').value.trim();
-    wrap.innerHTML = ulPhotos.map(function(f,i){
-      var newName = (cat&&num&&ulNames[i]) ? ulNames[i] : f.name;
-      return '<div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--bg);border-radius:7px;margin-bottom:6px;">'+
-        '<span style="font-size:1.2rem;">🖼️</span>'+
-        '<div style="flex:1;">'+
-          '<div style="font-size:10.5px;color:var(--muted);text-decoration:line-through;">'+f.name+'</div>'+
+
+    wrap.innerHTML = ulPhotos.map(function(f, i) {
+      var slotIdx  = selectedSlots[i];
+      var newName  = (slotIdx !== undefined)
+        ? cat + '.' + num + UL_SUFFIXES[slotIdx] + '.jpg'
+        : f.name;
+      var slotLabel = (slotIdx !== undefined) ? UL_LABELS[slotIdx] : '';
+      return '<div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg);border-radius:8px;margin-bottom:7px;border:1.5px solid #e8e8e8;">'+
+        '<img src="'+URL.createObjectURL(f)+'" style="width:44px;height:44px;object-fit:cover;border-radius:6px;flex-shrink:0;"/>'+
+        '<div style="flex:1;min-width:0;">'+
+          '<div style="font-size:10px;color:var(--muted);text-decoration:line-through;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">'+f.name+'</div>'+
           '<div style="font-size:12.5px;font-weight:700;color:var(--green);">'+newName+'</div>'+
-          (newName!==f.name?'<div style="font-size:9px;color:var(--gold);">✨ Auto renamed</div>':'')+'</div>'+
-        '<span id="uls-'+i+'" style="font-size:11px;color:var(--muted);">Ready</span>'+
+          '<div style="font-size:9px;color:var(--gold);font-weight:600;">'+slotLabel+' — Auto renamed ✨</div>'+
+        '</div>'+
+        '<span id="uls-'+i+'" style="font-size:11px;color:var(--muted);flex-shrink:0;">Ready</span>'+
       '</div>';
     }).join('');
+
     btn.style.display = 'flex';
   }
 
   function uploadImages() {
     if (!githubToken) { showMsg('Add your GitHub token in Settings first','err'); return; }
     if (!ulPhotos.length) { showMsg('Please select photos first','err'); return; }
+    if (!selectedSlots.length) { showMsg('Please select which colour slots to replace','err'); return; }
     var cat = document.getElementById('ul-cat').value;
     var num = document.getElementById('ul-num').value.trim();
     if (!cat||!num) { showMsg('Please select category and product number','err'); return; }
@@ -1041,27 +1148,36 @@
     btn.disabled = true;
     btn.innerHTML = '<div class="spinner"></div> Uploading...';
 
-    var promises = ulPhotos.map(function(file,i){
-      var name = ulNames[i]||file.name;
+    var promises = ulPhotos.map(function(file, i) {
+      var slotIdx = selectedSlots[i];
+      if (slotIdx === undefined) return Promise.resolve();
+      var name = cat + '.' + num + UL_SUFFIXES[slotIdx] + '.jpg';
       var st   = document.getElementById('uls-'+i);
       if (st) st.textContent = 'Uploading...';
       return uploadPhotoToGitHub(file, name).then(function(){
         if (st) { st.textContent='✅ Done'; st.style.color='#22c55e'; }
         return name;
-      }).catch(function(){
+      }).catch(function(e){
         if (st) { st.textContent='❌ Failed'; st.style.color='var(--red)'; }
-        throw new Error('Upload failed: '+name);
+        throw e;
       });
     });
 
     Promise.allSettled(promises).then(function(results){
       var ok   = results.filter(function(r){return r.status==='fulfilled';}).length;
       var fail = results.filter(function(r){return r.status==='rejected';}).length;
-      btn.disabled=false; btn.innerHTML='📤 Upload to GitHub';
-      ulPhotos=[]; ulNames=[];
-      document.getElementById('ul-in').value='';
-      if (!fail) { showMsg('✅ '+ok+' image(s) uploaded successfully!','ok'); showToast('✅ '+ok+' images uploaded!'); }
-      else        { showMsg('⚠️ '+ok+' uploaded, '+fail+' failed. Check token.','err'); }
+      btn.disabled = false; btn.innerHTML = '📤 Upload to GitHub';
+      ulPhotos = []; selectedSlots = [];
+      document.getElementById('ul-in').value = '';
+      document.getElementById('ul-queue').innerHTML = '';
+      // Reset slot UI
+      updateUlPreview();
+      if (!fail) {
+        showMsg('✅ '+ok+' image(s) uploaded! Changes live on website.','ok');
+        showToast('✅ '+ok+' photo(s) uploaded!');
+      } else {
+        showMsg('⚠️ '+ok+' uploaded, '+fail+' failed. Check your token.','err');
+      }
     });
   }
 
