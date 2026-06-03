@@ -1000,6 +1000,26 @@
     "inStock": true
   },
   {
+    "id": 141,
+    "cat": "kitchenware",
+    "name": "NEW IN,🔥🔥 3PCS JUMBO SILVER STAR HOTPOTS",
+    "note": "Capacity :3200ml\n                 5500ml\n                 7500ml\nFree ;serving spoons,2 bowls",
+    "price": 5500,
+    "old": 6000,
+    "img": "Hotpots1...jpg",
+    "imgs": [
+      "Hotpots1...jpg",
+      "Hotpots1..b.jpg",
+      "Hotpots1..c.jpg",
+      "Hotpots1..d.jpg",
+      "Hotpots1..e.jpg",
+      "Hotpots1..f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
