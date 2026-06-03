@@ -2520,26 +2520,6 @@
     "inStock": true
   },
   {
-    "id": 125,
-    "cat": "duvets",
-    "name": "Fleece Blanket",
-    "note": "Size 6x6 — Soft and warm",
-    "price": 999,
-    "old": 0,
-    "img": "duvet.25.jpg",
-    "imgs": [
-      "duvet.25.jpg",
-      "duvet.25b.jpg",
-      "duvet.25c.jpg",
-      "duvet.25d.jpg",
-      "duvet.25e.jpg",
-      "duvet.25f.jpg"
-    ],
-    "badge": "",
-    "badgeType": "",
-    "inStock": true
-  },
-  {
     "id": 126,
     "cat": "furniture",
     "name": "Kids Fashion Plastic Wardrobe",
