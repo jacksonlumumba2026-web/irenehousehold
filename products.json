@@ -2778,25 +2778,5 @@
     "badge": "",
     "badgeType": "",
     "inStock": true
-  },
-  {
-    "id": 138,
-    "cat": "duvets",
-    "name": "Knot pillow",
-    "note": "Size 22cm width — Decorative knot design",
-    "price": 850,
-    "old": 0,
-    "img": "decor.7.jpg",
-    "imgs": [
-      "decor.7.jpg",
-      "decor.7b.jpg",
-      "decor.7c.jpg",
-      "decor.7d.jpg",
-      "decor.7e.jpg",
-      "decor.7f.jpg"
-    ],
-    "badge": "",
-    "badgeType": "",
-    "inStock": true
   }
 ]
