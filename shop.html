@@ -666,13 +666,11 @@
     }
   }
 
-  // Direct init — script.js already loaded with products inline above
-  // Use setTimeout 0 to ensure DOM is ready
-  setTimeout(function() {
-    if (typeof initShop === 'function') {
-      initShop();
-    }
-  }, 0);
+  // Init directly — script.js loaded above, PRODUCTS available
+  console.log('[IHC] PRODUCTS length:', typeof PRODUCTS !== 'undefined' ? PRODUCTS.length : 'UNDEFINED');
+  console.log('[IHC] buildCard type:', typeof buildCard);
+  initShop();
+  console.log('[IHC] filteredList after initShop:', filteredList.length);
 </script>
 </body>
 </html>
