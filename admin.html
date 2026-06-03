@@ -750,31 +750,49 @@
     });
   }
 
+  function getFreshSha() {
+    // Always get the latest SHA before saving - prevents 409 conflict
+    return fetchWithTimeout(
+      'https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + GITHUB_FILE,
+      { headers: { 'Authorization': 'token ' + githubToken } },
+      10000
+    ).then(function(r) {
+      if (r.status === 401) throw new Error('Token rejected. Go to Settings and add a new token.');
+      if (!r.ok) throw new Error('Cannot reach GitHub (' + r.status + '). Check internet.');
+      return r.json();
+    }).then(function(d) {
+      fileSha = d.sha || '';
+      return fileSha;
+    });
+  }
+
   function saveToGitHub(newProducts, msg) {
     if (!githubToken) {
       showMsg('⚠️ No token. Tap Settings tab → paste your GitHub token.', 'err');
       return Promise.reject('no token');
     }
 
-    showMsg('⏳ Saving to GitHub... Please wait.', 'ok');
+    showMsg('⏳ Connecting to GitHub...', 'ok');
 
-    var content = btoa(unescape(encodeURIComponent(JSON.stringify(newProducts, null, 2))));
-    var body    = { message: 'Admin: ' + msg, content: content, branch: GITHUB_BRANCH };
-    if (fileSha) body.sha = fileSha;
+    // Always fetch fresh SHA first — prevents 409 conflict every time
+    return getFreshSha().then(function(sha) {
+      showMsg('⏳ Saving...', 'ok');
+      var content = btoa(unescape(encodeURIComponent(JSON.stringify(newProducts, null, 2))));
+      var body    = { message: 'Admin: ' + msg, content: content, branch: GITHUB_BRANCH, sha: sha };
 
-    return fetchWithTimeout(
-      'https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + GITHUB_FILE,
-      {
-        method: 'PUT',
-        headers: { 'Authorization': 'token ' + githubToken, 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      },
-      15000
-    ).then(function(r) {
-      if (r.status === 401) throw new Error('Token rejected (401). Go to Settings and add a new token.');
-      if (r.status === 404) throw new Error('Repo not found (404). Check GITHUB_OWNER and GITHUB_REPO.');
-      if (r.status === 409) throw new Error('File conflict (409). Reload the page and try again.');
-      if (r.status === 422) throw new Error('SHA mismatch (422). Reload the page and try again.');
+      return fetchWithTimeout(
+        'https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + GITHUB_FILE,
+        {
+          method: 'PUT',
+          headers: { 'Authorization': 'token ' + githubToken, 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        },
+        15000
+      );
+    }).then(function(r) {
+      if (r.status === 401) throw new Error('Token rejected. Go to Settings → add a new token.');
+      if (r.status === 404) throw new Error('Repo not found. Contact Jackson.');
+      if (r.status === 409) throw new Error('Still conflicting. Please reload the page and try again.');
       if (!r.ok) throw new Error('GitHub error ' + r.status + '. Try again.');
       return r.json();
     }).then(function(d) {
@@ -782,47 +800,15 @@
       allProducts = newProducts;
       updateStats();
       renderList(allProducts, 'lr', 'view');
-      showMsg('✅ ' + msg + ' — saved! Syncing website...', 'ok');
+      showMsg('⏳ Syncing to website...', 'ok');
       return syncScriptJs(newProducts);
     }).then(function() {
-      showMsg('✅ ' + msg + ' — website updated!', 'ok');
+      showMsg('✅ ' + msg + ' — live on website!', 'ok');
       showToast('✅ ' + msg);
     });
   }
 
-  function syncScriptJs(newProducts) {
-    // Background sync — doesn't block the UI
-    if (!githubToken) return Promise.resolve();
-    return fetchWithTimeout(
-      'https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/script.js',
-      { headers: { 'Authorization': 'token ' + githubToken } },
-      10000
-    ).then(function(r) { return r.json(); })
-    .then(function(d) {
-      scriptJsSha = d.sha;
-      return fetch(d.download_url).then(function(r) { return r.text(); });
-    })
-    .then(function(txt) {
-      var newJson  = JSON.stringify(newProducts);
-      var updated  = txt.replace(/var PRODUCTS = \[[\s\S]*?\];/, 'var PRODUCTS = ' + newJson + ';');
-      var encoded  = btoa(unescape(encodeURIComponent(updated)));
-      return fetchWithTimeout(
-        'https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/script.js',
-        {
-          method: 'PUT',
-          headers: { 'Authorization': 'token ' + githubToken, 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: 'Sync products to script.js', content: encoded, sha: scriptJsSha, branch: GITHUB_BRANCH })
-        },
-        15000
-      );
-    })
-    .then(function(r) { return r.json(); })
-    .then(function(d) { if (d.content) scriptJsSha = d.content.sha; })
-    .catch(function(e) {
-      console.log('script.js sync note:', e.message);
-      // Not critical — products.json was already saved
-    });
-  }
+
 
   /* ══ STATS ══ */
   function updateStats() {
