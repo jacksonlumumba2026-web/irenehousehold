@@ -2640,6 +2640,26 @@
     "inStock": true
   },
   {
+    "id": 145,
+    "cat": "furniture",
+    "name": "Bar stools",
+    "note": "*High quality adjustable bar stools* \n\n🔘Material:metal & leather seats\n\n🔘very strong,Elegant & Durable 👌🏽\n\n\n🔘Available in White ,Grey,black and biege",
+    "price": 10500,
+    "old": 0,
+    "img": "furniture.25.jpg",
+    "imgs": [
+      "furniture.25.jpg",
+      "furniture.25b.jpg",
+      "furniture.25c.jpg",
+      "furniture.25d.jpg",
+      "furniture.25e.jpg",
+      "furniture.25f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
