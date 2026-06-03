@@ -204,7 +204,7 @@
       <div class="row2">
         <div class="fg"><label>Product Name *</label><input type="text" id="a-name" placeholder="e.g. Fluffy Carpet"/></div>
         <div class="fg"><label>Category *</label>
-          <select id="a-cat">
+          <select id="a-cat" onchange="autoFilename()">
             <option value="">— Select —</option>
             <option value="nets">🦟 Mosquito Nets</option>
             <option value="duvets">🛏️ Duvets &amp; Covers</option>
@@ -250,8 +250,11 @@
         </div>
       </div>
       <div class="fg">
-        <label>Image Filename (no .jpg) *</label>
-        <input type="text" id="a-img" placeholder="e.g. carpet.10" oninput="updateImgPreview('a-img','a-prev')"/>
+        <label>Image Filename (auto-generated) *</label>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <input type="text" id="a-img" placeholder="Select category first" oninput="updateImgPreview('a-img','a-prev')" style="flex:1;"/>
+          <button onclick="autoFilename()" type="button" style="background:var(--green);color:#fff;border:none;padding:11px 14px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;">🔄 Auto</button>
+        </div>
         <p style="font-size:11px;color:var(--muted);margin-top:4px;">Files: <strong id="a-prev">carpet.10.jpg, carpet.10b.jpg...</strong></p>
       </div>
       <button class="btn-save" id="btn-add" onclick="saveProduct()">💾 Save Product to Website</button>
@@ -265,12 +268,18 @@
       <input class="search-bar" id="eq" type="text" placeholder="🔍 Search product name..." oninput="searchP('eq','er','edit')"/>
       <div id="er"></div>
       <div id="edit-form" style="display:none;">
-        <div style="background:rgba(26,61,43,.06);border-radius:8px;padding:11px 14px;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
-          <span style="font-size:1.3rem;">✏️</span>
-          <div><strong style="font-size:13px;color:var(--green-dark);" id="edit-title">Product</strong><div style="font-size:11px;color:var(--muted);">ID: <span id="edit-id">0</span></div></div>
+
+        <!-- Product loaded indicator -->
+        <div style="background:rgba(26,61,43,.08);border-radius:10px;padding:12px 14px;margin-bottom:16px;display:flex;align-items:center;gap:12px;">
+          <img id="edit-thumb" src="" style="width:52px;height:52px;border-radius:8px;object-fit:cover;background:#eee;flex-shrink:0;" onerror="this.style.display='none'"/>
+          <div>
+            <strong style="font-size:13px;color:var(--green-dark);" id="edit-title">Product</strong>
+            <div style="font-size:11px;color:var(--muted);margin-top:2px;">ID: <span id="edit-id">0</span> | Tap any field to edit</div>
+          </div>
         </div>
+
         <div class="row2">
-          <div class="fg"><label>Name</label><input type="text" id="e-name"/></div>
+          <div class="fg"><label>Product Name</label><input type="text" id="e-name"/></div>
           <div class="fg"><label>Category</label>
             <select id="e-cat">
               <option value="nets">🦟 Mosquito Nets</option>
@@ -288,11 +297,14 @@
             </select>
           </div>
         </div>
-        <div class="fg"><label>Description</label><textarea id="e-note"></textarea></div>
+
+        <div class="fg"><label>Description / Size</label><textarea id="e-note"></textarea></div>
+
         <div class="row2">
           <div class="fg"><label>Price (KSh)</label><input type="number" id="e-price"/></div>
           <div class="fg"><label>Old Price (KSh)</label><input type="number" id="e-old"/></div>
         </div>
+
         <div class="fg">
           <label>Stock Status</label>
           <div style="display:flex;gap:12px;padding:10px 12px;background:var(--bg);border-radius:8px;">
@@ -306,6 +318,7 @@
             </label>
           </div>
         </div>
+
         <div class="fg">
           <label>Badge</label>
           <div class="badge-sel" id="edit-badges">
@@ -316,11 +329,51 @@
             <button class="badge-opt" data-v="HOTEL"onclick="selBadge(this,'edit-badges')">🏨 HOTEL</button>
           </div>
         </div>
+
         <div class="fg">
           <label>Image Filename (no .jpg)</label>
-          <input type="text" id="e-img" oninput="updateImgPreview('e-img','e-prev')"/>
+          <input type="text" id="e-img" oninput="updateImgPreview('e-img','e-prev');updateEditPhotoSlots()"/>
           <p style="font-size:11px;color:var(--muted);margin-top:4px;">Files: <strong id="e-prev"></strong></p>
         </div>
+
+        <!-- Photo management section -->
+        <div class="fg" style="background:rgba(124,58,237,.05);border:1px solid rgba(124,58,237,.15);border-radius:10px;padding:14px;margin-bottom:14px;">
+          <label style="color:#7c3aed;">📸 Replace or Add Photos</label>
+          <p style="font-size:11.5px;color:var(--muted);margin-bottom:12px;">Tap the slot you want to replace. You can replace one or multiple without touching the others.</p>
+
+          <!-- Current photos preview -->
+          <div style="margin-bottom:12px;">
+            <p style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Current Photos:</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;" id="edit-current-photos">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Slot selector -->
+          <p style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Select Slots to Replace:</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;" id="edit-slot-grid">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- File input -->
+          <div id="edit-photo-wrap" style="display:none;">
+            <div class="photo-upload" onclick="document.getElementById('edit-photo-in').click()">
+              <input type="file" id="edit-photo-in" accept="image/*" multiple onchange="handleEditPhotos(this)" style="display:none;"/>
+              <div style="font-size:1.5rem;margin-bottom:4px;">📱</div>
+              <p style="font-size:12px;font-weight:600;color:var(--green-dark);">Tap to select photo(s)</p>
+              <p style="font-size:11px;color:var(--muted);">Any filename is fine</p>
+            </div>
+          </div>
+
+          <!-- Upload queue -->
+          <div id="edit-photo-queue" style="margin-bottom:8px;"></div>
+
+          <!-- Upload button -->
+          <button class="btn-save" id="btn-edit-photos" onclick="uploadEditPhotos()" style="display:none;background:#7c3aed;">
+            📤 Upload Selected Photos
+          </button>
+        </div>
+
         <button class="btn-save" id="btn-edit" onclick="updateProduct()">💾 Save Changes to Website</button>
       </div>
     </div>
@@ -416,7 +469,7 @@
       <div class="fg" id="ul-slot-wrap" style="display:none;">
         <label>Which Colour Slot to Replace?</label>
         <div style="background:var(--bg);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;">
-          <p style="font-size:11.5px;color:var(--muted);margin-bottom:4px;">Select the exact slot you want to replace. You can replace one or multiple.</p>
+          <p style="font-size:11.5px;color:var(--muted);margin-bottom:4px;">Tap any slot to select it. You can pick one or several — in any order.</p>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;" id="slot-grid">
             <!-- slots rendered by JS -->
           </div>
@@ -954,66 +1007,6 @@
     }).join('');
   }
 
-  /* ══ EDIT ══ */
-  function loadEdit(id) {
-    var p = allProducts.find(function(x){return x.id===id;});
-    if (!p) return;
-    editTarget = p; editBadge = p.badge||'';
-    document.getElementById('eq').value = '';
-    document.getElementById('er').innerHTML = '';
-    document.getElementById('edit-title').textContent = p.name;
-    document.getElementById('edit-id').textContent    = p.id;
-    document.getElementById('e-name').value  = p.name;
-    document.getElementById('e-cat').value   = p.cat;
-    document.getElementById('e-note').value  = p.note;
-    document.getElementById('e-price').value = p.price;
-    document.getElementById('e-old').value   = p.old||'';
-    var imgBase = p.img.replace('.jpg','');
-    document.getElementById('e-img').value  = imgBase;
-    document.getElementById('e-prev').textContent = imgBase+'.jpg, '+imgBase+'b.jpg...';
-    document.getElementById('e-in').checked  = p.inStock !== false;
-    document.getElementById('e-out').checked = p.inStock === false;
-    document.querySelectorAll('#edit-badges .badge-opt').forEach(function(b){b.classList.toggle('sel',b.dataset.v===editBadge);});
-    document.getElementById('edit-form').style.display = 'block';
-    document.getElementById('edit-form').scrollIntoView({behavior:'smooth',block:'start'});
-    showToast('Loaded: '+p.name);
-  }
-
-  function updateProduct() {
-    if (!editTarget) { showMsg('Please select a product first','err'); return; }
-    var name   = document.getElementById('e-name').value.trim();
-    var cat    = document.getElementById('e-cat').value;
-    var note   = document.getElementById('e-note').value.trim();
-    var price  = parseInt(document.getElementById('e-price').value)||0;
-    var old    = parseInt(document.getElementById('e-old').value)||0;
-    var imgB   = document.getElementById('e-img').value.trim();
-    var inStock= document.getElementById('e-in').checked;
-    if (!name||!cat||!imgB) { showMsg('Please fill all required fields','err'); return; }
-    if (!githubToken) { showMsg('⚠️ No token. Go to Settings tab to add your GitHub token.','err'); return; }
-
-    var btn = document.getElementById('btn-edit');
-    btn.disabled = true;
-    btn.innerHTML = '<div class="spinner"></div> Saving...';
-
-    var sfx  = ['','b','c','d','e','f'];
-    var imgs = sfx.map(function(s){return imgB+s+'.jpg';});
-    var updated = allProducts.map(function(p){
-      if (p.id !== editTarget.id) return p;
-      return {id:p.id, cat:cat, name:name, note:note, price:price, old:old, img:imgs[0], imgs:imgs, badge:editBadge, badgeType:editBadge.toLowerCase(), inStock:inStock};
-    });
-
-    saveToGitHub(updated, 'Updated: '+name)
-    .then(function(){
-      document.getElementById('edit-form').style.display='none';
-      editTarget=null;
-    }).catch(function(e){
-      showMsg('❌ Failed: '+e.message,'err');
-    }).finally(function(){
-      btn.disabled=false;
-      btn.innerHTML='💾 Save Changes to Website';
-    });
-  }
-
   /* ══ DELETE ══ */
   function loadDelete(id) {
     var p = allProducts.find(function(x){return x.id===id;});
@@ -1222,6 +1215,352 @@
   }
 
   /* ══ HELPERS ══ */
+  /* ══ EDIT PHOTO UPLOAD ══ */
+  var editSelectedSlots = [];
+  var editUlPhotos      = [];
+
+  function initEditSlots() {
+    var grid = document.getElementById('edit-slot-grid');
+    if (!grid || !editTarget) return;
+    var imgB = document.getElementById('e-img').value.trim() || (editTarget.img||'').replace('.jpg','');
+    editSelectedSlots = [];
+    editUlPhotos      = [];
+    grid.innerHTML = UL_SUFFIXES.map(function(sfx, i) {
+      var fname = imgB + sfx + '.jpg';
+      return '<div id="eslot-'+i+'" onclick="toggleEditSlot('+i+')" style="border:2px solid #e0e0e0;background:#fff;border-radius:9px;padding:9px 6px;text-align:center;cursor:pointer;transition:all .2s;">' +
+        '<div style="font-size:1.3rem;margin-bottom:4px;">📷</div>' +
+        '<code style="font-size:9px;color:var(--muted);font-weight:700;display:block;word-break:break-all;">' + fname + '</code>' +
+        '<div style="font-size:9px;color:var(--muted);margin-top:2px;">' + UL_LABELS[i] + '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function toggleEditSlot(idx) {
+    var pos = editSelectedSlots.indexOf(idx);
+    if (pos !== -1) {
+      editSelectedSlots.splice(pos, 1);
+    } else {
+      editSelectedSlots.push(idx);
+      editSelectedSlots.sort();
+    }
+    /* Update slot visuals */
+    UL_SUFFIXES.forEach(function(_, i) {
+      var el = document.getElementById('eslot-'+i);
+      if (!el) return;
+      var sel = editSelectedSlots.indexOf(i) !== -1;
+      el.style.borderColor  = sel ? '#1a3d2b' : '#e0e0e0';
+      el.style.background   = sel ? 'rgba(26,61,43,.07)' : '#fff';
+      el.querySelector('div').textContent = sel ? '✅' : '📷';
+    });
+    /* Show/hide file picker */
+    var wrap = document.getElementById('edit-photo-wrap');
+    var prev = document.getElementById('edit-ul-preview');
+    var btn  = document.getElementById('btn-edit-ul');
+    if (editSelectedSlots.length > 0) {
+      wrap.style.display = 'block';
+      renderEditUlPreview();
+    } else {
+      wrap.style.display = 'none';
+      if (prev) prev.style.display = 'none';
+      if (btn)  btn.style.display  = 'none';
+      editUlPhotos = [];
+      document.getElementById('edit-ul-queue').innerHTML = '';
+    }
+  }
+
+  function renderEditUlPreview() {
+    var imgB  = document.getElementById('e-img').value.trim() || (editTarget&&editTarget.img||'').replace('.jpg','');
+    var prev  = document.getElementById('edit-ul-preview');
+    var names = document.getElementById('edit-ul-names');
+    if (!editSelectedSlots.length) { prev.style.display='none'; return; }
+    prev.style.display = 'block';
+    names.innerHTML = editSelectedSlots.map(function(i) {
+      return '<div style="display:flex;align-items:center;gap:7px;font-size:11.5px;">' +
+        '<span style="color:var(--green);">●</span>' +
+        '<code style="color:var(--green);font-weight:700;">' + imgB + UL_SUFFIXES[i] + '.jpg</code>' +
+        '<span style="color:var(--muted);">' + UL_LABELS[i] + '</span>' +
+      '</div>';
+    }).join('');
+  }
+
+  function handleEditUlPhotos(input) {
+    editUlPhotos = Array.from(input.files).slice(0, editSelectedSlots.length || 6);
+    var wrap = document.getElementById('edit-ul-queue');
+    var btn  = document.getElementById('btn-edit-ul');
+    var imgB = document.getElementById('e-img').value.trim() || (editTarget&&editTarget.img||'').replace('.jpg','');
+    if (!editUlPhotos.length) { wrap.innerHTML=''; btn.style.display='none'; return; }
+    wrap.innerHTML = editUlPhotos.map(function(f, i) {
+      var slotIdx = editSelectedSlots[i];
+      var newName = (slotIdx !== undefined) ? imgB + UL_SUFFIXES[slotIdx] + '.jpg' : f.name;
+      return '<div style="display:flex;align-items:center;gap:9px;padding:9px 11px;background:var(--bg);border-radius:7px;margin-bottom:6px;">' +
+        '<img src="'+URL.createObjectURL(f)+'" style="width:40px;height:40px;object-fit:cover;border-radius:6px;flex-shrink:0;"/>' +
+        '<div style="flex:1;">' +
+          '<div style="font-size:10px;color:var(--muted);text-decoration:line-through;overflow:hidden;white-space:nowrap;">'+f.name+'</div>' +
+          '<div style="font-size:12.5px;font-weight:700;color:var(--green);">'+newName+'</div>' +
+          '<div style="font-size:9px;color:var(--gold);">'+UL_LABELS[slotIdx||0]+' — Auto renamed ✨</div>' +
+        '</div>' +
+        '<span id="euls-'+i+'" style="font-size:11px;color:var(--muted);flex-shrink:0;">Ready</span>' +
+      '</div>';
+    }).join('');
+    btn.style.display = 'flex';
+  }
+
+  function uploadEditPhotos() {
+    if (!githubToken) { showMsg('Add your GitHub token in Settings','err'); return; }
+    if (!editUlPhotos.length) { showMsg('Please select photos first','err'); return; }
+    if (!editSelectedSlots.length) { showMsg('Please select colour slots first','err'); return; }
+    var imgB = document.getElementById('e-img').value.trim() || (editTarget&&editTarget.img||'').replace('.jpg','');
+    if (!imgB) { showMsg('Please fill in the image filename first','err'); return; }
+
+    var btn   = document.getElementById('btn-edit-ul');
+    var total = editUlPhotos.length;
+    var done  = 0;
+    var failed= 0;
+
+    btn.disabled = true;
+
+    function uploadNext(i) {
+      if (i >= total) {
+        btn.disabled = false;
+        if (!failed) {
+          btn.innerHTML = '✅ '+done+' photo(s) uploaded!';
+          btn.style.background = '#22c55e';
+          showMsg('✅ '+done+' photo(s) uploaded! Visible on website now.', 'ok');
+          showToast('✅ Photos uploaded!');
+          setTimeout(function(){
+            btn.innerHTML = '📤 Upload Photo(s) to Website';
+            btn.style.background = '#7c3aed';
+            editUlPhotos = []; editSelectedSlots = [];
+            document.getElementById('edit-ul-in').value = '';
+            document.getElementById('edit-ul-queue').innerHTML = '';
+            document.getElementById('edit-ul-preview').style.display = 'none';
+            document.getElementById('edit-photo-wrap').style.display = 'none';
+            btn.style.display = 'none';
+            initEditSlots();
+          }, 3000);
+        } else {
+          showMsg('⚠️ '+done+' uploaded, '+failed+' failed.', 'err');
+        }
+        return;
+      }
+
+      var file    = editUlPhotos[i];
+      var slotIdx = editSelectedSlots[i];
+      if (slotIdx === undefined) { uploadNext(i+1); return; }
+      var name  = imgB + UL_SUFFIXES[slotIdx] + '.jpg';
+      var st    = document.getElementById('euls-'+i);
+      if (st) st.innerHTML = '<div class="spinner" style="width:12px;height:12px;border-width:2px;"></div>';
+      btn.innerHTML = '<div class="spinner"></div> Uploading '+(i+1)+' of '+total+'...';
+
+      uploadPhotoToGitHub(file, name)
+        .then(function(){
+          done++;
+          if (st) { st.innerHTML='<span style="color:#22c55e;font-weight:700;">✅</span>'; }
+          uploadNext(i+1);
+        })
+        .catch(function(){
+          failed++;
+          if (st) { st.innerHTML='<span style="color:var(--red);font-weight:700;">❌</span>'; }
+          uploadNext(i+1);
+        });
+    }
+    uploadNext(0);
+  }
+
+  /* ── AUTO FILENAME ── */
+  var CAT_PREFIXES = {
+    nets:'net', duvets:'duvet', kitchenware:'kitchenware',
+    carpets:'carpet', seatcovers:'seatcover', bath:'bath',
+    furniture:'furniture', kids:'kid', electronics:'electronics',
+    cookware:'cookware', travel:'travel', decor:'decor'
+  };
+
+  function autoFilename() {
+    var cat    = document.getElementById('a-cat').value;
+    if (!cat) return;
+    var prefix = CAT_PREFIXES[cat] || cat;
+    // Find next available number from loaded products
+    var nums = allProducts
+      .filter(function(p){ return p.cat === cat; })
+      .map(function(p){
+        var m = p.img.match(/\.([0-9]+)\.jpg/);
+        return m ? parseInt(m[1]) : 0;
+      });
+    var next = nums.length ? Math.max.apply(null, nums) + 1 : 1;
+    var filename = prefix + '.' + next;
+    document.getElementById('a-img').value = filename;
+    updateImgPreview('a-img', 'a-prev');
+  }
+
+  /* ── EDIT SLOT SELECTOR ── */
+  var editSelectedSlots = [];
+  var editPhotos        = [];
+
+  function buildEditSlotGrid() {
+    var imgBase = document.getElementById('e-img').value.trim();
+    var grid    = document.getElementById('edit-slot-grid');
+    if (!grid || !imgBase) return;
+    var labels = ['Main','Colour 2','Colour 3','Colour 4','Colour 5','Colour 6'];
+    var sfx    = ['','b','c','d','e','f'];
+    grid.innerHTML = sfx.map(function(s, i){
+      var fname   = imgBase + s + '.jpg';
+      var isSel   = editSelectedSlots.indexOf(i) !== -1;
+      return '<div id="esl-'+i+'" onclick="toggleEditSlot('+i+')" style="'+
+        'border:2px solid '+(isSel?'var(--green)':'#e0e0e0')+';'+
+        'background:'+(isSel?'rgba(26,61,43,.07)':'#fff')+';'+
+        'border-radius:9px;padding:9px 6px;text-align:center;cursor:pointer;transition:all .2s;">'+
+        '<div style="font-size:1.2rem;margin-bottom:4px;">'+(isSel?'✅':'📷')+'</div>'+
+        '<code style="font-size:9px;color:'+(isSel?'var(--green)':'#999')+';font-weight:700;display:block;word-break:break-all;">'+fname+'</code>'+
+        '<div style="font-size:8.5px;color:var(--muted);margin-top:2px;">'+labels[i]+'</div>'+
+      '</div>';
+    }).join('');
+  }
+
+  function toggleEditSlot(idx) {
+    var pos = editSelectedSlots.indexOf(idx);
+    if (pos !== -1) { editSelectedSlots.splice(pos, 1); }
+    else            { editSelectedSlots.push(idx); editSelectedSlots.sort(); }
+    buildEditSlotGrid();
+    updateEditSlotPreview();
+    var wrap = document.getElementById('edit-photo-wrap');
+    if (wrap) wrap.style.display = editSelectedSlots.length ? 'block' : 'none';
+  }
+
+  function updateEditSlotPreview() {
+    var imgBase = document.getElementById('e-img').value.trim();
+    var prev    = document.getElementById('edit-slot-preview');
+    var sfx     = ['','b','c','d','e','f'];
+    if (!editSelectedSlots.length || !prev) { if(prev) prev.style.display='none'; return; }
+    prev.style.display = 'block';
+    prev.innerHTML = '📋 Will replace: ' + editSelectedSlots.map(function(i){
+      return '<code style="background:#e8f5ee;color:var(--green);padding:1px 6px;border-radius:3px;margin:0 3px;">'+imgBase+sfx[i]+'.jpg</code>';
+    }).join('');
+  }
+
+  function handleEditPhotos(input) {
+    editPhotos = Array.from(input.files).slice(0, editSelectedSlots.length || 6);
+    var queue  = document.getElementById('edit-photo-queue');
+    var sfx    = ['','b','c','d','e','f'];
+    var imgBase = document.getElementById('e-img').value.trim();
+    if (!queue) return;
+    queue.innerHTML = editPhotos.map(function(f, i){
+      var slotIdx = editSelectedSlots[i];
+      var newName = (slotIdx !== undefined && imgBase) ? imgBase + sfx[slotIdx] + '.jpg' : f.name;
+      return '<div style="display:flex;align-items:center;gap:9px;padding:8px 10px;background:var(--bg);border-radius:7px;margin-bottom:6px;">'+
+        '<img src="'+URL.createObjectURL(f)+'" style="width:40px;height:40px;object-fit:cover;border-radius:5px;flex-shrink:0;"/>'+
+        '<div style="flex:1;">'+
+          '<div style="font-size:10px;color:var(--muted);text-decoration:line-through;">'+f.name+'</div>'+
+          '<div style="font-size:12px;font-weight:700;color:var(--green);">'+newName+'</div>'+
+        '</div>'+
+        '<span id="eup-'+i+'" style="font-size:12px;color:var(--muted);">Ready</span>'+
+      '</div>';
+    }).join('');
+  }
+
+  /* ── LOAD EDIT — also build slot grid and load img ── */
+  var origLoadEdit = typeof loadEdit === 'function' ? loadEdit : null;
+
+  function loadEdit(id) {
+    var p = allProducts.find(function(x){ return x.id === id; });
+    if (!p) return;
+    editTarget = p; editBadge = p.badge || '';
+    editSelectedSlots = []; editPhotos = [];
+
+    document.getElementById('eq').value   = '';
+    document.getElementById('er').innerHTML = '';
+    document.getElementById('edit-title').textContent = p.name;
+    document.getElementById('edit-id').textContent    = p.id;
+    document.getElementById('e-name').value   = p.name;
+    document.getElementById('e-cat').value    = p.cat;
+    document.getElementById('e-note').value   = p.note;
+    document.getElementById('e-price').value  = p.price;
+    document.getElementById('e-old').value    = p.old || '';
+
+    var imgBase = p.img.replace('.jpg','');
+    document.getElementById('e-img').value   = imgBase;
+    document.getElementById('e-prev').textContent = imgBase+'.jpg, '+imgBase+'b.jpg...';
+
+    document.getElementById('e-in').checked  = p.inStock !== false;
+    document.getElementById('e-out').checked = p.inStock === false;
+    document.querySelectorAll('#edit-badges .badge-opt').forEach(function(b){
+      b.classList.toggle('sel', b.dataset.v === editBadge);
+    });
+
+    /* Show current product photo in slot grid */
+    buildEditSlotGrid();
+    var prev = document.getElementById('edit-slot-preview');
+    if (prev) prev.style.display = 'none';
+    var wrap = document.getElementById('edit-photo-wrap');
+    if (wrap) wrap.style.display = 'none';
+    var queue = document.getElementById('edit-photo-queue');
+    if (queue) queue.innerHTML = '';
+
+    document.getElementById('edit-form').style.display = 'block';
+    document.getElementById('edit-form').scrollIntoView({ behavior:'smooth', block:'start' });
+    showToast('Loaded: ' + p.name);
+  }
+
+  /* ── UPDATE PRODUCT with photo upload ── */
+  function updateProduct() {
+    if (!editTarget) { showMsg('Please select a product first','err'); return; }
+    var name    = document.getElementById('e-name').value.trim();
+    var cat     = document.getElementById('e-cat').value;
+    var note    = document.getElementById('e-note').value.trim();
+    var price   = parseInt(document.getElementById('e-price').value) || 0;
+    var old     = parseInt(document.getElementById('e-old').value)   || 0;
+    var imgB    = document.getElementById('e-img').value.trim();
+    var inStock = document.getElementById('e-in').checked;
+    if (!name||!cat||!imgB) { showMsg('Please fill all required fields','err'); return; }
+    if (!githubToken) { showMsg('No token. Go to Settings tab.','err'); return; }
+
+    var btn = document.getElementById('btn-edit');
+    btn.disabled = true;
+    var sfx  = ['','b','c','d','e','f'];
+    var imgs = sfx.map(function(s){ return imgB+s+'.jpg'; });
+    var updated = allProducts.map(function(p){
+      if (p.id !== editTarget.id) return p;
+      return {id:p.id,cat:cat,name:name,note:note,price:price,old:old,
+              img:imgs[0],imgs:imgs,badge:editBadge,
+              badgeType:editBadge.toLowerCase(),inStock:inStock};
+    });
+
+    /* Upload edit photos first */
+    var photoJobs = [];
+    editPhotos.forEach(function(file, i){
+      var slotIdx = editSelectedSlots[i];
+      if (slotIdx !== undefined) {
+        var fname = imgB + sfx[slotIdx] + '.jpg';
+        btn.innerHTML = '<div class="spinner"></div> Uploading photo '+(i+1)+'...';
+        photoJobs.push(
+          uploadPhotoToGitHub(file, fname).then(function(){
+            var st = document.getElementById('eup-'+i);
+            if (st){ st.textContent='✅'; st.style.color='#22c55e'; }
+          })
+        );
+      }
+    });
+
+    Promise.allSettled(photoJobs).then(function(results){
+      var ok = results.filter(function(r){return r.status==='fulfilled';}).length;
+      if (ok > 0) showToast('📸 '+ok+' photo(s) uploaded!');
+      btn.innerHTML = '<div class="spinner"></div> Saving...';
+      return saveToGitHub(updated, 'Updated: '+name);
+    }).then(function(){
+      document.getElementById('edit-form').style.display = 'none';
+      editTarget=null; editPhotos=[]; editSelectedSlots=[];
+    }).catch(function(e){
+      showMsg('❌ Failed: '+e.message,'err');
+    }).finally(function(){
+      btn.disabled=false;
+      btn.innerHTML='💾 Save Changes to Website';
+    });
+  }
+
+
+
+  /* ── UPDATE PRODUCT — also upload photos ── */
+
+
   function showMsg(msg, type) {
     var bar = document.getElementById('msg-bar');
     bar.textContent = msg;
