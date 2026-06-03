@@ -2600,6 +2600,26 @@
     "inStock": true
   },
   {
+    "id": 143,
+    "cat": "furniture",
+    "name": "Glass coffee table",
+    "note": "*Geometric Gold-Framed Diamond Design Glass Coffee Table*\n\nElevates the aesthetic of any seating area with a luxurious presence\n\nEasy to clean and maintain with simple wipe-down surface\n\nIdeal size for both compact and spacious interiors\n\nSturdy enough to support decorative items, drinks, and books\n\nSeamlessly fits into modern, glam, or minimalist environments",
+    "price": 14500,
+    "old": 0,
+    "img": "Glass table 10.jpg",
+    "imgs": [
+      "Glass table 10.jpg",
+      "Glass table 10b.jpg",
+      "Glass table 10c.jpg",
+      "Glass table 10d.jpg",
+      "Glass table 10e.jpg",
+      "Glass table 10f.jpg"
+    ],
+    "badge": "HOT",
+    "badgeType": "hot",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
