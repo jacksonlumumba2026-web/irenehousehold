@@ -157,7 +157,7 @@
     ],
     "badge": "NEW",
     "badgeType": "new",
-    "inStock": false
+    "inStock": true
   },
   {
     "id": 9,
@@ -224,8 +224,8 @@
     "cat": "duvets",
     "name": "Single Warm Woolen Duvet",
     "note": "Size 5x6",
-    "price": 1500,
-    "old": 1999,
+    "price": 1999,
+    "old": 2300,
     "img": "duvet.7.jpg",
     "imgs": [
       "duvet.7.jpg",
@@ -264,8 +264,8 @@
     "cat": "duvets",
     "name": "High Quality Flannel Sherpa",
     "note": "Size 150x225cm",
-    "price": 2600,
-    "old": 3500,
+    "price": 3300,
+    "old": 0,
     "img": "duvet.9.jpg",
     "imgs": [
       "duvet.9.jpg",
@@ -286,14 +286,14 @@
     "note": "1 duvet cover included",
     "price": 2700,
     "old": 0,
-    "img": "duvet cover..10.jpg",
+    "img": "duvet.10.jpg",
     "imgs": [
-      "duvet cover..10.jpg",
-      "duvet cover..10b.jpg",
-      "duvet cover..10c.jpg",
-      "duvet cover..10d.jpg",
-      "duvet cover..10e.jpg",
-      "duvet cover..10f.jpg"
+      "duvet.10.jpg",
+      "duvet.10b.jpg",
+      "duvet.10c.jpg",
+      "duvet.10d.jpg",
+      "duvet.10e.jpg",
+      "duvet.10f.jpg"
     ],
     "badge": "HOTEL",
     "badgeType": "hotel",
@@ -2322,21 +2322,21 @@
   {
     "id": 140,
     "cat": "decor",
-    "name": "Knot pillow",
-    "note": "Size 22cm width — Decorative knot desig",
+    "name": "Boho pillowscases",
+    "note": "18*18\"",
     "price": 850,
     "old": 0,
-    "img": "decor.6.jpg",
+    "img": "Boho cases 11.jpg",
     "imgs": [
-      "decor.6.jpg",
-      "decor.6b.jpg",
-      "decor.6c.jpg",
-      "decor.6d.jpg",
-      "decor.6e.jpg",
-      "decor.6f.jpg"
+      "Boho cases 11.jpg",
+      "Boho cases 11b.jpg",
+      "Boho cases 11c.jpg",
+      "Boho cases 11d.jpg",
+      "Boho cases 11e.jpg",
+      "Boho cases 11f.jpg"
     ],
-    "badge": "HOT",
-    "badgeType": "hot",
+    "badge": "SALE",
+    "badgeType": "sale",
     "inStock": true
   },
   {
@@ -2654,6 +2654,26 @@
       "duvet 25d.jpg",
       "duvet 25e.jpg",
       "duvet 25f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
+    "id": 138,
+    "cat": "duvets",
+    "name": "Knot pillow",
+    "note": "Size 22cm width — Decorative knot design",
+    "price": 850,
+    "old": 0,
+    "img": "decor.7.jpg",
+    "imgs": [
+      "decor.7.jpg",
+      "decor.7b.jpg",
+      "decor.7c.jpg",
+      "decor.7d.jpg",
+      "decor.7e.jpg",
+      "decor.7f.jpg"
     ],
     "badge": "",
     "badgeType": "",
