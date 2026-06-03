@@ -2678,5 +2678,25 @@
     "badge": "NEW",
     "badgeType": "new",
     "inStock": true
+  },
+  {
+    "id": 139,
+    "cat": "duvets",
+    "name": "High quality duvet cover set",
+    "note": "*_1_* duvet cover \n *_1_* bedsheet \n *_2_* pillow cases 👆 \n\n*Size 5*6*",
+    "price": 2500,
+    "old": 0,
+    "img": "duvet.25.jpg",
+    "imgs": [
+      "duvet.25.jpg",
+      "duvet.25b.jpg",
+      "duvet.25c.jpg",
+      "duvet.25d.jpg",
+      "duvet.25e.jpg",
+      "duvet.25f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
   }
 ]
