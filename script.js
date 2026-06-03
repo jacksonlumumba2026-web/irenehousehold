@@ -45,7 +45,7 @@ function buildCard(p) {
 
   return '<div class="product-card" style="cursor:pointer;" onclick="openQuickView(' + p.id + ')">' +
     '<div class="card-img">' +
-      '<img src="' + p.img + '" alt="' + n + '" loading="lazy"' + (!inStock ? ' style="opacity:.45;"' : '') + ' onerror="this.src=\'logo.jpg\'"/>' +
+      '<img src="' + p.img + '" alt="' + n + '" loading="lazy"' + (!inStock ? ' style="opacity:.45;"' : '') + ' onerror="this.style.display=\'none\';this.parentElement.style.background=\'linear-gradient(135deg,#e8f5ee,#d0e4d0)\';"/>' +
       badge + oos +
     '</div>' +
     thumbs +
@@ -417,6 +417,14 @@ function openQuickView(id) {
   var mainImg = document.createElement('img');
   mainImg.id  = 'qv-main-img';
   mainImg.src = imgs[0];
+  mainImg.onerror = function() {
+    this.style.display = 'none';
+    imgWrap.style.background = 'linear-gradient(135deg,#e8f5ee,#d0e4d0)';
+    imgWrap.style.display = 'flex';
+    imgWrap.style.alignItems = 'center';
+    imgWrap.style.justifyContent = 'center';
+    imgWrap.innerHTML += '<span style="font-size:3rem;opacity:.3;">&#128247;</span>';
+  };
   mainImg.alt = p.name;
   mainImg.style.cssText = 'width:100%;height:100%;object-fit:cover;cursor:zoom-in;';
   mainImg.onclick = function() { openZoom(this.src); };
@@ -440,7 +448,7 @@ function openQuickView(id) {
     imgs.forEach(function(src, i) {
       var th = document.createElement('img');
       th.src = src;
-      th.onerror = function(){ this.style.display = 'none'; };
+      th.onerror = function(){ this.parentElement && this.parentElement.removeChild(this); };
       th.style.cssText = 'width:52px;height:52px;object-fit:cover;border-radius:7px;cursor:pointer;border:2.5px solid ' + (i===0?'#1a3d2b':'#eee') + ';flex-shrink:0;';
       th.onclick = (function(s, el) { return function() {
         mainImg.style.opacity = '0';

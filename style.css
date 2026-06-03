@@ -1247,3 +1247,68 @@ img { max-width:100%; }
 }
 .no-results .nr-icon { font-size:3rem; margin-bottom:12px; display:block; }
 .no-results p { font-size:14px; color:var(--muted); margin-bottom:16px; }
+
+/* ═══════════════════════════════════════
+   IMAGE PLACEHOLDER & PERFORMANCE
+═══════════════════════════════════════ */
+
+/* Smooth image loading */
+.card-img img,
+.gallery-main img,
+#qv-main-img {
+  transition: opacity .3s ease;
+}
+
+/* Card image placeholder background */
+.card-img {
+  background: linear-gradient(135deg, #f0f0f0, #e8e8e8);
+}
+
+/* Skeleton shimmer for loading state */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.img-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Placeholder icon */
+.img-placeholder {
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: .2;
+  pointer-events: none;
+}
+
+/* Fix card-qv button */
+.card-qv {
+  position: absolute;
+  bottom: -36px;
+  left: 0; right: 0;
+  background: rgba(26,61,43,.9);
+  color: #fff;
+  border: none;
+  padding: 9px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  transition: bottom .3s;
+  width: 100%;
+  cursor: pointer;
+}
+.product-card:hover .card-qv { bottom: 0; }
+
+/* Speed: contain layout shifts */
+.card-img {
+  contain: layout;
+}
+
+/* Thumb strip smooth transition */
+.gallery-thumb img,
+.thumb-strip img {
+  transition: border-color .2s, transform .2s;
+}

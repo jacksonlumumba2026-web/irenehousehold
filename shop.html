@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="dns-prefetch" href="https://wa.me"/>
+  <meta name="theme-color" content="#0d1f16"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Shop all products at Irene Household Collections. Furniture, duvets, kitchenware, carpets, mosquito nets and more in Nairobi."/>
   <title>Shop All Products | Irene Household Collections</title>
@@ -626,6 +631,29 @@
       });
     }
   })();
+</script>
+
+<script>
+  // Global image error handler — show placeholder for missing images
+  window.addEventListener('error', function(e) {
+    if (e.target && e.target.tagName === 'IMG') {
+      var img = e.target;
+      img.style.display = 'none';
+      if (img.parentElement && img.parentElement.classList.contains('card-img')) {
+        img.parentElement.style.background = 'linear-gradient(135deg,#e8f5ee,#d0e4d0)';
+        img.parentElement.style.display = 'flex';
+        img.parentElement.style.alignItems = 'center';
+        img.parentElement.style.justifyContent = 'center';
+        if (!img.parentElement.querySelector('.img-placeholder')) {
+          var ph = document.createElement('span');
+          ph.className = 'img-placeholder';
+          ph.style.cssText = 'font-size:2.5rem;opacity:.25;';
+          ph.innerHTML = '&#128247;';
+          img.parentElement.appendChild(ph);
+        }
+      }
+    }
+  }, true);
 </script>
 </body>
 </html>
