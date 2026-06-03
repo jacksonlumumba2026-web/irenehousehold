@@ -2340,6 +2340,26 @@
     "inStock": true
   },
   {
+    "id": 140,
+    "cat": "decor",
+    "name": "Knot pillow",
+    "note": "Size 22cm width — Decorative knot desig",
+    "price": 850,
+    "old": 0,
+    "img": "decor.5.jpg",
+    "imgs": [
+      "decor.5.jpg",
+      "decor.5b.jpg",
+      "decor.5c.jpg",
+      "decor.5d.jpg",
+      "decor.5e.jpg",
+      "decor.5f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
     "id": 114,
     "cat": "carpets",
     "name": "Heavy Plastic Doormat",
