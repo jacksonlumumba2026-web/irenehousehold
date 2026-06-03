@@ -538,8 +538,10 @@
 
 </script>
 <script>
-  // Run after script.js has loaded
-  window.addEventListener('load', initHomePage);
+  // Direct init after script.js
+  setTimeout(function() {
+    if (typeof initHomePage === 'function') initHomePage();
+  }, 0);
 </script>
 </body>
 </html>

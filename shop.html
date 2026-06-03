@@ -228,7 +228,7 @@
 
 <!-- RESULTS BAR -->
 <div class="results-bar">
-  <p id="results-text"><strong>95</strong> products</p>
+  <p id="results-text"><strong>...</strong> products</p>
   <select onchange="sortProducts(this.value)">
     <option value="default">Sort: Default</option>
     <option value="price-asc">Price: Low to High</option>
@@ -666,10 +666,13 @@
     }
   }
 
-  // Wait for products.json to load before initialising
-  document.addEventListener('DOMContentLoaded', function() {
-    initShop();
-  });
+  // Direct init — script.js already loaded with products inline above
+  // Use setTimeout 0 to ensure DOM is ready
+  setTimeout(function() {
+    if (typeof initShop === 'function') {
+      initShop();
+    }
+  }, 0);
 </script>
 </body>
 </html>
