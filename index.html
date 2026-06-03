@@ -536,9 +536,10 @@
     renderNewArrivals('new-arrivals-grid');
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
-    onProductsReady(initHomePage);
-  });
+</script>
+<script>
+  // Run after script.js has loaded
+  window.addEventListener('load', initHomePage);
 </script>
 </body>
 </html>
