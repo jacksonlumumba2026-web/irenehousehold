@@ -1260,26 +1260,6 @@
     "inStock": true
   },
   {
-    "id": 131,
-    "cat": "seatcovers",
-    "name": "5 Seater Seat Cover Set 3-1-1",
-    "note": "Full 5 seater set — Stretchable material — Multiple colours",
-    "price": 7500,
-    "old": 0,
-    "img": "seatcover.3.jpg",
-    "imgs": [
-      "seatcover.3.jpg",
-      "seatcover.3b.jpg",
-      "seatcover.3c.jpg",
-      "seatcover.3d.jpg",
-      "seatcover.3e.jpg",
-      "seatcover.3f.jpg"
-    ],
-    "badge": "",
-    "badgeType": "",
-    "inStock": true
-  },
-  {
     "id": 132,
     "cat": "seatcovers",
     "name": "5 Seater Seat Cover Set 3-2",
