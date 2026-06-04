@@ -1060,26 +1060,6 @@
     "inStock": true
   },
   {
-    "id": 149,
-    "cat": "kitchenware",
-    "name": "Original Tornado stainless cookware set",
-    "note": "*Original Tornado (TC) Cookware Set Sufuria with Free( 2 pcs Plastic service Spoons and 1 Scotch ) (optional)\n\n▪️Colour :silver \n▪️14pcs (7lids+7pots) Silver \n▪️Pot sizes (16/18/20/22/24/26/28cm)",
-    "price": 6000,
-    "old": 6999,
-    "img": "kitchenware.26.jpg",
-    "imgs": [
-      "kitchenware.26.jpg",
-      "kitchenware.26b.jpg",
-      "kitchenware.26c.jpg",
-      "kitchenware.26d.jpg",
-      "kitchenware.26e.jpg",
-      "kitchenware.26f.jpg"
-    ],
-    "badge": "SALE",
-    "badgeType": "sale",
-    "inStock": true
-  },
-  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
@@ -2317,6 +2297,26 @@
     ],
     "badge": "",
     "badgeType": "",
+    "inStock": true
+  },
+  {
+    "id": 149,
+    "cat": "decor",
+    "name": "Designer case",
+    "note": "*Designer cases*\nSize: 45×45cm\nPrice: @350\n\nThrow pillow at 200",
+    "price": 350,
+    "old": 0,
+    "img": "decor.8.jpg",
+    "imgs": [
+      "decor.8.jpg",
+      "decor.8b.jpg",
+      "decor.8c.jpg",
+      "decor.8d.jpg",
+      "decor.8e.jpg",
+      "decor.8f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
     "inStock": true
   },
   {
