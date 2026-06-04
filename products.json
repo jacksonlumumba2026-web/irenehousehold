@@ -1223,9 +1223,9 @@
     "id": 60,
     "cat": "seatcovers",
     "name": "Printed Polyester Seat Covers",
-    "note": "1 Seater @KSh2,500 | 2 Seater @KSh3,000 | 3 Seater @KSh3,300 | 5 Seater 311 @KSh7,500 | 7 Seater 3211 @KSh10,500",
+    "note": "1 Seater @KSh2,500 | 2 Seater @KSh3,000 | 3 Seater @KSh3,300 | 4 seater @ Ksh 3500| 5 Seater 311 @KSh7,500 | 7 Seater 3211 @KSh10,500",
     "price": 2500,
-    "old": 0,
+    "old": 3500,
     "img": "seatcover.1.jpg",
     "imgs": [
       "seatcover.1.jpg",
@@ -1235,8 +1235,8 @@
       "seatcover.1e.jpg",
       "seatcover.1f.jpg"
     ],
-    "badge": "HOT",
-    "badgeType": "hot",
+    "badge": "SALE",
+    "badgeType": "sale",
     "inStock": true
   },
   {
