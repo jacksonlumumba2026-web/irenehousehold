@@ -2360,6 +2360,26 @@
     "inStock": true
   },
   {
+    "id": 153,
+    "cat": "decor",
+    "name": "Grass carpet",
+    "note": "Grass carpets \n *1×1 metres*\n\n 20 mm thickness @ksh *_1700\n\n *25* mm thickness @ksh 1800\n\n *30* mm thickness @ksh 2100\n\n *35* mm thickness @ksh 2400",
+    "price": 1700,
+    "old": 0,
+    "img": "decor.10.jpg",
+    "imgs": [
+      "decor.10.jpg",
+      "decor.10b.jpg",
+      "decor.10c.jpg",
+      "decor.10d.jpg",
+      "decor.10e.jpg",
+      "decor.10f.jpg"
+    ],
+    "badge": "HOT",
+    "badgeType": "hot",
+    "inStock": true
+  },
+  {
     "id": 115,
     "cat": "carpets",
     "name": "Turkish Doormat",
