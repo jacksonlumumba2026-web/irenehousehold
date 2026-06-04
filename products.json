@@ -1040,6 +1040,26 @@
     "inStock": true
   },
   {
+    "id": 148,
+    "cat": "kitchenware",
+    "name": "Bamboo tray",
+    "note": "3pcs",
+    "price": 2200,
+    "old": 2500,
+    "img": "kitchenware.25.jpg",
+    "imgs": [
+      "kitchenware.25.jpg",
+      "kitchenware.25b.jpg",
+      "kitchenware.25c.jpg",
+      "kitchenware.25d.jpg",
+      "kitchenware.25e.jpg",
+      "kitchenware.25f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
