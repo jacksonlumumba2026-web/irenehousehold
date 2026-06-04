@@ -2340,26 +2340,6 @@
     "inStock": true
   },
   {
-    "id": 114,
-    "cat": "carpets",
-    "name": "Heavy Plastic Doormat",
-    "note": "Size 50x80cm — Durable heavy duty",
-    "price": 1200,
-    "old": 0,
-    "img": "carpet.10.jpg",
-    "imgs": [
-      "carpet.10.jpg",
-      "carpet.10b.jpg",
-      "carpet.10c.jpg",
-      "carpet.10d.jpg",
-      "carpet.10e.jpg",
-      "carpet.10f.jpg"
-    ],
-    "badge": "",
-    "badgeType": "",
-    "inStock": true
-  },
-  {
     "id": 115,
     "cat": "carpets",
     "name": "Turkish Doormat",
