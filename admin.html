@@ -620,7 +620,6 @@
   var ulNames      = [];
   var githubToken  = '';
   var fileSha      = '';
-  var scriptJsSha  = '';
 
   var CAT_MAP = {
     all:'All', nets:'Mosquito Nets', duvets:'Duvets', kitchenware:'Kitchenware',
@@ -800,9 +799,6 @@
       allProducts = newProducts;
       updateStats();
       renderList(allProducts, 'lr', 'view');
-      showMsg('⏳ Syncing to website...', 'ok');
-      return syncScriptJs(newProducts);
-    }).then(function() {
       showMsg('✅ ' + msg + ' — live on website!', 'ok');
       showToast('✅ ' + msg);
     });
