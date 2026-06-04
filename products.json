@@ -2300,26 +2300,6 @@
     "inStock": true
   },
   {
-    "id": 110,
-    "cat": "decor",
-    "name": "Wave Pillow Insert",
-    "note": "Size 45x45cm — Insert only",
-    "price": 200,
-    "old": 0,
-    "img": "decor.4b.jpg",
-    "imgs": [
-      "decor.4b.jpg",
-      "decor.4bb.jpg",
-      "decor.4bc.jpg",
-      "decor.4bd.jpg",
-      "decor.4be.jpg",
-      "decor.4bf.jpg"
-    ],
-    "badge": "NEW",
-    "badgeType": "new",
-    "inStock": true
-  },
-  {
     "id": 111,
     "cat": "decor",
     "name": "Wave Pillow + Case Set",
