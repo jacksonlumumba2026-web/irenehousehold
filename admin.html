@@ -670,7 +670,7 @@
     if (sw) sw.style.display = 'flex';
     if (githubToken) {
       if (dot)   { dot.className = 'tok-dot ok'; }
-      if (label) { label.textContent = 'Connected'; }
+      if (label) { label.textContent = 'Connected — ' + GITHUB_OWNER + '/' + GITHUB_REPO; }
     } else {
       if (dot)   { dot.className = 'tok-dot no'; }
       if (label) { label.textContent = 'No Token'; }
@@ -976,7 +976,7 @@
       handlePhotos({files:[]});
       document.getElementById('a-prev').textContent = '';
     }).catch(function(e){
-      showMsg('❌ Save failed. Check your internet and token in Settings tab.', 'err');
+      showMsg('❌ Error: ' + (e.message || 'Unknown') + ' — Check token in Settings.', 'err');
     }).finally(function(){
       btn.disabled = false;
       btn.innerHTML = '💾 Save Product to Website';
@@ -1046,7 +1046,7 @@
       document.getElementById('del-confirm').style.display='none';
       deleteTarget=null;
     }).catch(function(e){
-      showMsg('❌ Failed. Check your internet and token in Settings tab.', 'err');
+      showMsg('❌ Error: ' + (e.message || 'Unknown error') + ' — Check token in Settings.', 'err');
     }).finally(function(){
       btn.disabled=false;
       btn.innerHTML='🗑️ Yes, Delete';
@@ -1558,7 +1558,7 @@
       document.getElementById('edit-form').style.display = 'none';
       editTarget=null; editPhotos=[]; editSelectedSlots=[];
     }).catch(function(e){
-      showMsg('❌ Failed. Check your internet and token in Settings tab.', 'err');
+      showMsg('❌ Error: ' + (e.message || 'Unknown error') + ' — Check token in Settings.', 'err');
     }).finally(function(){
       btn.disabled=false;
       btn.innerHTML='💾 Save Changes to Website';
