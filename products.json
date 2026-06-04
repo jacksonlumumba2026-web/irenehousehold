@@ -2340,6 +2340,26 @@
     "inStock": true
   },
   {
+    "id": 152,
+    "cat": "decor",
+    "name": "Nordic knit throw blanket",
+    "note": "Nordic knit throw blanket \nSize 160*180cm",
+    "price": 2500,
+    "old": 0,
+    "img": "decor.9.jpg",
+    "imgs": [
+      "decor.9.jpg",
+      "decor.9b.jpg",
+      "decor.9c.jpg",
+      "decor.9d.jpg",
+      "decor.9e.jpg",
+      "decor.9f.jpg"
+    ],
+    "badge": "HOT",
+    "badgeType": "hot",
+    "inStock": true
+  },
+  {
     "id": 115,
     "cat": "carpets",
     "name": "Turkish Doormat",
