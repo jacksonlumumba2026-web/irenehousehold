@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin | Irene Household Collections</title>
+  <title>Admin Panel | Irene Household Collections</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
     body { background:#f2f2f2; }
@@ -947,7 +950,7 @@
       handlePhotos({files:[]});
       document.getElementById('a-prev').textContent = '';
     }).catch(function(e){
-      showMsg('❌ Failed: '+e.message+'. Check your GitHub token in Settings.', 'err');
+      showMsg('❌ Save failed. Check your internet and token in Settings tab.', 'err');
     }).finally(function(){
       btn.disabled = false;
       btn.innerHTML = '💾 Save Product to Website';
@@ -1017,7 +1020,7 @@
       document.getElementById('del-confirm').style.display='none';
       deleteTarget=null;
     }).catch(function(e){
-      showMsg('❌ Failed: '+e.message,'err');
+      showMsg('❌ Failed. Check your internet and token in Settings tab.', 'err');
     }).finally(function(){
       btn.disabled=false;
       btn.innerHTML='🗑️ Yes, Delete';
@@ -1531,7 +1534,7 @@
       document.getElementById('edit-form').style.display = 'none';
       editTarget=null; editPhotos=[]; editSelectedSlots=[];
     }).catch(function(e){
-      showMsg('❌ Failed: '+e.message,'err');
+      showMsg('❌ Failed. Check your internet and token in Settings tab.', 'err');
     }).finally(function(){
       btn.disabled=false;
       btn.innerHTML='💾 Save Changes to Website';
