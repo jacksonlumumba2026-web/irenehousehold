@@ -1260,26 +1260,6 @@
     "inStock": true
   },
   {
-    "id": 135,
-    "cat": "seatcovers",
-    "name": "1 Seater Seat Cover",
-    "note": "Single 1 seater cover — Multiple colours available",
-    "price": 2500,
-    "old": 0,
-    "img": "seatcover.7.jpg",
-    "imgs": [
-      "seatcover.7.jpg",
-      "seatcover.7b.jpg",
-      "seatcover.7c.jpg",
-      "seatcover.7d.jpg",
-      "seatcover.7e.jpg",
-      "seatcover.7f.jpg"
-    ],
-    "badge": "",
-    "badgeType": "",
-    "inStock": true
-  },
-  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
