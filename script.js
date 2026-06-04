@@ -455,11 +455,12 @@ function openQuickView(id) {
       var th=document.createElement('img');
       th.src=src+'?t='+Date.now(); th.dataset.src=src; th.className='qv-thumb';
       th.onerror=function(){this.style.display='none';};
-      th.style.cssText='width:52px;height:52px;flex-shrink:0;object-fit:cover;border-radius:7px;cursor:pointer;border:2.5px solid '+(i===0?'#1a3d2b':'#e0e0e0')+';transition:border-color .15s,transform .15s;';
+      th.style.cssText='width:52px;height:52px;flex-shrink:0;object-fit:cover;border-radius:7px;cursor:pointer;border:2.5px solid '+(i===0?'#1a3d2b':'#e0e0e0')+';transition:border-color .3s, transform .3s;';
       th.onclick=(function(s,el){
         return function(){
           mainImg.style.opacity='0';
-          setTimeout(function(){mainImg.src=s+'?t='+Date.now();mainImg.style.opacity='1';},140);
+          mainImg.style.transition='opacity .5s ease-in-out';
+          setTimeout(function(){mainImg.src=s+'?t='+Date.now();mainImg.style.transition='opacity .5s ease-in-out';mainImg.style.opacity='1';},500);
           thumbRow.querySelectorAll('img').forEach(function(t){t.style.borderColor='#e0e0e0';t.style.transform='scale(1)';});
           el.style.borderColor='#1a3d2b'; el.style.transform='scale(1.08)';
         };
@@ -554,11 +555,24 @@ function openQuickView(id) {
         var item=loadedImgs[slideIdx];
         var mImg=document.getElementById('qv-main-img');
         if(!mImg){clearInterval(slideTimer);return;}
+
+        /* Smooth crossfade — fade out slow, swap, fade in slow */
+        mImg.style.transition='opacity .6s ease-in-out';
         mImg.style.opacity='0';
-        setTimeout(function(){mImg.src=item.src+'?t='+Date.now();mImg.style.opacity='1';},350);
+        setTimeout(function(){
+          mImg.src=item.src+'?t='+Date.now();
+          mImg.style.transition='opacity .7s ease-in-out';
+          mImg.style.opacity='1';
+        }, 650);
+
+        /* Sync thumbnail with smooth highlight */
         var thumbs=document.querySelectorAll('#qv-modal .qv-thumb');
-        thumbs.forEach(function(t,i){t.style.borderColor=i===item.idx?'#1a3d2b':'#e0e0e0';t.style.transform=i===item.idx?'scale(1.08)':'scale(1)';});
-      },2500);
+        thumbs.forEach(function(t,i){
+          t.style.transition='border-color .3s, transform .3s';
+          t.style.borderColor=i===item.idx?'#1a3d2b':'#e0e0e0';
+          t.style.transform=i===item.idx?'scale(1.1)':'scale(1)';
+        });
+      }, 4500);
       modal._slideTimer=slideTimer;
     }
     if(thumbRow){
