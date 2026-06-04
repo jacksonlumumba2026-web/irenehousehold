@@ -824,8 +824,8 @@
     "cat": "kitchenware",
     "name": "24pcs Japanese Dinner Sets",
     "note": "Trendy Japanese style",
-    "price": 6000,
-    "old": 0,
+    "price": 4000,
+    "old": 6000,
     "img": "kitchenware.16.jpg",
     "imgs": [
       "kitchenware.16.jpg",
@@ -835,8 +835,8 @@
       "kitchenware.16e.jpg",
       "kitchenware.16f.jpg"
     ],
-    "badge": "",
-    "badgeType": "",
+    "badge": "SALE",
+    "badgeType": "sale",
     "inStock": true
   },
   {
