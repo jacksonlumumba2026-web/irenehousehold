@@ -878,16 +878,24 @@
       var reader = new FileReader();
       reader.onload = function(e) {
         var base64 = e.target.result.split(',')[1];
-        fetch('https://api.github.com/repos/'+GITHUB_OWNER+'/'+GITHUB_REPO+'/contents/'+filename, {
-          headers:{'Authorization':'token '+githubToken}
-        }).then(function(r){return r.ok?r.json():null;}).then(function(existing){
+        /* Check if file exists first (for SHA) */
+        fetchWithTimeout(
+          'https://api.github.com/repos/'+GITHUB_OWNER+'/'+GITHUB_REPO+'/contents/'+filename,
+          { headers:{'Authorization':'token '+githubToken} },
+          8000
+        ).then(function(r){ return r.ok ? r.json() : null; })
+        .then(function(existing){
           var body = {message:'Upload: '+filename, content:base64, branch:GITHUB_BRANCH};
           if (existing && existing.sha) body.sha = existing.sha;
-          return fetch('https://api.github.com/repos/'+GITHUB_OWNER+'/'+GITHUB_REPO+'/contents/'+filename, {
-            method:'PUT',
-            headers:{'Authorization':'token '+githubToken,'Content-Type':'application/json'},
-            body:JSON.stringify(body)
-          });
+          return fetchWithTimeout(
+            'https://api.github.com/repos/'+GITHUB_OWNER+'/'+GITHUB_REPO+'/contents/'+filename,
+            {
+              method:'PUT',
+              headers:{'Authorization':'token '+githubToken,'Content-Type':'application/json'},
+              body:JSON.stringify(body)
+            },
+            20000
+          );
         }).then(function(r){
           if (!r.ok) throw new Error('Upload failed '+r.status);
           resolve(filename);
@@ -895,6 +903,24 @@
       };
       reader.readAsDataURL(file);
     });
+  }
+
+  /* Upload array of photos one by one sequentially */
+  function uploadPhotosOneByOne(photos, filenames, onProgress) {
+    return photos.reduce(function(chain, file, i) {
+      return chain.then(function(results) {
+        if (onProgress) onProgress(i + 1, photos.length);
+        return uploadPhotoToGitHub(file, filenames[i])
+          .then(function(name) {
+            results.push({ status:'fulfilled', name:name });
+            return results;
+          })
+          .catch(function(err) {
+            results.push({ status:'rejected', err:err });
+            return results;
+          });
+      });
+    }, Promise.resolve([]));
   }
 
   /* ══ SAVE NEW PRODUCT ══ */
@@ -1166,22 +1192,20 @@
     btn.disabled = true;
     btn.innerHTML = '<div class="spinner"></div> Uploading...';
 
-    var promises = ulPhotos.map(function(file, i) {
+    var ulFiles = []; var ulFNames = [];
+    ulPhotos.forEach(function(file, i){
       var slotIdx = selectedSlots[i];
-      if (slotIdx === undefined) return Promise.resolve();
-      var name = cat + '.' + num + UL_SUFFIXES[slotIdx] + '.jpg';
-      var st   = document.getElementById('uls-'+i);
-      if (st) st.textContent = 'Uploading...';
-      return uploadPhotoToGitHub(file, name).then(function(){
-        if (st) { st.textContent='✅ Done'; st.style.color='#22c55e'; }
-        return name;
-      }).catch(function(e){
-        if (st) { st.textContent='❌ Failed'; st.style.color='var(--red)'; }
-        throw e;
-      });
+      if (slotIdx !== undefined) {
+        ulFiles.push(file);
+        ulFNames.push(cat + '.' + num + UL_SUFFIXES[slotIdx] + '.jpg');
+      }
     });
 
-    Promise.allSettled(promises).then(function(results){
+    uploadPhotosOneByOne(ulFiles, ulFNames, function(done, total){
+      btn.innerHTML = '<div class="spinner"></div> Uploading '+done+' of '+total+'...';
+      var st = document.getElementById('uls-'+(done-1));
+      if (st) { st.innerHTML = '<span style="color:#22c55e;font-weight:700;">✅</span>'; }
+    }).then(function(results){
       var ok   = results.filter(function(r){return r.status==='fulfilled';}).length;
       var fail = results.filter(function(r){return r.status==='rejected';}).length;
       btn.disabled = false; btn.innerHTML = '📤 Upload to GitHub';
@@ -1510,24 +1534,24 @@
     });
 
     /* Upload edit photos first */
-    var photoJobs = [];
+    /* Upload edit photos sequentially */
+    var editFiles = [];
+    var editNames = [];
     editPhotos.forEach(function(file, i){
       var slotIdx = editSelectedSlots[i];
       if (slotIdx !== undefined) {
-        var fname = imgB + sfx[slotIdx] + '.jpg';
-        btn.innerHTML = '<div class="spinner"></div> Uploading photo '+(i+1)+'...';
-        photoJobs.push(
-          uploadPhotoToGitHub(file, fname).then(function(){
-            var st = document.getElementById('eup-'+i);
-            if (st){ st.textContent='✅'; st.style.color='#22c55e'; }
-          })
-        );
+        editFiles.push(file);
+        editNames.push(imgB + sfx[slotIdx] + '.jpg');
       }
     });
 
-    Promise.allSettled(photoJobs).then(function(results){
+    uploadPhotosOneByOne(editFiles, editNames, function(done, total){
+      btn.innerHTML = '<div class="spinner"></div> Photo '+done+' of '+total+'...';
+      var st = document.getElementById('eup-'+(done-1));
+      if (st){ st.textContent='✅'; st.style.color='#22c55e'; }
+    }).then(function(results){
       var ok = results.filter(function(r){return r.status==='fulfilled';}).length;
-      if (ok > 0) showToast('📸 '+ok+' photo(s) uploaded!');
+      if (ok > 0) showToast('📸 '+ok+'/'+editFiles.length+' photos uploaded!');
       btn.innerHTML = '<div class="spinner"></div> Saving...';
       return saveToGitHub(updated, 'Updated: '+name);
     }).then(function(){
