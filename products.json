@@ -1260,26 +1260,6 @@
     "inStock": true
   },
   {
-    "id": 134,
-    "cat": "seatcovers",
-    "name": "2 Seater Seat Cover",
-    "note": "Single 2 seater cover — Multiple colours available",
-    "price": 3000,
-    "old": 0,
-    "img": "seatcover.6.jpg",
-    "imgs": [
-      "seatcover.6.jpg",
-      "seatcover.6b.jpg",
-      "seatcover.6c.jpg",
-      "seatcover.6d.jpg",
-      "seatcover.6e.jpg",
-      "seatcover.6f.jpg"
-    ],
-    "badge": "",
-    "badgeType": "",
-    "inStock": true
-  },
-  {
     "id": 135,
     "cat": "seatcovers",
     "name": "1 Seater Seat Cover",
