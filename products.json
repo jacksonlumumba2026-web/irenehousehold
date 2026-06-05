@@ -2520,6 +2520,26 @@
     "inStock": true
   },
   {
+    "id": 155,
+    "cat": "carpets",
+    "name": "Heavy plastic door mats",
+    "note": "Heavy plastic door mats\nSize *50*80* cm\n@ ksh 1200",
+    "price": 1200,
+    "old": 0,
+    "img": "carpet.18.jpg",
+    "imgs": [
+      "carpet.18.jpg",
+      "carpet.18b.jpg",
+      "carpet.18c.jpg",
+      "carpet.18d.jpg",
+      "carpet.18e.jpg",
+      "carpet.18f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
