@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="dns-prefetch" href="https://wa.me"/>
+  <meta name="theme-color" content="#0d1f16"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="About Irene Household Collections - Premium household items dealer in Nairobi, Kenya."/>
   <title>About Us | Irene Household Collections</title>
@@ -276,7 +281,10 @@
       <div class="pay-opt" id="opt-nopay" onclick="selectPayStatus('nopay')"><span class="pay-opt-icon">💵</span><div class="pay-opt-title">Pay on Delivery</div><div class="pay-opt-sub">Cash / M-Pesa later</div></div>
     </div>
     <div class="cart-total-row"><span>Total</span><strong id="cart-total">KSh 0</strong></div>
-    <button class="btn-checkout" onclick="checkout()">💬 Order via WhatsApp</button>
+    <div style="display:flex;gap:8px;margin-bottom:8px;">
+      <button onclick="checkout('whatsapp')" style="flex:1;background:#25d366;color:#fff;border:none;padding:13px;font-size:12px;font-weight:700;border-radius:9px;cursor:pointer;">💬 WhatsApp</button>
+      <button onclick="checkout('email')" style="flex:1;background:#fff;color:#1a3d2b;border:1.5px solid #1a3d2b;padding:13px;font-size:12px;font-weight:700;border-radius:9px;cursor:pointer;">✉️ Email</button>
+    </div>
     <button class="btn-clear" onclick="clearCart()">🗑 Clear Cart</button>
   </div>
 </div>
@@ -365,28 +373,46 @@
 </div>
 
 
+
 <script>
-  // Show popup after 30 seconds — only once per session
-  setTimeout(function() {
+  // WhatsApp Community Popup — shows 3 times in 3 minutes
+  var popupCount = 0;
+  var maxPopups  = 3;
+  var popupDelay = 60000; // 60 seconds between each
+
+  function showWaPopup() {
+    if (popupCount >= maxPopups) return;
     try {
-      if (!sessionStorage.getItem('wa_popup_shown')) {
-        document.getElementById('wa-popup-overlay').classList.add('show');
-      }
-    } catch(e) {
-      document.getElementById('wa-popup-overlay').classList.add('show');
-    }
-  }, 30000);
+      var shown = parseInt(sessionStorage.getItem('wa_popup_count') || '0');
+      if (shown >= maxPopups) return;
+    } catch(e) {}
+    document.getElementById('wa-popup-overlay').classList.add('show');
+  }
 
   function closeWaPopup() {
     document.getElementById('wa-popup-overlay').classList.remove('show');
-    try { sessionStorage.setItem('wa_popup_shown', '1'); } catch(e) {}
+    popupCount++;
+    try { sessionStorage.setItem('wa_popup_count', popupCount); } catch(e) {}
+    // Schedule next popup if not done
+    if (popupCount < maxPopups) {
+      setTimeout(showWaPopup, popupDelay);
+    }
   }
 
+  // First popup after 30 seconds
+  setTimeout(showWaPopup, 30000);
+
   // Close on overlay click
-  document.getElementById('wa-popup-overlay').addEventListener('click', function(e) {
-    if (e.target === this) closeWaPopup();
+  document.addEventListener('DOMContentLoaded', function() {
+    var overlay = document.getElementById('wa-popup-overlay');
+    if (overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === this) closeWaPopup();
+      });
+    }
   });
 </script>
+
 
 <script src="script.js"></script>
 <script>
@@ -395,5 +421,45 @@
     window.location = q ? 'shop.html?q=' + encodeURIComponent(q) : 'shop.html';
   }
 </script>
+
+<script>
+  // Global image error handler — show placeholder for missing images
+  window.addEventListener('error', function(e) {
+    if (e.target && e.target.tagName === 'IMG') {
+      var img = e.target;
+      img.style.display = 'none';
+      if (img.parentElement && img.parentElement.classList.contains('card-img')) {
+        img.parentElement.style.background = 'linear-gradient(135deg,#e8f5ee,#d0e4d0)';
+        img.parentElement.style.display = 'flex';
+        img.parentElement.style.alignItems = 'center';
+        img.parentElement.style.justifyContent = 'center';
+        if (!img.parentElement.querySelector('.img-placeholder')) {
+          var ph = document.createElement('span');
+          ph.className = 'img-placeholder';
+          ph.style.cssText = 'font-size:2.5rem;opacity:.25;';
+          ph.innerHTML = '&#128247;';
+          img.parentElement.appendChild(ph);
+        }
+      }
+    }
+  }, true);
+</script>
+
+<!-- Floating Email Button -->
+<a href="mailto:irenehouseholds@gmail.com?subject=Order Inquiry&body=Hello Irene,%0A%0AI would like to place an order. Please get back to me.%0A%0AThank you."
+   id="float-email"
+   style="position:fixed;bottom:80px;right:16px;z-index:1500;
+          background:#1a3d2b;color:#fff;
+          width:52px;height:52px;border-radius:50%;
+          display:flex;align-items:center;justify-content:center;
+          font-size:22px;text-decoration:none;
+          box-shadow:0 4px 16px rgba(0,0,0,.25);
+          transition:transform .2s,box-shadow .2s;"
+   onmouseover="this.style.transform='scale(1.12)'"
+   onmouseout="this.style.transform='scale(1)'"
+   title="Order via Email">
+  ✉️
+</a>
+
 </body>
 </html>
