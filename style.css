@@ -521,7 +521,7 @@ input, select, textarea { font-family:'DM Sans',sans-serif; }
 .qty-val { font-size:12px; font-weight:600; min-width:16px; text-align:center; }
 .remove-btn { background:none; border:none; color:var(--red); font-size:13px; padding:2px; }
 
-.drawer-footer { padding:14px 16px; border-top:1px solid #f0f0f0; }
+.drawer-footer { padding:14px 16px; border-top:1px solid #f0f0f0; flex-shrink:0; overflow-y:auto; max-height:60vh; }
 .delivery-bar-wrap { padding-bottom:12px; margin-bottom:12px; border-bottom:1px solid #f0f0f0; }
 .delivery-msg { font-size:11.5px; color:var(--muted); margin-bottom:6px; text-align:center; }
 .delivery-track { background:#eee; border-radius:20px; height:6px; overflow:hidden; }
@@ -1312,3 +1312,103 @@ img { max-width:100%; }
 .thumb-strip img {
   transition: border-color .2s, transform .2s;
 }
+
+/* ═══════════════════════════════════════
+   DRAWERS — Cart & Wishlist
+═══════════════════════════════════════ */
+.cart-drawer,
+.wl-drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 100%; max-width: 380px;
+  background: #fff;
+  z-index: 2000;
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform .32s cubic-bezier(.4,0,.2,1);
+  box-shadow: -4px 0 24px rgba(0,0,0,.12);
+}
+.cart-drawer.open,
+.wl-drawer.open {
+  transform: translateX(0);
+}
+.cart-overlay,
+.wl-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 1999;
+  display: none;
+  transition: opacity .3s;
+}
+.cart-overlay.open,
+.wl-overlay.open {
+  display: block;
+}
+.drawer-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid #f0f0f0;
+  flex-shrink: 0;
+}
+.drawer-header h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; color: var(--green-dark);
+}
+.drawer-close {
+  background: #f0f0f0; border: none;
+  width: 32px; height: 32px; border-radius: 50%;
+  font-size: 14px; cursor: pointer; color: #333;
+}
+.drawer-body {
+  flex: 1; overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 14px;
+}
+.drawer-footer {
+  padding: 14px 18px;
+  border-top: 1px solid #f0f0f0;
+  flex-shrink: 0;
+  background: #fff;
+}
+.drawer-empty {
+  text-align: center; padding: 48px 20px;
+  color: var(--muted);
+}
+.drawer-empty-icon { font-size: 3rem; margin-bottom: 12px; opacity: .4; }
+.cart-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px; background: var(--bg); border-radius: 8px;
+  margin-bottom: 8px;
+}
+.cart-item-img { width: 52px; height: 52px; flex-shrink: 0; }
+.cart-item-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 7px; }
+.cart-item-info { flex: 1; min-width: 0; }
+.cart-item-name { font-size: 12px; font-weight: 600; color: var(--green-dark); }
+.cart-item-price { font-size: 11.5px; color: var(--green); font-weight: 700; margin-top: 2px; }
+.qty-control { display: flex; align-items: center; gap: 5px; }
+.qty-btn {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #f0f0f0; border: none; font-size: 14px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; color: var(--green-dark);
+}
+.qty-btn:hover { background: var(--green); color: #fff; }
+.qty-val { font-size: 13px; font-weight: 700; min-width: 20px; text-align: center; }
+.remove-btn {
+  background: none; border: none; color: #ccc;
+  font-size: 15px; cursor: pointer; padding: 4px;
+  flex-shrink: 0;
+}
+.remove-btn:hover { color: var(--red); }
+.pay-opt {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 12px; border-radius: 8px;
+  border: 1.5px solid #e0e0e0; cursor: pointer;
+  font-size: 12px; font-weight: 600; color: var(--muted);
+  margin-bottom: 8px; transition: all .2s; background: #fff;
+}
+.pay-opt.sel-paid  { border-color: var(--green); color: var(--green); background: rgba(26,61,43,.05); }
+.pay-opt.sel-nopay { border-color: var(--gold);  color: var(--green-dark); background: rgba(200,169,81,.08); }
+.delivery-bar-wrap { background: var(--bg); border-radius: 8px; padding: 10px 12px; margin-bottom: 12px; }
+.delivery-bar-track { height: 6px; background: #e0e0e0; border-radius: 3px; overflow: hidden; margin: 6px 0; }
+#delivery-fill { height: 100%; background: var(--green); border-radius: 3px; transition: width .4s ease; width: 0%; }
