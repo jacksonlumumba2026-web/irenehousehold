@@ -297,7 +297,7 @@ function clearCart() {
   updateCartUI(); renderCartItems();
 }
 
-function checkout() {
+function checkout(method) {
   if (!cart.length) { showToast('Your cart is empty!'); return; }
   var total = cart.reduce(function(s,i){ return s+i.price*i.qty; }, 0);
   var pay   = payStatus==='paid' ? 'Already paid via M-Pesa Paybill 522533' : 'Pay on Delivery';
@@ -306,13 +306,20 @@ function checkout() {
     var itemTotal = 'KSh ' + (item.price*item.qty).toLocaleString();
     return 'Product: ' + item.name + '\nQty: ' + item.qty + ' x KSh ' + item.price.toLocaleString() + ' = ' + itemTotal + '\nPhoto: ' + imgUrl;
   }).join('\n\n');
-  var msg =
+  var msgText =
     'NEW ORDER - Irene Household Collections\n\n' +
     lines + '\n\n' +
     'Total: KSh ' + total.toLocaleString() + '\n' +
     'Payment: ' + pay + '\n\n' +
     'Please confirm availability and delivery. Thank you!';
-  window.open('https://wa.me/254716060029?text=' + encodeURIComponent(msg), '_blank');
+
+  if (method === 'email') {
+    var subject = encodeURIComponent('New Order - Irene Household Collections');
+    var body    = encodeURIComponent(msgText);
+    window.open('mailto:irenehouseholds@gmail.com?subject='+subject+'&body='+body, '_blank');
+  } else {
+    window.open('https://wa.me/254716060029?text=' + encodeURIComponent(msgText), '_blank');
+  }
 }
 
 /* ── WISHLIST ── */
@@ -502,12 +509,31 @@ function openQuickView(id) {
   }
   info.appendChild(priceRow);
   /* Buttons */
+  /* WhatsApp button */
   var waBtn=document.createElement('a');
   waBtn.href='https://wa.me/254716060029?text='+waMsg;
   waBtn.target='_blank'; waBtn.rel='noopener';
   waBtn.innerHTML='&#128172; Order on WhatsApp';
   waBtn.style.cssText='display:block;width:100%;background:#25d366;color:#fff;padding:13px;font-size:13px;font-weight:700;border-radius:9px;text-align:center;text-decoration:none;margin-bottom:8px;';
   info.appendChild(waBtn);
+
+  /* Email order button */
+  var emailSubject = encodeURIComponent('Order: ' + p.name);
+  var emailBody    = encodeURIComponent(
+    'Hello Irene,\n\n' +
+    'I would like to order the following:\n\n' +
+    'Product: ' + p.name + '\n' +
+    'Price: ' + price + '\n' +
+    'Description: ' + p.note + '\n' +
+    'Photo: https://irenehousehold.co.ke/' + p.img + '\n\n' +
+    'Please confirm availability and delivery details.\n\n' +
+    'Thank you.'
+  );
+  var emailBtn=document.createElement('a');
+  emailBtn.href='mailto:irenehouseholds@gmail.com?subject='+emailSubject+'&body='+emailBody;
+  emailBtn.innerHTML='&#9993; Order via Email';
+  emailBtn.style.cssText='display:block;width:100%;background:#fff;color:#1a3d2b;border:1.5px solid #1a3d2b;padding:12px;font-size:13px;font-weight:700;border-radius:9px;text-align:center;text-decoration:none;margin-bottom:8px;';
+  info.appendChild(emailBtn);
   var cartBtn=document.createElement('button');
   cartBtn.id='qv-cart-btn'; cartBtn.innerHTML='&#128722; Add to Cart';
   cartBtn.onclick=qvAddToCart;

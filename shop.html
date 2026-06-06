@@ -329,7 +329,7 @@
       <div class="pay-opt" id="opt-nopay" onclick="selectPayStatus('nopay')"><span class="pay-opt-icon">💵</span><div class="pay-opt-title">Pay on Delivery</div><div class="pay-opt-sub">Cash / M-Pesa later</div></div>
     </div>
     <div class="cart-total-row"><span>Total</span><strong id="cart-total">KSh 0</strong></div>
-    <button class="btn-checkout" onclick="checkout()">💬 Order via WhatsApp</button>
+    <button class="btn-checkout" onclick="checkout('whatsapp')">💬 Order via WhatsApp</button>
     <button class="btn-clear" onclick="clearCart()">🗑 Clear Cart</button>
   </div>
 </div>
@@ -519,15 +519,33 @@
 
   function applyFilters() {
     filteredList = PRODUCTS.slice();
+
+    // Category filter
     if (activeCat !== 'all') {
       filteredList = filteredList.filter(function(p) { return p.cat === activeCat; });
     }
+
+    // Badge filter
     if (activeBadge) {
       filteredList = filteredList.filter(function(p) { return p.badge === activeBadge; });
     }
-    if (activeSort === 'price-asc')  filteredList.sort(function(a,b) { return a.price - b.price; });
-    if (activeSort === 'price-desc') filteredList.sort(function(a,b) { return b.price - a.price; });
-    if (activeSort === 'name')       filteredList.sort(function(a,b) { return a.name.localeCompare(b.name); });
+
+    // Sorting
+    if (activeSort === 'price-asc') {
+      filteredList.sort(function(a,b) { return a.price - b.price; });
+    } else if (activeSort === 'price-desc') {
+      filteredList.sort(function(a,b) { return b.price - a.price; });
+    } else if (activeSort === 'name') {
+      filteredList.sort(function(a,b) { return a.name.localeCompare(b.name); });
+    } else {
+      // Default: group by category, then by id within category
+      // This keeps products of the same type together
+      filteredList.sort(function(a,b) {
+        if (a.cat !== b.cat) return a.cat.localeCompare(b.cat);
+        return a.id - b.id;
+      });
+    }
+
     renderShop();
   }
 
@@ -537,7 +555,7 @@
     if (!grid) return;
 
     if (!filteredList.length) {
-      grid.innerHTML = '<div class="no-results"><div class="nr-icon">🔍</div><p>No products found.</p><button class="btn-green" onclick="resetAll()">Reset Filters</button></div>';
+      grid.innerHTML = '<div class="no-results"><div class="nr-icon">&#128269;</div><p>No products found.</p><button class="btn-green" onclick="resetAll()">Reset Filters</button></div>';
       document.getElementById('pagination').innerHTML = '';
       if (resText) resText.innerHTML = '<strong>0</strong> products';
       return;
@@ -547,7 +565,27 @@
     if (currentPage > totalPages) currentPage = 1;
     var start    = (currentPage - 1) * perPage;
     var pageList = filteredList.slice(start, start + perPage);
-    grid.innerHTML = pageList.map(buildCard).join('');
+
+    // When showing all products, add category dividers
+    var html = '';
+    if (activeCat === 'all' && activeSort === 'default' && !activeBadge) {
+      var lastCat = '';
+      pageList.forEach(function(p) {
+        if (p.cat !== lastCat) {
+          lastCat = p.cat;
+          var label = CAT_LABELS_SHOP[p.cat] || p.cat;
+          html += '<div style="grid-column:1/-1;padding:12px 0 4px;border-bottom:2px solid var(--green);margin-bottom:4px;display:flex;align-items:center;justify-content:space-between;">' +
+            '<h3 style="font-family:Cormorant Garamond,serif;font-size:1.2rem;color:var(--green-dark);margin:0;">' + label + '</h3>' +
+            '<a href="shop.html?cat=' + p.cat + '" style="font-size:11px;color:var(--green);font-weight:600;text-decoration:none;">View all &#8594;</a>' +
+          '</div>';
+        }
+        html += buildCard(p);
+      });
+    } else {
+      html = pageList.map(buildCard).join('');
+    }
+
+    grid.innerHTML = html;
 
     if (resText) {
       resText.innerHTML = '<strong>' + filteredList.length + '</strong> products' +
