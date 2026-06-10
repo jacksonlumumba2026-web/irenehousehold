@@ -2480,6 +2480,26 @@
     "inStock": true
   },
   {
+    "id": 163,
+    "cat": "decor",
+    "name": "Bed covers With *2* pillow cases",
+    "note": "Bed covers\nWith *2* pillow cases \nSize *6*6ft @  2300*",
+    "price": 2300,
+    "old": 0,
+    "img": "decor.11.jpg",
+    "imgs": [
+      "decor.11.jpg",
+      "decor.11b.jpg",
+      "decor.11c.jpg",
+      "decor.11d.jpg",
+      "decor.11e.jpg",
+      "decor.11f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
+  },
+  {
     "id": 115,
     "cat": "carpets",
     "name": "Turkish Doormat",
