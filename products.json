@@ -2660,6 +2660,26 @@
     "inStock": true
   },
   {
+    "id": 164,
+    "cat": "carpets",
+    "name": "Faux fur Carpets*",
+    "note": "▪️Offer ‼️ Offer‼️Faux fur Carpets* \n\n ➖ *Size* ; 60×180cm\n\nUse:Bedside/Decor \n\n ➖ *Shape* ;irregular\n\n➖ *Colors* ; 👆\n\n🟰Kshs 2300",
+    "price": 2300,
+    "old": 0,
+    "img": "carpet.19.jpg",
+    "imgs": [
+      "carpet.19.jpg",
+      "carpet.19b.jpg",
+      "carpet.19c.jpg",
+      "carpet.19d.jpg",
+      "carpet.19e.jpg",
+      "carpet.19f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
