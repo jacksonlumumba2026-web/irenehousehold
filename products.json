@@ -1060,6 +1060,26 @@
     "inStock": true
   },
   {
+    "id": 157,
+    "cat": "kitchenware",
+    "name": "🔥🔥🔥Multipurpose microwave  fruit amd vegetable rack",
+    "note": "🔥🔥🔥Multipurpose microwave  fruit amd vegetable rack \n▶️price ksh.7,500",
+    "price": 7500,
+    "old": 0,
+    "img": "kitchenware.26.jpg",
+    "imgs": [
+      "kitchenware.26.jpg",
+      "kitchenware.26b.jpg",
+      "kitchenware.26c.jpg",
+      "kitchenware.26d.jpg",
+      "kitchenware.26e.jpg",
+      "kitchenware.26f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
