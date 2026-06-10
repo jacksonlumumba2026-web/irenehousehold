@@ -1140,6 +1140,26 @@
     "inStock": true
   },
   {
+    "id": 161,
+    "cat": "kitchenware",
+    "name": "```3 tier  dish rack```",
+    "note": "```3 tier  dish rack```\n\n *PRICE: Ksh 3300*",
+    "price": 3300,
+    "old": 0,
+    "img": "kitchenware.30.jpg",
+    "imgs": [
+      "kitchenware.30.jpg",
+      "kitchenware.30b.jpg",
+      "kitchenware.30c.jpg",
+      "kitchenware.30d.jpg",
+      "kitchenware.30e.jpg",
+      "kitchenware.30f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
