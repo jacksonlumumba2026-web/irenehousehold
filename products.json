@@ -1100,6 +1100,26 @@
     "inStock": true
   },
   {
+    "id": 159,
+    "cat": "kitchenware",
+    "name": "*6 Litre Dessini Electric Pressure Cooker*",
+    "note": "*6 Litre Dessini Electric Pressure Cooker*\n\n@ 5500",
+    "price": 5500,
+    "old": 0,
+    "img": "kitchenware.28.jpg",
+    "imgs": [
+      "kitchenware.28.jpg",
+      "kitchenware.28b.jpg",
+      "kitchenware.28c.jpg",
+      "kitchenware.28d.jpg",
+      "kitchenware.28e.jpg",
+      "kitchenware.28f.jpg"
+    ],
+    "badge": "HOT",
+    "badgeType": "hot",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
