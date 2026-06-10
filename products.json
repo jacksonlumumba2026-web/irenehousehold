@@ -1080,6 +1080,26 @@
     "inStock": true
   },
   {
+    "id": 158,
+    "cat": "kitchenware",
+    "name": "▶️Over the sink Single Layer",
+    "note": "NOw Available \n\n▶️Over the sink Single Layer \n▶️Available colours Black",
+    "price": 3999,
+    "old": 0,
+    "img": "kitchenware.27.jpg",
+    "imgs": [
+      "kitchenware.27.jpg",
+      "kitchenware.27b.jpg",
+      "kitchenware.27c.jpg",
+      "kitchenware.27d.jpg",
+      "kitchenware.27e.jpg",
+      "kitchenware.27f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
