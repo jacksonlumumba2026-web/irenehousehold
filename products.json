@@ -1120,6 +1120,26 @@
     "inStock": true
   },
   {
+    "id": 160,
+    "cat": "kitchenware",
+    "name": "▶️Double  Over the sink with Glass Acrylic Cover",
+    "note": "▶️Double  Over the sink with Glass Acrylic Cover\n▶️Size 85cm\n▶️Price ksh.5,999",
+    "price": 855999,
+    "old": 0,
+    "img": "kitchenware.29.jpg",
+    "imgs": [
+      "kitchenware.29.jpg",
+      "kitchenware.29b.jpg",
+      "kitchenware.29c.jpg",
+      "kitchenware.29d.jpg",
+      "kitchenware.29e.jpg",
+      "kitchenware.29f.jpg"
+    ],
+    "badge": "HOT",
+    "badgeType": "hot",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
