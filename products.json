@@ -2938,5 +2938,25 @@
     "badge": "",
     "badgeType": "",
     "inStock": true
+  },
+  {
+    "id": 162,
+    "cat": "duvets",
+    "name": "*Stripped* *binded*  duvet set.   With 1 bedsheet and 2 pillowcases,  💫Size  *6/7*",
+    "note": "*Stripped* *binded*  duvet set. \n\nWith 1 bedsheet and 2 pillowcases,\n 💫Size  *6/7*\n @ ksh 3300",
+    "price": 3300,
+    "old": 0,
+    "img": "duvet.25.jpg",
+    "imgs": [
+      "duvet.25.jpg",
+      "duvet.25b.jpg",
+      "duvet.25c.jpg",
+      "duvet.25d.jpg",
+      "duvet.25e.jpg",
+      "duvet.25f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
   }
 ]
