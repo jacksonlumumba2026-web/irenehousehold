@@ -2998,5 +2998,25 @@
     "badge": "NEW",
     "badgeType": "new",
     "inStock": true
+  },
+  {
+    "id": 165,
+    "cat": "duvets",
+    "name": "Fitted mix and match  Bedsheet jimmy",
+    "note": "Fitted mix and match \nBedsheet jimmy \nSize 6×6/7\nPrice @ 2500",
+    "price": 2500,
+    "old": 0,
+    "img": "duvet.26.jpg",
+    "imgs": [
+      "duvet.26.jpg",
+      "duvet.26b.jpg",
+      "duvet.26c.jpg",
+      "duvet.26d.jpg",
+      "duvet.26e.jpg",
+      "duvet.26f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
   }
 ]
