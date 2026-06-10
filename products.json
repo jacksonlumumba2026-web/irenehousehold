@@ -2960,6 +2960,26 @@
     "inStock": true
   },
   {
+    "id": 167,
+    "cat": "cookware",
+    "name": "Nunix Table Top Cooker 4 Gas  Burner *",
+    "note": "Nunix Table Top Cooker 4 Gas  Burner *@4,999*",
+    "price": 4999,
+    "old": 0,
+    "img": "cookware.8.jpg",
+    "imgs": [
+      "cookware.8.jpg",
+      "cookware.8b.jpg",
+      "cookware.8c.jpg",
+      "cookware.8d.jpg",
+      "cookware.8e.jpg",
+      "cookware.8f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
+  },
+  {
     "id": 130,
     "cat": "nets",
     "name": "Double Decker Mosquito Net",
