@@ -1160,6 +1160,26 @@
     "inStock": true
   },
   {
+    "id": 166,
+    "cat": "kitchenware",
+    "name": "♦️9.5ltr tea urn double tap",
+    "note": "♦️9.5ltr tea urn double tap Offer Price changec⏬‼️ *@ksh 2,999",
+    "price": 2999,
+    "old": 0,
+    "img": "kitchenware.31.jpg",
+    "imgs": [
+      "kitchenware.31.jpg",
+      "kitchenware.31b.jpg",
+      "kitchenware.31c.jpg",
+      "kitchenware.31d.jpg",
+      "kitchenware.31e.jpg",
+      "kitchenware.31f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
