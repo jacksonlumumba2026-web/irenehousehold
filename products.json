@@ -344,8 +344,8 @@
     "cat": "duvets",
     "name": "Pinch Pleat Pintuck Duvet Cover",
     "note": "Elegant comfort design",
-    "price": 3500,
-    "old": 0,
+    "price": 3800,
+    "old": 4500,
     "img": "duvet.13.jpg",
     "imgs": [
       "duvet.13.jpg",
@@ -355,8 +355,8 @@
       "duvet.13e.jpg",
       "duvet.13f.jpg"
     ],
-    "badge": "",
-    "badgeType": "",
+    "badge": "SALE",
+    "badgeType": "sale",
     "inStock": true
   },
   {
