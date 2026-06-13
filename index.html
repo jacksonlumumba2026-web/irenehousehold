@@ -385,7 +385,7 @@
     </div>
     <div class="cart-total-row"><span>Total</span><strong id="cart-total">KSh 0</strong></div>
     <div style="display:flex;gap:8px;margin-bottom:8px;">
-      <button onclick="checkout('whatsapp')" style="flex:1;background:#25d366;color:#fff;border:none;padding:13px;font-size:12px;font-weight:700;border-radius:9px;cursor:pointer;">💬 WhatsApp</button>
+      <button onclick="checkout('whatsapp')" style="flex:1;background:#1a3d2b;color:#fff;border:none;padding:13px;font-size:13px;font-weight:700;border-radius:9px;cursor:pointer;letter-spacing:.5px;">💳 Pay Now</button>
       <button onclick="checkout('email')" style="flex:1;background:#fff;color:#1a3d2b;border:1.5px solid #1a3d2b;padding:13px;font-size:12px;font-weight:700;border-radius:9px;cursor:pointer;">✉️ Email</button>
     </div>
     <button class="btn-clear" onclick="clearCart()">🗑 Clear Cart</button>
@@ -520,7 +520,11 @@
 </script>
 
 
+<!-- GSAP Premium Animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="script.js"></script>
+<script src="gsap-animations.js"></script>
 <script>
   // Nav scroll
   window.addEventListener('scroll', function() {
