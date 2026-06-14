@@ -1,7 +1,6 @@
 /* ═══════════════════════════════════════
    GSAP PREMIUM ANIMATIONS
    Irene Household Collections
-   Smooth scroll-triggered & interactive
 ═══════════════════════════════════════ */
 
 (function () {
@@ -12,38 +11,25 @@
 
   gsap.defaults({ ease: 'power3.out' });
 
-  /* ── LOADER ── */
-  function initLoader() {
-    var loader = document.getElementById('loader');
-    if (!loader) return;
-    var tl = gsap.timeline();
-    tl.from('#loader img',   { scale: 0.5, opacity: 0, duration: 0.6, ease: 'back.out(1.7)' })
-      .from('#loader h2',    { y: 20, opacity: 0, duration: 0.4 }, '-=0.2')
-      .from('#loader small', { y: 10, opacity: 0, duration: 0.3 }, '-=0.1')
-      .from('.loader-fill',  { scaleX: 0, transformOrigin: 'left center', duration: 1.6, ease: 'power2.inOut' }, '+=0.1');
-  }
-
-  /* ── NAV ── */
-  function initNav() {
-    gsap.from('.top-nav', { y: -70, opacity: 0, duration: 0.6, delay: 0.2 });
-    gsap.from('.promo-bar', { y: -40, opacity: 0, duration: 0.5, delay: 0.1 });
-  }
-
-  /* ── TRUST STRIP ── */
-  function initTrust() {
-    if (!document.querySelector('.trust-item-badge')) return;
-    gsap.from('.trust-item-badge', { y: 30, opacity: 0, duration: 0.45, stagger: 0.08, delay: 0.6 });
-  }
-
-  /* ── HERO ── */
+  /* ── HERO ──
+     NOTE: Nav, trust strip, and loader are NOT animated here.
+     - Loader is managed by script.js (window.onload adds .hide class).
+     - Animating them with .from() causes FOIC (flash of invisible content).
+     - Hero is safe because the loader covers it during the delay window.
+  */
   function initHero() {
     if (!document.querySelector('.hero-banner')) return;
-    var tl = gsap.timeline({ delay: 0.9 });
-    tl.from('.hero-tag',       { y: 24, opacity: 0, duration: 0.5 })
-      .from('.hero-banner h1', { y: 44, opacity: 0, duration: 0.7, ease: 'power4.out' }, '-=0.25')
-      .from('.hero-banner p',  { y: 28, opacity: 0, duration: 0.5 }, '-=0.3')
-      .from('.hero-search',    { y: 20, opacity: 0, duration: 0.4 }, '-=0.2')
-      .from('.hero-stat',      { y: 20, opacity: 0, duration: 0.4, stagger: 0.1 }, '-=0.15');
+    /* Wait for loader to be hidden before starting hero animations.
+       script.js fires window.onload which adds .hide to #loader.
+       We hook into that same event so our animations start in sync. */
+    window.addEventListener('load', function () {
+      var tl = gsap.timeline({ delay: 0.15 });
+      tl.from('.hero-tag',       { y: 20, opacity: 0, duration: 0.5 })
+        .from('.hero-banner h1', { y: 36, opacity: 0, duration: 0.65, ease: 'power4.out' }, '-=0.2')
+        .from('.hero-banner p',  { y: 22, opacity: 0, duration: 0.45 }, '-=0.25')
+        .from('.hero-search',    { y: 16, opacity: 0, duration: 0.4 }, '-=0.2')
+        .from('.hero-stat',      { y: 16, opacity: 0, duration: 0.35, stagger: 0.09 }, '-=0.15');
+    });
   }
 
   /* ── CATEGORY STRIP ── */
@@ -51,7 +37,7 @@
     if (!document.querySelector('.cat-strip-item')) return;
     gsap.from('.cat-strip-item', {
       scrollTrigger: { trigger: '.cat-strip-wrap', start: 'top 92%' },
-      x: -24, opacity: 0, duration: 0.38, stagger: 0.045
+      x: -20, opacity: 0, duration: 0.35, stagger: 0.04
     });
   }
 
@@ -60,7 +46,7 @@
     if (!document.querySelector('.flash-banner')) return;
     gsap.from('.flash-banner', {
       scrollTrigger: { trigger: '.flash-banner', start: 'top 90%' },
-      scale: 0.94, opacity: 0, duration: 0.5, ease: 'back.out(1.2)'
+      scale: 0.95, opacity: 0, duration: 0.45, ease: 'back.out(1.2)'
     });
   }
 
@@ -69,44 +55,45 @@
     document.querySelectorAll('.section-head, .sec-label, .sec-title, .sec-sub').forEach(function (el) {
       gsap.from(el, {
         scrollTrigger: { trigger: el, start: 'top 88%' },
-        y: 22, opacity: 0, duration: 0.48
+        y: 20, opacity: 0, duration: 0.45
       });
     });
   }
 
-  /* ── PRODUCT CARDS (live + dynamic) ── */
-  function animateGrid(grid) {
-    var cards = grid.querySelectorAll('.card');
-    if (!cards.length) return;
-    gsap.fromTo(cards,
-      { y: 42, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.46, stagger: 0.055, ease: 'power3.out',
-        scrollTrigger: { trigger: grid, start: 'top 88%' } }
-    );
-  }
-
+  /* ── PRODUCT CARDS ──
+     Uses MutationObserver only — no setTimeout duplicate.
+     script.js calls applyFilters() / renderShop() / buildCard() which sets
+     grid.innerHTML; the observer fires once and animates the cards in.
+  */
   function initProductCards() {
     document.querySelectorAll('.products-grid').forEach(function (grid) {
-      setTimeout(function () { animateGrid(grid); }, 120);
+      var firstRun = true;
       new MutationObserver(function () {
         var cards = grid.querySelectorAll('.card');
+        if (!cards.length) return;
+        /* Kill any existing tweens on these cards to prevent conflicts */
+        gsap.killTweensOf(cards);
         gsap.fromTo(cards,
-          { y: 40, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.42, stagger: 0.05, ease: 'power3.out' }
+          { y: 36, opacity: 0 },
+          { y: 0, opacity: 1, duration: firstRun ? 0.5 : 0.38, stagger: firstRun ? 0.055 : 0.04, ease: 'power3.out',
+            clearProps: 'transform,opacity' }
         );
+        firstRun = false;
         if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
       }).observe(grid, { childList: true });
     });
 
-    /* card hover lift */
-    document.addEventListener('mouseover', function (e) {
-      var c = e.target.closest('.card');
-      if (c) gsap.to(c, { y: -7, boxShadow: '0 14px 36px rgba(26,61,43,.18)', duration: 0.22 });
-    });
-    document.addEventListener('mouseout', function (e) {
-      var c = e.target.closest('.card');
-      if (c) gsap.to(c, { y: 0, boxShadow: '0 2px 10px rgba(0,0,0,.07)', duration: 0.22 });
-    });
+    /* Card hover lift — desktop only */
+    if (window.matchMedia('(hover: hover)').matches) {
+      document.addEventListener('mouseover', function (e) {
+        var c = e.target.closest('.card');
+        if (c) gsap.to(c, { y: -6, boxShadow: '0 12px 32px rgba(26,61,43,.16)', duration: 0.2 });
+      });
+      document.addEventListener('mouseout', function (e) {
+        var c = e.target.closest('.card');
+        if (c) gsap.to(c, { y: 0, boxShadow: '0 2px 8px rgba(0,0,0,.07)', duration: 0.2 });
+      });
+    }
   }
 
   /* ── PAYMENT SECTION ── */
@@ -114,11 +101,11 @@
     if (!document.querySelector('.pay-card')) return;
     gsap.from('.pay-card', {
       scrollTrigger: { trigger: '#payment', start: 'top 82%' },
-      y: 50, opacity: 0, duration: 0.6, stagger: 0.14
+      y: 44, opacity: 0, duration: 0.55, stagger: 0.14
     });
     gsap.from('.pay-step', {
-      scrollTrigger: { trigger: '.pay-card', start: 'top 78%' },
-      x: -22, opacity: 0, duration: 0.38, stagger: 0.09
+      scrollTrigger: { trigger: '.pay-card', start: 'top 80%' },
+      x: -18, opacity: 0, duration: 0.36, stagger: 0.08
     });
   }
 
@@ -127,11 +114,11 @@
     if (!document.querySelector('.hotel-section')) return;
     gsap.from('.hotel-section h2', {
       scrollTrigger: { trigger: '.hotel-section', start: 'top 82%' },
-      x: -40, opacity: 0, duration: 0.6
+      x: -36, opacity: 0, duration: 0.55
     });
     gsap.from('.hotel-badge', {
       scrollTrigger: { trigger: '.hotel-section', start: 'top 78%' },
-      y: 20, opacity: 0, duration: 0.4, stagger: 0.08
+      y: 18, opacity: 0, duration: 0.38, stagger: 0.07
     });
   }
 
@@ -140,7 +127,7 @@
     if (!document.querySelector('.community-section')) return;
     gsap.from('.comm-card', {
       scrollTrigger: { trigger: '.community-section', start: 'top 82%' },
-      y: 40, opacity: 0, duration: 0.5, stagger: 0.12, ease: 'back.out(1.2)'
+      y: 36, opacity: 0, duration: 0.48, stagger: 0.11, ease: 'back.out(1.2)'
     });
   }
 
@@ -148,7 +135,7 @@
   function initFooter() {
     gsap.from('footer .footer-col', {
       scrollTrigger: { trigger: 'footer', start: 'top 88%' },
-      y: 28, opacity: 0, duration: 0.4, stagger: 0.1
+      y: 24, opacity: 0, duration: 0.38, stagger: 0.09
     });
   }
 
@@ -158,8 +145,8 @@
     if (!origOpen) return;
     window.openCart = function () {
       origOpen();
-      gsap.from('#cart-items .cart-item', { x: 32, opacity: 0, duration: 0.32, stagger: 0.07, delay: 0.12 });
-      gsap.from('.drawer-footer', { y: 22, opacity: 0, duration: 0.38, delay: 0.18 });
+      gsap.from('#cart-items .cart-item', { x: 28, opacity: 0, duration: 0.3, stagger: 0.065, delay: 0.1 });
+      gsap.from('.drawer-footer',          { y: 20, opacity: 0, duration: 0.36, delay: 0.16 });
     };
   }
 
@@ -167,39 +154,30 @@
   function initPayOpts() {
     document.addEventListener('click', function (e) {
       var opt = e.target.closest('.pay-opt');
-      if (opt) gsap.fromTo(opt, { scale: 0.93 }, { scale: 1, duration: 0.28, ease: 'back.out(2.5)' });
+      if (opt) gsap.fromTo(opt, { scale: 0.93 }, { scale: 1, duration: 0.26, ease: 'back.out(2.5)' });
     });
   }
 
-  /* ── ADD-TO-CART PULSE ── */
-  function initATCPulse() {
+  /* ── ADD-TO-CART & PAY NOW PULSE ── */
+  function initButtonPulse() {
     document.addEventListener('click', function (e) {
-      var btn = e.target.closest('.atc-btn, #qv-cart-btn');
-      if (btn) gsap.fromTo(btn, { scale: 0.88 }, { scale: 1, duration: 0.45, ease: 'elastic.out(1,.5)' });
+      var btn = e.target.closest('.atc-btn, #qv-cart-btn, button[onclick*="checkout"]');
+      if (btn) gsap.fromTo(btn, { scale: 0.9 }, { scale: 1, duration: 0.42, ease: 'elastic.out(1,.5)' });
     });
-  }
-
-  /* ── PAY NOW BUTTON PULSE ── */
-  function initPayNowPulse() {
-    document.addEventListener('click', function (e) {
-      var btn = e.target.closest('button[onclick*="checkout"]');
-      if (btn) gsap.fromTo(btn, { scale: 0.93 }, { scale: 1, duration: 0.4, ease: 'elastic.out(1,.5)' });
-    });
-  }
-
-  /* ── BOTTOM NAV ── */
-  function initBottomNav() {
-    gsap.from('.bottom-nav', { y: 80, opacity: 0, duration: 0.6, delay: 1 });
-    gsap.from('.bnav-item',  { y: 20, opacity: 0, duration: 0.4, stagger: 0.08, delay: 1.1 });
   }
 
   /* ── WA FLOAT ── */
   function initWaFloat() {
     var wa = document.querySelector('.wa-float');
     if (!wa) return;
-    gsap.from('.wa-float', { scale: 0, opacity: 0, duration: 0.5, delay: 1.5, ease: 'back.out(2)' });
-    wa.addEventListener('mouseenter', function () { gsap.to(this, { scale: 1.16, duration: 0.2 }); });
-    wa.addEventListener('mouseleave', function () { gsap.to(this, { scale: 1,    duration: 0.2 }); });
+    /* Slide in after loader is gone */
+    window.addEventListener('load', function () {
+      gsap.from('.wa-float', { scale: 0, opacity: 0, duration: 0.45, delay: 0.5, ease: 'back.out(2)' });
+    });
+    if (window.matchMedia('(hover: hover)').matches) {
+      wa.addEventListener('mouseenter', function () { gsap.to(this, { scale: 1.15, duration: 0.18 }); });
+      wa.addEventListener('mouseleave', function () { gsap.to(this, { scale: 1,    duration: 0.18 }); });
+    }
   }
 
   /* ── TOAST ENHANCEMENT ── */
@@ -209,29 +187,35 @@
     window.showToast = function (msg, type) {
       orig(msg, type);
       var t = document.getElementById('toast');
-      if (t) gsap.fromTo(t, { y: 30, opacity: 0, scale: 0.88 }, { y: 0, opacity: 1, scale: 1, duration: 0.32, ease: 'back.out(1.6)' });
+      if (t) gsap.fromTo(t,
+        { y: 24, opacity: 0, scale: 0.9 },
+        { y: 0, opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(1.5)' }
+      );
     };
   }
 
-  /* ── BROWSE DROPDOWN ── */
+  /* ── BROWSE DROPDOWN (shop page) ──
+     toggleBrowse is defined in shop.html’s inline script which runs AFTER
+     gsap-animations.js. We defer the wrap to avoid reading undefined.
+  */
   function initBrowse() {
-    var orig = window.toggleBrowse;
-    if (!orig) return;
-    window.toggleBrowse = function () {
-      orig();
-      var cats = document.getElementById('browse-cats');
-      if (cats && cats.classList.contains('open')) {
-        gsap.from('.browse-cat', { y: -10, opacity: 0, duration: 0.24, stagger: 0.025 });
-      }
-    };
+    /* Poll once for toggleBrowse since it’s defined in the inline script below */
+    setTimeout(function () {
+      var orig = window.toggleBrowse;
+      if (!orig) return;
+      window.toggleBrowse = function () {
+        orig();
+        var cats = document.getElementById('browse-cats');
+        if (cats && cats.classList.contains('open')) {
+          gsap.from('.browse-cat', { y: -8, opacity: 0, duration: 0.22, stagger: 0.022 });
+        }
+      };
+    }, 0);
   }
 
   /* ── INIT ── */
   function init() {
-    initLoader();
-    initNav();
-    initTrust();
-    initHero();
+    /* scroll-safe animations */
     initCatStrip();
     initFlash();
     initSectionHeads();
@@ -240,19 +224,23 @@
     initHotel();
     initCommunity();
     initFooter();
+    /* interaction */
     initCartDrawer();
     initPayOpts();
-    initATCPulse();
-    initPayNowPulse();
-    initBottomNav();
-    initWaFloat();
+    initButtonPulse();
     initToast();
+    /* above-fold — deferred until window.load */
+    initHero();
+    initWaFloat();
+    /* shop-page browse dropdown */
     initBrowse();
   }
 
+  /* Run after DOM is ready (scripts are at bottom of body, so DOM is already parsed) */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
+
 })();
