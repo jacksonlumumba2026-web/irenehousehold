@@ -300,6 +300,66 @@
   </div>
 </div>
 
+<!-- LIFESTYLE GALLERY -->
+<div style="background:var(--bg);">
+  <div class="page-wrap">
+    <span class="sec-label">✦ Style Inspiration</span>
+    <h2 class="sec-title">Shop the Look</h2>
+    <p class="sec-sub">Real Kenyan homes styled with our pieces — tap any photo to zoom in</p>
+    <div class="lifestyle-grid">
+      <div class="lifestyle-item tall" onclick="openZoom('furniture.1.jpg')"><img src="furniture.1.jpg" alt="Dining room styling" loading="lazy"/></div>
+      <div class="lifestyle-item" onclick="openZoom('decor.1.jpg')"><img src="decor.1.jpg" alt="Throw blanket styling" loading="lazy"/></div>
+      <div class="lifestyle-item" onclick="openZoom('duvet.1.jpg')"><img src="duvet.1.jpg" alt="Bedroom styling" loading="lazy"/></div>
+      <div class="lifestyle-item tall" onclick="openZoom('carpet.1.jpg')"><img src="carpet.1.jpg" alt="Living room rug styling" loading="lazy"/></div>
+      <div class="lifestyle-item" onclick="openZoom('furniture.2.jpg')"><img src="furniture.2.jpg" alt="Coffee table styling" loading="lazy"/></div>
+      <div class="lifestyle-item" onclick="openZoom('bath.1.jpg')"><img src="bath.1.jpg" alt="Bathroom styling" loading="lazy"/></div>
+      <div class="lifestyle-item" onclick="openZoom('kitchenware.9.jpg')"><img src="kitchenware.9.jpg" alt="Dinnerware styling" loading="lazy"/></div>
+      <div class="lifestyle-item" onclick="openZoom('decor.3.jpg')"><img src="decor.3.jpg" alt="Side table styling" loading="lazy"/></div>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOMER REVIEWS -->
+<div style="background:#fff;">
+  <div class="page-wrap">
+    <span class="sec-label">✦ Customer Love</span>
+    <h2 class="sec-title">What Our Customers Say</h2>
+    <p class="sec-sub">500+ happy customers across Kenya</p>
+    <div class="reviews-track" id="reviews-track">
+      <div class="review-card">
+        <div class="review-top"><div class="review-avatar">WM</div><div><div class="review-name">Wanjiku M.</div><div class="review-loc">Nairobi, Kenya</div></div></div>
+        <div class="stars">★★★★★</div>
+        <blockquote>"Got the four-stand net and marble coffee table. Both arrived fast and look exactly as advertised!"</blockquote>
+      </div>
+      <div class="review-card">
+        <div class="review-top"><div class="review-avatar">AH</div><div><div class="review-name">Amina H.</div><div class="review-loc">Kilimani, Nairobi</div></div></div>
+        <div class="stars">★★★★★</div>
+        <blockquote>"Irene Household is my go-to for Airbnb beddings. Guests always compliment how crisp everything looks!"</blockquote>
+      </div>
+      <div class="review-card">
+        <div class="review-top"><div class="review-avatar">BO</div><div><div class="review-name">Brian O.</div><div class="review-loc">Westlands, Nairobi</div></div></div>
+        <div class="stars">★★★★★</div>
+        <blockquote>"Dinner set, duvet and carpet in one order. Same-day delivery and prices are unbeatable in Nairobi!"</blockquote>
+      </div>
+      <div class="review-card">
+        <div class="review-top"><div class="review-avatar">FK</div><div><div class="review-name">Faith K.</div><div class="review-loc">Karen, Nairobi</div></div></div>
+        <div class="stars">★★★★★</div>
+        <blockquote>"The fluffy carpets are amazing! My living room looks completely transformed. Great quality for the price."</blockquote>
+      </div>
+      <div class="review-card">
+        <div class="review-top"><div class="review-avatar">JN</div><div><div class="review-name">James N.</div><div class="review-loc">Lavington, Nairobi</div></div></div>
+        <div class="stars">★★★★★</div>
+        <blockquote>"Ordered the marble dining table and it is absolutely stunning. Delivery was on time and packaging was perfect."</blockquote>
+      </div>
+      <div class="review-card">
+        <div class="review-top"><div class="review-avatar">GW</div><div><div class="review-name">Grace W.</div><div class="review-loc">Ruaka, Nairobi</div></div></div>
+        <div class="stars">★★★★★</div>
+        <blockquote>"Best household shop in Nairobi hands down. Wide selection, great prices and excellent customer service!"</blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PAYMENT SECTION -->
 <div class="section" id="payment" style="background:#fff;">
   <div class="page-wrap">
@@ -644,6 +704,20 @@
     var el = document.getElementById(id);
     if (el) el.scrollBy({ left: dir * 320, behavior: 'smooth' });
   }
+
+  // Auto-advance reviews carousel, pausing on hover/touch
+  (function initReviewsAutoplay() {
+    var track = document.getElementById('reviews-track');
+    if (!track) return;
+    var paused = false;
+    track.addEventListener('mouseenter', function () { paused = true; });
+    track.addEventListener('mouseleave', function () { paused = false; });
+    setInterval(function () {
+      if (paused) return;
+      var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      track.scrollBy({ left: atEnd ? -track.scrollWidth : 296, behavior: 'smooth' });
+    }, 3500);
+  })();
 
 </script>
 <script>
