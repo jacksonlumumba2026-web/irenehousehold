@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="dns-prefetch" href="https://wa.me"/>
-  <meta name="theme-color" content="#0d1f16"/>
+  <meta name="theme-color" content="#0c0c0c"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="About Irene Household Collections - Premium household items dealer in Nairobi, Kenya."/>
   <title>About Us | Irene Household Collections</title>
@@ -105,7 +105,7 @@
     <div class="about-grid">
       <div class="rev">
         <span class="sec-label" style="text-align:left;">✦ How We Started</span>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,3vw,2.4rem);color:var(--green-dark);margin-bottom:14px;">
+        <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(1.7rem,3vw,2.4rem);color:var(--green-dark);margin-bottom:14px;">
           From a Passion for Beautiful Homes
         </h2>
         <p style="color:var(--muted);line-height:1.82;margin-bottom:11px;font-size:14px;">
@@ -153,7 +153,7 @@
       </div>
       <div class="rev">
         <span class="sec-label" style="text-align:left;">✦ Why We Are Different</span>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,3vw,2.3rem);color:var(--green-dark);margin-bottom:20px;">
+        <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(1.7rem,3vw,2.3rem);color:var(--green-dark);margin-bottom:20px;">
           Why Choose Irene Household Collections?
         </h2>
         <div style="display:flex;flex-direction:column;gap:12px;">
@@ -285,7 +285,7 @@
     <div class="cart-total-row"><span>Total</span><strong id="cart-total">KSh 0</strong></div>
     <div style="display:flex;gap:8px;margin-bottom:8px;">
       <button onclick="checkout('whatsapp')" style="flex:1;background:#25d366;color:#fff;border:none;padding:13px;font-size:12px;font-weight:700;border-radius:9px;cursor:pointer;">💬 WhatsApp</button>
-      <button onclick="checkout('email')" style="flex:1;background:#fff;color:#1a3d2b;border:1.5px solid #1a3d2b;padding:13px;font-size:12px;font-weight:700;border-radius:9px;cursor:pointer;">✉️ Email</button>
+      <button onclick="checkout('email')" style="flex:1;background:#fff;color:#161616;border:1.5px solid #161616;padding:13px;font-size:12px;font-weight:700;border-radius:9px;cursor:pointer;">✉️ Email</button>
     </div>
     <button class="btn-clear" onclick="clearCart()">🗑 Clear Cart</button>
   </div>
@@ -294,7 +294,7 @@
 <!-- WISHLIST -->
 <div class="overlay" id="wl-overlay"></div>
 <div class="drawer" id="wl-drawer">
-  <div class="drawer-head" style="background:#e53e3e;">
+  <div class="drawer-head" style="background:#B23A2E;">
     <div><h3 style="color:#fff;">❤️ Wishlist</h3><span id="wl-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span></div>
     <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeWishlist()">✕</button>
   </div>
@@ -322,7 +322,7 @@
 </div>
 
 <div class="progress-ring" id="progress-ring" onclick="scrollToTop()">
-  <svg width="42" height="42" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="#e8e0d0" stroke-width="3"/><circle id="ring-circle" cx="22" cy="22" r="18" fill="none" stroke="#c8a951" stroke-width="3" stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round"/></svg>
+  <svg width="42" height="42" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="#E7E2D8" stroke-width="3"/><circle id="ring-circle" cx="22" cy="22" r="18" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round"/></svg>
   <div class="progress-ring-inner">↑</div>
 </div>
 
@@ -431,7 +431,7 @@
       var img = e.target;
       img.style.display = 'none';
       if (img.parentElement && img.parentElement.classList.contains('card-img')) {
-        img.parentElement.style.background = 'linear-gradient(135deg,#e8f5ee,#d0e4d0)';
+        img.parentElement.style.background = 'linear-gradient(135deg,#F5F1E8,#d0e4d0)';
         img.parentElement.style.display = 'flex';
         img.parentElement.style.alignItems = 'center';
         img.parentElement.style.justifyContent = 'center';
@@ -451,7 +451,7 @@
 <a href="mailto:irenehouseholds@gmail.com?subject=Order Inquiry&body=Hello Irene,%0A%0AI would like to place an order. Please get back to me.%0A%0AThank you."
    id="float-email"
    style="position:fixed;bottom:80px;right:16px;z-index:1500;
-          background:#1a3d2b;color:#fff;
+          background:#161616;color:#fff;
           width:52px;height:52px;border-radius:50%;
           display:flex;align-items:center;justify-content:center;
           font-size:22px;text-decoration:none;
