@@ -274,6 +274,20 @@
   </div>
 </div>
 
+<!-- BEST SELLERS CAROUSEL -->
+<div style="background:#fff;">
+  <div class="page-wrap">
+    <div class="section-head">
+      <h2>🔥 Best Sellers</h2>
+      <a href="shop.html">View All →</a>
+    </div>
+    <div class="carousel-wrap">
+      <button class="carousel-arrow left" onclick="scrollCarousel('bestsellers-track',-1)" aria-label="Scroll left">‹</button>
+      <div class="products-carousel" id="bestsellers-track"></div>
+      <button class="carousel-arrow right" onclick="scrollCarousel('bestsellers-track',1)" aria-label="Scroll right">›</button>
+    </div>
+  </div>
+</div>
 
 <!-- NEW ARRIVALS -->
 <div style="background:#fff;">
@@ -612,8 +626,23 @@
     var grid = document.getElementById('featured-grid');
     if (grid) grid.innerHTML = featured.map(buildCard).join('');
 
+    renderBestSellers();
+
     // New Arrivals — last 8 added
     renderNewArrivals('new-arrivals-grid');
+  }
+
+  // Best Sellers — products flagged HOT, across categories
+  function renderBestSellers() {
+    var track = document.getElementById('bestsellers-track');
+    if (!track) return;
+    var sellers = PRODUCTS.filter(function(p) { return p.badgeType === 'hot'; }).slice(0, 12);
+    track.innerHTML = sellers.map(buildCard).join('');
+  }
+
+  function scrollCarousel(id, dir) {
+    var el = document.getElementById(id);
+    if (el) el.scrollBy({ left: dir * 320, behavior: 'smooth' });
   }
 
 </script>
@@ -625,6 +654,7 @@
     }).filter(Boolean);
     var grid = document.getElementById('featured-grid');
     if (grid) grid.innerHTML = featured.map(buildCard).join('');
+    if (typeof renderBestSellers === 'function') renderBestSellers();
     var newGrid = document.getElementById('new-arrivals-grid');
     if (newGrid) renderNewArrivals('new-arrivals-grid');
   })();
