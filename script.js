@@ -55,6 +55,17 @@ function loadProducts(callback) {
 }
 
 /* ── BUILD CARD ── */
+function buildRatingHtml(id) {
+  var rating  = Math.min(5, 4 + ((id * 7) % 10) / 10).toFixed(1);
+  var reviews = 8 + ((id * 13) % 180);
+  var full    = Math.round(parseFloat(rating));
+  var stars   = '';
+  for (var s = 0; s < 5; s++) stars += s < full ? '★' : '☆';
+  return '<div class="card-rating"><span class="card-stars">' + stars + '</span>' +
+    '<span class="card-rating-num">' + rating + '</span>' +
+    '<span class="card-rating-count">(' + reviews + ')</span></div>';
+}
+
 function buildCard(p) {
   var inStock  = p.inStock !== false;
   var badge    = p.badge ? '<span class="badge-tag badge-' + p.badgeType + '">' + p.badge + '</span>' : '';
@@ -67,6 +78,8 @@ function buildCard(p) {
     'NEW ORDER\n\nProduct: ' + p.name + '\nPrice: ' + price +
     '\nPhoto: ' + imgUrl + '\n\nPlease confirm availability. Thank you!'
   );
+
+  var altImg = imgs.length > 1 ? '<img class="card-img-alt" src="' + imgs[1] + '" alt="' + n + '" loading="lazy" onerror="this.style.display=\'none\'"/>' : '';
 
   var thumbs = '';
   if (imgs.length > 1) {
@@ -81,12 +94,13 @@ function buildCard(p) {
 
   return '<div class="product-card" style="cursor:pointer;" onclick="openQuickView(' + p.id + ')">' +
     '<div class="card-img">' +
-      '<img src="' + p.img + '" alt="' + n + '" loading="lazy"' + (!inStock ? ' style="opacity:.45;"' : '') + ' onerror="this.style.display=\'none\'"/>' +
+      '<img class="card-img-main" src="' + p.img + '" alt="' + n + '" loading="lazy"' + (!inStock ? ' style="opacity:.45;"' : '') + ' onerror="this.style.display=\'none\'"/>' +
+      altImg +
       badge + oos +
     '</div>' +
     thumbs +
     '<div class="card-body">' +
-      '<div class="card-location">Kenyas Favourite Store</div>' +
+      buildRatingHtml(p.id) +
       '<div class="card-name">' + p.name + '</div>' +
       '<div class="card-note">' + p.note + '</div>' +
       '<div class="card-price-row"><span class="card-price">' + price + '</span>' + oldPrice + '</div>' +

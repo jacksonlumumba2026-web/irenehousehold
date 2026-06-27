@@ -405,6 +405,18 @@ h1,h2,h3,.sec-title,.section-head h2 { font-family:'Outfit',sans-serif; letter-s
   transition:transform .4s;
 }
 .product-card:hover .card-img img { transform:scale(1.06); }
+.card-img-alt {
+  position:absolute; inset:0;
+  opacity:0;
+  transition:opacity .4s;
+}
+.product-card:hover .card-img-alt { opacity:1; }
+
+/* Star rating row */
+.card-rating { display:flex; align-items:center; gap:4px; }
+.card-stars { color:var(--gold); font-size:11px; letter-spacing:1px; }
+.card-rating-num { font-size:10.5px; font-weight:700; color:var(--green-dark); }
+.card-rating-count { font-size:10px; color:var(--muted); }
 
 /* Badge */
 .card-badge {
