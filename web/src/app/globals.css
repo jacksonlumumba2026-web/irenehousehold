@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+:root {
+  --color-ink: #0c0c0c;
+  --color-ink-2: #161616;
+  --color-ink-3: #2b2b2b;
+  --color-gold: #d4af37;
+  --color-gold-2: #e8cc6e;
+  --color-cream: #faf8f4;
+  --color-cream-2: #f5f1e8;
+  --color-border: #e7e2d8;
+  --color-muted: #6b6b6b;
+  --color-green: #25d366;
+  --color-red: #b23a2e;
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-ink-2: var(--color-ink-2);
+  --color-ink-3: var(--color-ink-3);
+  --color-gold: var(--color-gold);
+  --color-gold-2: var(--color-gold-2);
+  --color-cream: var(--color-cream);
+  --color-cream-2: var(--color-cream-2);
+  --color-border: var(--color-border);
+  --color-muted: var(--color-muted);
+  --color-green: var(--color-green);
+  --color-red: var(--color-red);
+
+  --font-display: var(--font-outfit);
+  --font-sans: var(--font-inter);
+
+  --shadow-soft: 0 10px 40px rgba(17, 17, 17, 0.08);
+  --shadow-lift: 0 20px 60px rgba(17, 17, 17, 0.16);
+
+  --animate-shimmer: shimmer 1.6s infinite;
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 4px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    100deg,
+    var(--color-cream-2) 30%,
+    #efe9d8 50%,
+    var(--color-cream-2) 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+}
