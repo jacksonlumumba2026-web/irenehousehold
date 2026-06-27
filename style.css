@@ -3,8 +3,6 @@
    Premium Luxury Theme — Black / White / Gold
 ═══════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
-
 /* ── RESET ── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
@@ -919,6 +917,17 @@ h1,h2,h3,.sec-title,.section-head h2 { font-family:'Outfit',sans-serif; letter-s
 }
 .btn-ghost:hover { border-color:var(--gold); color:var(--gold); background:rgba(212,175,55,.08); }
 
+/* Button ripple effect */
+.ripple-clip { position:absolute; overflow:hidden; pointer-events:none; }
+.ripple-wave {
+  position:absolute; border-radius:50%;
+  background:rgba(255,255,255,.5);
+  transform:scale(0); opacity:.65;
+  animation:ripple-expand .6s ease-out forwards;
+  pointer-events:none;
+}
+@keyframes ripple-expand { to { transform:scale(2.6); opacity:0; } }
+
 /* ═══════════════════════════════════════
    FOOTER
 ═══════════════════════════════════════ */
@@ -926,6 +935,16 @@ footer {
   background:var(--green-dark);
   padding:40px 4% 18px;
   margin-top:0;
+  position:relative;
+}
+footer::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.footer-payments { display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+.footer-pay-badge {
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.55); font-size:10.5px; padding:5px 11px; border-radius:5px;
 }
 .footer-grid {
   display:grid;
@@ -1161,6 +1180,108 @@ img { max-width:100%; }
 .testi-card blockquote { font-style:italic; color:#555; font-size:13px; line-height:1.7; margin-bottom:11px; }
 .testi-card strong { font-size:12px; color:var(--green-dark); }
 .testi-card small  { display:block; color:var(--gold); font-size:10px; margin-top:1px; }
+
+/* Reviews carousel */
+.reviews-track {
+  display:flex; gap:16px;
+  overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth;
+  padding-bottom:8px;
+  scrollbar-width:none; -ms-overflow-style:none;
+}
+.reviews-track::-webkit-scrollbar { display:none; }
+.review-card {
+  flex:0 0 280px;
+  scroll-snap-align:start;
+  background:#fff;
+  border-radius:var(--radius);
+  padding:22px 20px;
+  box-shadow:var(--shadow-soft);
+  border:1px solid var(--border);
+}
+@media(min-width:700px) { .review-card { flex-basis:320px; } }
+.review-top { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.review-avatar {
+  width:44px; height:44px; border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:var(--green-dark);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:15px; flex-shrink:0;
+}
+.review-name { font-size:13px; font-weight:700; color:var(--green-dark); }
+.review-loc  { font-size:10.5px; color:var(--muted); }
+.review-card .stars { margin-bottom:8px; }
+.review-card blockquote { font-style:italic; color:#555; font-size:13px; line-height:1.7; margin:0; }
+
+/* Lifestyle masonry gallery */
+.lifestyle-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:130px;
+  gap:12px;
+}
+.lifestyle-item {
+  position:relative;
+  border-radius:var(--radius-sm);
+  overflow:hidden;
+  cursor:zoom-in;
+  background:#eee;
+}
+.lifestyle-item.tall { grid-row:span 2; }
+.lifestyle-item img {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .5s cubic-bezier(.22,1,.36,1);
+}
+.lifestyle-item:hover img { transform:scale(1.08); }
+.lifestyle-item::after {
+  content:'🔍'; position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; opacity:0;
+  background:rgba(0,0,0,.25);
+  transition:opacity .3s;
+}
+.lifestyle-item:hover::after { opacity:1; }
+@media(max-width:900px) {
+  .lifestyle-grid { grid-template-columns:repeat(3,1fr); grid-auto-rows:110px; }
+}
+@media(max-width:560px) {
+  .lifestyle-grid { grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; gap:8px; }
+}
+
+/* Why choose us */
+.why-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+@media(max-width:700px) { .why-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:420px) { .why-grid { grid-template-columns:1fr; } }
+
+/* Newsletter signup */
+.newsletter-section {
+  background:linear-gradient(135deg,var(--green-dark),var(--green) 70%);
+  padding:60px 4%; text-align:center; position:relative; overflow:hidden;
+}
+.newsletter-section::before {
+  content:''; position:absolute; top:-40%; right:-10%; width:420px; height:420px;
+  background:radial-gradient(circle,rgba(212,175,55,.18),transparent 70%);
+  pointer-events:none;
+}
+.newsletter-section .sec-title,
+.newsletter-section .sec-label { -webkit-text-fill-color:initial; }
+.newsletter-form {
+  display:flex; gap:10px; max-width:440px; margin:26px auto 0;
+  flex-wrap:wrap; justify-content:center; position:relative; z-index:1;
+}
+.newsletter-form input {
+  flex:1; min-width:220px; padding:13px 18px; border-radius:30px;
+  border:1.5px solid rgba(255,255,255,.18); background:rgba(255,255,255,.08);
+  color:#fff; font-size:13px; outline:none;
+}
+.newsletter-form input::placeholder { color:rgba(255,255,255,.45); }
+.newsletter-form input:focus { border-color:var(--gold); }
+.newsletter-form button {
+  background:linear-gradient(135deg,var(--gold),var(--gold2)); color:var(--green-dark);
+  border:none; border-radius:30px; padding:13px 24px; font-weight:700; font-size:13px;
+  cursor:pointer; transition:transform .25s,box-shadow .25s;
+}
+.newsletter-form button:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(212,175,55,.35); }
+.newsletter-note { color:rgba(255,255,255,.35); font-size:11px; margin-top:12px; }
 
 /* CTA section */
 .cta-section {

@@ -93,8 +93,8 @@ function buildCard(p) {
   var oos = !inStock ? '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.38);"><span style="background:#B23A2E;color:#fff;font-size:9px;font-weight:700;padding:4px 10px;border-radius:3px;">OUT OF STOCK</span></div>' : '';
 
   return '<div class="product-card" style="cursor:pointer;" onclick="openQuickView(' + p.id + ')">' +
-    '<div class="card-img">' +
-      '<img class="card-img-main" src="' + p.img + '" alt="' + n + '" loading="lazy"' + (!inStock ? ' style="opacity:.45;"' : '') + ' onerror="this.style.display=\'none\'"/>' +
+    '<div class="card-img img-loading">' +
+      '<img class="card-img-main" src="' + p.img + '" alt="' + n + '" loading="lazy"' + (!inStock ? ' style="opacity:.45;"' : '') + ' onload="this.parentElement.classList.remove(\'img-loading\')" onerror="this.style.display=\'none\';this.parentElement.classList.remove(\'img-loading\')"/>' +
       altImg +
       badge + oos +
     '</div>' +
@@ -685,6 +685,15 @@ function shareOnWhatsApp(name,price,img){
   var p=price>0?'KSh '+price.toLocaleString():'Call for Price';
   window.open('https://wa.me/?text='+encodeURIComponent('Check out '+name+' ('+p+') at irenehousehold.co.ke'),'_blank');
 }
+function subscribeNewsletter(e){
+  e.preventDefault();
+  var input=document.getElementById('newsletter-email');
+  var email=input.value.trim();
+  if(!email) return;
+  window.open('https://wa.me/254716060029?text='+encodeURIComponent('Hi Irene! Please add my email to your deals list: '+email),'_blank');
+  showToast('Thanks! Opening WhatsApp to confirm your subscription...');
+  input.value='';
+}
 function initZoom(){}
 
 /* ── DOM READY ── */
@@ -697,9 +706,58 @@ document.addEventListener('DOMContentLoaded', function(){
       entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('on'); });
     },{threshold:0.1});
     document.querySelectorAll('.rev').forEach(function(el){observer.observe(el);});
+    var counters=document.querySelectorAll('[data-target]');
+    if(counters.length){
+      var cObserver=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(!entry.isIntersecting) return;
+          cObserver.unobserve(entry.target);
+          var el=entry.target;
+          var target=parseInt(el.getAttribute('data-target'),10);
+          var suffix=el.getAttribute('data-suffix')||'';
+          var dur=1200,start=null;
+          function step(ts){
+            if(!start) start=ts;
+            var p=Math.min((ts-start)/dur,1);
+            el.textContent=Math.round(target*p)+suffix;
+            if(p<1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      },{threshold:0.4});
+      counters.forEach(function(el){cObserver.observe(el);});
+    }
     var co=document.getElementById('cart-overlay');
     if(co) co.addEventListener('click',closeCart);
     var wo=document.getElementById('wl-overlay');
     if(wo) wo.addEventListener('click',closeWishlist);
   });
 });
+
+/* ── BUTTON RIPPLE ── (capture phase, overlay on the parent — survives stopPropagation and
+   click handlers that swap the button's own innerHTML, e.g. "Added!" feedback) */
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('button, .btn-gold, .btn-green, .btn-ghost, .wa-share-btn');
+  if (!btn) return;
+  var parent = btn.parentElement;
+  if (!parent) return;
+  var rect = btn.getBoundingClientRect();
+  var prect = parent.getBoundingClientRect();
+  if (getComputedStyle(parent).position === 'static') parent.style.position = 'relative';
+  var clip = document.createElement('span');
+  clip.className = 'ripple-clip';
+  clip.style.left = (rect.left - prect.left) + 'px';
+  clip.style.top = (rect.top - prect.top) + 'px';
+  clip.style.width = rect.width + 'px';
+  clip.style.height = rect.height + 'px';
+  clip.style.borderRadius = getComputedStyle(btn).borderRadius;
+  var size = Math.max(rect.width, rect.height) * 1.3;
+  var wave = document.createElement('span');
+  wave.className = 'ripple-wave';
+  wave.style.width = wave.style.height = size + 'px';
+  wave.style.left = (e.clientX - rect.left - size / 2) + 'px';
+  wave.style.top  = (e.clientY - rect.top  - size / 2) + 'px';
+  clip.appendChild(wave);
+  parent.appendChild(clip);
+  setTimeout(function(){ clip.remove(); }, 650);
+}, true);

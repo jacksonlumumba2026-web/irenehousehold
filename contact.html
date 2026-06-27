@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="dns-prefetch" href="https://wa.me"/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"/></noscript>
   <meta name="theme-color" content="#0c0c0c"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Contact Irene Household Collections. Reach us via WhatsApp, phone or our contact form. Based in Nairobi, Kenya."/>
@@ -26,11 +28,11 @@
 
     .quick-card {
       background:#fff; border-radius:10px; padding:22px 16px;
-      text-align:center; box-shadow:0 2px 12px rgba(26,61,43,.07);
+      text-align:center; box-shadow:0 2px 12px rgba(212,175,55,.07);
       border-top:4px solid var(--gold); text-decoration:none;
       display:block; color:var(--text); transition:transform .3s,box-shadow .3s;
     }
-    .quick-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(26,61,43,.13); }
+    .quick-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,.13); }
     .quick-card-icon { font-size:2.2rem; margin-bottom:12px; display:block; }
     .quick-card h3 { font-family:'Outfit',sans-serif; font-size:1.2rem; color:var(--green-dark); margin-bottom:5px; }
     .quick-card p  { font-size:12px; color:var(--muted); line-height:1.6; margin-bottom:12px; }
@@ -48,7 +50,7 @@
     }
     .hours-row .day  { font-weight:500; color:var(--green-dark); }
     .hours-row .time { color:var(--muted); }
-    .hours-row.today { background:rgba(26,61,43,.07); border-left:3px solid var(--green); }
+    .hours-row.today { background:rgba(212,175,55,.07); border-left:3px solid var(--green); }
     .hours-row.today .day { color:var(--green); font-weight:700; }
     .closed { color:var(--red)!important; }
 
@@ -377,6 +379,11 @@
         <a href="https://instagram.com/jaymieirene" class="soc-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
         <a href="https://facebook.com/irenehouseholdcollections" class="soc-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
       </div>
+      <div class="footer-payments">
+        <span class="footer-pay-badge">📱 M-Pesa</span>
+        <span class="footer-pay-badge">💵 Cash on Delivery</span>
+        <span class="footer-pay-badge">🔒 Secure Checkout</span>
+      </div>
     </div>
     <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div class="footer-col"><h4>Categories</h4><ul><li><a href="shop.html?cat=furniture">Furniture</a></li><li><a href="shop.html?cat=duvets">Duvets</a></li><li><a href="shop.html?cat=kitchenware">Kitchenware</a></li><li><a href="shop.html?cat=electronics">Electronics</a></li><li><a href="shop.html?cat=cookware">Cookware</a></li><li><a href="shop.html?cat=decor">Home Decor</a></li></ul></div>
@@ -461,7 +468,7 @@
       </a>
       <button class="wa-popup-later" onclick="closeWaPopup()">Maybe later</button>
     </div>
-    <p style="font-size:10px;color:#ccc;text-align:center;margin-top:8px;">Free to join • No spam • Leave anytime</p>
+    <p style="font-size:10px;color:var(--muted);text-align:center;margin-top:8px;">Free to join • No spam • Leave anytime</p>
   </div>
 </div>
 
@@ -558,7 +565,7 @@
       var img = e.target;
       img.style.display = 'none';
       if (img.parentElement && img.parentElement.classList.contains('card-img')) {
-        img.parentElement.style.background = 'linear-gradient(135deg,#F5F1E8,#d0e4d0)';
+        img.parentElement.style.background = 'linear-gradient(135deg,#F5F1E8,#E8D9A8)';
         img.parentElement.style.display = 'flex';
         img.parentElement.style.alignItems = 'center';
         img.parentElement.style.justifyContent = 'center';
