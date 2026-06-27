@@ -72,12 +72,12 @@ function buildCard(p) {
   if (imgs.length > 1) {
     thumbs = '<div style="display:flex;gap:3px;padding:5px 7px;background:#f9f9f9;border-top:1px solid #eee;">';
     for (var t = 0; t < imgs.length; t++) {
-      thumbs += '<img src="' + imgs[t] + '" style="width:28px;height:28px;object-fit:cover;border-radius:3px;cursor:pointer;border:2px solid ' + (t===0?'#1a3d2b':'#eee') + ';flex-shrink:0;" onerror="this.style.display=\'none\'"/>';
+      thumbs += '<img src="' + imgs[t] + '" style="width:28px;height:28px;object-fit:cover;border-radius:3px;cursor:pointer;border:2px solid ' + (t===0?'#161616':'#eee') + ';flex-shrink:0;" onerror="this.style.display=\'none\'"/>';
     }
     thumbs += '</div>';
   }
 
-  var oos = !inStock ? '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.38);"><span style="background:#e53e3e;color:#fff;font-size:9px;font-weight:700;padding:4px 10px;border-radius:3px;">OUT OF STOCK</span></div>' : '';
+  var oos = !inStock ? '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.38);"><span style="background:#B23A2E;color:#fff;font-size:9px;font-weight:700;padding:4px 10px;border-radius:3px;">OUT OF STOCK</span></div>' : '';
 
   return '<div class="product-card" style="cursor:pointer;" onclick="openQuickView(' + p.id + ')">' +
     '<div class="card-img">' +
@@ -111,7 +111,7 @@ function renderProducts(containerId, filter, limit) {
   if (!container) return;
   var list = (!filter || filter === 'all') ? PRODUCTS.slice() : PRODUCTS.filter(function(p){ return p.cat === filter; });
   if (limit) list = list.slice(0, limit);
-  container.innerHTML = list.length ? list.map(buildCard).join('') : '<p style="text-align:center;color:#6b7280;padding:40px;">No products found.</p>';
+  container.innerHTML = list.length ? list.map(buildCard).join('') : '<p style="text-align:center;color:#6b6b6b;padding:40px;">No products found.</p>';
 }
 
 function renderNewArrivals(containerId) {
@@ -417,7 +417,7 @@ function openQuickView(id) {
   var header=document.createElement('div');
   header.style.cssText='display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px;border-bottom:1px solid #f0f0f0;flex-shrink:0;';
   header.innerHTML=
-    '<span style="font-size:10px;font-weight:700;color:#1a3d2b;letter-spacing:1px;text-transform:uppercase;background:#e8f5ee;padding:3px 10px;border-radius:20px;">'+catLabel+'</span>'+
+    '<span style="font-size:10px;font-weight:700;color:#161616;letter-spacing:1px;text-transform:uppercase;background:#F5F1E8;padding:3px 10px;border-radius:20px;">'+catLabel+'</span>'+
     '<button onclick="closeQuickView()" style="background:#f0f0f0;border:none;width:30px;height:30px;border-radius:50%;font-size:14px;cursor:pointer;">&#10005;</button>';
   sheet.appendChild(header);
 
@@ -436,7 +436,7 @@ function openQuickView(id) {
   mainImg.onerror=function(){
     this.style.display='none';
     imgBox.style.aspectRatio='1';
-    imgBox.style.background='#e8f5ee';
+    imgBox.style.background='#F5F1E8';
     imgBox.style.display='flex';
     imgBox.style.alignItems='center';
     imgBox.style.justifyContent='center';
@@ -444,8 +444,8 @@ function openQuickView(id) {
   };
   imgBox.appendChild(mainImg);
   if(p.badge){
-    var bdgBg=p.badge==='HOT'?'#c8a951':p.badge==='SALE'?'#e53e3e':p.badge==='NEW'?'#1a3d2b':'#7c3aed';
-    var bdgCl=p.badge==='HOT'?'#0d1f16':'#fff';
+    var bdgBg=p.badge==='HOT'?'#D4AF37':p.badge==='SALE'?'#B23A2E':p.badge==='NEW'?'#161616':'#7c3aed';
+    var bdgCl=p.badge==='HOT'?'#0c0c0c':'#fff';
     var bdg=document.createElement('span');
     bdg.textContent=p.badge;
     bdg.style.cssText='position:absolute;top:10px;left:10px;background:'+bdgBg+';color:'+bdgCl+';font-size:9px;font-weight:700;padding:3px 9px;border-radius:3px;';
@@ -462,14 +462,14 @@ function openQuickView(id) {
       var th=document.createElement('img');
       th.src=src+'?t='+Date.now(); th.dataset.src=src; th.className='qv-thumb';
       th.onerror=function(){this.style.display='none';};
-      th.style.cssText='width:52px;height:52px;flex-shrink:0;object-fit:cover;border-radius:7px;cursor:pointer;border:2.5px solid '+(i===0?'#1a3d2b':'#e0e0e0')+';transition:border-color .3s, transform .3s;';
+      th.style.cssText='width:52px;height:52px;flex-shrink:0;object-fit:cover;border-radius:7px;cursor:pointer;border:2.5px solid '+(i===0?'#161616':'#e0e0e0')+';transition:border-color .3s, transform .3s;';
       th.onclick=(function(s,el){
         return function(){
           mainImg.style.opacity='0';
           mainImg.style.transition='opacity .5s ease-in-out';
           setTimeout(function(){mainImg.src=s+'?t='+Date.now();mainImg.style.transition='opacity .5s ease-in-out';mainImg.style.opacity='1';},500);
           thumbRow.querySelectorAll('img').forEach(function(t){t.style.borderColor='#e0e0e0';t.style.transform='scale(1)';});
-          el.style.borderColor='#1a3d2b'; el.style.transform='scale(1.08)';
+          el.style.borderColor='#161616'; el.style.transform='scale(1.08)';
         };
       })(src,th);
       thumbRow.appendChild(th);
@@ -482,12 +482,12 @@ function openQuickView(id) {
   info.style.cssText='padding:14px 16px 24px;';
   var title=document.createElement('h3');
   title.textContent=p.name;
-  title.style.cssText='font-family:Cormorant Garamond,serif;font-size:1.35rem;color:#0d1f16;margin-bottom:4px;line-height:1.3;';
+  title.style.cssText='font-family:Outfit,serif;font-size:1.35rem;color:#0c0c0c;margin-bottom:4px;line-height:1.3;';
   info.appendChild(title);
   if(p.note){
     var desc=document.createElement('p');
     desc.textContent=p.note;
-    desc.style.cssText='font-size:12px;color:#6b7280;line-height:1.6;margin-bottom:10px;';
+    desc.style.cssText='font-size:12px;color:#6b6b6b;line-height:1.6;margin-bottom:10px;';
     info.appendChild(desc);
   }
   /* Price */
@@ -495,7 +495,7 @@ function openQuickView(id) {
   priceRow.style.cssText='display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;';
   var priceEl=document.createElement('span');
   priceEl.textContent=price;
-  priceEl.style.cssText='font-family:Cormorant Garamond,serif;font-size:1.75rem;font-weight:700;color:#1a3d2b;';
+  priceEl.style.cssText='font-family:Outfit,serif;font-size:1.75rem;font-weight:700;color:#161616;';
   priceRow.appendChild(priceEl);
   if(p.old&&p.price>0){
     var oldEl=document.createElement('span');
@@ -504,7 +504,7 @@ function openQuickView(id) {
     priceRow.appendChild(oldEl);
     var saveEl=document.createElement('span');
     saveEl.textContent='Save KSh '+(p.old-p.price).toLocaleString();
-    saveEl.style.cssText='font-size:10px;background:#fff0f0;color:#e53e3e;font-weight:700;padding:2px 7px;border-radius:4px;';
+    saveEl.style.cssText='font-size:10px;background:#fff0f0;color:#B23A2E;font-weight:700;padding:2px 7px;border-radius:4px;';
     priceRow.appendChild(saveEl);
   }
   info.appendChild(priceRow);
@@ -532,28 +532,28 @@ function openQuickView(id) {
   var emailBtn=document.createElement('a');
   emailBtn.href='mailto:irenehouseholds@gmail.com?subject='+emailSubject+'&body='+emailBody;
   emailBtn.innerHTML='&#9993; Order via Email';
-  emailBtn.style.cssText='display:block;width:100%;background:#fff;color:#1a3d2b;border:1.5px solid #1a3d2b;padding:12px;font-size:13px;font-weight:700;border-radius:9px;text-align:center;text-decoration:none;margin-bottom:8px;';
+  emailBtn.style.cssText='display:block;width:100%;background:#fff;color:#161616;border:1.5px solid #161616;padding:12px;font-size:13px;font-weight:700;border-radius:9px;text-align:center;text-decoration:none;margin-bottom:8px;';
   info.appendChild(emailBtn);
   var cartBtn=document.createElement('button');
   cartBtn.id='qv-cart-btn'; cartBtn.innerHTML='&#128722; Add to Cart';
   cartBtn.onclick=qvAddToCart;
-  cartBtn.style.cssText='display:block;width:100%;background:#1a3d2b;color:#fff;border:none;padding:12px;font-size:13px;font-weight:700;border-radius:9px;cursor:pointer;margin-bottom:8px;';
+  cartBtn.style.cssText='display:block;width:100%;background:#161616;color:#fff;border:none;padding:12px;font-size:13px;font-weight:700;border-radius:9px;cursor:pointer;margin-bottom:8px;';
   info.appendChild(cartBtn);
   var wlBtn=document.createElement('button');
   wlBtn.id='qv-wl-btn';
   wlBtn.innerHTML=inWL?'&#10084; Saved':'&#9825; Save to Wishlist';
   wlBtn.onclick=qvToggleWishlist;
-  wlBtn.style.cssText='display:block;width:100%;background:#fff;color:#1a3d2b;border:1.5px solid #ddd;padding:11px;font-size:12px;font-weight:600;border-radius:9px;cursor:pointer;margin-bottom:14px;';
+  wlBtn.style.cssText='display:block;width:100%;background:#fff;color:#161616;border:1.5px solid #ddd;padding:11px;font-size:12px;font-weight:600;border-radius:9px;cursor:pointer;margin-bottom:14px;';
   info.appendChild(wlBtn);
   /* Trust */
   var trust=document.createElement('div');
-  trust.style.cssText='background:#f9f9f9;border-radius:8px;padding:11px 13px;font-size:11.5px;color:#6b7280;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;';
+  trust.style.cssText='background:#f9f9f9;border-radius:8px;padding:11px 13px;font-size:11.5px;color:#6b6b6b;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;';
   trust.innerHTML='<span>&#128666; Free delivery over KSh 5,000</span><span>&#128179; M-Pesa Paybill 522533</span><span>&#10003; Quality verified</span>';
   info.appendChild(trust);
   var fpLink=document.createElement('a');
   fpLink.href='product.html?id='+p.id;
   fpLink.innerHTML='View Full Page &rarr;';
-  fpLink.style.cssText='display:block;text-align:center;font-size:12px;color:#1a3d2b;font-weight:600;border:1.5px solid #ddd;padding:10px;border-radius:9px;text-decoration:none;';
+  fpLink.style.cssText='display:block;text-align:center;font-size:12px;color:#161616;font-weight:600;border:1.5px solid #ddd;padding:10px;border-radius:9px;text-decoration:none;';
   info.appendChild(fpLink);
   body.appendChild(info);
   sheet.appendChild(body);
@@ -595,7 +595,7 @@ function openQuickView(id) {
         var thumbs=document.querySelectorAll('#qv-modal .qv-thumb');
         thumbs.forEach(function(t,i){
           t.style.transition='border-color .3s, transform .3s';
-          t.style.borderColor=i===item.idx?'#1a3d2b':'#e0e0e0';
+          t.style.borderColor=i===item.idx?'#161616':'#e0e0e0';
           t.style.transform=i===item.idx?'scale(1.1)':'scale(1)';
         });
       }, 4500);
