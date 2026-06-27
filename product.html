@@ -34,8 +34,9 @@
       color: var(--muted);
       flex-wrap: wrap;
     }
-    .product-breadcrumb a { color: var(--green); }
-    .product-breadcrumb span { color: #ccc; }
+    .product-breadcrumb a { color: var(--green-dark); font-weight:600; transition:color .2s; }
+    .product-breadcrumb a:hover { color: var(--gold); }
+    .product-breadcrumb span { color: var(--muted); }
 
     /* Main layout */
     .product-layout {
@@ -46,7 +47,7 @@
       background: #fff;
       border-radius: 12px;
       padding: 28px;
-      box-shadow: 0 2px 16px rgba(26,61,43,.08);
+      box-shadow: 0 2px 16px rgba(0,0,0,.08);
       margin-bottom: 36px;
     }
 
@@ -131,7 +132,7 @@
       object-fit: cover;
     }
     .gallery-thumb:hover { border-color: var(--green); transform: scale(1.05); }
-    .gallery-thumb.active { border-color: var(--green); box-shadow: 0 0 0 2px rgba(26,61,43,.2); }
+    .gallery-thumb.active { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(212,175,55,.3); }
     .gallery-thumb.hidden { display: none; }
 
     /* Colour label */
@@ -334,7 +335,7 @@
       background: #fff;
       border-radius: 12px;
       padding: 24px;
-      box-shadow: 0 2px 16px rgba(26,61,43,.08);
+      box-shadow: 0 2px 16px rgba(0,0,0,.08);
     }
     .related-head {
       display: flex;
@@ -681,7 +682,7 @@
       </a>
       <button class="wa-popup-later" onclick="closeWaPopup()">Maybe later</button>
     </div>
-    <p style="font-size:10px;color:#ccc;text-align:center;margin-top:8px;">Free to join • No spam • Leave anytime</p>
+    <p style="font-size:10px;color:var(--muted);text-align:center;margin-top:8px;">Free to join • No spam • Leave anytime</p>
   </div>
 </div>
 
@@ -961,7 +962,7 @@
       var img = e.target;
       img.style.display = 'none';
       if (img.parentElement && img.parentElement.classList.contains('card-img')) {
-        img.parentElement.style.background = 'linear-gradient(135deg,#F5F1E8,#d0e4d0)';
+        img.parentElement.style.background = 'linear-gradient(135deg,#F5F1E8,#E8D9A8)';
         img.parentElement.style.display = 'flex';
         img.parentElement.style.alignItems = 'center';
         img.parentElement.style.justifyContent = 'center';
