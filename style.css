@@ -1228,6 +1228,42 @@ img { max-width:100%; }
   .lifestyle-grid { grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; gap:8px; }
 }
 
+/* Why choose us */
+.why-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+@media(max-width:700px) { .why-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:420px) { .why-grid { grid-template-columns:1fr; } }
+
+/* Newsletter signup */
+.newsletter-section {
+  background:linear-gradient(135deg,var(--green-dark),var(--green) 70%);
+  padding:60px 4%; text-align:center; position:relative; overflow:hidden;
+}
+.newsletter-section::before {
+  content:''; position:absolute; top:-40%; right:-10%; width:420px; height:420px;
+  background:radial-gradient(circle,rgba(212,175,55,.18),transparent 70%);
+  pointer-events:none;
+}
+.newsletter-section .sec-title,
+.newsletter-section .sec-label { -webkit-text-fill-color:initial; }
+.newsletter-form {
+  display:flex; gap:10px; max-width:440px; margin:26px auto 0;
+  flex-wrap:wrap; justify-content:center; position:relative; z-index:1;
+}
+.newsletter-form input {
+  flex:1; min-width:220px; padding:13px 18px; border-radius:30px;
+  border:1.5px solid rgba(255,255,255,.18); background:rgba(255,255,255,.08);
+  color:#fff; font-size:13px; outline:none;
+}
+.newsletter-form input::placeholder { color:rgba(255,255,255,.45); }
+.newsletter-form input:focus { border-color:var(--gold); }
+.newsletter-form button {
+  background:linear-gradient(135deg,var(--gold),var(--gold2)); color:var(--green-dark);
+  border:none; border-radius:30px; padding:13px 24px; font-weight:700; font-size:13px;
+  cursor:pointer; transition:transform .25s,box-shadow .25s;
+}
+.newsletter-form button:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(212,175,55,.35); }
+.newsletter-note { color:rgba(255,255,255,.35); font-size:11px; margin-top:12px; }
+
 /* CTA section */
 .cta-section {
   background:linear-gradient(135deg,var(--green-dark),var(--green));

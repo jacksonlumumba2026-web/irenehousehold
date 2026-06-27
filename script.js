@@ -685,6 +685,15 @@ function shareOnWhatsApp(name,price,img){
   var p=price>0?'KSh '+price.toLocaleString():'Call for Price';
   window.open('https://wa.me/?text='+encodeURIComponent('Check out '+name+' ('+p+') at irenehousehold.co.ke'),'_blank');
 }
+function subscribeNewsletter(e){
+  e.preventDefault();
+  var input=document.getElementById('newsletter-email');
+  var email=input.value.trim();
+  if(!email) return;
+  window.open('https://wa.me/254716060029?text='+encodeURIComponent('Hi Irene! Please add my email to your deals list: '+email),'_blank');
+  showToast('Thanks! Opening WhatsApp to confirm your subscription...');
+  input.value='';
+}
 function initZoom(){}
 
 /* ── DOM READY ── */
@@ -697,6 +706,27 @@ document.addEventListener('DOMContentLoaded', function(){
       entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('on'); });
     },{threshold:0.1});
     document.querySelectorAll('.rev').forEach(function(el){observer.observe(el);});
+    var counters=document.querySelectorAll('[data-target]');
+    if(counters.length){
+      var cObserver=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(!entry.isIntersecting) return;
+          cObserver.unobserve(entry.target);
+          var el=entry.target;
+          var target=parseInt(el.getAttribute('data-target'),10);
+          var suffix=el.getAttribute('data-suffix')||'';
+          var dur=1200,start=null;
+          function step(ts){
+            if(!start) start=ts;
+            var p=Math.min((ts-start)/dur,1);
+            el.textContent=Math.round(target*p)+suffix;
+            if(p<1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      },{threshold:0.4});
+      counters.forEach(function(el){cObserver.observe(el);});
+    }
     var co=document.getElementById('cart-overlay');
     if(co) co.addEventListener('click',closeCart);
     var wo=document.getElementById('wl-overlay');
