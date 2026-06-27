@@ -689,6 +689,14 @@
         b.classList.toggle('active', active);
       });
     }
+
+    if (q) {
+      var inp = document.getElementById('search-input');
+      if (inp) inp.value = q;
+      liveSearch();
+    } else {
+      applyFilters();
+    }
   })();
 </script>
 

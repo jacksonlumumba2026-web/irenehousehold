@@ -93,8 +93,8 @@ function buildCard(p) {
   var oos = !inStock ? '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.38);"><span style="background:#B23A2E;color:#fff;font-size:9px;font-weight:700;padding:4px 10px;border-radius:3px;">OUT OF STOCK</span></div>' : '';
 
   return '<div class="product-card" style="cursor:pointer;" onclick="openQuickView(' + p.id + ')">' +
-    '<div class="card-img">' +
-      '<img class="card-img-main" src="' + p.img + '" alt="' + n + '" loading="lazy"' + (!inStock ? ' style="opacity:.45;"' : '') + ' onerror="this.style.display=\'none\'"/>' +
+    '<div class="card-img img-loading">' +
+      '<img class="card-img-main" src="' + p.img + '" alt="' + n + '" loading="lazy"' + (!inStock ? ' style="opacity:.45;"' : '') + ' onload="this.parentElement.classList.remove(\'img-loading\')" onerror="this.style.display=\'none\';this.parentElement.classList.remove(\'img-loading\')"/>' +
       altImg +
       badge + oos +
     '</div>' +
@@ -733,3 +733,31 @@ document.addEventListener('DOMContentLoaded', function(){
     if(wo) wo.addEventListener('click',closeWishlist);
   });
 });
+
+/* ── BUTTON RIPPLE ── (capture phase, overlay on the parent — survives stopPropagation and
+   click handlers that swap the button's own innerHTML, e.g. "Added!" feedback) */
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('button, .btn-gold, .btn-green, .btn-ghost, .wa-share-btn');
+  if (!btn) return;
+  var parent = btn.parentElement;
+  if (!parent) return;
+  var rect = btn.getBoundingClientRect();
+  var prect = parent.getBoundingClientRect();
+  if (getComputedStyle(parent).position === 'static') parent.style.position = 'relative';
+  var clip = document.createElement('span');
+  clip.className = 'ripple-clip';
+  clip.style.left = (rect.left - prect.left) + 'px';
+  clip.style.top = (rect.top - prect.top) + 'px';
+  clip.style.width = rect.width + 'px';
+  clip.style.height = rect.height + 'px';
+  clip.style.borderRadius = getComputedStyle(btn).borderRadius;
+  var size = Math.max(rect.width, rect.height) * 1.3;
+  var wave = document.createElement('span');
+  wave.className = 'ripple-wave';
+  wave.style.width = wave.style.height = size + 'px';
+  wave.style.left = (e.clientX - rect.left - size / 2) + 'px';
+  wave.style.top  = (e.clientY - rect.top  - size / 2) + 'px';
+  clip.appendChild(wave);
+  parent.appendChild(clip);
+  setTimeout(function(){ clip.remove(); }, 650);
+}, true);

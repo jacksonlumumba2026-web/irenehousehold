@@ -919,6 +919,17 @@ h1,h2,h3,.sec-title,.section-head h2 { font-family:'Outfit',sans-serif; letter-s
 }
 .btn-ghost:hover { border-color:var(--gold); color:var(--gold); background:rgba(212,175,55,.08); }
 
+/* Button ripple effect */
+.ripple-clip { position:absolute; overflow:hidden; pointer-events:none; }
+.ripple-wave {
+  position:absolute; border-radius:50%;
+  background:rgba(255,255,255,.5);
+  transform:scale(0); opacity:.65;
+  animation:ripple-expand .6s ease-out forwards;
+  pointer-events:none;
+}
+@keyframes ripple-expand { to { transform:scale(2.6); opacity:0; } }
+
 /* ═══════════════════════════════════════
    FOOTER
 ═══════════════════════════════════════ */
