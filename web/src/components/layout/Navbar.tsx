@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { useMotionValueEvent, useScroll } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -29,12 +29,9 @@ export function Navbar() {
 
   return (
     <>
-      <motion.nav
-        initial={{ y: -60, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      <nav
         className={clsx(
-          "sticky top-0 z-50 flex items-center gap-2.5 px-[4%] py-2.5 backdrop-blur-xl transition-colors duration-300",
+          "animate-nav-in sticky top-0 z-50 flex items-center gap-2.5 px-[4%] py-2.5 backdrop-blur-xl transition-colors duration-300",
           scrolled ? "bg-ink shadow-lg" : "bg-ink/70"
         )}
       >
@@ -105,7 +102,7 @@ export function Navbar() {
             <span className="block h-0.5 w-5 bg-white" />
           </button>
         </div>
-      </motion.nav>
+      </nav>
       <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </>
   );
