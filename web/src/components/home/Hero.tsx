@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
@@ -36,42 +35,30 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/70 to-ink/40" />
 
       <div className="relative mx-auto w-full max-w-3xl px-6 py-24 text-center">
-        <motion.span
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-4 inline-block rounded-full border border-gold/40 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[2px] text-gold"
+        <span
+          className="animate-fade-up mb-4 inline-block rounded-full border border-gold/40 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[2px] text-gold"
         >
           ✦ Quality. Comfort. Style.
-        </motion.span>
+        </span>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-balance text-4xl font-bold leading-tight md:text-6xl"
+        <h1
+          className="animate-fade-up text-balance text-4xl font-bold leading-tight md:text-6xl [animation-delay:100ms]"
         >
           Transform Your House Into
           <br />
           Your <em className="text-gold not-italic">Dream Home</em>
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto mt-5 max-w-xl text-white/75"
+        <p
+          className="animate-fade-up mx-auto mt-5 max-w-xl text-white/75 [animation-delay:200ms]"
         >
           Premium furniture, beddings, kitchenware and décor — delivered
           across Kenya
-        </motion.p>
+        </p>
 
-        <motion.form
+        <form
           onSubmit={handleSearch}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mx-auto mt-7 flex max-w-lg overflow-hidden rounded-xl bg-white shadow-lift"
+          className="animate-fade-up mx-auto mt-7 flex max-w-lg overflow-hidden rounded-xl bg-white shadow-lift [animation-delay:300ms]"
         >
           <input
             value={query}
@@ -86,13 +73,10 @@ export function Hero() {
           >
             🔍 Search
           </button>
-        </motion.form>
+        </form>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-7 flex flex-wrap items-center justify-center gap-3"
+        <div
+          className="animate-fade-up mt-7 flex flex-wrap items-center justify-center gap-3 [animation-delay:400ms]"
         >
           <RippleButton
             as={Link}
@@ -112,13 +96,10 @@ export function Hero() {
           >
             💬 WhatsApp Order
           </RippleButton>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
-          className="mt-12 grid grid-cols-3 gap-4 border-t border-white/10 pt-7 sm:grid-cols-4"
+        <div
+          className="animate-fade-up mt-12 grid grid-cols-3 gap-4 border-t border-white/10 pt-7 sm:grid-cols-4 [animation-delay:550ms]"
         >
           {stats.map((s) => (
             <div key={s.label}>
@@ -136,21 +117,19 @@ export function Hero() {
               Fast Delivery
             </span>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <div className="absolute bottom-6 left-0 right-0 hidden justify-center gap-3 md:flex">
         {["🔒 M-Pesa Secure", "⭐ 500+ Happy Customers", "🚚 Countrywide Delivery"].map(
           (b, i) => (
-            <motion.div
+            <div
               key={b}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
-              className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs text-white backdrop-blur-md"
+              style={{ animationDelay: `${600 + i * 100}ms` }}
+              className="animate-fade-up rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs text-white backdrop-blur-md"
             >
               {b}
-            </motion.div>
+            </div>
           )
         )}
       </div>
