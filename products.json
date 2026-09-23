@@ -2960,6 +2960,26 @@
     "inStock": true
   },
   {
+    "id": 171,
+    "cat": "furniture",
+    "name": "Modern Luxury 2in1 pure  Marble Nesting tables.",
+    "note": "Modern Luxury 2in1 pure  Marble Nesting tables.",
+    "price": 9999,
+    "old": 11000,
+    "img": "furniture.31.jpg",
+    "imgs": [
+      "furniture.31.jpg",
+      "furniture.31b.jpg",
+      "furniture.31c.jpg",
+      "furniture.31d.jpg",
+      "furniture.31e.jpg",
+      "furniture.31f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
