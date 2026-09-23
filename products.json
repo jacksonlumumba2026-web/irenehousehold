@@ -1600,6 +1600,26 @@
     "inStock": true
   },
   {
+    "id": 169,
+    "cat": "bath",
+    "name": "corner storage rack",
+    "note": "⏩Waterproof. \n⏩Strong bearing. \n⏩Multi-functional.",
+    "price": 2300,
+    "old": 2500,
+    "img": "bath.9.jpg",
+    "imgs": [
+      "bath.9.jpg",
+      "bath.9b.jpg",
+      "bath.9c.jpg",
+      "bath.9d.jpg",
+      "bath.9e.jpg",
+      "bath.9f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 70,
     "cat": "furniture",
     "name": "Four Seater Marble Dining Table",
