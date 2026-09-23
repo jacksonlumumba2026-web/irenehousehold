@@ -2940,6 +2940,26 @@
     "inStock": true
   },
   {
+    "id": 170,
+    "cat": "furniture",
+    "name": "2 in 1 Marble nesting coffee table (glass effect)",
+    "note": "2 in 1 Marble nesting coffee table (glass effect) white",
+    "price": 7999,
+    "old": 9000,
+    "img": "furniture.30.jpg",
+    "imgs": [
+      "furniture.30.jpg",
+      "furniture.30b.jpg",
+      "furniture.30c.jpg",
+      "furniture.30d.jpg",
+      "furniture.30e.jpg",
+      "furniture.30f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
