@@ -1440,6 +1440,26 @@
     "inStock": true
   },
   {
+    "id": 172,
+    "cat": "seatcovers",
+    "name": "NEW IN OUR COLLECTION: 100% WATER PROOF SEATCOVERS🔥",
+    "note": "SOFT FAUX LEATWHER MATERIAL THAT  repels wine, Water, coffee, and kid accidents. It is also Scratch-proof therefore protects against pet claws.\n\nPrices: 👇🏽👇🏽\n4 seater 5500\n3 seater 5000\n2 seater 4500\n1 seater 4000\n\n✅Instantly revitalizes worn-out couches 😊\n\n✅Excellent Fabric: Our sofa covers are made with premium faux leather fabrics to ensure both elegant appearance and daily protection from water, dust , etc. \n\n✅Soft and smooth to the touch and not easy to collect hair or pets fur.\n\n✅Perfect Fit: This stretchy occuch covers fit perfectly most universal couch.\n\n✅Stay in Place: The edges are made of elastic rubber, making the slipcover stay in place well without moving.",
+    "price": 17500,
+    "old": 0,
+    "img": "seatcover.6.jpg",
+    "imgs": [
+      "seatcover.6.jpg",
+      "seatcover.6b.jpg",
+      "seatcover.6c.jpg",
+      "seatcover.6d.jpg",
+      "seatcover.6e.jpg",
+      "seatcover.6f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
