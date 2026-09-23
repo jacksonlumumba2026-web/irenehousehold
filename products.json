@@ -1420,6 +1420,26 @@
     "inStock": false
   },
   {
+    "id": 168,
+    "cat": "seatcovers",
+    "name": "High density velvet material recliner seat cover",
+    "note": "3.2c.1.1",
+    "price": 19999,
+    "old": 25000,
+    "img": "seatcover.5.jpg",
+    "imgs": [
+      "seatcover.5.jpg",
+      "seatcover.5b.jpg",
+      "seatcover.5c.jpg",
+      "seatcover.5d.jpg",
+      "seatcover.5e.jpg",
+      "seatcover.5f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
