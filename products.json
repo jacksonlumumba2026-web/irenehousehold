@@ -3080,6 +3080,26 @@
     "inStock": true
   },
   {
+    "id": 177,
+    "cat": "furniture",
+    "name": "4in1 executive pure marble table",
+    "note": "executive pure marble table",
+    "price": 18500,
+    "old": 22500,
+    "img": "furniture.36.jpg",
+    "imgs": [
+      "furniture.36.jpg",
+      "furniture.36b.jpg",
+      "furniture.36c.jpg",
+      "furniture.36d.jpg",
+      "furniture.36e.jpg",
+      "furniture.36f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
