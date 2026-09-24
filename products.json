@@ -3100,6 +3100,26 @@
     "inStock": true
   },
   {
+    "id": 178,
+    "cat": "furniture",
+    "name": "marble table",
+    "note": "3in1 pure marble table",
+    "price": 12999,
+    "old": 14999,
+    "img": "furniture.37.jpg",
+    "imgs": [
+      "furniture.37.jpg",
+      "furniture.37b.jpg",
+      "furniture.37c.jpg",
+      "furniture.37d.jpg",
+      "furniture.37e.jpg",
+      "furniture.37f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
