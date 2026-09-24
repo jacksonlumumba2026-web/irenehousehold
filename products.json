@@ -3160,6 +3160,26 @@
     "inStock": true
   },
   {
+    "id": 181,
+    "cat": "furniture",
+    "name": "Desk table",
+    "note": "office desk table.Available in diffrent colors' white ,grey ,brown",
+    "price": 9500,
+    "old": 10500,
+    "img": "furniture.40.jpg",
+    "imgs": [
+      "furniture.40.jpg",
+      "furniture.40b.jpg",
+      "furniture.40c.jpg",
+      "furniture.40d.jpg",
+      "furniture.40e.jpg",
+      "furniture.40f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
