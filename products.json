@@ -3000,6 +3000,26 @@
     "inStock": true
   },
   {
+    "id": 173,
+    "cat": "furniture",
+    "name": "nesting coffee table",
+    "note": "nesting table with a black or white finish metal base",
+    "price": 22499,
+    "old": 25000,
+    "img": "furniture.32.jpg",
+    "imgs": [
+      "furniture.32.jpg",
+      "furniture.32b.jpg",
+      "furniture.32c.jpg",
+      "furniture.32d.jpg",
+      "furniture.32e.jpg",
+      "furniture.32f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
