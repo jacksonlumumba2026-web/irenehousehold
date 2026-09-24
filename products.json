@@ -3120,6 +3120,26 @@
     "inStock": true
   },
   {
+    "id": 179,
+    "cat": "furniture",
+    "name": "dinning table",
+    "note": "executive modern advanced marble dinning table",
+    "price": 8500,
+    "old": 9000,
+    "img": "furniture.38.jpg",
+    "imgs": [
+      "furniture.38.jpg",
+      "furniture.38b.jpg",
+      "furniture.38c.jpg",
+      "furniture.38d.jpg",
+      "furniture.38e.jpg",
+      "furniture.38f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
