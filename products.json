@@ -3140,6 +3140,26 @@
     "inStock": true
   },
   {
+    "id": 180,
+    "cat": "furniture",
+    "name": "dressing table",
+    "note": "brown dessing table mirror",
+    "price": 18500,
+    "old": 19999,
+    "img": "furniture.39.jpg",
+    "imgs": [
+      "furniture.39.jpg",
+      "furniture.39b.jpg",
+      "furniture.39c.jpg",
+      "furniture.39d.jpg",
+      "furniture.39e.jpg",
+      "furniture.39f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
