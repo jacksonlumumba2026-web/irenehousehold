@@ -3060,6 +3060,26 @@
     "inStock": true
   },
   {
+    "id": 176,
+    "cat": "furniture",
+    "name": "NESTING COFFEE TABLE",
+    "note": "with a black or white finish metal base. This modern and space-saving design is popular for its elegant appearance and versatility in living rooms.",
+    "price": 19500,
+    "old": 21500,
+    "img": "furniture.35.jpg",
+    "imgs": [
+      "furniture.35.jpg",
+      "furniture.35b.jpg",
+      "furniture.35c.jpg",
+      "furniture.35d.jpg",
+      "furniture.35e.jpg",
+      "furniture.35f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
