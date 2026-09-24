@@ -3020,6 +3020,26 @@
     "inStock": true
   },
   {
+    "id": 174,
+    "cat": "furniture",
+    "name": "white decor table",
+    "note": "white decor table",
+    "price": 1500,
+    "old": 1700,
+    "img": "furniture.33.jpg",
+    "imgs": [
+      "furniture.33.jpg",
+      "furniture.33b.jpg",
+      "furniture.33c.jpg",
+      "furniture.33d.jpg",
+      "furniture.33e.jpg",
+      "furniture.33f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
