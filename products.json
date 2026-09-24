@@ -3040,6 +3040,26 @@
     "inStock": true
   },
   {
+    "id": 175,
+    "cat": "furniture",
+    "name": "MDF COFFEE TABLE",
+    "note": "RESTOOCKED MDF COFFEE TABLE",
+    "price": 6500,
+    "old": 7500,
+    "img": "furniture.34.jpg",
+    "imgs": [
+      "furniture.34.jpg",
+      "furniture.34b.jpg",
+      "furniture.34c.jpg",
+      "furniture.34d.jpg",
+      "furniture.34e.jpg",
+      "furniture.34f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
