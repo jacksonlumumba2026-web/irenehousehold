@@ -2820,6 +2820,26 @@
     "inStock": true
   },
   {
+    "id": 189,
+    "cat": "carpets",
+    "name": "DASHBOARD COVER/BEDSIDE MAT",
+    "note": "DASHBOARD COVER/BEDSIDE MAT 60*170CM",
+    "price": 2300,
+    "old": 3000,
+    "img": "carpet.23.jpg",
+    "imgs": [
+      "carpet.23.jpg",
+      "carpet.23b.jpg",
+      "carpet.23c.jpg",
+      "carpet.23d.jpg",
+      "carpet.23e.jpg",
+      "carpet.23f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
