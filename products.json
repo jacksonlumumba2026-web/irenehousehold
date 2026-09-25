@@ -2760,6 +2760,26 @@
     "inStock": true
   },
   {
+    "id": 186,
+    "cat": "carpets",
+    "name": "3D KITCHEN RUBBER MATS",
+    "note": "2 PCS 3D KITCHEN MATS",
+    "price": 850,
+    "old": 1000,
+    "img": "carpet.20.jpg",
+    "imgs": [
+      "carpet.20.jpg",
+      "carpet.20b.jpg",
+      "carpet.20c.jpg",
+      "carpet.20d.jpg",
+      "carpet.20e.jpg",
+      "carpet.20f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
