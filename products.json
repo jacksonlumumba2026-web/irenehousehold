@@ -3358,5 +3358,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 183,
+    "cat": "duvets",
+    "name": "PINCH TUCK DUVET COVER",
+    "note": "ONE DUVET COVER 2 PILLOW CASES",
+    "price": 3500,
+    "old": 3800,
+    "img": "duvet.28.jpg",
+    "imgs": [
+      "duvet.28.jpg",
+      "duvet.28b.jpg",
+      "duvet.28c.jpg",
+      "duvet.28d.jpg",
+      "duvet.28e.jpg",
+      "duvet.28f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
