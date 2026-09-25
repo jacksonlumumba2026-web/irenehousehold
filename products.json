@@ -2800,6 +2800,26 @@
     "inStock": true
   },
   {
+    "id": 188,
+    "cat": "carpets",
+    "name": "TURKEY CARPETS",
+    "note": "TURKEY CARPETS 5*8",
+    "price": 8500,
+    "old": 10000,
+    "img": "carpet.22.jpg",
+    "imgs": [
+      "carpet.22.jpg",
+      "carpet.22b.jpg",
+      "carpet.22c.jpg",
+      "carpet.22d.jpg",
+      "carpet.22e.jpg",
+      "carpet.22f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
