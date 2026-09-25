@@ -3378,5 +3378,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 184,
+    "cat": "duvets",
+    "name": "FLUFFY DUVET",
+    "note": "COMES WITH 4 PILLOWCSES,1 BEDSHEET,FLUFFY DUVET 1PCS",
+    "price": 4300,
+    "old": 5000,
+    "img": "duvet.29.jpg",
+    "imgs": [
+      "duvet.29.jpg",
+      "duvet.29b.jpg",
+      "duvet.29c.jpg",
+      "duvet.29d.jpg",
+      "duvet.29e.jpg",
+      "duvet.29f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
