@@ -3398,5 +3398,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 185,
+    "cat": "duvets",
+    "name": "LUXURY MARBLE GOLD TEXTURE FOIL STLYE DUVET COVER SET",
+    "note": "COMES WITH ONE BEDSHEET AND TWO PILLOWCAES",
+    "price": 3500,
+    "old": 4000,
+    "img": "duvet.30.jpg",
+    "imgs": [
+      "duvet.30.jpg",
+      "duvet.30b.jpg",
+      "duvet.30c.jpg",
+      "duvet.30d.jpg",
+      "duvet.30e.jpg",
+      "duvet.30f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
