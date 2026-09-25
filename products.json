@@ -3338,5 +3338,25 @@
     "badge": "NEW",
     "badgeType": "new",
     "inStock": true
+  },
+  {
+    "id": 182,
+    "cat": "duvets",
+    "name": "COZY FLEECE VELVET DUVET",
+    "note": "COMES WITH ONE BEDSHEET AND TWO PILLLOW CASES SIZES UPTO 220\\240CM .",
+    "price": 3300,
+    "old": 3700,
+    "img": "duvet.27.jpg",
+    "imgs": [
+      "duvet.27.jpg",
+      "duvet.27b.jpg",
+      "duvet.27c.jpg",
+      "duvet.27d.jpg",
+      "duvet.27e.jpg",
+      "duvet.27f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
