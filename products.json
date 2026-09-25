@@ -2780,6 +2780,26 @@
     "inStock": true
   },
   {
+    "id": 187,
+    "cat": "carpets",
+    "name": "RABBIT FUR BEDSIDE MAT",
+    "note": "RABBIT FUR BEDSIDE MAT 60*180CM",
+    "price": 2500,
+    "old": 3000,
+    "img": "carpet.21.jpg",
+    "imgs": [
+      "carpet.21.jpg",
+      "carpet.21b.jpg",
+      "carpet.21c.jpg",
+      "carpet.21d.jpg",
+      "carpet.21e.jpg",
+      "carpet.21f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
