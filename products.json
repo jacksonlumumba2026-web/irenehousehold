@@ -3578,5 +3578,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 194,
+    "cat": "duvets",
+    "name": "CARTOON THEMED DUVET",
+    "note": "AVAILABLE WITH 1 BEDSHEET AND 2 PILLOWCASES",
+    "price": 2999,
+    "old": 3500,
+    "img": "duvet.32.jpg",
+    "imgs": [
+      "duvet.32.jpg",
+      "duvet.32b.jpg",
+      "duvet.32c.jpg",
+      "duvet.32d.jpg",
+      "duvet.32e.jpg",
+      "duvet.32f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
