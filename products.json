@@ -3558,5 +3558,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 193,
+    "cat": "duvets",
+    "name": "LUXURY TUFTED WAVE DESIGN DUVET",
+    "note": "SOFT FLUFFFY MICROFIBRE BREATHABLE AND DURABLE FOR ALL SEASONS,COMES WITH 1` DUVET COVER AND 2 PILLOWCASES",
+    "price": 3500,
+    "old": 4000,
+    "img": "duvet.31.jpg",
+    "imgs": [
+      "duvet.31.jpg",
+      "duvet.31b.jpg",
+      "duvet.31c.jpg",
+      "duvet.31d.jpg",
+      "duvet.31e.jpg",
+      "duvet.31f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
