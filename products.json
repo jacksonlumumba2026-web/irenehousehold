@@ -1460,6 +1460,26 @@
     "inStock": true
   },
   {
+    "id": 190,
+    "cat": "seatcovers",
+    "name": "DINING TABLE CLOTH",
+    "note": "DINING TABLE CLOTH SIZE 140*220CM",
+    "price": 1700,
+    "old": 2000,
+    "img": "seatcover.7.jpg",
+    "imgs": [
+      "seatcover.7.jpg",
+      "seatcover.7b.jpg",
+      "seatcover.7c.jpg",
+      "seatcover.7d.jpg",
+      "seatcover.7e.jpg",
+      "seatcover.7f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
