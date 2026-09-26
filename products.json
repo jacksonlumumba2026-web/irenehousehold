@@ -1480,6 +1480,26 @@
     "inStock": true
   },
   {
+    "id": 191,
+    "cat": "seatcovers",
+    "name": "PRINTED POLYCOTTON SEAT COVERS",
+    "note": "PRINTED POLYCOTTON SEAT COVERS",
+    "price": 10500,
+    "old": 13000,
+    "img": "seatcover.8.jpg",
+    "imgs": [
+      "seatcover.8.jpg",
+      "seatcover.8b.jpg",
+      "seatcover.8c.jpg",
+      "seatcover.8d.jpg",
+      "seatcover.8e.jpg",
+      "seatcover.8f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
