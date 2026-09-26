@@ -1500,6 +1500,26 @@
     "inStock": true
   },
   {
+    "id": 192,
+    "cat": "seatcovers",
+    "name": "DAMASK STRETCHABLE SEAT COVERS",
+    "note": "DAMASK STRETCHABLE SEAT COVERS",
+    "price": 5000,
+    "old": 6500,
+    "img": "seatcover.9.jpg",
+    "imgs": [
+      "seatcover.9.jpg",
+      "seatcover.9b.jpg",
+      "seatcover.9c.jpg",
+      "seatcover.9d.jpg",
+      "seatcover.9e.jpg",
+      "seatcover.9f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
