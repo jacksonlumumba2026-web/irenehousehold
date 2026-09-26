@@ -3598,5 +3598,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 195,
+    "cat": "duvets",
+    "name": "WAFFLE WEAVING POPLIN DUVET COVER",
+    "note": "COMES WITH 1 DUVET COVER 2 PILLOWCASES \nCOLORS;WHITE BEIDGE GREY",
+    "price": 3500,
+    "old": 3800,
+    "img": "duvet.33.jpg",
+    "imgs": [
+      "duvet.33.jpg",
+      "duvet.33b.jpg",
+      "duvet.33c.jpg",
+      "duvet.33d.jpg",
+      "duvet.33e.jpg",
+      "duvet.33f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
