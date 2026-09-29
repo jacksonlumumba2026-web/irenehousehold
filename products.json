@@ -3320,6 +3320,26 @@
     "inStock": true
   },
   {
+    "id": 202,
+    "cat": "furniture",
+    "name": "HARD SEMI PERMANENT PLASTIC WADROBE WITH MULTI SHOE RACK",
+    "note": "COLORS AVAILABLE\nBLACK WHITE BLUE",
+    "price": 5500,
+    "old": 6500,
+    "img": "furniture.41.jpg",
+    "imgs": [
+      "furniture.41.jpg",
+      "furniture.41b.jpg",
+      "furniture.41c.jpg",
+      "furniture.41d.jpg",
+      "furniture.41e.jpg",
+      "furniture.41f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
