@@ -3698,5 +3698,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 200,
+    "cat": "duvets",
+    "name": "RESTOCKED COTTON FITTED BEDSHEETS",
+    "note": "[ 1 FLAT BEDSHEET]\n[ 1 FITTED BEDSHEET ,THE ONE WITH THE BLADDER]\n[ 4 PILLOWCASES]\nSIZE 7\\8 6\\6 \nALL COLORS AVAILABLE",
+    "price": 2100,
+    "old": 2700,
+    "img": "duvet.37.jpg",
+    "imgs": [
+      "duvet.37.jpg",
+      "duvet.37b.jpg",
+      "duvet.37c.jpg",
+      "duvet.37d.jpg",
+      "duvet.37e.jpg",
+      "duvet.37f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
