@@ -3380,6 +3380,26 @@
     "inStock": true
   },
   {
+    "id": 205,
+    "cat": "furniture",
+    "name": "SHOE RACK",
+    "note": "AVAILABLE IN DIFFRENT COLORS\nBLUE\nPINK",
+    "price": 1800,
+    "old": 2200,
+    "img": "furniture.44.jpg",
+    "imgs": [
+      "furniture.44.jpg",
+      "furniture.44b.jpg",
+      "furniture.44c.jpg",
+      "furniture.44d.jpg",
+      "furniture.44e.jpg",
+      "furniture.44f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
