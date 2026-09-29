@@ -3678,5 +3678,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 199,
+    "cat": "duvets",
+    "name": "CARTOON THEMED BEDSHEETS",
+    "note": "4\\6\nCOMES WTH 2 BEDSHEETS \n2 PILLOWCASES",
+    "price": 1500,
+    "old": 2000,
+    "img": "duvet.36.jpg",
+    "imgs": [
+      "duvet.36.jpg",
+      "duvet.36b.jpg",
+      "duvet.36c.jpg",
+      "duvet.36d.jpg",
+      "duvet.36e.jpg",
+      "duvet.36f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
