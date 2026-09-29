@@ -3618,5 +3618,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 196,
+    "cat": "duvets",
+    "name": "INTRODUCING THE NEW 125GSM FLAT BEDSHEET",
+    "note": "SETS INCLUDE \n\nTWO FLAT BEDSHHET \nSIZE 7BY8\\6BY6 \nFOUR PILLOW CASES",
+    "price": 1999,
+    "old": 2500,
+    "img": "duvet.33.jpg",
+    "imgs": [
+      "duvet.33.jpg",
+      "duvet.33b.jpg",
+      "duvet.33c.jpg",
+      "duvet.33d.jpg",
+      "duvet.33e.jpg",
+      "duvet.33f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
