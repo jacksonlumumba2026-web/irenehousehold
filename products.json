@@ -3718,5 +3718,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 201,
+    "cat": "duvets",
+    "name": "FITTED COTTON BEDSHEET.PURE COTTON",
+    "note": "COMPROMISE OF\n[1 FLAT BEDSHEET]\n[1 FITTED BEDSHEET]\n[4 PILLOWCASES]\nSIZE 7 BY 8",
+    "price": 2150,
+    "old": 3000,
+    "img": "duvet.38.jpg",
+    "imgs": [
+      "duvet.38.jpg",
+      "duvet.38b.jpg",
+      "duvet.38c.jpg",
+      "duvet.38d.jpg",
+      "duvet.38e.jpg",
+      "duvet.38f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
