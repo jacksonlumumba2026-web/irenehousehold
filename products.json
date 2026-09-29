@@ -3658,5 +3658,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 198,
+    "cat": "duvets",
+    "name": "LUXURY SILKY SOFT MULBERRY FITTED BEDSHEET",
+    "note": "SIZE 7\\8\n6\\6\n5\\6\n[PREMIUM MOISTURE WICKING BEDSHEET]\n[EXTREMLEY BREATHABLE]\n[ANTI STACTIC]\n[1 FLAT BEDSHEET]\n[1 FITTED SLIK SHEET]\n[4 PILLOWCASES]",
+    "price": 3500,
+    "old": 4300,
+    "img": "duvet.35.jpg",
+    "imgs": [
+      "duvet.35.jpg",
+      "duvet.35b.jpg",
+      "duvet.35c.jpg",
+      "duvet.35d.jpg",
+      "duvet.35e.jpg",
+      "duvet.35f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
