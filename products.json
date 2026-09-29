@@ -3360,6 +3360,26 @@
     "inStock": true
   },
   {
+    "id": 204,
+    "cat": "furniture",
+    "name": "MULTIPURPOUSE SHOE RACK",
+    "note": "AVAILABLE IN WHITE AND BLACK",
+    "price": 1800,
+    "old": 2200,
+    "img": "furniture.43.jpg",
+    "imgs": [
+      "furniture.43.jpg",
+      "furniture.43b.jpg",
+      "furniture.43c.jpg",
+      "furniture.43d.jpg",
+      "furniture.43e.jpg",
+      "furniture.43f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
