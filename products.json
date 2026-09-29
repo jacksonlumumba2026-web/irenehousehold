@@ -3340,6 +3340,26 @@
     "inStock": true
   },
   {
+    "id": 203,
+    "cat": "furniture",
+    "name": "PORTABLE WOODEN WADROBE",
+    "note": "ALL COLORS AVAILABLE\nBROWN,PINK,NAVY,MAROON,BLACK,PURPLE",
+    "price": 3900,
+    "old": 4500,
+    "img": "furniture.42.jpg",
+    "imgs": [
+      "furniture.42.jpg",
+      "furniture.42b.jpg",
+      "furniture.42c.jpg",
+      "furniture.42d.jpg",
+      "furniture.42e.jpg",
+      "furniture.42f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
