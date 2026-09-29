@@ -3638,5 +3638,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 197,
+    "cat": "duvets",
+    "name": "FITTED MIX AND MATCH BEDSHEET JIMMY",
+    "note": "SIZE 6\\7 7\\8",
+    "price": 2500,
+    "old": 3000,
+    "img": "duvet.34.jpg",
+    "imgs": [
+      "duvet.34.jpg",
+      "duvet.34b.jpg",
+      "duvet.34c.jpg",
+      "duvet.34d.jpg",
+      "duvet.34e.jpg",
+      "duvet.34f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
