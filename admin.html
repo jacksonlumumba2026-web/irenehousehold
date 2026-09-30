@@ -971,6 +971,7 @@
           resolve(filename);
         }).catch(reject);
       };
+      reader.onerror = function() { reject(new Error('Failed to read photo file')); };
       reader.readAsDataURL(file);
     });
   }
@@ -993,6 +994,18 @@
     }, Promise.resolve([]));
   }
 
+  /* Polyfill for Promise.allSettled (missing in older Android browsers) */
+  if (!Promise.allSettled) {
+    Promise.allSettled = function(promises) {
+      return Promise.all(promises.map(function(p) {
+        return Promise.resolve(p).then(
+          function(v) { return { status: 'fulfilled', value: v }; },
+          function(e) { return { status: 'rejected', reason: e }; }
+        );
+      }));
+    };
+  }
+
   /* ══ SAVE NEW PRODUCT ══ */
   function saveProduct() {
     var name  = document.getElementById('a-name').value.trim();
@@ -1011,6 +1024,13 @@
     var btn = document.getElementById('btn-add');
     btn.disabled = true;
     btn.innerHTML = '<div class="spinner"></div> Saving...';
+
+    /* Safety belt — always re-enable button after 45s no matter what */
+    var safetyTimer = setTimeout(function() {
+      btn.disabled = false;
+      btn.innerHTML = '💾 Save Product to Website';
+      showMsg('❌ Timed out after 45s. Check your internet and token in Settings.', 'err');
+    }, 45000);
 
     var sfx  = ['','b','c','d','e','f'];
     var imgs = sfx.map(function(s){ return imgB+s+'.jpg'; });
@@ -1046,8 +1066,10 @@
       handlePhotos({files:[]});
       document.getElementById('a-prev').textContent = '';
     }).catch(function(e){
-      showMsg('❌ Error: ' + (e.message || 'Unknown') + ' — Check token in Settings.', 'err');
+      clearTimeout(safetyTimer);
+      showMsg('❌ ' + (e.message || 'Save failed') + ' — Go to Settings → Test Connection.', 'err');
     }).finally(function(){
+      clearTimeout(safetyTimer);
       btn.disabled = false;
       btn.innerHTML = '💾 Save Product to Website';
     });
