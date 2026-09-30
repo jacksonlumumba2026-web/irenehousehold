@@ -1840,6 +1840,26 @@
     "inStock": true
   },
   {
+    "id": 222,
+    "cat": "seatcovers",
+    "name": "velvet material recliner sofa covers",
+    "note": "velvet material recliner sofa covers",
+    "price": 18300,
+    "old": 20000,
+    "img": "seatcover.26.jpg",
+    "imgs": [
+      "seatcover.26.jpg",
+      "seatcover.26b.jpg",
+      "seatcover.26c.jpg",
+      "seatcover.26d.jpg",
+      "seatcover.26e.jpg",
+      "seatcover.26f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
