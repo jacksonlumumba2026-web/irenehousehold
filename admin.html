@@ -429,7 +429,9 @@
         <div class="tok-dot" id="settings-tok-dot"></div>
         <span style="font-size:12.5px;font-weight:600;color:#fff;" id="settings-tok-label">Checking...</span>
       </div>
-      <div class="fg"><label>Paste New Token</label><input type="password" id="new-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"/></div>
+      <button onclick="testToken()" style="width:100%;margin-bottom:10px;background:rgba(34,197,94,.15);border:1.5px solid rgba(34,197,94,.4);color:#22c55e;padding:11px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">🔍 Test Connection</button>
+      <div id="test-result" style="display:none;border-radius:8px;padding:10px 12px;font-size:12.5px;margin-bottom:12px;"></div>
+      <div class="fg"><label>Paste New Token</label><input type="password" id="new-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx or github_pat_..."/></div>
       <button class="btn-save" onclick="updateToken()">🔑 Save Token</button>
       <button onclick="clearToken()" style="width:100%;margin-top:8px;background:none;border:1.5px solid rgba(255,255,255,.15);color:var(--muted);padding:11px;border-radius:8px;font-size:12px;cursor:pointer;">🗑️ Clear Saved Token</button>
     </div>
@@ -665,6 +667,49 @@
   }
 
   /* ══ TOKEN ══ */
+  function authHeader() {
+    /* classic PATs: ghp_... use "token"; fine-grained: github_pat_... use "Bearer" */
+    if (!githubToken) return '';
+    return githubToken.startsWith('github_pat_') ? 'Bearer ' + githubToken : 'token ' + githubToken;
+  }
+
+  function testToken() {
+    var result = document.getElementById('test-result');
+    if (!githubToken) {
+      result.style.display = 'block';
+      result.style.cssText += 'background:rgba(178,58,46,.15);border:1px solid rgba(178,58,46,.4);color:#FFB4A8;';
+      result.innerHTML = '❌ No token saved. Paste your token below and tap Save Token first.';
+      return;
+    }
+    result.style.display = 'block';
+    result.style.cssText = 'display:block;border-radius:8px;padding:10px 12px;font-size:12.5px;margin-bottom:12px;background:rgba(255,255,255,.07);color:#fff;border:1px solid rgba(255,255,255,.15);';
+    result.innerHTML = '⏳ Testing...';
+    fetch('https://api.github.com/repos/'+GITHUB_OWNER+'/'+GITHUB_REPO+'/contents/'+GITHUB_FILE, {
+      headers: { 'Authorization': authHeader() }
+    }).then(function(r) {
+      if (r.status === 401) {
+        result.style.cssText = 'display:block;border-radius:8px;padding:10px 12px;font-size:12.5px;margin-bottom:12px;background:rgba(178,58,46,.15);border:1px solid rgba(178,58,46,.4);color:#FFB4A8;';
+        result.innerHTML = '❌ Token rejected (401). It is expired or wrong.<br/>Go to GitHub → Settings → Developer Settings → Generate a new token with <strong>repo</strong> scope.';
+        return;
+      }
+      if (r.status === 403) {
+        result.style.cssText = 'display:block;border-radius:8px;padding:10px 12px;font-size:12.5px;margin-bottom:12px;background:rgba(178,58,46,.15);border:1px solid rgba(178,58,46,.4);color:#FFB4A8;';
+        result.innerHTML = '❌ Permission denied (403). Token exists but needs <strong>repo</strong> or <strong>contents:write</strong> permission.';
+        return;
+      }
+      if (!r.ok) {
+        result.style.cssText = 'display:block;border-radius:8px;padding:10px 12px;font-size:12.5px;margin-bottom:12px;background:rgba(178,58,46,.15);border:1px solid rgba(178,58,46,.4);color:#FFB4A8;';
+        result.innerHTML = '❌ GitHub error ' + r.status + '. Check internet connection.';
+        return;
+      }
+      result.style.cssText = 'display:block;border-radius:8px;padding:10px 12px;font-size:12.5px;margin-bottom:12px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#86efac;';
+      result.innerHTML = '✅ Token works! Connected to ' + GITHUB_OWNER + '/' + GITHUB_REPO + '. Ready to save products.';
+    }).catch(function(e) {
+      result.style.cssText = 'display:block;border-radius:8px;padding:10px 12px;font-size:12.5px;margin-bottom:12px;background:rgba(178,58,46,.15);border:1px solid rgba(178,58,46,.4);color:#FFB4A8;';
+      result.innerHTML = '❌ Network error: ' + (e.message || 'Cannot reach GitHub') + '. Check internet.';
+    });
+  }
+
   function updateTokStatus() {
     var dot   = document.getElementById('tok-dot');
     var label = document.getElementById('tok-label');
@@ -734,7 +779,7 @@
   function getFileShas() {
     // Only fetch products.json SHA on init (script.js SHA fetched lazily)
     fetch('https://api.github.com/repos/'+GITHUB_OWNER+'/'+GITHUB_REPO+'/contents/'+GITHUB_FILE, {
-      headers: {'Authorization':'token '+githubToken}
+      headers: {'Authorization':authHeader()}
     }).then(function(r){return r.json();})
     .then(function(d){ fileSha = d.sha||''; })
     .catch(function(){});
@@ -758,7 +803,7 @@
     // Always get the latest SHA before saving - prevents 409 conflict
     return fetchWithTimeout(
       'https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + GITHUB_FILE,
-      { headers: { 'Authorization': 'token ' + githubToken } },
+      { headers: { 'Authorization': authHeader() } },
       10000
     ).then(function(r) {
       if (r.status === 401) throw new Error('Token rejected. Go to Settings and add a new token.');
@@ -788,16 +833,17 @@
         'https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + GITHUB_FILE,
         {
           method: 'PUT',
-          headers: { 'Authorization': 'token ' + githubToken, 'Content-Type': 'application/json' },
+          headers: { 'Authorization': authHeader(), 'Content-Type': 'application/json' },
           body: JSON.stringify(body)
         },
         15000
       );
     }).then(function(r) {
-      if (r.status === 401) throw new Error('Token rejected. Go to Settings → add a new token.');
-      if (r.status === 404) throw new Error('Repo not found. Contact Jackson.');
-      if (r.status === 409) throw new Error('Still conflicting. Please reload the page and try again.');
-      if (!r.ok) throw new Error('GitHub error ' + r.status + '. Try again.');
+      if (r.status === 401) throw new Error('Token expired or wrong (401). Go to Settings tab → Test Connection.');
+      if (r.status === 403) throw new Error('Token has no write permission (403). Regenerate token with "repo" scope.');
+      if (r.status === 404) throw new Error('Repo not found (404). Contact Jackson.');
+      if (r.status === 409) throw new Error('Save conflict (409). Reload the page and try again.');
+      if (!r.ok) throw new Error('GitHub error ' + r.status + '. Go to Settings tab → Test Connection.');
       return r.json();
     }).then(function(d) {
       fileSha     = d.content ? d.content.sha : fileSha;
@@ -905,7 +951,7 @@
         /* Check if file exists first (for SHA) */
         fetchWithTimeout(
           'https://api.github.com/repos/'+GITHUB_OWNER+'/'+GITHUB_REPO+'/contents/'+filename,
-          { headers:{'Authorization':'token '+githubToken} },
+          { headers:{'Authorization':authHeader()} },
           8000
         ).then(function(r){ return r.ok ? r.json() : null; })
         .then(function(existing){
@@ -915,7 +961,7 @@
             'https://api.github.com/repos/'+GITHUB_OWNER+'/'+GITHUB_REPO+'/contents/'+filename,
             {
               method:'PUT',
-              headers:{'Authorization':'token '+githubToken,'Content-Type':'application/json'},
+              headers:{'Authorization':authHeader(),'Content-Type':'application/json'},
               body:JSON.stringify(body)
             },
             20000
