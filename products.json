@@ -1720,6 +1720,26 @@
     "inStock": true
   },
   {
+    "id": 216,
+    "cat": "seatcovers",
+    "name": "slip sofa covers",
+    "note": "slip sofa covers",
+    "price": 17500,
+    "old": 19000,
+    "img": "seatcover.20.jpg",
+    "imgs": [
+      "seatcover.20.jpg",
+      "seatcover.20b.jpg",
+      "seatcover.20c.jpg",
+      "seatcover.20d.jpg",
+      "seatcover.20e.jpg",
+      "seatcover.20f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
