@@ -109,6 +109,7 @@ function buildCard(p) {
           (inStock ? ' onclick="event.stopPropagation();handleATC(this)"' : ' disabled') + '>' +
           '&#128722; ' + (inStock ? 'Add to Cart' : 'Out of Stock') + '</button>' +
         '<a href="https://wa.me/254716060029?text=' + waMsg + '" target="_blank" class="wa-share-btn" onclick="event.stopPropagation();">&#128172;</a>' +
+        '<button title="Share product link" onclick="event.stopPropagation();(function(){var u=\'https://irenehousehold.co.ke/product.html?id='+p.id+'\';if(navigator.share){navigator.share({title:\''+n+'\',url:u}).catch(function(){});}else if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){showToast(\'&#128279; Link copied!\');}).catch(function(){});}else{var el=document.createElement(\'textarea\');el.value=u;document.body.appendChild(el);el.select();document.execCommand(\'copy\');document.body.removeChild(el);showToast(\'&#128279; Link copied!\');}})();" style="background:#f0f4ff;color:#1a56db;border:1.5px solid #c7d8fc;border-radius:8px;padding:0 10px;font-size:14px;cursor:pointer;flex-shrink:0;">&#128279;</button>' +
       '</div>' +
     '</div>' +
   '</div>';
