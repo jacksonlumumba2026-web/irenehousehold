@@ -3760,6 +3760,26 @@
     "inStock": true
   },
   {
+    "id": 224,
+    "cat": "furniture",
+    "name": "Six seaters pure marble dinning tables",
+    "note": "Six seater pure marble dinning tables @ 89,999",
+    "price": 89999,
+    "old": 95000,
+    "img": "furniture.45.jpg",
+    "imgs": [
+      "furniture.45.jpg",
+      "furniture.45b.jpg",
+      "furniture.45c.jpg",
+      "furniture.45d.jpg",
+      "furniture.45e.jpg",
+      "furniture.45f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
