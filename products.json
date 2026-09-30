@@ -3240,6 +3240,26 @@
     "inStock": true
   },
   {
+    "id": 223,
+    "cat": "carpets",
+    "name": "heavy large plastic outdoor mat",
+    "note": "heavy large outdoor mat",
+    "price": 1500,
+    "old": 2000,
+    "img": "carpet.25.jpg",
+    "imgs": [
+      "carpet.25.jpg",
+      "carpet.25b.jpg",
+      "carpet.25c.jpg",
+      "carpet.25d.jpg",
+      "carpet.25e.jpg",
+      "carpet.25f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
