@@ -1540,6 +1540,26 @@
     "inStock": true
   },
   {
+    "id": 207,
+    "cat": "seatcovers",
+    "name": "Turkey bubble material seat covers",
+    "note": "Turkey bubble material seat covers 3.2.1.1",
+    "price": 4500,
+    "old": 5000,
+    "img": "seatcover.11.jpg",
+    "imgs": [
+      "seatcover.11.jpg",
+      "seatcover.11b.jpg",
+      "seatcover.11c.jpg",
+      "seatcover.11d.jpg",
+      "seatcover.11e.jpg",
+      "seatcover.11f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
