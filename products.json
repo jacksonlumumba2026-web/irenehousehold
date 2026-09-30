@@ -1640,6 +1640,26 @@
     "inStock": true
   },
   {
+    "id": 212,
+    "cat": "seatcovers",
+    "name": "leather material water proof seat covers",
+    "note": "leather material water proof seat covers",
+    "price": 5500,
+    "old": 6000,
+    "img": "seatcover.16.jpg",
+    "imgs": [
+      "seatcover.16.jpg",
+      "seatcover.16b.jpg",
+      "seatcover.16c.jpg",
+      "seatcover.16d.jpg",
+      "seatcover.16e.jpg",
+      "seatcover.16f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
