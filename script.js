@@ -157,10 +157,17 @@ function startFlashSaleTimer() {
 }
 
 /* ── SCROLL & NAV ── */
-window.addEventListener('load', function(){
-  var loader = document.getElementById('loader');
-  if (loader) loader.classList.add('hide');
-});
+(function(){
+  function hideLoader(){
+    var loader=document.getElementById('loader');
+    if(loader) loader.classList.add('hide');
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){ setTimeout(hideLoader,600); });
+  } else {
+    setTimeout(hideLoader,600);
+  }
+})();
 
 window.addEventListener('scroll', function(){
   var scrolled = window.scrollY;
