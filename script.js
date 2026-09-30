@@ -559,6 +559,30 @@ function openQuickView(id) {
   wlBtn.onclick=qvToggleWishlist;
   wlBtn.style.cssText='display:block;width:100%;background:#fff;color:#161616;border:1.5px solid #ddd;padding:11px;font-size:12px;font-weight:600;border-radius:9px;cursor:pointer;margin-bottom:14px;';
   info.appendChild(wlBtn);
+  /* Share row */
+  var shareRow=document.createElement('div');
+  shareRow.style.cssText='display:flex;gap:8px;margin-bottom:12px;';
+  var copyBtn=document.createElement('button');
+  copyBtn.innerHTML='&#128279; Copy Link';
+  copyBtn.style.cssText='flex:1;background:#f5f5f5;color:#161616;border:1.5px solid #ddd;padding:10px;font-size:12px;font-weight:600;border-radius:9px;cursor:pointer;';
+  copyBtn.onclick=function(){
+    var url='https://irenehousehold.co.ke/product.html?id='+p.id;
+    if(navigator.clipboard){navigator.clipboard.writeText(url).catch(function(){});}
+    else{var el=document.createElement('textarea');el.value=url;document.body.appendChild(el);el.select();document.execCommand('copy');document.body.removeChild(el);}
+    showToast('&#128279; Link copied! Share it with customers.');
+  };
+  var shareWaBtn=document.createElement('a');
+  var shareUrl='https://irenehousehold.co.ke/product.html?id='+p.id;
+  shareWaBtn.href='https://wa.me/?text='+encodeURIComponent('Check out '+p.name+' — KSh '+p.price.toLocaleString()+'
+
+'+shareUrl+'
+
+_Irene Household Collections_');
+  shareWaBtn.target='_blank';shareWaBtn.rel='noopener noreferrer';
+  shareWaBtn.innerHTML='&#128242; Share';
+  shareWaBtn.style.cssText='flex:1;background:#25d366;color:#fff;border:none;padding:10px;font-size:12px;font-weight:600;border-radius:9px;cursor:pointer;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;';
+  shareRow.appendChild(copyBtn);shareRow.appendChild(shareWaBtn);
+  info.appendChild(shareRow);
   /* Trust */
   var trust=document.createElement('div');
   trust.style.cssText='background:#f9f9f9;border-radius:8px;padding:11px 13px;font-size:11.5px;color:#6b6b6b;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;';
