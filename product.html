@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="google-site-verification" content="ryJfPUsz2DAdXX09JpxRBgEUT4vIlA333V2ewRcfCYE"/>
-  
+
   <!-- Performance hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -500,7 +500,7 @@
         <button class="gallery-arrow next" id="arrow-next" onclick="galleryNext()">›</button>
         <div class="gallery-zoom">🔍 Tap to zoom</div>
       </div>
-      <div class="colour-label">Colour: <span id="colour-current">Default</span></div>
+      <div class="colour-label">Photo: <span id="colour-current">1</span></div>
       <div class="gallery-thumbs" id="gallery-thumbs"></div>
     </div>
 
@@ -518,9 +518,9 @@
         <div class="product-save" id="product-save"></div>
       </div>
 
-      <!-- Colour label -->
+      <!-- Photo label -->
       <span class="colour-select-label">
-        Select Colour: <span id="colour-name-label">Default</span>
+        Viewing: <span id="colour-name-label">Photo 1</span>
       </span>
 
       <!-- Action Buttons -->
@@ -743,7 +743,7 @@
     if (!p) { window.location = 'shop.html'; return; }
 
     currentProduct = p;
-    currentImgs = (p.imgs || [p.img]).filter(Boolean).slice(0, 4);
+    currentImgs = (p.imgs || [p.img]).filter(Boolean).slice(0, 6);
     currentImgIndex = 0;
 
     // Set page title
@@ -822,8 +822,8 @@
       thumbsWrap.appendChild(div);
     });
 
-    // Colour label
-    updateColourLabel(0);
+    // Photo label
+    updatePhotoLabel(0);
 
     // Arrows
     updateArrows();
@@ -845,7 +845,7 @@
       t.classList.toggle('active', i === idx);
     });
 
-    updateColourLabel(idx);
+    updatePhotoLabel(idx);
     updateArrows();
   }
 
@@ -859,12 +859,13 @@
     if (next) next.classList.toggle('hidden', currentImgIndex >= currentImgs.length - 1);
   }
 
-  function updateColourLabel(idx) {
-    var labels = ['Default', 'Colour 2', 'Colour 3', 'Colour 4'];
+  function updatePhotoLabel(idx) {
+    var num = idx + 1;
+    var total = currentImgs.length;
     var cur = document.getElementById('colour-current');
     var label = document.getElementById('colour-name-label');
-    if (cur)   cur.textContent   = labels[idx] || 'Colour ' + (idx + 1);
-    if (label) label.textContent = labels[idx] || 'Colour ' + (idx + 1);
+    if (cur)   cur.textContent   = num;
+    if (label) label.textContent = 'Photo ' + num + ' of ' + total;
   }
 
   // ── Zoom ──
@@ -883,10 +884,8 @@
     if (!currentProduct) return;
     var p = currentProduct;
     var price = p.price > 0 ? 'KSh ' + p.price.toLocaleString() : 'call for price';
-    var colour = ['Default', 'Colour 2', 'Colour 3', 'Colour 4'][currentImgIndex] || 'Default';
     var msg = 'Hi Irene! I want to order:\n\n' +
       'Product: ' + p.name + '\n' +
-      'Colour: ' + colour + '\n' +
       'Price: ' + price + '\n\n' +
       'Please confirm availability and delivery. Thank you!';
     window.open('https://wa.me/254716060029?text=' + encodeURIComponent(msg), '_blank');
@@ -930,15 +929,21 @@
   // ── Copy link ──
   function copyLink() {
     var url = window.location.href;
-    navigator.clipboard.writeText(url).catch(function() {
-      var el = document.createElement('textarea');
-      el.value = url;
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-    });
-    showToast('🔗 Link copied!');
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).catch(function() { fallbackCopy(url); });
+    } else {
+      fallbackCopy(url);
+    }
+    showToast('🔗 Link copied! Share it with customers.');
+  }
+
+  function fallbackCopy(text) {
+    var el = document.createElement('textarea');
+    el.value = text;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
   }
 
   // ── Search ──
