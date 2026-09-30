@@ -3220,6 +3220,26 @@
     "inStock": true
   },
   {
+    "id": 222,
+    "cat": "carpets",
+    "name": "heavy large plastic outdoor doormats",
+    "note": "heavy large plastic outdoor doormats 60*90",
+    "price": 1500,
+    "old": 2000,
+    "img": "carpet.24.jpg",
+    "imgs": [
+      "carpet.24.jpg",
+      "carpet.24b.jpg",
+      "carpet.24c.jpg",
+      "carpet.24d.jpg",
+      "carpet.24e.jpg",
+      "carpet.24f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
