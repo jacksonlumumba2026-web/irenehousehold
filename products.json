@@ -1840,6 +1840,26 @@
     "inStock": true
   },
   {
+    "id": 225,
+    "cat": "seatcovers",
+    "name": "TURKEY SEAT COVERS",
+    "note": "1 Seater 800\n2 Seater 1700\n3 seater 2200\n5 Seater 3700\n7 seater 4300",
+    "price": 4500,
+    "old": 5500,
+    "img": "seatcover.26.jpg",
+    "imgs": [
+      "seatcover.26.jpg",
+      "seatcover.26b.jpg",
+      "seatcover.26c.jpg",
+      "seatcover.26d.jpg",
+      "seatcover.26e.jpg",
+      "seatcover.26f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
