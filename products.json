@@ -4218,5 +4218,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 226,
+    "cat": "duvets",
+    "name": "6PC BEDSHEETS",
+    "note": "2 BEDSHEETS \n4 PILLOWCASES",
+    "price": 2000,
+    "old": 3000,
+    "img": "duvet.39.jpg",
+    "imgs": [
+      "duvet.39.jpg",
+      "duvet.39b.jpg",
+      "duvet.39c.jpg",
+      "duvet.39d.jpg",
+      "duvet.39e.jpg",
+      "duvet.39f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
