@@ -3800,6 +3800,26 @@
     "inStock": true
   },
   {
+    "id": 227,
+    "cat": "furniture",
+    "name": "MARBLE TABLE",
+    "note": "EXECUTIVE PURE MARBLE TABLE",
+    "price": 1299,
+    "old": 13500,
+    "img": "furniture.46.jpg",
+    "imgs": [
+      "furniture.46.jpg",
+      "furniture.46b.jpg",
+      "furniture.46c.jpg",
+      "furniture.46d.jpg",
+      "furniture.46e.jpg",
+      "furniture.46f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
