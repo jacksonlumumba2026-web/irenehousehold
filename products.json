@@ -2600,6 +2600,26 @@
     "inStock": true
   },
   {
+    "id": 228,
+    "cat": "electronics",
+    "name": "DISPENSER",
+    "note": "ALIYONS 3 TAPS DISPENSER \nHOT,NORMAL AND COLD",
+    "price": 7000,
+    "old": 8000,
+    "img": "electronics.3.jpg",
+    "imgs": [
+      "electronics.3.jpg",
+      "electronics.3b.jpg",
+      "electronics.3c.jpg",
+      "electronics.3d.jpg",
+      "electronics.3e.jpg",
+      "electronics.3f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 99,
     "cat": "travel",
     "name": "Neck Pillow with Phone Holder Pocket",
