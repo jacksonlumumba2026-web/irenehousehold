@@ -1860,6 +1860,26 @@
     "inStock": true
   },
   {
+    "id": 229,
+    "cat": "seatcovers",
+    "name": "FITTIG REVERSABLE CHENILLE COTTON SOFA COVERS",
+    "note": "FITTIG REVERSABLE CHENILLE COTTON SOFA COVERS",
+    "price": 17500,
+    "old": 20000,
+    "img": "seatcover.27.jpg",
+    "imgs": [
+      "seatcover.27.jpg",
+      "seatcover.27b.jpg",
+      "seatcover.27c.jpg",
+      "seatcover.27d.jpg",
+      "seatcover.27e.jpg",
+      "seatcover.27f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
