@@ -1404,8 +1404,8 @@
     "cat": "seatcovers",
     "name": "Chenille seat covers",
     "note": "🔹1 seater cover 4000/= \n🔹2 seater cover 4500/=\n🔹3 seater cover 4800/=\n🔹4 seater  cover 5000/=\n* 5 seater 3.1.1 @13,000\n*6 Seater 321 @ 13,500\n* 7 seater 3211 @ 17,500",
-    "price": 4000,
-    "old": 4999,
+    "price": 17500,
+    "old": 20000,
     "img": "seatcover.3.jpg",
     "imgs": [
       "seatcover.3.jpg",
@@ -1415,8 +1415,8 @@
       "seatcover.3e.jpg",
       "seatcover.3f.jpg"
     ],
-    "badge": "HOT",
-    "badgeType": "hot",
+    "badge": "SALE",
+    "badgeType": "sale",
     "inStock": false
   },
   {
