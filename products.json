@@ -1417,7 +1417,7 @@
     ],
     "badge": "SALE",
     "badgeType": "sale",
-    "inStock": false
+    "inStock": true
   },
   {
     "id": 168,
