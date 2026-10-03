@@ -2040,6 +2040,26 @@
     "inStock": true
   },
   {
+    "id": 231,
+    "cat": "bath",
+    "name": "100% cotton large towels",
+    "note": "100% cotton large towels",
+    "price": 1500,
+    "old": 1800,
+    "img": "bath.11.jpg",
+    "imgs": [
+      "bath.11.jpg",
+      "bath.11b.jpg",
+      "bath.11c.jpg",
+      "bath.11d.jpg",
+      "bath.11e.jpg",
+      "bath.11f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 70,
     "cat": "furniture",
     "name": "Four Seater Marble Dining Table",
