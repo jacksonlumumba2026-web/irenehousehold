@@ -2060,6 +2060,26 @@
     "inStock": true
   },
   {
+    "id": 230,
+    "cat": "bath",
+    "name": "cotton bathrobes",
+    "note": "cotton bathrobes extra large",
+    "price": 1800,
+    "old": 2000,
+    "img": "bath.10.jpg",
+    "imgs": [
+      "bath.10.jpg",
+      "bath.10b.jpg",
+      "bath.10c.jpg",
+      "bath.10d.jpg",
+      "bath.10e.jpg",
+      "bath.10f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 70,
     "cat": "furniture",
     "name": "Four Seater Marble Dining Table",
