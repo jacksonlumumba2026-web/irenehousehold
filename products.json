@@ -1660,26 +1660,6 @@
     "inStock": true
   },
   {
-    "id": 214,
-    "cat": "seatcovers",
-    "name": "leather material waterproof seat covers",
-    "note": "leather material waterproof seat covers",
-    "price": 5500,
-    "old": 6000,
-    "img": "seatcover.18.jpg",
-    "imgs": [
-      "seatcover.18.jpg",
-      "seatcover.18b.jpg",
-      "seatcover.18c.jpg",
-      "seatcover.18d.jpg",
-      "seatcover.18e.jpg",
-      "seatcover.18f.jpg"
-    ],
-    "badge": "SALE",
-    "badgeType": "sale",
-    "inStock": true
-  },
-  {
     "id": 215,
     "cat": "seatcovers",
     "name": "slip sofa covers",
