@@ -3940,6 +3940,26 @@
     "inStock": true
   },
   {
+    "id": 232,
+    "cat": "cookware",
+    "name": "EGG TRAY",
+    "note": "COMES IN TWO COLOURS ;GREY AND ORANGE",
+    "price": 1350,
+    "old": 1500,
+    "img": "cookware.9.jpg",
+    "imgs": [
+      "cookware.9.jpg",
+      "cookware.9b.jpg",
+      "cookware.9c.jpg",
+      "cookware.9d.jpg",
+      "cookware.9e.jpg",
+      "cookware.9f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 130,
     "cat": "nets",
     "name": "Double Decker Mosquito Net",
