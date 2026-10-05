@@ -3920,6 +3920,26 @@
     "inStock": true
   },
   {
+    "id": 237,
+    "cat": "furniture",
+    "name": "TV STAND",
+    "note": "TV STAND",
+    "price": 28999,
+    "old": 34000,
+    "img": "furniture.49.jpg",
+    "imgs": [
+      "furniture.49.jpg",
+      "furniture.49b.jpg",
+      "furniture.49c.jpg",
+      "furniture.49d.jpg",
+      "furniture.49e.jpg",
+      "furniture.49f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
