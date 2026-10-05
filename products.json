@@ -1240,6 +1240,26 @@
     "inStock": true
   },
   {
+    "id": 241,
+    "cat": "kitchenware",
+    "name": "3IN1 SERVING TRAYS",
+    "note": "ACRYLIC MATERIAL",
+    "price": 1700,
+    "old": 2000,
+    "img": "kitchenware.35.jpg",
+    "imgs": [
+      "kitchenware.35.jpg",
+      "kitchenware.35b.jpg",
+      "kitchenware.35c.jpg",
+      "kitchenware.35d.jpg",
+      "kitchenware.35e.jpg",
+      "kitchenware.35f.jpg"
+    ],
+    "badge": "HOT",
+    "badgeType": "hot",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
