@@ -1180,6 +1180,26 @@
     "inStock": true
   },
   {
+    "id": 236,
+    "cat": "kitchenware",
+    "name": "SILCONE SPOONS",
+    "note": "19PCS EXCECUTIVE SILCOON SPOON SET",
+    "price": 2250,
+    "old": 2500,
+    "img": "kitchenware.32.jpg",
+    "imgs": [
+      "kitchenware.32.jpg",
+      "kitchenware.32b.jpg",
+      "kitchenware.32c.jpg",
+      "kitchenware.32d.jpg",
+      "kitchenware.32e.jpg",
+      "kitchenware.32f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
