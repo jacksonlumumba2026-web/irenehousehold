@@ -1220,6 +1220,26 @@
     "inStock": true
   },
   {
+    "id": 240,
+    "cat": "kitchenware",
+    "name": "EGG BOILER",
+    "note": "EGG  BOILER SINGLE \nEGG BOILER DOUBLE",
+    "price": 900,
+    "old": 1200,
+    "img": "kitchenware.34.jpg",
+    "imgs": [
+      "kitchenware.34.jpg",
+      "kitchenware.34b.jpg",
+      "kitchenware.34c.jpg",
+      "kitchenware.34d.jpg",
+      "kitchenware.34e.jpg",
+      "kitchenware.34f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
