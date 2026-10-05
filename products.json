@@ -1200,6 +1200,26 @@
     "inStock": true
   },
   {
+    "id": 239,
+    "cat": "kitchenware",
+    "name": "3PCS PORCCELAIN WHITE SERVING BOWLS",
+    "note": "WITH GOLD RIMS AND A LID\nCOMES IN DIFFRENT SIZES\nSMALL MEDIUM LARGE",
+    "price": 5999,
+    "old": 6500,
+    "img": "kitchenware.33.jpg",
+    "imgs": [
+      "kitchenware.33.jpg",
+      "kitchenware.33b.jpg",
+      "kitchenware.33c.jpg",
+      "kitchenware.33d.jpg",
+      "kitchenware.33e.jpg",
+      "kitchenware.33f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
