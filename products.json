@@ -4060,6 +4060,26 @@
     "inStock": true
   },
   {
+    "id": 238,
+    "cat": "cookware",
+    "name": "CERAMIC CHEFFING",
+    "note": "SERVING DISHES 3PCS PER SET\nCAPACITY ;3.5LITRES\n                    2.5 LITRES\n                     1.8 LITRES\nAVAILABLE IN BLACK",
+    "price": 6999,
+    "old": 7800,
+    "img": "cookware.11.jpg",
+    "imgs": [
+      "cookware.11.jpg",
+      "cookware.11b.jpg",
+      "cookware.11c.jpg",
+      "cookware.11d.jpg",
+      "cookware.11e.jpg",
+      "cookware.11f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 130,
     "cat": "nets",
     "name": "Double Decker Mosquito Net",
