@@ -1260,6 +1260,26 @@
     "inStock": true
   },
   {
+    "id": 242,
+    "cat": "kitchenware",
+    "name": "24PCS DINNER SET CERAMIC MATERIAL",
+    "note": "CONTAINS\n6PCS DINNER PLATES\n6PCS SIDE PLATES\n6PCS BOWLS\n6PCS CUPS\nNOTE;MICROWAVE SAFE",
+    "price": 5999,
+    "old": 6500,
+    "img": "kitchenware.36.jpg",
+    "imgs": [
+      "kitchenware.36.jpg",
+      "kitchenware.36b.jpg",
+      "kitchenware.36c.jpg",
+      "kitchenware.36d.jpg",
+      "kitchenware.36e.jpg",
+      "kitchenware.36f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
