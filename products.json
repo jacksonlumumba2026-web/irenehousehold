@@ -1180,6 +1180,106 @@
     "inStock": true
   },
   {
+    "id": 236,
+    "cat": "kitchenware",
+    "name": "SILCONE SPOONS",
+    "note": "19PCS EXCECUTIVE SILCOON SPOON SET",
+    "price": 2250,
+    "old": 2500,
+    "img": "kitchenware.32.jpg",
+    "imgs": [
+      "kitchenware.32.jpg",
+      "kitchenware.32b.jpg",
+      "kitchenware.32c.jpg",
+      "kitchenware.32d.jpg",
+      "kitchenware.32e.jpg",
+      "kitchenware.32f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 239,
+    "cat": "kitchenware",
+    "name": "3PCS PORCCELAIN WHITE SERVING BOWLS",
+    "note": "WITH GOLD RIMS AND A LID\nCOMES IN DIFFRENT SIZES\nSMALL MEDIUM LARGE",
+    "price": 5999,
+    "old": 6500,
+    "img": "kitchenware.33.jpg",
+    "imgs": [
+      "kitchenware.33.jpg",
+      "kitchenware.33b.jpg",
+      "kitchenware.33c.jpg",
+      "kitchenware.33d.jpg",
+      "kitchenware.33e.jpg",
+      "kitchenware.33f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 240,
+    "cat": "kitchenware",
+    "name": "EGG BOILER",
+    "note": "EGG  BOILER SINGLE \nEGG BOILER DOUBLE",
+    "price": 900,
+    "old": 1200,
+    "img": "kitchenware.34.jpg",
+    "imgs": [
+      "kitchenware.34.jpg",
+      "kitchenware.34b.jpg",
+      "kitchenware.34c.jpg",
+      "kitchenware.34d.jpg",
+      "kitchenware.34e.jpg",
+      "kitchenware.34f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 241,
+    "cat": "kitchenware",
+    "name": "3IN1 SERVING TRAYS",
+    "note": "ACRYLIC MATERIAL",
+    "price": 1700,
+    "old": 2000,
+    "img": "kitchenware.35.jpg",
+    "imgs": [
+      "kitchenware.35.jpg",
+      "kitchenware.35b.jpg",
+      "kitchenware.35c.jpg",
+      "kitchenware.35d.jpg",
+      "kitchenware.35e.jpg",
+      "kitchenware.35f.jpg"
+    ],
+    "badge": "HOT",
+    "badgeType": "hot",
+    "inStock": true
+  },
+  {
+    "id": 242,
+    "cat": "kitchenware",
+    "name": "24PCS DINNER SET CERAMIC MATERIAL",
+    "note": "CONTAINS\n6PCS DINNER PLATES\n6PCS SIDE PLATES\n6PCS BOWLS\n6PCS CUPS\nNOTE;MICROWAVE SAFE",
+    "price": 5999,
+    "old": 6500,
+    "img": "kitchenware.36.jpg",
+    "imgs": [
+      "kitchenware.36.jpg",
+      "kitchenware.36b.jpg",
+      "kitchenware.36c.jpg",
+      "kitchenware.36d.jpg",
+      "kitchenware.36e.jpg",
+      "kitchenware.36f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
@@ -3860,6 +3960,66 @@
     "inStock": true
   },
   {
+    "id": 233,
+    "cat": "furniture",
+    "name": "PURE MARBLE TABLE",
+    "note": "3IN1 MARBLE TABLE\nVERY STRONG",
+    "price": 12999,
+    "old": 15000,
+    "img": "furniture.47.jpg",
+    "imgs": [
+      "furniture.47.jpg",
+      "furniture.47b.jpg",
+      "furniture.47c.jpg",
+      "furniture.47d.jpg",
+      "furniture.47e.jpg",
+      "furniture.47f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 235,
+    "cat": "furniture",
+    "name": "TV STAND",
+    "note": "TV STAND",
+    "price": 15500,
+    "old": 16500,
+    "img": "furniture.48.jpg",
+    "imgs": [
+      "furniture.48.jpg",
+      "furniture.48b.jpg",
+      "furniture.48c.jpg",
+      "furniture.48d.jpg",
+      "furniture.48e.jpg",
+      "furniture.48f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 237,
+    "cat": "furniture",
+    "name": "TV STAND",
+    "note": "TV STAND",
+    "price": 28999,
+    "old": 34000,
+    "img": "furniture.49.jpg",
+    "imgs": [
+      "furniture.49.jpg",
+      "furniture.49b.jpg",
+      "furniture.49c.jpg",
+      "furniture.49d.jpg",
+      "furniture.49e.jpg",
+      "furniture.49f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
@@ -3937,6 +4097,66 @@
     ],
     "badge": "NEW",
     "badgeType": "new",
+    "inStock": true
+  },
+  {
+    "id": 232,
+    "cat": "cookware",
+    "name": "EGG TRAY",
+    "note": "COMES IN TWO COLOURS ;GREY AND ORANGE",
+    "price": 1350,
+    "old": 1500,
+    "img": "cookware.9.jpg",
+    "imgs": [
+      "cookware.9.jpg",
+      "cookware.9b.jpg",
+      "cookware.9c.jpg",
+      "cookware.9d.jpg",
+      "cookware.9e.jpg",
+      "cookware.9f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 234,
+    "cat": "cookware",
+    "name": "COOKING SPOONS",
+    "note": "HIGH QUALITY SILCONE COOKING SPOONS",
+    "price": 1300,
+    "old": 1550,
+    "img": "cookware.10.jpg",
+    "imgs": [
+      "cookware.10.jpg",
+      "cookware.10b.jpg",
+      "cookware.10c.jpg",
+      "cookware.10d.jpg",
+      "cookware.10e.jpg",
+      "cookware.10f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 238,
+    "cat": "cookware",
+    "name": "CERAMIC CHEFFING",
+    "note": "SERVING DISHES 3PCS PER SET\nCAPACITY ;3.5LITRES\n                    2.5 LITRES\n                     1.8 LITRES\nAVAILABLE IN BLACK",
+    "price": 6999,
+    "old": 7800,
+    "img": "cookware.11.jpg",
+    "imgs": [
+      "cookware.11.jpg",
+      "cookware.11b.jpg",
+      "cookware.11c.jpg",
+      "cookware.11d.jpg",
+      "cookware.11e.jpg",
+      "cookware.11f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
     "inStock": true
   },
   {
