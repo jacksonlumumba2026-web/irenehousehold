@@ -334,6 +334,7 @@ function checkout(method) {
     'Payment: ' + pay + '\n\n' +
     'Please confirm availability and delivery. Thank you!';
 
+  if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout');
   if (method === 'email') {
     var subject = encodeURIComponent('New Order - Irene Household Collections');
     var body    = encodeURIComponent(msgText);
