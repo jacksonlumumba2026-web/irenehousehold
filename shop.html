@@ -8,7 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="dns-prefetch" href="https://wa.me"/>
-  <meta name="theme-color" content="#0d1f16"/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"/></noscript>
+  <meta name="theme-color" content="#0c0c0c"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Shop all products at Irene Household Collections. Furniture, duvets, kitchenware, carpets, mosquito nets and more in Nairobi."/>
   <title>Shop All Products | Irene Household Collections</title>
@@ -144,6 +146,17 @@
   <a href="https://wa.me/254716060029" target="_blank">💬 WhatsApp Us</a>
 </div>
 
+<!-- PAGE HERO -->
+<div class="page-hero" style="padding:64px 4% 28px;">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>›</span>
+    <span class="cur">Shop All Products</span>
+  </div>
+  <h1>Shop All Products</h1>
+  <p>Premium furniture, bedding, kitchenware and more — delivered across Kenya</p>
+</div>
+
 <!-- CATEGORY STRIP -->
 <div class="cat-strip-wrap">
   <div class="cat-strip" id="cat-strip">
@@ -255,7 +268,7 @@
 <!-- RECENTLY VIEWED -->
 <div id="recently-viewed-section" style="display:none;background:#fff;padding:28px 4%;">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--green-dark);">Recently Viewed</h3>
+    <h3 style="font-family:'Outfit',sans-serif;font-size:1.35rem;color:var(--green-dark);">Recently Viewed</h3>
     <button onclick="recentlyViewed=[];renderRecentlyViewed();"
       style="font-size:11px;color:var(--muted);background:none;border:1px solid #eee;padding:4px 10px;border-radius:4px;cursor:pointer;">
       Clear
@@ -286,6 +299,11 @@
         <a href="https://wa.me/254716060029" class="soc-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
         <a href="https://instagram.com/jaymieirene" class="soc-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
         <a href="https://facebook.com/irenehouseholdcollections" class="soc-link" target="_blank"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      </div>
+      <div class="footer-payments">
+        <span class="footer-pay-badge">📱 M-Pesa</span>
+        <span class="footer-pay-badge">💵 Cash on Delivery</span>
+        <span class="footer-pay-badge">🔒 Secure Checkout</span>
       </div>
     </div>
     <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
@@ -332,8 +350,8 @@
     </div>
     <div class="cart-total-row"><span>Total</span><strong id="cart-total">KSh 0</strong></div>
     <div style="display:flex;gap:8px;margin-bottom:8px;">
-      <button onclick="checkout('whatsapp')" style="flex:1;background:#1a3d2b;color:#fff;border:none;padding:13px;font-size:13px;font-weight:700;border-radius:9px;cursor:pointer;letter-spacing:.5px;">💳 Pay Now</button>
-      <button onclick="checkout('email')" style="flex:1;background:#fff;color:#1a3d2b;border:1.5px solid #1a3d2b;padding:13px;font-size:12px;font-weight:700;border-radius:9px;cursor:pointer;">✉️ Email</button>
+      <button onclick="checkout('whatsapp')" style="flex:1;background:#25d366;color:#fff;border:none;padding:13px;font-size:12px;font-weight:700;border-radius:9px;cursor:pointer;">💬 WhatsApp</button>
+      <button onclick="checkout('email')" style="flex:1;background:#fff;color:#161616;border:1.5px solid #161616;padding:13px;font-size:12px;font-weight:700;border-radius:9px;cursor:pointer;">✉️ Email</button>
     </div>
     <button class="btn-clear" onclick="clearCart()">🗑 Clear Cart</button>
   </div>
@@ -342,7 +360,7 @@
 <!-- WISHLIST DRAWER -->
 <div class="overlay" id="wl-overlay"></div>
 <div class="drawer" id="wl-drawer">
-  <div class="drawer-head" style="background:#e53e3e;">
+  <div class="drawer-head" style="background:#B23A2E;">
     <div><h3 style="color:#fff;">❤️ Wishlist</h3><span id="wl-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span></div>
     <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeWishlist()">✕</button>
   </div>
@@ -371,7 +389,7 @@
 
 <!-- PROGRESS RING -->
 <div class="progress-ring" id="progress-ring" onclick="scrollToTop()">
-  <svg width="42" height="42" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="#e8e0d0" stroke-width="3"/><circle id="ring-circle" cx="22" cy="22" r="18" fill="none" stroke="#c8a951" stroke-width="3" stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round"/></svg>
+  <svg width="42" height="42" viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" fill="none" stroke="#E7E2D8" stroke-width="3"/><circle id="ring-circle" cx="22" cy="22" r="18" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="113.1" stroke-dashoffset="113.1" stroke-linecap="round"/></svg>
   <div class="progress-ring-inner">↑</div>
 </div>
 
@@ -421,7 +439,7 @@
       </a>
       <button class="wa-popup-later" onclick="closeWaPopup()">Maybe later</button>
     </div>
-    <p style="font-size:10px;color:#ccc;text-align:center;margin-top:8px;">Free to join • No spam • Leave anytime</p>
+    <p style="font-size:10px;color:var(--muted);text-align:center;margin-top:8px;">Free to join • No spam • Leave anytime</p>
   </div>
 </div>
 
@@ -468,7 +486,6 @@
 
 
 <script src="script.js"></script>
-<script src="gsap-animations.js"></script>
 <script>
   /* === SHOP PAGE === */
   var activeCat   = 'all';
@@ -581,7 +598,7 @@
           lastCat = p.cat;
           var label = CAT_LABELS_SHOP[p.cat] || p.cat;
           html += '<div style="grid-column:1/-1;padding:12px 0 4px;border-bottom:2px solid var(--green);margin-bottom:4px;display:flex;align-items:center;justify-content:space-between;">' +
-            '<h3 style="font-family:Cormorant Garamond,serif;font-size:1.2rem;color:var(--green-dark);margin:0;">' + label + '</h3>' +
+            '<h3 style="font-family:Outfit,serif;font-size:1.2rem;color:var(--green-dark);margin:0;">' + label + '</h3>' +
             '<a href="shop.html?cat=' + p.cat + '" style="font-size:11px;color:var(--green);font-weight:600;text-decoration:none;">View all &#8594;</a>' +
           '</div>';
         }
@@ -674,6 +691,14 @@
         b.classList.toggle('active', active);
       });
     }
+
+    if (q) {
+      var inp = document.getElementById('search-input');
+      if (inp) inp.value = q;
+      liveSearch();
+    } else {
+      applyFilters();
+    }
   })();
 </script>
 
@@ -684,7 +709,7 @@
       var img = e.target;
       img.style.display = 'none';
       if (img.parentElement && img.parentElement.classList.contains('card-img')) {
-        img.parentElement.style.background = 'linear-gradient(135deg,#e8f5ee,#d0e4d0)';
+        img.parentElement.style.background = 'linear-gradient(135deg,#F5F1E8,#E8D9A8)';
         img.parentElement.style.display = 'flex';
         img.parentElement.style.alignItems = 'center';
         img.parentElement.style.justifyContent = 'center';
@@ -704,7 +729,7 @@
 <a href="mailto:irenehouseholds@gmail.com?subject=Order Inquiry&body=Hello Irene,%0A%0AI would like to place an order. Please get back to me.%0A%0AThank you."
    id="float-email"
    style="position:fixed;bottom:80px;right:16px;z-index:1500;
-          background:#1a3d2b;color:#fff;
+          background:#161616;color:#fff;
           width:52px;height:52px;border-radius:50%;
           display:flex;align-items:center;justify-content:center;
           font-size:22px;text-decoration:none;

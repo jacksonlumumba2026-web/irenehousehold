@@ -1180,6 +1180,106 @@
     "inStock": true
   },
   {
+    "id": 236,
+    "cat": "kitchenware",
+    "name": "SILCONE SPOONS",
+    "note": "19PCS EXCECUTIVE SILCOON SPOON SET",
+    "price": 2250,
+    "old": 2500,
+    "img": "kitchenware.32.jpg",
+    "imgs": [
+      "kitchenware.32.jpg",
+      "kitchenware.32b.jpg",
+      "kitchenware.32c.jpg",
+      "kitchenware.32d.jpg",
+      "kitchenware.32e.jpg",
+      "kitchenware.32f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 239,
+    "cat": "kitchenware",
+    "name": "3PCS PORCCELAIN WHITE SERVING BOWLS",
+    "note": "WITH GOLD RIMS AND A LID\nCOMES IN DIFFRENT SIZES\nSMALL MEDIUM LARGE",
+    "price": 5999,
+    "old": 6500,
+    "img": "kitchenware.33.jpg",
+    "imgs": [
+      "kitchenware.33.jpg",
+      "kitchenware.33b.jpg",
+      "kitchenware.33c.jpg",
+      "kitchenware.33d.jpg",
+      "kitchenware.33e.jpg",
+      "kitchenware.33f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 240,
+    "cat": "kitchenware",
+    "name": "EGG BOILER",
+    "note": "EGG  BOILER SINGLE \nEGG BOILER DOUBLE",
+    "price": 900,
+    "old": 1200,
+    "img": "kitchenware.34.jpg",
+    "imgs": [
+      "kitchenware.34.jpg",
+      "kitchenware.34b.jpg",
+      "kitchenware.34c.jpg",
+      "kitchenware.34d.jpg",
+      "kitchenware.34e.jpg",
+      "kitchenware.34f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 241,
+    "cat": "kitchenware",
+    "name": "3IN1 SERVING TRAYS",
+    "note": "ACRYLIC MATERIAL",
+    "price": 1700,
+    "old": 2000,
+    "img": "kitchenware.35.jpg",
+    "imgs": [
+      "kitchenware.35.jpg",
+      "kitchenware.35b.jpg",
+      "kitchenware.35c.jpg",
+      "kitchenware.35d.jpg",
+      "kitchenware.35e.jpg",
+      "kitchenware.35f.jpg"
+    ],
+    "badge": "HOT",
+    "badgeType": "hot",
+    "inStock": true
+  },
+  {
+    "id": 242,
+    "cat": "kitchenware",
+    "name": "24PCS DINNER SET CERAMIC MATERIAL",
+    "note": "CONTAINS\n6PCS DINNER PLATES\n6PCS SIDE PLATES\n6PCS BOWLS\n6PCS CUPS\nNOTE;MICROWAVE SAFE",
+    "price": 5999,
+    "old": 6500,
+    "img": "kitchenware.36.jpg",
+    "imgs": [
+      "kitchenware.36.jpg",
+      "kitchenware.36b.jpg",
+      "kitchenware.36c.jpg",
+      "kitchenware.36d.jpg",
+      "kitchenware.36e.jpg",
+      "kitchenware.36f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
@@ -1404,8 +1504,8 @@
     "cat": "seatcovers",
     "name": "Chenille seat covers",
     "note": "🔹1 seater cover 4000/= \n🔹2 seater cover 4500/=\n🔹3 seater cover 4800/=\n🔹4 seater  cover 5000/=\n* 5 seater 3.1.1 @13,000\n*6 Seater 321 @ 13,500\n* 7 seater 3211 @ 17,500",
-    "price": 4000,
-    "old": 4999,
+    "price": 17500,
+    "old": 20000,
     "img": "seatcover.3.jpg",
     "imgs": [
       "seatcover.3.jpg",
@@ -1415,9 +1515,429 @@
       "seatcover.3e.jpg",
       "seatcover.3f.jpg"
     ],
-    "badge": "HOT",
-    "badgeType": "hot",
-    "inStock": false
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 168,
+    "cat": "seatcovers",
+    "name": "High density velvet material recliner seat cover",
+    "note": "3.2c.1.1",
+    "price": 19999,
+    "old": 25000,
+    "img": "seatcover.5.jpg",
+    "imgs": [
+      "seatcover.5.jpg",
+      "seatcover.5b.jpg",
+      "seatcover.5c.jpg",
+      "seatcover.5d.jpg",
+      "seatcover.5e.jpg",
+      "seatcover.5f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 172,
+    "cat": "seatcovers",
+    "name": "NEW IN OUR COLLECTION: 100% WATER PROOF SEATCOVERS🔥",
+    "note": "SOFT FAUX LEATWHER MATERIAL THAT  repels wine, Water, coffee, and kid accidents. It is also Scratch-proof therefore protects against pet claws.\n\nPrices: 👇🏽👇🏽\n4 seater 5500\n3 seater 5000\n2 seater 4500\n1 seater 4000\n\n✅Instantly revitalizes worn-out couches 😊\n\n✅Excellent Fabric: Our sofa covers are made with premium faux leather fabrics to ensure both elegant appearance and daily protection from water, dust , etc. \n\n✅Soft and smooth to the touch and not easy to collect hair or pets fur.\n\n✅Perfect Fit: This stretchy occuch covers fit perfectly most universal couch.\n\n✅Stay in Place: The edges are made of elastic rubber, making the slipcover stay in place well without moving.",
+    "price": 17500,
+    "old": 0,
+    "img": "seatcover.6.jpg",
+    "imgs": [
+      "seatcover.6.jpg",
+      "seatcover.6b.jpg",
+      "seatcover.6c.jpg",
+      "seatcover.6d.jpg",
+      "seatcover.6e.jpg",
+      "seatcover.6f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
+    "id": 190,
+    "cat": "seatcovers",
+    "name": "DINING TABLE CLOTH",
+    "note": "DINING TABLE CLOTH SIZE 140*220CM",
+    "price": 1700,
+    "old": 2000,
+    "img": "seatcover.7.jpg",
+    "imgs": [
+      "seatcover.7.jpg",
+      "seatcover.7b.jpg",
+      "seatcover.7c.jpg",
+      "seatcover.7d.jpg",
+      "seatcover.7e.jpg",
+      "seatcover.7f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 191,
+    "cat": "seatcovers",
+    "name": "PRINTED POLYCOTTON SEAT COVERS",
+    "note": "PRINTED POLYCOTTON SEAT COVERS",
+    "price": 10500,
+    "old": 13000,
+    "img": "seatcover.8.jpg",
+    "imgs": [
+      "seatcover.8.jpg",
+      "seatcover.8b.jpg",
+      "seatcover.8c.jpg",
+      "seatcover.8d.jpg",
+      "seatcover.8e.jpg",
+      "seatcover.8f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 192,
+    "cat": "seatcovers",
+    "name": "DAMASK STRETCHABLE SEAT COVERS",
+    "note": "DAMASK STRETCHABLE SEAT COVERS",
+    "price": 15500,
+    "old": 18000,
+    "img": "seatcover.9.jpg",
+    "imgs": [
+      "seatcover.9.jpg",
+      "seatcover.9b.jpg",
+      "seatcover.9c.jpg",
+      "seatcover.9d.jpg",
+      "seatcover.9e.jpg",
+      "seatcover.9f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 206,
+    "cat": "seatcovers",
+    "name": "Turkey bubble material seat covers",
+    "note": "Turkey bubble material covers 3.2.1.1",
+    "price": 4500,
+    "old": 5000,
+    "img": "seatcover.10.jpg",
+    "imgs": [
+      "seatcover.10.jpg",
+      "seatcover.10b.jpg",
+      "seatcover.10c.jpg",
+      "seatcover.10d.jpg",
+      "seatcover.10e.jpg",
+      "seatcover.10f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 207,
+    "cat": "seatcovers",
+    "name": "Turkey bubble material seat covers",
+    "note": "Turkey bubble material seat covers 3.2.1.1",
+    "price": 4500,
+    "old": 5000,
+    "img": "seatcover.11.jpg",
+    "imgs": [
+      "seatcover.11.jpg",
+      "seatcover.11b.jpg",
+      "seatcover.11c.jpg",
+      "seatcover.11d.jpg",
+      "seatcover.11e.jpg",
+      "seatcover.11f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 208,
+    "cat": "seatcovers",
+    "name": "turkey bubble material seat covers",
+    "note": "turkey bubble material seat covers 3.2.1.1",
+    "price": 4500,
+    "old": 5000,
+    "img": "seatcover.12.jpg",
+    "imgs": [
+      "seatcover.12.jpg",
+      "seatcover.12b.jpg",
+      "seatcover.12c.jpg",
+      "seatcover.12d.jpg",
+      "seatcover.12e.jpg",
+      "seatcover.12f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 209,
+    "cat": "seatcovers",
+    "name": "turkey bubble material seat covers",
+    "note": "turkey bubble material seat covers 3.2.1.1",
+    "price": 4500,
+    "old": 5000,
+    "img": "seatcover.13.jpg",
+    "imgs": [
+      "seatcover.13.jpg",
+      "seatcover.13b.jpg",
+      "seatcover.13c.jpg",
+      "seatcover.13d.jpg",
+      "seatcover.13e.jpg",
+      "seatcover.13f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 210,
+    "cat": "seatcovers",
+    "name": "turkey bubble material seat covers",
+    "note": "turkey bubble material seat covers 3.2.1.1",
+    "price": 4500,
+    "old": 5000,
+    "img": "seatcover.14.jpg",
+    "imgs": [
+      "seatcover.14.jpg",
+      "seatcover.14b.jpg",
+      "seatcover.14c.jpg",
+      "seatcover.14d.jpg",
+      "seatcover.14e.jpg",
+      "seatcover.14f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 211,
+    "cat": "seatcovers",
+    "name": "turkey bubble material seat covers",
+    "note": "turkey bubble material seat covers",
+    "price": 4500,
+    "old": 5000,
+    "img": "seatcover.15.jpg",
+    "imgs": [
+      "seatcover.15.jpg",
+      "seatcover.15b.jpg",
+      "seatcover.15c.jpg",
+      "seatcover.15d.jpg",
+      "seatcover.15e.jpg",
+      "seatcover.15f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 212,
+    "cat": "seatcovers",
+    "name": "leather material water proof seat covers",
+    "note": "leather material water proof seat covers",
+    "price": 17500,
+    "old": 20000,
+    "img": "seatcover.16.jpg",
+    "imgs": [
+      "seatcover.16.jpg",
+      "seatcover.16b.jpg",
+      "seatcover.16c.jpg",
+      "seatcover.16d.jpg",
+      "seatcover.16e.jpg",
+      "seatcover.16f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 215,
+    "cat": "seatcovers",
+    "name": "slip sofa covers",
+    "note": "slip sofa covers",
+    "price": 17500,
+    "old": 19000,
+    "img": "seatcover.19.jpg",
+    "imgs": [
+      "seatcover.19.jpg",
+      "seatcover.19b.jpg",
+      "seatcover.19c.jpg",
+      "seatcover.19d.jpg",
+      "seatcover.19e.jpg",
+      "seatcover.19f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 216,
+    "cat": "seatcovers",
+    "name": "slip sofa covers",
+    "note": "slip sofa covers",
+    "price": 17500,
+    "old": 19000,
+    "img": "seatcover.20.jpg",
+    "imgs": [
+      "seatcover.20.jpg",
+      "seatcover.20b.jpg",
+      "seatcover.20c.jpg",
+      "seatcover.20d.jpg",
+      "seatcover.20e.jpg",
+      "seatcover.20f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 217,
+    "cat": "seatcovers",
+    "name": "slip sofa covers",
+    "note": "slip sofa covers",
+    "price": 17500,
+    "old": 19000,
+    "img": "seatcover.21.jpg",
+    "imgs": [
+      "seatcover.21.jpg",
+      "seatcover.21b.jpg",
+      "seatcover.21c.jpg",
+      "seatcover.21d.jpg",
+      "seatcover.21e.jpg",
+      "seatcover.21f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 218,
+    "cat": "seatcovers",
+    "name": "slip sofa covers",
+    "note": "slip sofa covers",
+    "price": 17500,
+    "old": 19500,
+    "img": "seatcover.22.jpg",
+    "imgs": [
+      "seatcover.22.jpg",
+      "seatcover.22b.jpg",
+      "seatcover.22c.jpg",
+      "seatcover.22d.jpg",
+      "seatcover.22e.jpg",
+      "seatcover.22f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 219,
+    "cat": "seatcovers",
+    "name": "velvet material recliner sofa covers",
+    "note": "velvet material recliner sofa covers",
+    "price": 18300,
+    "old": 20000,
+    "img": "seatcover.23.jpg",
+    "imgs": [
+      "seatcover.23.jpg",
+      "seatcover.23b.jpg",
+      "seatcover.23c.jpg",
+      "seatcover.23d.jpg",
+      "seatcover.23e.jpg",
+      "seatcover.23f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 220,
+    "cat": "seatcovers",
+    "name": "velvet material recliner sofa covers",
+    "note": "velvet material recliner sofa covers",
+    "price": 18300,
+    "old": 20000,
+    "img": "seatcover.24.jpg",
+    "imgs": [
+      "seatcover.24.jpg",
+      "seatcover.24b.jpg",
+      "seatcover.24c.jpg",
+      "seatcover.24d.jpg",
+      "seatcover.24e.jpg",
+      "seatcover.24f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 221,
+    "cat": "seatcovers",
+    "name": "velvet material recliner sofa covers",
+    "note": "velvet material recliner sofa covers",
+    "price": 18300,
+    "old": 20000,
+    "img": "seatcover.25.jpg",
+    "imgs": [
+      "seatcover.25.jpg",
+      "seatcover.25b.jpg",
+      "seatcover.25c.jpg",
+      "seatcover.25d.jpg",
+      "seatcover.25e.jpg",
+      "seatcover.25f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 225,
+    "cat": "seatcovers",
+    "name": "TURKEY SEAT COVERS",
+    "note": "1 Seater 800\n2 Seater 1700\n3 seater 2200\n5 Seater 3700\n7 seater 4300",
+    "price": 4500,
+    "old": 5500,
+    "img": "seatcover.26.jpg",
+    "imgs": [
+      "seatcover.26.jpg",
+      "seatcover.26b.jpg",
+      "seatcover.26c.jpg",
+      "seatcover.26d.jpg",
+      "seatcover.26e.jpg",
+      "seatcover.26f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 229,
+    "cat": "seatcovers",
+    "name": "FITTIG REVERSABLE CHENILLE COTTON SOFA COVERS",
+    "note": "FITTIG REVERSABLE CHENILLE COTTON SOFA COVERS",
+    "price": 17500,
+    "old": 20000,
+    "img": "seatcover.27.jpg",
+    "imgs": [
+      "seatcover.27.jpg",
+      "seatcover.27b.jpg",
+      "seatcover.27c.jpg",
+      "seatcover.27d.jpg",
+      "seatcover.27e.jpg",
+      "seatcover.27f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   },
   {
     "id": 62,
@@ -1580,6 +2100,66 @@
     "inStock": true
   },
   {
+    "id": 169,
+    "cat": "bath",
+    "name": "corner storage rack",
+    "note": "⏩Waterproof. \n⏩Strong bearing. \n⏩Multi-functional.",
+    "price": 2300,
+    "old": 2500,
+    "img": "bath.9.jpg",
+    "imgs": [
+      "bath.9.jpg",
+      "bath.9b.jpg",
+      "bath.9c.jpg",
+      "bath.9d.jpg",
+      "bath.9e.jpg",
+      "bath.9f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 230,
+    "cat": "bath",
+    "name": "cotton bathrobes",
+    "note": "cotton bathrobes extra large",
+    "price": 1800,
+    "old": 2000,
+    "img": "bath.10.jpg",
+    "imgs": [
+      "bath.10.jpg",
+      "bath.10b.jpg",
+      "bath.10c.jpg",
+      "bath.10d.jpg",
+      "bath.10e.jpg",
+      "bath.10f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 231,
+    "cat": "bath",
+    "name": "100% cotton large towels",
+    "note": "100% cotton large towels",
+    "price": 1500,
+    "old": 1800,
+    "img": "bath.11.jpg",
+    "imgs": [
+      "bath.11.jpg",
+      "bath.11b.jpg",
+      "bath.11c.jpg",
+      "bath.11d.jpg",
+      "bath.11e.jpg",
+      "bath.11f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 70,
     "cat": "furniture",
     "name": "Four Seater Marble Dining Table",
@@ -1597,7 +2177,7 @@
     ],
     "badge": "HOT",
     "badgeType": "hot",
-    "inStock": true
+    "inStock": false
   },
   {
     "id": 71,
@@ -1657,7 +2237,7 @@
     ],
     "badge": "",
     "badgeType": "",
-    "inStock": true
+    "inStock": false
   },
   {
     "id": 74,
@@ -1697,7 +2277,7 @@
     ],
     "badge": "NEW",
     "badgeType": "new",
-    "inStock": true
+    "inStock": false
   },
   {
     "id": 77,
@@ -2137,6 +2717,26 @@
     ],
     "badge": "HOT",
     "badgeType": "hot",
+    "inStock": true
+  },
+  {
+    "id": 228,
+    "cat": "electronics",
+    "name": "DISPENSER",
+    "note": "ALIYONS 3 TAPS DISPENSER \nHOT,NORMAL AND COLD",
+    "price": 7000,
+    "old": 8000,
+    "img": "electronics.3.jpg",
+    "imgs": [
+      "electronics.3.jpg",
+      "electronics.3b.jpg",
+      "electronics.3c.jpg",
+      "electronics.3d.jpg",
+      "electronics.3e.jpg",
+      "electronics.3f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
     "inStock": true
   },
   {
@@ -2700,6 +3300,126 @@
     "inStock": true
   },
   {
+    "id": 186,
+    "cat": "carpets",
+    "name": "3D KITCHEN RUBBER MATS",
+    "note": "2 PCS 3D KITCHEN MATS",
+    "price": 850,
+    "old": 1000,
+    "img": "carpet.20.jpg",
+    "imgs": [
+      "carpet.20.jpg",
+      "carpet.20b.jpg",
+      "carpet.20c.jpg",
+      "carpet.20d.jpg",
+      "carpet.20e.jpg",
+      "carpet.20f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 187,
+    "cat": "carpets",
+    "name": "RABBIT FUR BEDSIDE MAT",
+    "note": "RABBIT FUR BEDSIDE MAT 60*180CM",
+    "price": 2500,
+    "old": 3000,
+    "img": "carpet.21.jpg",
+    "imgs": [
+      "carpet.21.jpg",
+      "carpet.21b.jpg",
+      "carpet.21c.jpg",
+      "carpet.21d.jpg",
+      "carpet.21e.jpg",
+      "carpet.21f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 188,
+    "cat": "carpets",
+    "name": "TURKEY CARPETS",
+    "note": "TURKEY CARPETS 5*8",
+    "price": 8500,
+    "old": 10000,
+    "img": "carpet.22.jpg",
+    "imgs": [
+      "carpet.22.jpg",
+      "carpet.22b.jpg",
+      "carpet.22c.jpg",
+      "carpet.22d.jpg",
+      "carpet.22e.jpg",
+      "carpet.22f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 189,
+    "cat": "carpets",
+    "name": "DASHBOARD COVER/BEDSIDE MAT",
+    "note": "DASHBOARD COVER/BEDSIDE MAT 60*170CM",
+    "price": 2300,
+    "old": 3000,
+    "img": "carpet.23.jpg",
+    "imgs": [
+      "carpet.23.jpg",
+      "carpet.23b.jpg",
+      "carpet.23c.jpg",
+      "carpet.23d.jpg",
+      "carpet.23e.jpg",
+      "carpet.23f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 222,
+    "cat": "carpets",
+    "name": "heavy large plastic outdoor doormats",
+    "note": "heavy large plastic outdoor doormats 60*90",
+    "price": 1500,
+    "old": 2000,
+    "img": "carpet.24.jpg",
+    "imgs": [
+      "carpet.24.jpg",
+      "carpet.24b.jpg",
+      "carpet.24c.jpg",
+      "carpet.24d.jpg",
+      "carpet.24e.jpg",
+      "carpet.24f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 223,
+    "cat": "carpets",
+    "name": "heavy large plastic outdoor mat",
+    "note": "heavy large outdoor mat",
+    "price": 1500,
+    "old": 2000,
+    "img": "carpet.25.jpg",
+    "imgs": [
+      "carpet.25.jpg",
+      "carpet.25b.jpg",
+      "carpet.25c.jpg",
+      "carpet.25d.jpg",
+      "carpet.25e.jpg",
+      "carpet.25f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
@@ -2900,6 +3620,406 @@
     "inStock": true
   },
   {
+    "id": 170,
+    "cat": "furniture",
+    "name": "2 in 1 Marble nesting coffee table (glass effect)",
+    "note": "2 in 1 Marble nesting coffee table (glass effect) white",
+    "price": 7999,
+    "old": 9000,
+    "img": "furniture.30.jpg",
+    "imgs": [
+      "furniture.30.jpg",
+      "furniture.30b.jpg",
+      "furniture.30c.jpg",
+      "furniture.30d.jpg",
+      "furniture.30e.jpg",
+      "furniture.30f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 171,
+    "cat": "furniture",
+    "name": "Modern Luxury 2in1 pure  Marble Nesting tables.",
+    "note": "Modern Luxury 2in1 pure  Marble Nesting tables.",
+    "price": 9999,
+    "old": 11000,
+    "img": "furniture.31.jpg",
+    "imgs": [
+      "furniture.31.jpg",
+      "furniture.31b.jpg",
+      "furniture.31c.jpg",
+      "furniture.31d.jpg",
+      "furniture.31e.jpg",
+      "furniture.31f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 173,
+    "cat": "furniture",
+    "name": "nesting coffee table",
+    "note": "nesting table with a black or white finish metal base",
+    "price": 22499,
+    "old": 25000,
+    "img": "furniture.32.jpg",
+    "imgs": [
+      "furniture.32.jpg",
+      "furniture.32b.jpg",
+      "furniture.32c.jpg",
+      "furniture.32d.jpg",
+      "furniture.32e.jpg",
+      "furniture.32f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
+    "id": 174,
+    "cat": "furniture",
+    "name": "white decor table",
+    "note": "white decor table",
+    "price": 1500,
+    "old": 1700,
+    "img": "furniture.33.jpg",
+    "imgs": [
+      "furniture.33.jpg",
+      "furniture.33b.jpg",
+      "furniture.33c.jpg",
+      "furniture.33d.jpg",
+      "furniture.33e.jpg",
+      "furniture.33f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
+    "id": 175,
+    "cat": "furniture",
+    "name": "MDF COFFEE TABLE",
+    "note": "RESTOOCKED MDF COFFEE TABLE",
+    "price": 6500,
+    "old": 7500,
+    "img": "furniture.34.jpg",
+    "imgs": [
+      "furniture.34.jpg",
+      "furniture.34b.jpg",
+      "furniture.34c.jpg",
+      "furniture.34d.jpg",
+      "furniture.34e.jpg",
+      "furniture.34f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
+    "id": 176,
+    "cat": "furniture",
+    "name": "NESTING COFFEE TABLE",
+    "note": "with a black or white finish metal base. This modern and space-saving design is popular for its elegant appearance and versatility in living rooms.",
+    "price": 19500,
+    "old": 21500,
+    "img": "furniture.35.jpg",
+    "imgs": [
+      "furniture.35.jpg",
+      "furniture.35b.jpg",
+      "furniture.35c.jpg",
+      "furniture.35d.jpg",
+      "furniture.35e.jpg",
+      "furniture.35f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
+  },
+  {
+    "id": 177,
+    "cat": "furniture",
+    "name": "4in1 executive pure marble table",
+    "note": "executive pure marble table",
+    "price": 18500,
+    "old": 22500,
+    "img": "furniture.36.jpg",
+    "imgs": [
+      "furniture.36.jpg",
+      "furniture.36b.jpg",
+      "furniture.36c.jpg",
+      "furniture.36d.jpg",
+      "furniture.36e.jpg",
+      "furniture.36f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 178,
+    "cat": "furniture",
+    "name": "marble table",
+    "note": "3in1 pure marble table",
+    "price": 12999,
+    "old": 14999,
+    "img": "furniture.37.jpg",
+    "imgs": [
+      "furniture.37.jpg",
+      "furniture.37b.jpg",
+      "furniture.37c.jpg",
+      "furniture.37d.jpg",
+      "furniture.37e.jpg",
+      "furniture.37f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 179,
+    "cat": "furniture",
+    "name": "dinning table",
+    "note": "executive modern advanced marble dinning table",
+    "price": 8500,
+    "old": 9000,
+    "img": "furniture.38.jpg",
+    "imgs": [
+      "furniture.38.jpg",
+      "furniture.38b.jpg",
+      "furniture.38c.jpg",
+      "furniture.38d.jpg",
+      "furniture.38e.jpg",
+      "furniture.38f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 180,
+    "cat": "furniture",
+    "name": "dressing table",
+    "note": "brown dessing table mirror",
+    "price": 18500,
+    "old": 19999,
+    "img": "furniture.39.jpg",
+    "imgs": [
+      "furniture.39.jpg",
+      "furniture.39b.jpg",
+      "furniture.39c.jpg",
+      "furniture.39d.jpg",
+      "furniture.39e.jpg",
+      "furniture.39f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 181,
+    "cat": "furniture",
+    "name": "Desk table",
+    "note": "office desk table.Available in diffrent colors' white ,grey ,brown",
+    "price": 9500,
+    "old": 10500,
+    "img": "furniture.40.jpg",
+    "imgs": [
+      "furniture.40.jpg",
+      "furniture.40b.jpg",
+      "furniture.40c.jpg",
+      "furniture.40d.jpg",
+      "furniture.40e.jpg",
+      "furniture.40f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 202,
+    "cat": "furniture",
+    "name": "HARD SEMI PERMANENT PLASTIC WADROBE WITH MULTI SHOE RACK",
+    "note": "COLORS AVAILABLE\nBLACK WHITE BLUE",
+    "price": 5500,
+    "old": 6500,
+    "img": "furniture.41.jpg",
+    "imgs": [
+      "furniture.41.jpg",
+      "furniture.41b.jpg",
+      "furniture.41c.jpg",
+      "furniture.41d.jpg",
+      "furniture.41e.jpg",
+      "furniture.41f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 203,
+    "cat": "furniture",
+    "name": "PORTABLE WOODEN WADROBE",
+    "note": "ALL COLORS AVAILABLE\nBROWN,PINK,NAVY,MAROON,BLACK,PURPLE",
+    "price": 3900,
+    "old": 4500,
+    "img": "furniture.42.jpg",
+    "imgs": [
+      "furniture.42.jpg",
+      "furniture.42b.jpg",
+      "furniture.42c.jpg",
+      "furniture.42d.jpg",
+      "furniture.42e.jpg",
+      "furniture.42f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 204,
+    "cat": "furniture",
+    "name": "MULTIPURPOUSE SHOE RACK",
+    "note": "AVAILABLE IN WHITE AND BLACK",
+    "price": 1800,
+    "old": 2200,
+    "img": "furniture.43.jpg",
+    "imgs": [
+      "furniture.43.jpg",
+      "furniture.43b.jpg",
+      "furniture.43c.jpg",
+      "furniture.43d.jpg",
+      "furniture.43e.jpg",
+      "furniture.43f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 205,
+    "cat": "furniture",
+    "name": "SHOE RACK",
+    "note": "AVAILABLE IN DIFFRENT COLORS\nBLUE\nPINK",
+    "price": 1800,
+    "old": 2200,
+    "img": "furniture.44.jpg",
+    "imgs": [
+      "furniture.44.jpg",
+      "furniture.44b.jpg",
+      "furniture.44c.jpg",
+      "furniture.44d.jpg",
+      "furniture.44e.jpg",
+      "furniture.44f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 224,
+    "cat": "furniture",
+    "name": "Six seaters pure marble dinning tables",
+    "note": "Six seater pure marble dinning tables @ 89,999",
+    "price": 89999,
+    "old": 95000,
+    "img": "furniture.45.jpg",
+    "imgs": [
+      "furniture.45.jpg",
+      "furniture.45b.jpg",
+      "furniture.45c.jpg",
+      "furniture.45d.jpg",
+      "furniture.45e.jpg",
+      "furniture.45f.jpg"
+    ],
+    "badge": "NEW",
+    "badgeType": "new",
+    "inStock": true
+  },
+  {
+    "id": 227,
+    "cat": "furniture",
+    "name": "MARBLE TABLE",
+    "note": "EXECUTIVE PURE MARBLE TABLE",
+    "price": 1299,
+    "old": 13500,
+    "img": "furniture.46.jpg",
+    "imgs": [
+      "furniture.46.jpg",
+      "furniture.46b.jpg",
+      "furniture.46c.jpg",
+      "furniture.46d.jpg",
+      "furniture.46e.jpg",
+      "furniture.46f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 233,
+    "cat": "furniture",
+    "name": "PURE MARBLE TABLE",
+    "note": "3IN1 MARBLE TABLE\nVERY STRONG",
+    "price": 12999,
+    "old": 15000,
+    "img": "furniture.47.jpg",
+    "imgs": [
+      "furniture.47.jpg",
+      "furniture.47b.jpg",
+      "furniture.47c.jpg",
+      "furniture.47d.jpg",
+      "furniture.47e.jpg",
+      "furniture.47f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 235,
+    "cat": "furniture",
+    "name": "TV STAND",
+    "note": "TV STAND",
+    "price": 15500,
+    "old": 16500,
+    "img": "furniture.48.jpg",
+    "imgs": [
+      "furniture.48.jpg",
+      "furniture.48b.jpg",
+      "furniture.48c.jpg",
+      "furniture.48d.jpg",
+      "furniture.48e.jpg",
+      "furniture.48f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 237,
+    "cat": "furniture",
+    "name": "TV STAND",
+    "note": "TV STAND",
+    "price": 28999,
+    "old": 34000,
+    "img": "furniture.49.jpg",
+    "imgs": [
+      "furniture.49.jpg",
+      "furniture.49b.jpg",
+      "furniture.49c.jpg",
+      "furniture.49d.jpg",
+      "furniture.49e.jpg",
+      "furniture.49f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
@@ -2980,6 +4100,66 @@
     "inStock": true
   },
   {
+    "id": 232,
+    "cat": "cookware",
+    "name": "EGG TRAY",
+    "note": "COMES IN TWO COLOURS ;GREY AND ORANGE",
+    "price": 1350,
+    "old": 1500,
+    "img": "cookware.9.jpg",
+    "imgs": [
+      "cookware.9.jpg",
+      "cookware.9b.jpg",
+      "cookware.9c.jpg",
+      "cookware.9d.jpg",
+      "cookware.9e.jpg",
+      "cookware.9f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 234,
+    "cat": "cookware",
+    "name": "COOKING SPOONS",
+    "note": "HIGH QUALITY SILCONE COOKING SPOONS",
+    "price": 1300,
+    "old": 1550,
+    "img": "cookware.10.jpg",
+    "imgs": [
+      "cookware.10.jpg",
+      "cookware.10b.jpg",
+      "cookware.10c.jpg",
+      "cookware.10d.jpg",
+      "cookware.10e.jpg",
+      "cookware.10f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 238,
+    "cat": "cookware",
+    "name": "CERAMIC CHEFFING",
+    "note": "SERVING DISHES 3PCS PER SET\nCAPACITY ;3.5LITRES\n                    2.5 LITRES\n                     1.8 LITRES\nAVAILABLE IN BLACK",
+    "price": 6999,
+    "old": 7800,
+    "img": "cookware.11.jpg",
+    "imgs": [
+      "cookware.11.jpg",
+      "cookware.11b.jpg",
+      "cookware.11c.jpg",
+      "cookware.11d.jpg",
+      "cookware.11e.jpg",
+      "cookware.11f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 130,
     "cat": "nets",
     "name": "Double Decker Mosquito Net",
@@ -3057,6 +4237,286 @@
     ],
     "badge": "NEW",
     "badgeType": "new",
+    "inStock": true
+  },
+  {
+    "id": 182,
+    "cat": "duvets",
+    "name": "COZY FLEECE VELVET DUVET",
+    "note": "COMES WITH ONE BEDSHEET AND TWO PILLLOW CASES SIZES UPTO 220\\240CM .",
+    "price": 3300,
+    "old": 3700,
+    "img": "duvet.27.jpg",
+    "imgs": [
+      "duvet.27.jpg",
+      "duvet.27b.jpg",
+      "duvet.27c.jpg",
+      "duvet.27d.jpg",
+      "duvet.27e.jpg",
+      "duvet.27f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 183,
+    "cat": "duvets",
+    "name": "PINCH TUCK DUVET COVER",
+    "note": "ONE DUVET COVER 2 PILLOW CASES",
+    "price": 3500,
+    "old": 3800,
+    "img": "duvet.28.jpg",
+    "imgs": [
+      "duvet.28.jpg",
+      "duvet.28b.jpg",
+      "duvet.28c.jpg",
+      "duvet.28d.jpg",
+      "duvet.28e.jpg",
+      "duvet.28f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 184,
+    "cat": "duvets",
+    "name": "FLUFFY DUVET",
+    "note": "COMES WITH 4 PILLOWCSES,1 BEDSHEET,FLUFFY DUVET 1PCS",
+    "price": 4300,
+    "old": 5000,
+    "img": "duvet.29.jpg",
+    "imgs": [
+      "duvet.29.jpg",
+      "duvet.29b.jpg",
+      "duvet.29c.jpg",
+      "duvet.29d.jpg",
+      "duvet.29e.jpg",
+      "duvet.29f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 185,
+    "cat": "duvets",
+    "name": "LUXURY MARBLE GOLD TEXTURE FOIL STLYE DUVET COVER SET",
+    "note": "COMES WITH ONE BEDSHEET AND TWO PILLOWCAES",
+    "price": 3500,
+    "old": 4000,
+    "img": "duvet.30.jpg",
+    "imgs": [
+      "duvet.30.jpg",
+      "duvet.30b.jpg",
+      "duvet.30c.jpg",
+      "duvet.30d.jpg",
+      "duvet.30e.jpg",
+      "duvet.30f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 193,
+    "cat": "duvets",
+    "name": "LUXURY TUFTED WAVE DESIGN DUVET",
+    "note": "SOFT FLUFFFY MICROFIBRE BREATHABLE AND DURABLE FOR ALL SEASONS,COMES WITH 1` DUVET COVER AND 2 PILLOWCASES",
+    "price": 3500,
+    "old": 4000,
+    "img": "duvet.31.jpg",
+    "imgs": [
+      "duvet.31.jpg",
+      "duvet.31b.jpg",
+      "duvet.31c.jpg",
+      "duvet.31d.jpg",
+      "duvet.31e.jpg",
+      "duvet.31f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 194,
+    "cat": "duvets",
+    "name": "CARTOON THEMED DUVET",
+    "note": "AVAILABLE WITH 1 BEDSHEET AND 2 PILLOWCASES",
+    "price": 2999,
+    "old": 3500,
+    "img": "duvet.32.jpg",
+    "imgs": [
+      "duvet.32.jpg",
+      "duvet.32b.jpg",
+      "duvet.32c.jpg",
+      "duvet.32d.jpg",
+      "duvet.32e.jpg",
+      "duvet.32f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 195,
+    "cat": "duvets",
+    "name": "WAFFLE WEAVING POPLIN DUVET COVER",
+    "note": "COMES WITH 1 DUVET COVER 2 PILLOWCASES \nCOLORS;WHITE BEIDGE GREY",
+    "price": 3500,
+    "old": 3800,
+    "img": "duvet.33.jpg",
+    "imgs": [
+      "duvet.33.jpg",
+      "duvet.33b.jpg",
+      "duvet.33c.jpg",
+      "duvet.33d.jpg",
+      "duvet.33e.jpg",
+      "duvet.33f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 196,
+    "cat": "duvets",
+    "name": "INTRODUCING THE NEW 125GSM FLAT BEDSHEET",
+    "note": "SETS INCLUDE \n\nTWO FLAT BEDSHHET \nSIZE 7BY8\\6BY6 \nFOUR PILLOW CASES",
+    "price": 1999,
+    "old": 2500,
+    "img": "duvet.33.jpg",
+    "imgs": [
+      "duvet.33.jpg",
+      "duvet.33b.jpg",
+      "duvet.33c.jpg",
+      "duvet.33d.jpg",
+      "duvet.33e.jpg",
+      "duvet.33f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 197,
+    "cat": "duvets",
+    "name": "FITTED MIX AND MATCH BEDSHEET JIMMY",
+    "note": "SIZE 6\\7 7\\8",
+    "price": 2500,
+    "old": 3000,
+    "img": "duvet.34.jpg",
+    "imgs": [
+      "duvet.34.jpg",
+      "duvet.34b.jpg",
+      "duvet.34c.jpg",
+      "duvet.34d.jpg",
+      "duvet.34e.jpg",
+      "duvet.34f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 198,
+    "cat": "duvets",
+    "name": "LUXURY SILKY SOFT MULBERRY FITTED BEDSHEET",
+    "note": "SIZE 7\\8\n6\\6\n5\\6\n[PREMIUM MOISTURE WICKING BEDSHEET]\n[EXTREMLEY BREATHABLE]\n[ANTI STACTIC]\n[1 FLAT BEDSHEET]\n[1 FITTED SLIK SHEET]\n[4 PILLOWCASES]",
+    "price": 3500,
+    "old": 4300,
+    "img": "duvet.35.jpg",
+    "imgs": [
+      "duvet.35.jpg",
+      "duvet.35b.jpg",
+      "duvet.35c.jpg",
+      "duvet.35d.jpg",
+      "duvet.35e.jpg",
+      "duvet.35f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 199,
+    "cat": "duvets",
+    "name": "CARTOON THEMED BEDSHEETS",
+    "note": "4\\6\nCOMES WTH 2 BEDSHEETS \n2 PILLOWCASES",
+    "price": 1500,
+    "old": 2000,
+    "img": "duvet.36.jpg",
+    "imgs": [
+      "duvet.36.jpg",
+      "duvet.36b.jpg",
+      "duvet.36c.jpg",
+      "duvet.36d.jpg",
+      "duvet.36e.jpg",
+      "duvet.36f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 200,
+    "cat": "duvets",
+    "name": "RESTOCKED COTTON FITTED BEDSHEETS",
+    "note": "[ 1 FLAT BEDSHEET]\n[ 1 FITTED BEDSHEET ,THE ONE WITH THE BLADDER]\n[ 4 PILLOWCASES]\nSIZE 7\\8 6\\6 \nALL COLORS AVAILABLE",
+    "price": 2100,
+    "old": 2700,
+    "img": "duvet.37.jpg",
+    "imgs": [
+      "duvet.37.jpg",
+      "duvet.37b.jpg",
+      "duvet.37c.jpg",
+      "duvet.37d.jpg",
+      "duvet.37e.jpg",
+      "duvet.37f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 201,
+    "cat": "duvets",
+    "name": "FITTED COTTON BEDSHEET.PURE COTTON",
+    "note": "COMPROMISE OF\n[1 FLAT BEDSHEET]\n[1 FITTED BEDSHEET]\n[4 PILLOWCASES]\nSIZE 7 BY 8",
+    "price": 2150,
+    "old": 3000,
+    "img": "duvet.38.jpg",
+    "imgs": [
+      "duvet.38.jpg",
+      "duvet.38b.jpg",
+      "duvet.38c.jpg",
+      "duvet.38d.jpg",
+      "duvet.38e.jpg",
+      "duvet.38f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
+    "id": 226,
+    "cat": "duvets",
+    "name": "6PC BEDSHEETS",
+    "note": "2 BEDSHEETS \n4 PILLOWCASES",
+    "price": 2000,
+    "old": 3000,
+    "img": "duvet.39.jpg",
+    "imgs": [
+      "duvet.39.jpg",
+      "duvet.39b.jpg",
+      "duvet.39c.jpg",
+      "duvet.39d.jpg",
+      "duvet.39e.jpg",
+      "duvet.39f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
     "inStock": true
   }
 ]

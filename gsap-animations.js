@@ -62,7 +62,9 @@
       .from('.hero-banner h1', { y: 44, opacity: 0, duration: 0.7, ease: 'power4.out' }, '-=0.25')
       .from('.hero-banner p',  { y: 28, opacity: 0, duration: 0.5 }, '-=0.3')
       .from('.hero-search',    { y: 20, opacity: 0, duration: 0.4 }, '-=0.2')
-      .from('.hero-stat',      { y: 20, opacity: 0, duration: 0.4, stagger: 0.1 }, '-=0.15');
+      .from('.hero-cta-row',   { y: 20, opacity: 0, duration: 0.4 }, '-=0.15')
+      .from('.hero-stat',      { y: 20, opacity: 0, duration: 0.4, stagger: 0.1 }, '-=0.15')
+      .from('.hero-float-badge', { y: 16, opacity: 0, duration: 0.4, stagger: 0.08 }, '-=0.1');
   }
 
   /* ── CATEGORY STRIP ── */
@@ -120,7 +122,7 @@
     if (window.matchMedia('(hover: hover)').matches) {
       document.addEventListener('mouseover', function (e) {
         var c = e.target.closest('.card');
-        if (c) gsap.to(c, { y: -7, boxShadow: '0 14px 36px rgba(26,61,43,.18)', duration: 0.22 });
+        if (c) gsap.to(c, { y: -7, boxShadow: '0 14px 36px rgba(22,22,22,.18)', duration: 0.22 });
       });
       document.addEventListener('mouseout', function (e) {
         var c = e.target.closest('.card');

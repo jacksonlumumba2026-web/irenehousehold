@@ -105,12 +105,20 @@
   <a href="https://wa.me/254716060029" target="_blank">💬 WhatsApp Us</a>
 </div>
 
-<!-- HERO BANNER -->
+<!-- HERO BANNER — fullscreen immersive -->
 <div class="hero-banner">
+  <div class="hero-media">
+    <img src="furniture.1.jpg" alt="Premium furniture and home décor by Irene Household Collections" class="hero-bg-img"/>
+    <div class="hero-overlay"></div>
+    <span class="hero-particle p1"></span>
+    <span class="hero-particle p2"></span>
+    <span class="hero-particle p3"></span>
+    <span class="hero-particle p4"></span>
+  </div>
   <div class="hero-inner">
     <span class="hero-tag">✦ Quality. Comfort. Style.</span>
-    <h1>Kenya's <em>Favourite</em><br>Household Store</h1>
-    <p>Premium furniture, beddings, kitchenware, carpets and more — delivered across Kenya</p>
+    <h1>Transform Your House Into<br>Your <em>Dream Home</em></h1>
+    <p>Premium furniture, beddings, kitchenware and décor — delivered across Kenya</p>
     <div class="hero-search">
       <input type="text" placeholder="What are you looking for? e.g. fluffy duvet, marble table..."
         id="main-search" onkeydown="if(event.key==='Enter')goSearch()"/>
@@ -138,6 +146,11 @@
         <span>Fast Delivery</span>
       </div>
     </div>
+  </div>
+  <div class="hero-float-badges">
+    <div class="hero-float-badge glass"><span>🔒</span> M-Pesa Secure</div>
+    <div class="hero-float-badge glass"><span>⭐</span> 500+ Happy Customers</div>
+    <div class="hero-float-badge glass"><span>🚚</span> Countrywide Delivery</div>
   </div>
 </div>
 
@@ -477,9 +490,9 @@
         <div class="comm-btn" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);">@jaymieirene →</div>
       </a>
     </div>
-    <div style="text-align:center;background:rgba(255,255,255,.05);border:1.5px solid rgba(200,169,81,.2);border-radius:12px;padding:24px;max-width:520px;margin:0 auto;">
+    <div style="text-align:center;background:rgba(255,255,255,.05);border:1.5px solid rgba(212,175,55,.2);border-radius:12px;padding:24px;max-width:520px;margin:0 auto;">
       <div style="font-size:1.8rem;margin-bottom:8px;">🎁</div>
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#fff;margin-bottom:7px;">Members-Only Deals on WhatsApp</h3>
+      <h3 style="font-family:'Outfit',sans-serif;font-size:1.4rem;color:#fff;margin-bottom:7px;">Members-Only Deals on WhatsApp</h3>
       <p style="color:rgba(255,255,255,.6);font-size:13px;margin-bottom:18px;">Join our community and get flash sales and special discounts before anyone else!</p>
       <a href="https://chat.whatsapp.com/KLvRlQ1YQR5IRYfzxB8rxA" target="_blank"
         style="background:#25d366;color:#fff;padding:12px 26px;border-radius:7px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
@@ -566,7 +579,7 @@
 <!-- WISHLIST DRAWER -->
 <div class="overlay" id="wl-overlay"></div>
 <div class="drawer" id="wl-drawer">
-  <div class="drawer-head" style="background:#e53e3e;">
+  <div class="drawer-head" style="background:#B23A2E;">
     <div><h3 style="color:#fff;">❤️ Wishlist</h3><span id="wl-count" style="color:rgba(255,255,255,.6);font-size:11px;">0 items</span></div>
     <button class="drawer-close" style="background:rgba(255,255,255,.15);color:#fff;" onclick="closeWishlist()">✕</button>
   </div>
@@ -684,7 +697,6 @@
 </script>
 
 <script src="script.js"></script>
-<script src="gsap-animations.js"></script>
 <script>
   window.addEventListener('scroll', function() {
     document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 40);
@@ -715,6 +727,7 @@
     renderBestSellers();
     renderNewArrivals('new-arrivals-grid');
   }
+
 
   function renderBestSellers() {
     var track = document.getElementById('bestsellers-track');
@@ -761,7 +774,7 @@
       var img = e.target;
       img.style.display = 'none';
       if (img.parentElement && img.parentElement.classList.contains('card-img')) {
-        img.parentElement.style.background = 'linear-gradient(135deg,#e8f5ee,#d0e4d0)';
+        img.parentElement.style.background = 'linear-gradient(135deg,#F5F1E8,#E8D9A8)';
         img.parentElement.style.display = 'flex';
         img.parentElement.style.alignItems = 'center';
         img.parentElement.style.justifyContent = 'center';
@@ -781,7 +794,7 @@
 <a href="mailto:irenehouseholds@gmail.com?subject=Order Inquiry&body=Hello Irene,%0A%0AI would like to place an order. Please get back to me.%0A%0AThank you."
    id="float-email"
    style="position:fixed;bottom:80px;right:16px;z-index:1500;
-          background:#1a3d2b;color:#fff;
+          background:#161616;color:#fff;
           width:52px;height:52px;border-radius:50%;
           display:flex;align-items:center;justify-content:center;
           font-size:22px;text-decoration:none;
