@@ -207,7 +207,7 @@ setTimeout(function(){
 }, 2500);
 
 /* ── DELIVERY BAR ── */
-var FREE_DELIVERY_THRESHOLD = 5000;
+var FREE_DELIVERY_THRESHOLD = 10000;
 function updateDeliveryBar() {
   var total = cart.reduce(function(s,i){ return s+i.price*i.qty; }, 0);
   var fill  = document.getElementById('delivery-fill');
