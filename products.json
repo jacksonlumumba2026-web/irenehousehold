@@ -4040,6 +4040,26 @@
     "inStock": true
   },
   {
+    "id": 244,
+    "cat": "furniture",
+    "name": "DRESSING TABLE",
+    "note": "AVAILABLE COLORS \nWHITE BROWN\n[ MODERN DESIGN WITH MIRROR]\n[ SPACIOUS DRAWERS FOR STORAGE]\n[PERFECT FOR BEDROOM OR BEAUTY CORNER]\n[ELEGANT DURABLE FINISH]",
+    "price": 10499,
+    "old": 1300,
+    "img": "furniture.51.jpg",
+    "imgs": [
+      "furniture.51.jpg",
+      "furniture.51b.jpg",
+      "furniture.51c.jpg",
+      "furniture.51d.jpg",
+      "furniture.51e.jpg",
+      "furniture.51f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
