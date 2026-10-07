@@ -1280,6 +1280,26 @@
     "inStock": true
   },
   {
+    "id": 245,
+    "cat": "kitchenware",
+    "name": "WOODEN CHAPATI SPINNER",
+    "note": "PRESSER WITH HANDLE NOW",
+    "price": 750,
+    "old": 1000,
+    "img": "kitchenware.37.jpg",
+    "imgs": [
+      "kitchenware.37.jpg",
+      "kitchenware.37b.jpg",
+      "kitchenware.37c.jpg",
+      "kitchenware.37d.jpg",
+      "kitchenware.37e.jpg",
+      "kitchenware.37f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
