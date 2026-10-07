@@ -4020,6 +4020,26 @@
     "inStock": true
   },
   {
+    "id": 243,
+    "cat": "furniture",
+    "name": "146 by 36",
+    "note": "MINI LINGLONG FULL LENGTH DRESSING MIRROR",
+    "price": 3500,
+    "old": 4000,
+    "img": "furniture.50.jpg",
+    "imgs": [
+      "furniture.50.jpg",
+      "furniture.50b.jpg",
+      "furniture.50c.jpg",
+      "furniture.50d.jpg",
+      "furniture.50e.jpg",
+      "furniture.50f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
