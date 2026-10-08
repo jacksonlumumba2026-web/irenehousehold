@@ -2920,6 +2920,26 @@
     "inStock": true
   },
   {
+    "id": 257,
+    "cat": "electronics",
+    "name": "MIKA MICROWAVE 20L",
+    "note": "MANUAL WHITE",
+    "price": 9500,
+    "old": 1200,
+    "img": "electronics.9.jpg",
+    "imgs": [
+      "electronics.9.jpg",
+      "electronics.9b.jpg",
+      "electronics.9c.jpg",
+      "electronics.9d.jpg",
+      "electronics.9e.jpg",
+      "electronics.9f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 99,
     "cat": "travel",
     "name": "Neck Pillow with Phone Holder Pocket",
