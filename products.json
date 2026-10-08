@@ -4580,6 +4580,26 @@
     "inStock": true
   },
   {
+    "id": 264,
+    "cat": "cookware",
+    "name": "6 LTRS DESSINI ELECTRIC PRESSURE COOKER",
+    "note": "DESSINI ELECTRIC PRESSURE COOKER",
+    "price": 4999,
+    "old": 6000,
+    "img": "cookware.16.jpg",
+    "imgs": [
+      "cookware.16.jpg",
+      "cookware.16b.jpg",
+      "cookware.16c.jpg",
+      "cookware.16d.jpg",
+      "cookware.16e.jpg",
+      "cookware.16f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 130,
     "cat": "nets",
     "name": "Double Decker Mosquito Net",
