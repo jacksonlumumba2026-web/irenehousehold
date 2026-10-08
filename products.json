@@ -1420,6 +1420,26 @@
     "inStock": true
   },
   {
+    "id": 265,
+    "cat": "kitchenware",
+    "name": "PLASTIC FRUIT RACK",
+    "note": "PLASTIC FRUIT RACK",
+    "price": 1600,
+    "old": 2500,
+    "img": "kitchenware.44.jpg",
+    "imgs": [
+      "kitchenware.44.jpg",
+      "kitchenware.44b.jpg",
+      "kitchenware.44c.jpg",
+      "kitchenware.44d.jpg",
+      "kitchenware.44e.jpg",
+      "kitchenware.44f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
