@@ -4540,6 +4540,26 @@
     "inStock": true
   },
   {
+    "id": 262,
+    "cat": "cookware",
+    "name": "CHAPATI MAKER",
+    "note": "SOKANY CHAPATI MAKER",
+    "price": 3999,
+    "old": 5000,
+    "img": "cookware.14.jpg",
+    "imgs": [
+      "cookware.14.jpg",
+      "cookware.14b.jpg",
+      "cookware.14c.jpg",
+      "cookware.14d.jpg",
+      "cookware.14e.jpg",
+      "cookware.14f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 130,
     "cat": "nets",
     "name": "Double Decker Mosquito Net",
