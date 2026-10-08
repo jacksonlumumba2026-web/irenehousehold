@@ -2800,6 +2800,26 @@
     "inStock": true
   },
   {
+    "id": 251,
+    "cat": "electronics",
+    "name": "SOKANI ROTI MAKER",
+    "note": "CHAPATI MAKER",
+    "price": 3999,
+    "old": 4300,
+    "img": "electronics.4.jpg",
+    "imgs": [
+      "electronics.4.jpg",
+      "electronics.4b.jpg",
+      "electronics.4c.jpg",
+      "electronics.4d.jpg",
+      "electronics.4e.jpg",
+      "electronics.4f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 99,
     "cat": "travel",
     "name": "Neck Pillow with Phone Holder Pocket",
