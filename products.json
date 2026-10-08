@@ -1300,6 +1300,26 @@
     "inStock": true
   },
   {
+    "id": 248,
+    "cat": "kitchenware",
+    "name": "24PCS GOLD CULTERY SET",
+    "note": "GOLD CULTERY SET",
+    "price": 1999,
+    "old": 2500,
+    "img": "kitchenware.38.jpg",
+    "imgs": [
+      "kitchenware.38.jpg",
+      "kitchenware.38b.jpg",
+      "kitchenware.38c.jpg",
+      "kitchenware.38d.jpg",
+      "kitchenware.38e.jpg",
+      "kitchenware.38f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
