@@ -1340,6 +1340,26 @@
     "inStock": true
   },
   {
+    "id": 254,
+    "cat": "kitchenware",
+    "name": "4 LAYER STORAGE RACK",
+    "note": "[ 4TIER FRUIT RACK]",
+    "price": 6499,
+    "old": 7500,
+    "img": "kitchenware.40.jpg",
+    "imgs": [
+      "kitchenware.40.jpg",
+      "kitchenware.40b.jpg",
+      "kitchenware.40c.jpg",
+      "kitchenware.40d.jpg",
+      "kitchenware.40e.jpg",
+      "kitchenware.40f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
