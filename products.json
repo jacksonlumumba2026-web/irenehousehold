@@ -1400,6 +1400,26 @@
     "inStock": true
   },
   {
+    "id": 261,
+    "cat": "kitchenware",
+    "name": "CERAMIC SOUP POTS 3 IN 1",
+    "note": "CERAMIC SOUP POTS 3 IN 1",
+    "price": 2500,
+    "old": 4000,
+    "img": "kitchenware.43.jpg",
+    "imgs": [
+      "kitchenware.43.jpg",
+      "kitchenware.43b.jpg",
+      "kitchenware.43c.jpg",
+      "kitchenware.43d.jpg",
+      "kitchenware.43e.jpg",
+      "kitchenware.43f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
