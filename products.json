@@ -1480,6 +1480,26 @@
     "inStock": true
   },
   {
+    "id": 268,
+    "cat": "kitchenware",
+    "name": "REDBERRY PREMIUM RANGE ELECTRIC TEA URN",
+    "note": "REDBERRY PREMIUM RANGE ELECTRIC TEA URN :\n10 ltr @ 11,000 p.pc\n15 ltr @ 12,500 p.pc \n20 ltr @ 15,500 p.pc\n25 ltr @ 16,000 p.pc",
+    "price": 16000,
+    "old": 18000,
+    "img": "kitchenware.47.jpg",
+    "imgs": [
+      "kitchenware.47.jpg",
+      "kitchenware.47b.jpg",
+      "kitchenware.47c.jpg",
+      "kitchenware.47d.jpg",
+      "kitchenware.47e.jpg",
+      "kitchenware.47f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
