@@ -2840,6 +2840,26 @@
     "inStock": true
   },
   {
+    "id": 253,
+    "cat": "electronics",
+    "name": "6L DESSINI ELECTRIC PRESSURE COOKER",
+    "note": "ELECTRIC PRESSURE COOKER",
+    "price": 4999,
+    "old": 5500,
+    "img": "electronics.6.jpg",
+    "imgs": [
+      "electronics.6.jpg",
+      "electronics.6b.jpg",
+      "electronics.6c.jpg",
+      "electronics.6d.jpg",
+      "electronics.6e.jpg",
+      "electronics.6f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 99,
     "cat": "travel",
     "name": "Neck Pillow with Phone Holder Pocket",
