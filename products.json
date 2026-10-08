@@ -4560,6 +4560,26 @@
     "inStock": true
   },
   {
+    "id": 263,
+    "cat": "cookware",
+    "name": "ELECTRIC  PRESSURE COOKER",
+    "note": "6 LTRS BOSCH ELECTRIC PRESSURE COOKER",
+    "price": 5500,
+    "old": 7000,
+    "img": "cookware.15.jpg",
+    "imgs": [
+      "cookware.15.jpg",
+      "cookware.15b.jpg",
+      "cookware.15c.jpg",
+      "cookware.15d.jpg",
+      "cookware.15e.jpg",
+      "cookware.15f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 130,
     "cat": "nets",
     "name": "Double Decker Mosquito Net",
