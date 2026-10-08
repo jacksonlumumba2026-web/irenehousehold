@@ -1440,6 +1440,26 @@
     "inStock": true
   },
   {
+    "id": 266,
+    "cat": "kitchenware",
+    "name": "TEA URN",
+    "note": "TEA URN",
+    "price": 1800,
+    "old": 2500,
+    "img": "kitchenware.45.jpg",
+    "imgs": [
+      "kitchenware.45.jpg",
+      "kitchenware.45b.jpg",
+      "kitchenware.45c.jpg",
+      "kitchenware.45d.jpg",
+      "kitchenware.45e.jpg",
+      "kitchenware.45f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
