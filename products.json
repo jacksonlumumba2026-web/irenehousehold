@@ -2940,6 +2940,26 @@
     "inStock": true
   },
   {
+    "id": 258,
+    "cat": "electronics",
+    "name": "ALIYONS BOTTOM LOAD WATER DISPENSER",
+    "note": "HOT AND NORMAL\nMODEL AFK 1915",
+    "price": 6800,
+    "old": 7500,
+    "img": "electronics.10.jpg",
+    "imgs": [
+      "electronics.10.jpg",
+      "electronics.10b.jpg",
+      "electronics.10c.jpg",
+      "electronics.10d.jpg",
+      "electronics.10e.jpg",
+      "electronics.10f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 99,
     "cat": "travel",
     "name": "Neck Pillow with Phone Holder Pocket",
