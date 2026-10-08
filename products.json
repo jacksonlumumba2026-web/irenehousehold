@@ -1460,6 +1460,26 @@
     "inStock": true
   },
   {
+    "id": 267,
+    "cat": "kitchenware",
+    "name": "9.5 LTRS TEA URN MUBBLE EFFECT",
+    "note": "9.5 LTRS TEA URN MUBBLE EFECT",
+    "price": 2900,
+    "old": 4000,
+    "img": "kitchenware.46.jpg",
+    "imgs": [
+      "kitchenware.46.jpg",
+      "kitchenware.46b.jpg",
+      "kitchenware.46c.jpg",
+      "kitchenware.46d.jpg",
+      "kitchenware.46e.jpg",
+      "kitchenware.46f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
