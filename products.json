@@ -4220,6 +4220,26 @@
     "inStock": true
   },
   {
+    "id": 246,
+    "cat": "cookware",
+    "name": "SIMPEX HOTPOT STAINLESS",
+    "note": "SIZE 1000/1500\\3500\\7500\\10000",
+    "price": 4999,
+    "old": 5500,
+    "img": "cookware.12.jpg",
+    "imgs": [
+      "cookware.12.jpg",
+      "cookware.12b.jpg",
+      "cookware.12c.jpg",
+      "cookware.12d.jpg",
+      "cookware.12e.jpg",
+      "cookware.12f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 130,
     "cat": "nets",
     "name": "Double Decker Mosquito Net",
