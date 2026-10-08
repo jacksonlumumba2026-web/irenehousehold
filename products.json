@@ -2900,6 +2900,26 @@
     "inStock": true
   },
   {
+    "id": 256,
+    "cat": "electronics",
+    "name": "ALIYONS DISPENSER",
+    "note": "HOT AND COLD\n1 YEAR WARANTY \nMODEL;AFK-110",
+    "price": 4500,
+    "old": 5500,
+    "img": "electronics.8.jpg",
+    "imgs": [
+      "electronics.8.jpg",
+      "electronics.8b.jpg",
+      "electronics.8c.jpg",
+      "electronics.8d.jpg",
+      "electronics.8e.jpg",
+      "electronics.8f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 99,
     "cat": "travel",
     "name": "Neck Pillow with Phone Holder Pocket",
