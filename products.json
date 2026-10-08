@@ -3180,6 +3180,26 @@
     "inStock": true
   },
   {
+    "id": 250,
+    "cat": "decor",
+    "name": "METALIC SPIN MOP",
+    "note": "SPIN MOP",
+    "price": 1800,
+    "old": 2400,
+    "img": "decor.12.jpg",
+    "imgs": [
+      "decor.12.jpg",
+      "decor.12b.jpg",
+      "decor.12c.jpg",
+      "decor.12d.jpg",
+      "decor.12e.jpg",
+      "decor.12f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 115,
     "cat": "carpets",
     "name": "Turkish Doormat",
