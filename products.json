@@ -1320,6 +1320,26 @@
     "inStock": true
   },
   {
+    "id": 249,
+    "cat": "kitchenware",
+    "name": "SOUP POTS",
+    "note": "CREAM SOUP POTS",
+    "price": 2500,
+    "old": 3000,
+    "img": "kitchenware.39.jpg",
+    "imgs": [
+      "kitchenware.39.jpg",
+      "kitchenware.39b.jpg",
+      "kitchenware.39c.jpg",
+      "kitchenware.39d.jpg",
+      "kitchenware.39e.jpg",
+      "kitchenware.39f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
