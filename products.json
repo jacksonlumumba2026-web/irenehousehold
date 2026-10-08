@@ -2820,6 +2820,26 @@
     "inStock": true
   },
   {
+    "id": 252,
+    "cat": "electronics",
+    "name": "BOTCH ELECTRIC PRESSURE COOKER",
+    "note": "6L BOCH PRESSURE COOKER",
+    "price": 5500,
+    "old": 6500,
+    "img": "electronics.5.jpg",
+    "imgs": [
+      "electronics.5.jpg",
+      "electronics.5b.jpg",
+      "electronics.5c.jpg",
+      "electronics.5d.jpg",
+      "electronics.5e.jpg",
+      "electronics.5f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 99,
     "cat": "travel",
     "name": "Neck Pillow with Phone Holder Pocket",
