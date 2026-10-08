@@ -4240,6 +4240,26 @@
     "inStock": true
   },
   {
+    "id": 247,
+    "cat": "cookware",
+    "name": "LEATHERITE HOTPOTS",
+    "note": "SIZE 1000\\1500\\3500\\5000",
+    "price": 4999,
+    "old": 5500,
+    "img": "cookware.13.jpg",
+    "imgs": [
+      "cookware.13.jpg",
+      "cookware.13b.jpg",
+      "cookware.13c.jpg",
+      "cookware.13d.jpg",
+      "cookware.13e.jpg",
+      "cookware.13f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 130,
     "cat": "nets",
     "name": "Double Decker Mosquito Net",
