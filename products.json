@@ -2880,6 +2880,26 @@
     "inStock": true
   },
   {
+    "id": 255,
+    "cat": "electronics",
+    "name": "RASHNIKI KETTLE",
+    "note": "CAPACITY 2.3 LITRES",
+    "price": 1250,
+    "old": 1500,
+    "img": "electronics.7.jpg",
+    "imgs": [
+      "electronics.7.jpg",
+      "electronics.7b.jpg",
+      "electronics.7c.jpg",
+      "electronics.7d.jpg",
+      "electronics.7e.jpg",
+      "electronics.7f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 99,
     "cat": "travel",
     "name": "Neck Pillow with Phone Holder Pocket",
