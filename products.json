@@ -1360,6 +1360,26 @@
     "inStock": true
   },
   {
+    "id": 259,
+    "cat": "kitchenware",
+    "name": "executive silver egg -shaped cutlery set(24pc)",
+    "note": "silver egg-shaped cutlery set(24pc)",
+    "price": 2999,
+    "old": 40000,
+    "img": "kitchenware.41.jpg",
+    "imgs": [
+      "kitchenware.41.jpg",
+      "kitchenware.41b.jpg",
+      "kitchenware.41c.jpg",
+      "kitchenware.41d.jpg",
+      "kitchenware.41e.jpg",
+      "kitchenware.41f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
