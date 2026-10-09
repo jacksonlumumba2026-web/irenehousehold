@@ -4520,6 +4520,26 @@
     "inStock": true
   },
   {
+    "id": 273,
+    "cat": "furniture",
+    "name": "SIX SITTER DINNING TABLE",
+    "note": "BIG EXECUTIVE 6 SITTER DINNING TABLE",
+    "price": 29999,
+    "old": 40000,
+    "img": "furniture.54.jpg",
+    "imgs": [
+      "furniture.54.jpg",
+      "furniture.54b.jpg",
+      "furniture.54c.jpg",
+      "furniture.54d.jpg",
+      "furniture.54e.jpg",
+      "furniture.54f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
