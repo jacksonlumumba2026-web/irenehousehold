@@ -1500,6 +1500,26 @@
     "inStock": true
   },
   {
+    "id": 271,
+    "cat": "kitchenware",
+    "name": "24PCS DINNER SET",
+    "note": "DIINER SET WITH MATCHING WHITE FOOD WARMER",
+    "price": 16500,
+    "old": 20000,
+    "img": "kitchenware.48.jpg",
+    "imgs": [
+      "kitchenware.48.jpg",
+      "kitchenware.48b.jpg",
+      "kitchenware.48c.jpg",
+      "kitchenware.48d.jpg",
+      "kitchenware.48e.jpg",
+      "kitchenware.48f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
