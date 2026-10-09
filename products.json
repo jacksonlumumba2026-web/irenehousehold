@@ -4460,6 +4460,26 @@
     "inStock": true
   },
   {
+    "id": 270,
+    "cat": "furniture",
+    "name": "WHITE DRESSING TABLE",
+    "note": "WHITE DRESSING TABLE WITH SLIDDING MIRROR",
+    "price": 12999,
+    "old": 15000,
+    "img": "furniture.53.jpg",
+    "imgs": [
+      "furniture.53.jpg",
+      "furniture.53b.jpg",
+      "furniture.53c.jpg",
+      "furniture.53d.jpg",
+      "furniture.53e.jpg",
+      "furniture.53f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
