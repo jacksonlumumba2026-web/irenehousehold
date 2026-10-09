@@ -4580,6 +4580,26 @@
     "inStock": true
   },
   {
+    "id": 276,
+    "cat": "furniture",
+    "name": "4  SITTER DINNING TABLE",
+    "note": "EXECUTIVE 4 SITTER DINNING TABLE",
+    "price": 23000,
+    "old": 35000,
+    "img": "furniture.57.jpg",
+    "imgs": [
+      "furniture.57.jpg",
+      "furniture.57b.jpg",
+      "furniture.57c.jpg",
+      "furniture.57d.jpg",
+      "furniture.57e.jpg",
+      "furniture.57f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
