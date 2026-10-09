@@ -4620,6 +4620,26 @@
     "inStock": true
   },
   {
+    "id": 278,
+    "cat": "furniture",
+    "name": "SIX SITTER DINNING TABLE",
+    "note": "MARBLE DINING TABLE\nMICRO FIBRE CHAIRS\nLEGS WITH GOLD/SILVER FINISHING",
+    "price": 85000,
+    "old": 99999,
+    "img": "furniture.59.jpg",
+    "imgs": [
+      "furniture.59.jpg",
+      "furniture.59b.jpg",
+      "furniture.59c.jpg",
+      "furniture.59d.jpg",
+      "furniture.59e.jpg",
+      "furniture.59f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
