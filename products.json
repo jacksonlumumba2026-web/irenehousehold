@@ -1520,6 +1520,26 @@
     "inStock": true
   },
   {
+    "id": 272,
+    "cat": "kitchenware",
+    "name": "VON MANUAL MICROWAVE",
+    "note": "20L VON MANUAL MICROWAVE",
+    "price": 8999,
+    "old": 9800,
+    "img": "kitchenware.49.jpg",
+    "imgs": [
+      "kitchenware.49.jpg",
+      "kitchenware.49b.jpg",
+      "kitchenware.49c.jpg",
+      "kitchenware.49d.jpg",
+      "kitchenware.49e.jpg",
+      "kitchenware.49f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
