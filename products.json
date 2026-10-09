@@ -4600,6 +4600,26 @@
     "inStock": true
   },
   {
+    "id": 277,
+    "cat": "furniture",
+    "name": "FOUR SITTER DINNING TABLE",
+    "note": "MARBLE TABLE\nMICROFIBRE CHAIRS\nMETALIC BLACK LEGS WITH GOLD FINISHING",
+    "price": 69999,
+    "old": 75000,
+    "img": "furniture.58.jpg",
+    "imgs": [
+      "furniture.58.jpg",
+      "furniture.58b.jpg",
+      "furniture.58c.jpg",
+      "furniture.58d.jpg",
+      "furniture.58e.jpg",
+      "furniture.58f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
