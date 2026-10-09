@@ -4440,6 +4440,26 @@
     "inStock": true
   },
   {
+    "id": 269,
+    "cat": "furniture",
+    "name": "SIX SEATER DINNING TABLE",
+    "note": "MAEBLE DINNING TABLE\nMICRO FIBRE CHAIRS\n LEGS WITH GOLD /SILVER FINISHING",
+    "price": 85000,
+    "old": 95000,
+    "img": "furniture.52.jpg",
+    "imgs": [
+      "furniture.52.jpg",
+      "furniture.52b.jpg",
+      "furniture.52c.jpg",
+      "furniture.52d.jpg",
+      "furniture.52e.jpg",
+      "furniture.52f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 127,
     "cat": "cookware",
     "name": "Electromate Hand Mixer",
