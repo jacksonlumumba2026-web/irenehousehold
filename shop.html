@@ -14,6 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Shop all products at Irene Household Collections. Furniture, duvets, kitchenware, carpets, mosquito nets and more in Nairobi."/>
   <title>Shop All Products | Irene Household Collections</title>
+  <link rel="canonical" href="https://irenehousehold.co.ke/shop.html"/>
   <link rel="stylesheet" href="style.css"/>
   <style>
     /* ── SHOP PAGE EXTRA ── */
@@ -108,7 +109,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 
 <!-- PROMO BAR -->
 <div class="promo-bar">
-  🔥 FREE DELIVERY on orders over KSh 5,000 — Countrywide
+  🔥 FREE DELIVERY on orders over KSh 10,000 — Countrywide
   <span>|</span> 🏨 Hotel &amp; Airbnb Packages
   <span>|</span> 📞 <a href="https://wa.me/254716060029">+254 716 060029</a>
 </div>
@@ -117,7 +118,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 <!-- TRUST BADGES -->
 <div class="trust-strip">
   <div class="trust-strip-inner">
-    <div class="trust-item-badge"><span>🚚</span><div><b>Free Delivery</b><em>Orders over KSh 5,000</em></div></div>
+    <div class="trust-item-badge"><span>🚚</span><div><b>Free Delivery</b><em>Orders over KSh 10,000</em></div></div>
     <div class="trust-item-badge"><span>🔒</span><div><b>M-Pesa Secure</b><em>Safe payments</em></div></div>
     <div class="trust-item-badge"><span>✅</span><div><b>Quality Verified</b><em>All products checked</em></div></div>
     <div class="trust-item-badge"><span>⚡</span><div><b>Same Day Delivery</b><em>Nairobi orders</em></div></div>
@@ -128,7 +129,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 
 <!-- TOP NAV -->
 <nav class="top-nav" id="main-nav">
-  <a href="index.html" class="nav-logo-wrap">
+  <a href="/" class="nav-logo-wrap">
     <img src="logo.jpg" alt="IHC"/>
     <div class="nav-logo-text">
       <b>Irene Household</b>
@@ -153,11 +154,12 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-nav">
-  <a href="index.html"          onclick="closeMobileNav()">🏠 Home</a>
+  <a href="/"                    onclick="closeMobileNav()">🏠 Home</a>
   <a href="shop.html"           onclick="closeMobileNav()">🛍️ Shop All Products</a>
-  <a href="index.html#payment"  onclick="closeMobileNav()">💳 M-Pesa Payment</a>
-  <a href="index.html#hotel"    onclick="closeMobileNav()">🏨 Hotel / Airbnb</a>
-  <a href="index.html#community"onclick="closeMobileNav()">🌍 Community</a>
+  <a href="order.html"          onclick="closeMobileNav()" style="color:var(--green);font-weight:700;">📦 Place an Order</a>
+  <a href="/#payment"           onclick="closeMobileNav()">💳 M-Pesa Payment</a>
+  <a href="/#hotel"             onclick="closeMobileNav()">🏨 Hotel / Airbnb</a>
+  <a href="/#community"         onclick="closeMobileNav()">🌍 Community</a>
   <a href="about.html"          onclick="closeMobileNav()">ℹ️ About Us</a>
   <a href="contact.html"        onclick="closeMobileNav()">📞 Contact</a>
   <a href="https://wa.me/254716060029" target="_blank">💬 WhatsApp Us</a>
@@ -166,7 +168,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 <!-- PAGE HERO -->
 <div class="page-hero" style="padding:64px 4% 28px;">
   <div class="breadcrumb">
-    <a href="index.html">Home</a>
+    <a href="/">Home</a>
     <span>›</span>
     <span class="cur">Shop All Products</span>
   </div>
@@ -323,7 +325,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
         <span class="footer-pay-badge">🔒 Secure Checkout</span>
       </div>
     </div>
-    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="/">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div class="footer-col"><h4>Categories</h4><ul>
       <li><a href="#" onclick="filterCat('furniture',null);return false;">Furniture</a></li>
       <li><a href="#" onclick="filterCat('duvets',null);return false;">Duvets</a></li>
@@ -357,7 +359,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
   </div>
   <div class="drawer-footer">
     <div class="delivery-bar-wrap">
-      <p class="delivery-msg" id="delivery-msg">Add <strong style="color:var(--green);">KSh 5,000</strong> more for <strong style="color:var(--green);">FREE delivery</strong> 🚚</p>
+      <p class="delivery-msg" id="delivery-msg">Add <strong style="color:var(--green);">KSh 10,000</strong> more for <strong style="color:var(--green);">FREE delivery</strong> 🚚</p>
       <div class="delivery-track"><div class="delivery-fill" id="delivery-fill"></div></div>
     </div>
     <span class="pay-label">Payment Status</span>
@@ -428,7 +430,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
   <div class="bottom-nav-items">
-    <a href="index.html" class="bnav-item"><span class="bicon">🏠</span><span>Home</span></a>
+    <a href="/" class="bnav-item"><span class="bicon">🏠</span><span>Home</span></a>
     <a href="shop.html" class="bnav-item active"><span class="bicon">🛍️</span><span>Shop</span></a>
     <a href="#" class="bnav-item" onclick="openWishlist();return false;"><span class="bicon">❤️</span><span>Saved</span><span class="bnav-badge" id="wl-badge-bottom">0</span></a>
     <a href="#" class="bnav-item" onclick="openCart();return false;"><span class="bicon">🛒</span><span>Cart</span><span class="bnav-badge" id="cart-badge-bottom">0</span></a>
