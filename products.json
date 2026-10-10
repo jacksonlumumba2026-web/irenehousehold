@@ -1540,6 +1540,26 @@
     "inStock": true
   },
   {
+    "id": 279,
+    "cat": "kitchenware",
+    "name": "silicone tip window cleaner squegee",
+    "note": "silicone tip window cleaner squegee",
+    "price": 400,
+    "old": 700,
+    "img": "kitchenware.50.jpg",
+    "imgs": [
+      "kitchenware.50.jpg",
+      "kitchenware.50b.jpg",
+      "kitchenware.50c.jpg",
+      "kitchenware.50d.jpg",
+      "kitchenware.50e.jpg",
+      "kitchenware.50f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
