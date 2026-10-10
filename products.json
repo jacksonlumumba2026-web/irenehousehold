@@ -3920,6 +3920,26 @@
     "inStock": true
   },
   {
+    "id": 284,
+    "cat": "carpets",
+    "name": "paris turkey carpet",
+    "note": "paris turkey carpet\n5*8@ 8,000\n6*9@ 10,800\n7*10@13,500\n8*11@19,999",
+    "price": 8000,
+    "old": 12000,
+    "img": "carpet.28.jpg",
+    "imgs": [
+      "carpet.28.jpg",
+      "carpet.28b.jpg",
+      "carpet.28c.jpg",
+      "carpet.28d.jpg",
+      "carpet.28e.jpg",
+      "carpet.28f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
