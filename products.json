@@ -3900,6 +3900,26 @@
     "inStock": true
   },
   {
+    "id": 283,
+    "cat": "carpets",
+    "name": "kitchen rubber mats 2 in 1",
+    "note": "kitchen rubber mats 2 in 1",
+    "price": 800,
+    "old": 1500,
+    "img": "carpet.27.jpg",
+    "imgs": [
+      "carpet.27.jpg",
+      "carpet.27b.jpg",
+      "carpet.27c.jpg",
+      "carpet.27d.jpg",
+      "carpet.27e.jpg",
+      "carpet.27f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
