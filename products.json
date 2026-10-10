@@ -1560,6 +1560,26 @@
     "inStock": true
   },
   {
+    "id": 280,
+    "cat": "kitchenware",
+    "name": "breakfast in bed foldable bamboo tray",
+    "note": "breakfast in bed foldable bamboo tray",
+    "price": 1999,
+    "old": 2500,
+    "img": "kitchenware.51.jpg",
+    "imgs": [
+      "kitchenware.51.jpg",
+      "kitchenware.51b.jpg",
+      "kitchenware.51c.jpg",
+      "kitchenware.51d.jpg",
+      "kitchenware.51e.jpg",
+      "kitchenware.51f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 51,
     "cat": "carpets",
     "name": "Fluffy Carpets",
