@@ -3640,6 +3640,26 @@
     "inStock": true
   },
   {
+    "id": 288,
+    "cat": "decor",
+    "name": "plain curtains",
+    "note": "plain curtains\ndimensions: 3m\ncurtains: 2pcs, 1.5m each pc.\nsheer: 1pc",
+    "price": 2700,
+    "old": 3500,
+    "img": "decor.13.jpg",
+    "imgs": [
+      "decor.13.jpg",
+      "decor.13b.jpg",
+      "decor.13c.jpg",
+      "decor.13d.jpg",
+      "decor.13e.jpg",
+      "decor.13f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 115,
     "cat": "carpets",
     "name": "Turkish Doormat",
