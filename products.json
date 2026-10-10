@@ -2240,6 +2240,26 @@
     "inStock": true
   },
   {
+    "id": 287,
+    "cat": "seatcovers",
+    "name": "wave fluffy pillow cases",
+    "note": "wave fluffy pillow cases",
+    "price": 200,
+    "old": 300,
+    "img": "seatcover.28.jpg",
+    "imgs": [
+      "seatcover.28.jpg",
+      "seatcover.28b.jpg",
+      "seatcover.28c.jpg",
+      "seatcover.28d.jpg",
+      "seatcover.28e.jpg",
+      "seatcover.28f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
