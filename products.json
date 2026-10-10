@@ -5278,5 +5278,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 281,
+    "cat": "duvets",
+    "name": "knot pillows",
+    "note": "knot pillows",
+    "price": 850,
+    "old": 1000,
+    "img": "duvet.40.jpg",
+    "imgs": [
+      "duvet.40.jpg",
+      "duvet.40b.jpg",
+      "duvet.40c.jpg",
+      "duvet.40d.jpg",
+      "duvet.40e.jpg",
+      "duvet.40f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
