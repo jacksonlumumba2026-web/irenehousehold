@@ -3660,6 +3660,26 @@
     "inStock": true
   },
   {
+    "id": 289,
+    "cat": "decor",
+    "name": "luxury window curtains",
+    "note": "luxury window curtain\nlinen fabric\nsheer width 3m by length 2.4m",
+    "price": 1900,
+    "old": 2500,
+    "img": "decor.14.jpg",
+    "imgs": [
+      "decor.14.jpg",
+      "decor.14b.jpg",
+      "decor.14c.jpg",
+      "decor.14d.jpg",
+      "decor.14e.jpg",
+      "decor.14f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 115,
     "cat": "carpets",
     "name": "Turkish Doormat",
