@@ -3380,6 +3380,26 @@
     "inStock": true
   },
   {
+    "id": 290,
+    "cat": "travel",
+    "name": "memory foam traveling neck  support pillow",
+    "note": "memory foam travelling neck support pillow",
+    "price": 950,
+    "old": 1200,
+    "img": "travel.6.jpg",
+    "imgs": [
+      "travel.6.jpg",
+      "travel.6b.jpg",
+      "travel.6c.jpg",
+      "travel.6d.jpg",
+      "travel.6e.jpg",
+      "travel.6f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 106,
     "cat": "decor",
     "name": "Plain Coral Fleece Throw Blanket",
