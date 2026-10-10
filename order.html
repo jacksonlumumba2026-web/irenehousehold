@@ -183,11 +183,25 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     <span class="cur">Place Your Order</span>
   </div>
   <h1>Place Your Order</h1>
-  <p>Select your items, fill in your details and we'll reach out to confirm &amp; deliver</p>
+  <p>Select your items, fill in your details and we'll reach out to confirm & deliver</p>
 </div>
 
 <!-- ORDER PAGE CONTENT -->
 <div class="order-wrap">
+
+  <!-- AD PRODUCT BANNER — shown when page opened from a Facebook/Instagram ad -->
+  <div id="ad-product-banner" style="display:none;background:#fff;border-radius:12px;border:2px solid var(--green);padding:20px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.10);">
+    <div style="display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.5px;margin-bottom:14px;">📦 YOU ARE ORDERING</div>
+    <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;">
+      <div id="ad-prod-img" style="width:110px;height:110px;min-width:110px;border-radius:10px;overflow:hidden;background:#F5F1E8;display:flex;align-items:center;justify-content:center;font-size:2.5rem;flex-shrink:0;">📦</div>
+      <div style="flex:1;min-width:160px;">
+        <div id="ad-prod-name" style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700;color:var(--green-dark);margin-bottom:6px;"></div>
+        <div id="ad-prod-price" style="font-size:1.4rem;font-weight:700;color:var(--green);font-family:'Outfit',sans-serif;margin-bottom:4px;"></div>
+        <div id="ad-prod-note" style="font-size:12.5px;color:var(--muted);line-height:1.5;"></div>
+      </div>
+    </div>
+    <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f0ede4;font-size:12.5px;color:var(--muted);">✅ Fill in your details below and we'll confirm your order via WhatsApp</div>
+  </div>
 
   <!-- Urgency banner -->
   <div class="urgency-bar">
@@ -216,11 +230,11 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
   <!-- Category filter -->
   <div class="cat-tabs" id="cat-tabs">
     <button class="cat-tab active" onclick="filterCat('all',this)">All</button>
-    <button class="cat-tab" onclick="filterCat('duvets',this)">🛏 Duvets &amp; Bedding</button>
+    <button class="cat-tab" onclick="filterCat('duvets',this)">🛏 Duvets & Bedding</button>
     <button class="cat-tab" onclick="filterCat('furniture',this)">🪑 Furniture</button>
     <button class="cat-tab" onclick="filterCat('kitchenware',this)">🍽 Kitchenware</button>
-    <button class="cat-tab" onclick="filterCat('carpets',this)">🏠 Carpets &amp; Rugs</button>
-    <button class="cat-tab" onclick="filterCat('bath',this)">🛁 Bath &amp; Towels</button>
+    <button class="cat-tab" onclick="filterCat('carpets',this)">🏠 Carpets & Rugs</button>
+    <button class="cat-tab" onclick="filterCat('bath',this)">🛁 Bath & Towels</button>
   </div>
 
   <!-- Product search -->
@@ -445,6 +459,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 </div>
 
 <script>
+  // WhatsApp Community Popup
   var popupCount = 0;
   var maxPopups  = 3;
   var popupDelay = 60000;
@@ -485,32 +500,43 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     window.location = q ? 'shop.html?q=' + encodeURIComponent(q) : 'shop.html';
   }
 
+  // ── ORDER PAGE LOGIC ─────────────────────────────────
+
   var ORDER_PRODUCTS = [
+    // Duvets & Bedding
     { id:'d1', name:'6×6 Duvet Set (King)', cat:'duvets', price:5500, oldPrice:7000, emoji:'🛏️' },
     { id:'d2', name:'5×6 Duvet Set (Queen)', cat:'duvets', price:4500, oldPrice:6000, emoji:'🛏' },
     { id:'d3', name:'4×6 Single Duvet Set', cat:'duvets', price:3200, oldPrice:4500, emoji:'🛌' },
     { id:'d4', name:'Fitted Bedsheet Set (6×6)', cat:'duvets', price:2800, oldPrice:3800, emoji:'🧺' },
     { id:'d5', name:'White Hotel Bedsheet (6×6)', cat:'duvets', price:2500, oldPrice:3500, emoji:'🏨' },
     { id:'d6', name:'Mattress Protector (6×6)', cat:'duvets', price:2200, oldPrice:3000, emoji:'🛡️' },
+
+    // Furniture
     { id:'f1', name:'4-Stand Mosquito Net', cat:'furniture', price:4800, oldPrice:6500, emoji:'🪟' },
     { id:'f2', name:'Marble Coffee Table', cat:'furniture', price:12500, oldPrice:16000, emoji:'🪑' },
     { id:'f3', name:'Marble Dining Table (4-seater)', cat:'furniture', price:18000, oldPrice:24000, emoji:'🍽️' },
     { id:'f4', name:'Sofa Set (3+2+1)', cat:'furniture', price:28000, oldPrice:36000, emoji:'🛋️' },
     { id:'f5', name:'TV Stand / Cabinet', cat:'furniture', price:8500, oldPrice:12000, emoji:'📺' },
     { id:'f6', name:'Bookshelf / Display Rack', cat:'furniture', price:6500, oldPrice:9000, emoji:'📚' },
+
+    // Kitchenware
     { id:'k1', name:'Dinner Set (24-piece)', cat:'kitchenware', price:3800, oldPrice:5500, emoji:'🍽️' },
     { id:'k2', name:'Non-Stick Cookware Set', cat:'kitchenware', price:4500, oldPrice:6500, emoji:'🍳' },
     { id:'k3', name:'Electric Kettle', cat:'kitchenware', price:2200, oldPrice:3200, emoji:'🫖' },
     { id:'k4', name:'Food Storage Set (10pcs)', cat:'kitchenware', price:1800, oldPrice:2800, emoji:'📦' },
+
+    // Carpets & Rugs
     { id:'c1', name:'Fluffy Shaggy Carpet (5×8 ft)', cat:'carpets', price:4200, oldPrice:5800, emoji:'🏠' },
     { id:'c2', name:'Fluffy Shaggy Carpet (7×10 ft)', cat:'carpets', price:7500, oldPrice:10000, emoji:'🏡' },
     { id:'c3', name:'Centre Rug / Mat', cat:'carpets', price:1800, oldPrice:2600, emoji:'🪣' },
+
+    // Bath & Towels
     { id:'b1', name:'Bath Towel Set (4-piece)', cat:'bath', price:2800, oldPrice:4000, emoji:'🛁' },
     { id:'b2', name:'Bath Gown / Robe', cat:'bath', price:3200, oldPrice:4500, emoji:'🥻' },
     { id:'b3', name:'Premium Towel Pack (6pcs)', cat:'bath', price:3800, oldPrice:5500, emoji:'🧻' },
   ];
 
-  var selectedItems = {};
+  var selectedItems = {}; // { id: qty }
   var currentCat = 'all';
   var searchQuery = '';
 
@@ -522,11 +548,13 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
       var searchOk = !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase());
       return catOk && searchOk;
     });
+
     var grid = document.getElementById('product-picker');
     if (!filtered.length) {
       grid.innerHTML = '<div class="pick-empty">No products found. <button style="background:none;border:none;color:var(--green);cursor:pointer;font-weight:700;" onclick="clearFilters()">Clear filters</button></div>';
       return;
     }
+
     grid.innerHTML = filtered.map(function(p) {
       var sel = !!selectedItems[p.id];
       var qty = selectedItems[p.id] || 1;
@@ -535,7 +563,10 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
         '<div class="pick-card-img">' + p.emoji + '</div>' +
         '<div class="pick-card-body">' +
           '<div class="pick-card-name">' + p.name + '</div>' +
-          '<div><span class="pick-card-price">' + fmt(p.price) + '</span><span class="pick-card-old">' + fmt(p.oldPrice) + '</span></div>' +
+          '<div>' +
+            '<span class="pick-card-price">' + fmt(p.price) + '</span>' +
+            '<span class="pick-card-old">' + fmt(p.oldPrice) + '</span>' +
+          '</div>' +
         '</div>' +
         '<div class="qty-row" onclick="event.stopPropagation()">' +
           '<button class="qty-btn" onclick="changeQty(\'' + p.id + '\',-1)">−</button>' +
@@ -547,7 +578,11 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
   }
 
   function toggleProduct(id) {
-    if (selectedItems[id]) { delete selectedItems[id]; } else { selectedItems[id] = 1; }
+    if (selectedItems[id]) {
+      delete selectedItems[id];
+    } else {
+      selectedItems[id] = 1;
+    }
     renderProducts();
     updateSummary();
   }
@@ -567,11 +602,15 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
       return p ? sum + p.price * selectedItems[id] : sum;
     }, 0);
     var bar = document.getElementById('order-summary-bar');
+    var sumText = document.getElementById('sum-text');
+    var sumTotal = document.getElementById('sum-total');
     if (ids.length) {
       bar.classList.add('show');
-      document.getElementById('sum-text').textContent = ids.length + ' product' + (ids.length > 1 ? 's' : '') + ' selected';
-      document.getElementById('sum-total').textContent = fmt(total);
-    } else { bar.classList.remove('show'); }
+      sumText.textContent = ids.length + ' product' + (ids.length > 1 ? 's' : '') + ' selected';
+      sumTotal.textContent = fmt(total);
+    } else {
+      bar.classList.remove('show');
+    }
   }
 
   function filterCat(cat, btn) {
@@ -581,63 +620,186 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     renderProducts();
   }
 
-  function searchProducts(q) { searchQuery = q; renderProducts(); }
+  function searchProducts(q) {
+    searchQuery = q;
+    renderProducts();
+  }
 
   function clearFilters() {
-    currentCat = 'all'; searchQuery = '';
+    currentCat = 'all';
+    searchQuery = '';
     document.getElementById('pick-search').value = '';
     document.querySelectorAll('.cat-tab').forEach(function(t){ t.classList.remove('active'); });
     document.querySelector('.cat-tab').classList.add('active');
     renderProducts();
   }
 
-  function validateOrder() {
+  function submitOrder() {
     var ids = Object.keys(selectedItems);
     var name = document.getElementById('o-name').value.trim();
     var phone = document.getElementById('o-phone').value.trim();
     var location = document.getElementById('o-location').value.trim();
-    if (!name) { alert('Please enter your name.'); document.getElementById('o-name').focus(); return null; }
-    if (!phone) { alert('Please enter your phone number.'); document.getElementById('o-phone').focus(); return null; }
-    if (!location) { alert('Please enter your delivery location.'); document.getElementById('o-location').focus(); return null; }
-    if (!ids.length) { alert('Please select at least one product.'); window.scrollTo({top:0,behavior:'smooth'}); return null; }
-    return { ids: ids, name: name, phone: phone, location: location,
-      payment: document.getElementById('o-payment').value,
-      notes: document.getElementById('o-notes').value.trim() };
-  }
+    var payment = document.getElementById('o-payment').value;
+    var notes = document.getElementById('o-notes').value.trim();
 
-  function submitOrder() {
-    var v = validateOrder(); if (!v) return;
-    var total = v.ids.reduce(function(s,id){ var p=ORDER_PRODUCTS.find(function(x){return x.id===id;}); return p?s+p.price*selectedItems[id]:s; }, 0);
-    try { if(typeof fbq==='function') fbq('track','InitiateCheckout',{num_items:v.ids.length,value:total,currency:'KES'}); } catch(e){}
-    var payLabel = {mpesa:'M-Pesa',cod:'Cash on Delivery',already_paid:'Already Paid via M-Pesa'}[v.payment]||v.payment;
-    var lines = ['🛍️ *NEW ORDER — Irene Household Collections*','','👤 *Name:* '+v.name,'📞 *Phone:* '+v.phone,'📍 *Location:* '+v.location,'💳 *Payment:* '+payLabel,'','📦 *Products Ordered:*'];
-    v.ids.forEach(function(id){ var p=ORDER_PRODUCTS.find(function(x){return x.id===id;}); if(p) lines.push('  • '+p.name+' × '+selectedItems[id]+' — '+fmt(p.price*selectedItems[id])); });
-    lines.push('','💰 *Order Total: '+fmt(total)+'*');
-    if(v.notes) lines.push('📝 *Notes:* '+v.notes);
-    lines.push('','Please confirm this order and advise on delivery timeline. Thank you! 🙏');
-    window.open('https://wa.me/254716060029?text='+encodeURIComponent(lines.join('\n')),'_blank');
+    if (!name) { alert('Please enter your name.'); document.getElementById('o-name').focus(); return; }
+    if (!phone) { alert('Please enter your phone number.'); document.getElementById('o-phone').focus(); return; }
+    if (!location) { alert('Please enter your delivery location.'); document.getElementById('o-location').focus(); return; }
+    if (!ids.length) { alert('Please select at least one product.'); window.scrollTo({top:0,behavior:'smooth'}); return; }
+
+    // Fire Meta Pixel InitiateCheckout
+    var total = ids.reduce(function(sum, id) {
+      var p = ORDER_PRODUCTS.find(function(x){ return x.id === id; });
+      return p ? sum + p.price * selectedItems[id] : sum;
+    }, 0);
+    try {
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', {
+          num_items: ids.length,
+          value: total,
+          currency: 'KES'
+        });
+      }
+    } catch(e) {}
+
+    // Build WhatsApp message
+    var payLabel = { mpesa: 'M-Pesa', cod: 'Cash on Delivery', already_paid: 'Already Paid via M-Pesa' }[payment] || payment;
+    var lines = ['🛍️ *NEW ORDER — Irene Household Collections*', ''];
+    lines.push('👤 *Name:* ' + name);
+    lines.push('📞 *Phone:* ' + phone);
+    lines.push('📍 *Location:* ' + location);
+    lines.push('💳 *Payment:* ' + payLabel);
+    lines.push('');
+    lines.push('📦 *Products Ordered:*');
+
+    ids.forEach(function(id) {
+      var p = ORDER_PRODUCTS.find(function(x){ return x.id === id; });
+      if (p) {
+        var lineTotal = p.price * selectedItems[id];
+        lines.push('  • ' + p.name + ' × ' + selectedItems[id] + ' — ' + fmt(lineTotal));
+      }
+    });
+
+    lines.push('');
+    lines.push('💰 *Order Total: ' + fmt(total) + '*');
+    if (notes) lines.push('📝 *Notes:* ' + notes);
+    lines.push('');
+    lines.push('Please confirm this order and advise on delivery timeline. Thank you! 🙏');
+
+    var msg = lines.join('\n');
+    var url = 'https://wa.me/254716060029?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
   }
 
   function submitOrderEmail() {
-    var v = validateOrder(); if (!v) return;
-    var total = v.ids.reduce(function(s,id){ var p=ORDER_PRODUCTS.find(function(x){return x.id===id;}); return p?s+p.price*selectedItems[id]:s; }, 0);
-    try { if(typeof fbq==='function') fbq('track','InitiateCheckout',{num_items:v.ids.length,value:total,currency:'KES'}); } catch(e){}
-    var payLabel = {mpesa:'M-Pesa',cod:'Cash on Delivery',already_paid:'Already Paid via M-Pesa'}[v.payment]||v.payment;
-    var subject = 'New Order from '+v.name+' — Irene Household Collections';
-    var body = ['NEW ORDER — Irene Household Collections','','Name: '+v.name,'Phone: '+v.phone,'Delivery Location: '+v.location,'Payment: '+payLabel,'','Products Ordered:'];
-    v.ids.forEach(function(id){ var p=ORDER_PRODUCTS.find(function(x){return x.id===id;}); if(p) body.push('  - '+p.name+' x'+selectedItems[id]+' — '+fmt(p.price*selectedItems[id])); });
-    body.push('','Order Total: '+fmt(total));
-    if(v.notes) body.push('Notes: '+v.notes);
-    body.push('','Please confirm this order and advise on delivery. Thank you!');
-    window.location.href='mailto:irenehouseholds@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body.join('\n'));
+    var ids = Object.keys(selectedItems);
+    var name = document.getElementById('o-name').value.trim();
+    var phone = document.getElementById('o-phone').value.trim();
+    var location = document.getElementById('o-location').value.trim();
+    var payment = document.getElementById('o-payment').value;
+    var notes = document.getElementById('o-notes').value.trim();
+
+    if (!name) { alert('Please enter your name.'); document.getElementById('o-name').focus(); return; }
+    if (!phone) { alert('Please enter your phone number.'); document.getElementById('o-phone').focus(); return; }
+    if (!location) { alert('Please enter your delivery location.'); document.getElementById('o-location').focus(); return; }
+    if (!ids.length) { alert('Please select at least one product.'); window.scrollTo({top:0,behavior:'smooth'}); return; }
+
+    var total = ids.reduce(function(sum, id) {
+      var p = ORDER_PRODUCTS.find(function(x){ return x.id === id; });
+      return p ? sum + p.price * selectedItems[id] : sum;
+    }, 0);
+    try {
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', { num_items: ids.length, value: total, currency: 'KES' });
+      }
+    } catch(e) {}
+
+    var payLabel = { mpesa: 'M-Pesa', cod: 'Cash on Delivery', already_paid: 'Already Paid via M-Pesa' }[payment] || payment;
+    var subject = 'New Order from ' + name + ' — Irene Household Collections';
+    var body = ['NEW ORDER — Irene Household Collections', '',
+      'Name: ' + name,
+      'Phone: ' + phone,
+      'Delivery Location: ' + location,
+      'Payment: ' + payLabel,
+      '',
+      'Products Ordered:'];
+
+    ids.forEach(function(id) {
+      var p = ORDER_PRODUCTS.find(function(x){ return x.id === id; });
+      if (p) body.push('  - ' + p.name + ' x' + selectedItems[id] + ' — ' + fmt(p.price * selectedItems[id]));
+    });
+
+    body.push('', 'Order Total: ' + fmt(total));
+    if (notes) body.push('Notes: ' + notes);
+    body.push('', 'Please confirm this order and advise on delivery. Thank you!');
+
+    window.location.href = 'mailto:irenehouseholds@gmail.com?subject=' +
+      encodeURIComponent(subject) + '&body=' + encodeURIComponent(body.join('\n'));
   }
 
+  // Init
   renderProducts();
+
+  // Show product context if opened from an ad (?name=X&photo=X&price=X or ?id=X)
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var banner = document.getElementById('ad-product-banner');
+    if (!banner) return;
+
+    function showAdBanner(name, photo, price, note) {
+      banner.style.display = 'block';
+      document.getElementById('ad-prod-name').textContent = decodeURIComponent(name);
+      if (price) {
+        var priceNum = parseInt(price);
+        if (!isNaN(priceNum) && priceNum > 0) {
+          document.getElementById('ad-prod-price').textContent = 'KSh ' + priceNum.toLocaleString();
+        }
+      }
+      if (note) document.getElementById('ad-prod-note').textContent = decodeURIComponent(note);
+      var imgEl = document.getElementById('ad-prod-img');
+      if (photo) {
+        imgEl.innerHTML = '<img src="' + decodeURIComponent(photo) + '" alt="Product" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML=\'📦\'"/>';
+      } else {
+        imgEl.textContent = '📦';
+      }
+      var notesEl = document.getElementById('o-notes');
+      if (notesEl && !notesEl.value) {
+        var priceStr = price && parseInt(price) > 0 ? ' — KSh ' + parseInt(price).toLocaleString() : '';
+        notesEl.value = 'I want to order: ' + decodeURIComponent(name) + priceStr;
+      }
+      try {
+        if (typeof fbq === 'function') {
+          fbq('track', 'ViewContent', { content_name: decodeURIComponent(name), value: parseInt(price)||0, currency: 'KES' });
+        }
+      } catch(e) {}
+    }
+
+    var pName  = params.get('name');
+    var pPhoto = params.get('photo');
+    var pPrice = params.get('price');
+    var pNote  = params.get('note');
+    var pId    = params.get('id');
+
+    if (pName) {
+      showAdBanner(pName, pPhoto, pPrice, pNote);
+    } else if (pId) {
+      try {
+        var p = typeof PRODUCTS !== 'undefined' && PRODUCTS.find(function(x) { return x.id === parseInt(pId); });
+        if (p) showAdBanner(p.name, p.img, p.price > 0 ? p.price : 0, p.note);
+      } catch(e) {}
+    }
+  })();
 </script>
 
 <script>
   window.addEventListener('error', function(e) {
-    if (e.target && e.target.tagName === 'IMG') { e.target.style.display='none'; }
+    if (e.target && e.target.tagName === 'IMG') {
+      var img = e.target;
+      img.style.display = 'none';
+      if (img.parentElement && img.parentElement.classList.contains('card-img')) {
+        img.parentElement.style.background = 'linear-gradient(135deg,#F5F1E8,#E8D9A8)';
+      }
+    }
   }, true);
 </script>
 
