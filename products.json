@@ -3740,6 +3740,26 @@
     "inStock": true
   },
   {
+    "id": 293,
+    "cat": "decor",
+    "name": "self adhesive wall papers",
+    "note": "self adhesive wall papers\nsize width 0.45*10m",
+    "price": 1300,
+    "old": 2000,
+    "img": "decor.16.jpg",
+    "imgs": [
+      "decor.16.jpg",
+      "decor.16b.jpg",
+      "decor.16c.jpg",
+      "decor.16d.jpg",
+      "decor.16e.jpg",
+      "decor.16f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 115,
     "cat": "carpets",
     "name": "Turkish Doormat",
