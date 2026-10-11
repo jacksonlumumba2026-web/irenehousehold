@@ -2260,6 +2260,26 @@
     "inStock": true
   },
   {
+    "id": 292,
+    "cat": "seatcovers",
+    "name": "throw pillow case",
+    "note": "throw pillow case",
+    "price": 300,
+    "old": 400,
+    "img": "seatcover.29.jpg",
+    "imgs": [
+      "seatcover.29.jpg",
+      "seatcover.29b.jpg",
+      "seatcover.29c.jpg",
+      "seatcover.29d.jpg",
+      "seatcover.29e.jpg",
+      "seatcover.29f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
