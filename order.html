@@ -35,78 +35,64 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 
 <style>
-/* ── ORDER PAGE STYLES ───────────────────────────── */
-.order-wrap{max-width:900px;margin:0 auto;padding:0 16px 60px;}
+/* ── ORDER PAGE STYLES ──────────────────────────────────── */
+.order-wrap{max-width:680px;margin:0 auto;padding:0 16px 80px;}
 
-/* Product picker grid */
-.product-picker{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:32px;}
-.pick-card{border:2px solid #e8e4da;border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color .18s,box-shadow .18s;position:relative;background:#fff;}
-.pick-card:hover{border-color:var(--green);box-shadow:0 4px 18px rgba(0,0,0,.09);}
-.pick-card.selected{border-color:var(--green);box-shadow:0 0 0 3px rgba(35,100,60,.12);}
-.pick-card-img{height:120px;background:#F5F1E8 center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-size:2.2rem;}
-.pick-card-body{padding:10px 10px 12px;}
-.pick-card-name{font-size:12px;font-weight:600;color:#1a1a1a;line-height:1.35;margin-bottom:4px;}
-.pick-card-price{font-size:12px;color:var(--green);font-weight:700;}
-.pick-card-old{font-size:10.5px;color:var(--muted);text-decoration:line-through;margin-left:4px;}
-.pick-check{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:var(--green);color:#fff;display:none;align-items:center;justify-content:center;font-size:13px;font-weight:700;}
-.pick-card.selected .pick-check{display:flex;}
-.qty-row{display:none;align-items:center;justify-content:center;gap:8px;padding:6px 10px 10px;border-top:1px solid #f0ede4;}
-.pick-card.selected .qty-row{display:flex;}
-.qty-btn{width:26px;height:26px;border-radius:50%;border:1.5px solid #ddd;background:#fff;font-size:16px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-.qty-val{font-size:14px;font-weight:700;min-width:20px;text-align:center;}
+/* Ad product banner */
+.ad-banner{background:#fff;border-radius:12px;border:2px solid var(--green);padding:18px 20px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.09);}
+.ad-banner-tag{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.5px;margin-bottom:12px;}
+.ad-banner-row{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;}
+.ad-banner-img{width:90px;height:90px;min-width:90px;border-radius:10px;overflow:hidden;background:#F5F1E8;display:flex;align-items:center;justify-content:center;font-size:2.2rem;flex-shrink:0;}
+.ad-banner-img img{width:100%;height:100%;object-fit:cover;}
+.ad-banner-name{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;color:var(--green-dark);margin-bottom:4px;}
+.ad-banner-price{font-size:1.25rem;font-weight:700;color:var(--green);font-family:'Outfit',sans-serif;margin-bottom:4px;}
+.ad-banner-note{font-size:12px;color:var(--muted);line-height:1.5;}
+.ad-banner-foot{margin-top:12px;padding-top:10px;border-top:1px solid #f0ede4;font-size:12px;color:var(--muted);}
 
-/* Selected summary */
-.order-summary-bar{background:var(--green);color:#fff;border-radius:10px;padding:14px 16px;margin-bottom:24px;display:none;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-.order-summary-bar.show{display:flex;}
-.order-summary-bar strong{font-size:13px;}
-.order-summary-count{background:rgba(255,255,255,.2);border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;}
+/* Urgency bar */
+.urgency-bar{background:linear-gradient(90deg,#b91c1c,#dc2626);color:#fff;border-radius:10px;padding:13px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;}
+.urgency-bar span{font-size:18px;}
 
-/* Order form */
-.order-form-card{background:#fff;border-radius:14px;box-shadow:0 2px 20px rgba(0,0,0,.07);padding:28px 24px;margin-bottom:24px;}
-.order-form-card h3{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;color:var(--green-dark);margin-bottom:18px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
-@media(max-width:520px){.form-row{grid-template-columns:1fr;}}
-.form-group{display:flex;flex-direction:column;gap:5px;}
-.form-group label{font-size:12px;font-weight:600;color:#555;}
-.form-group input,
-.form-group select,
-.form-group textarea{border:1.5px solid #e0dcd3;border-radius:8px;padding:11px 13px;font-size:13.5px;font-family:inherit;color:#1a1a1a;background:#faf9f6;transition:border-color .15s;outline:none;}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{border-color:var(--green);}
-.form-group textarea{resize:vertical;min-height:72px;}
-
-/* Submit button */
-.order-submit-btn{width:100%;background:var(--green);color:#fff;border:none;padding:16px;font-size:15px;font-weight:700;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:background .18s;}
-.order-submit-btn:hover{background:var(--green-dark);}
-.order-submit-btn:disabled{background:#a5c4af;cursor:not-allowed;}
-
-/* Trust mini badges */
-.mini-trust{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+/* Mini trust badges */
+.mini-trust{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
 .mini-badge{background:#f5f1e8;border-radius:20px;padding:6px 12px;font-size:11.5px;font-weight:600;color:var(--green-dark);}
 
-/* Empty state */
-.pick-empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:30px 0;font-size:13.5px;}
+/* Form card */
+.order-form-card{background:#fff;border-radius:14px;box-shadow:0 2px 20px rgba(0,0,0,.07);padding:28px 24px;margin-bottom:16px;}
+.order-form-card h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;color:var(--green-dark);margin-bottom:18px;display:flex;align-items:center;gap:8px;}
 
-/* Section headers */
-.order-section-head{margin-bottom:16px;}
-.order-section-head h2{font-family:'Outfit',sans-serif;font-size:1.25rem;font-weight:700;color:var(--green-dark);margin:0 0 4px;}
-.order-section-head p{font-size:13px;color:var(--muted);margin:0;}
+/* Form elements */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+@media(max-width:520px){.form-row{grid-template-columns:1fr;}}
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.form-group:last-child{margin-bottom:0;}
+.form-group label{font-size:12px;font-weight:700;color:#444;letter-spacing:.2px;}
+.form-group label .req{color:var(--red);}
+.form-group input,
+.form-group select,
+.form-group textarea{border:1.5px solid #e0dcd3;border-radius:8px;padding:12px 13px;font-size:14px;font-family:inherit;color:#1a1a1a;background:#faf9f6;transition:border-color .15s;outline:none;width:100%;box-sizing:border-box;}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{border-color:var(--green);background:#fff;}
+.form-group textarea{resize:vertical;}
+.form-group .helper{font-size:11px;color:var(--muted);margin-top:3px;}
 
-/* Search filter */
-.pick-search-wrap{position:relative;margin-bottom:16px;}
-.pick-search-wrap input{width:100%;border:1.5px solid #e0dcd3;border-radius:9px;padding:11px 14px 11px 38px;font-size:13.5px;font-family:inherit;background:#faf9f6;box-sizing:border-box;outline:none;}
-.pick-search-wrap input:focus{border-color:var(--green);}
-.pick-search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:15px;pointer-events:none;}
+/* Order description textarea — extra prominent */
+.order-desc-area{min-height:120px;font-size:14px;line-height:1.6;}
 
-/* Category filter tabs */
-.cat-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
-.cat-tab{padding:6px 14px;border-radius:20px;border:1.5px solid #e0dcd3;background:#fff;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;color:#555;}
-.cat-tab.active{background:var(--green);color:#fff;border-color:var(--green);}
+/* Submit buttons */
+.submit-row{display:flex;gap:10px;margin-top:4px;}
+.btn-submit{flex:1;border:none;padding:15px 10px;font-size:14px;font-weight:700;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .18s;}
+.btn-submit-wa{background:#25d366;color:#fff;}
+.btn-submit-wa:hover{background:#1da851;}
+.btn-submit-em{background:#161616;color:#fff;}
+.btn-submit-em:hover{background:#333;}
+.submit-hint{text-align:center;font-size:11.5px;color:var(--muted);margin-top:8px;}
 
-/* Urgency banner */
-.urgency-bar{background:linear-gradient(90deg,#b91c1c,#dc2626);color:#fff;border-radius:10px;padding:13px 16px;margin-bottom:24px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;}
-.urgency-bar span{font-size:18px;}
+/* Shop link nudge */
+.shop-nudge{background:#f5f1e8;border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:var(--green-dark);display:flex;align-items:center;gap:10px;}
+.shop-nudge a{color:var(--green);font-weight:700;text-decoration:none;}
+.shop-nudge a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
@@ -183,33 +169,30 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     <span class="cur">Place Your Order</span>
   </div>
   <h1>Place Your Order</h1>
-  <p>Select your items, fill in your details and we'll reach out to confirm & deliver</p>
+  <p>Tell us what you need and your details — we'll confirm and deliver</p>
 </div>
 
 <!-- ORDER PAGE CONTENT -->
 <div class="order-wrap">
 
-  <!-- AD PRODUCT BANNER — shown when page opened from a Facebook/Instagram ad -->
-  <div id="ad-product-banner" style="display:none;background:#fff;border-radius:12px;border:2px solid var(--green);padding:20px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.10);">
-    <div style="display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.5px;margin-bottom:14px;">📦 YOU ARE ORDERING</div>
-    <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;">
-      <div id="ad-prod-img" style="width:110px;height:110px;min-width:110px;border-radius:10px;overflow:hidden;background:#F5F1E8;display:flex;align-items:center;justify-content:center;font-size:2.5rem;flex-shrink:0;">📦</div>
-      <div style="flex:1;min-width:160px;">
-        <div id="ad-prod-name" style="font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700;color:var(--green-dark);margin-bottom:6px;"></div>
-        <div id="ad-prod-price" style="font-size:1.4rem;font-weight:700;color:var(--green);font-family:'Outfit',sans-serif;margin-bottom:4px;"></div>
-        <div id="ad-prod-note" style="font-size:12.5px;color:var(--muted);line-height:1.5;"></div>
+  <!-- Ad product banner — shown when page opened from a Facebook/Instagram ad -->
+  <div id="ad-product-banner" style="display:none;" class="ad-banner">
+    <div class="ad-banner-tag">📦 YOU ARE ORDERING</div>
+    <div class="ad-banner-row">
+      <div class="ad-banner-img" id="ad-prod-img">📦</div>
+      <div style="flex:1;min-width:140px;">
+        <div class="ad-banner-name" id="ad-prod-name"></div>
+        <div class="ad-banner-price" id="ad-prod-price"></div>
+        <div class="ad-banner-note" id="ad-prod-note"></div>
       </div>
     </div>
-    <div style="margin-top:14px;padding-top:12px;border-top:1px solid #f0ede4;font-size:12.5px;color:var(--muted);">✅ Fill in your details below and we'll confirm your order via WhatsApp</div>
+    <div class="ad-banner-foot">✅ Fill in your details below and we'll confirm via WhatsApp</div>
   </div>
 
   <!-- Urgency banner -->
   <div class="urgency-bar">
     <span>🔥</span>
-    <div>
-      <strong>Limited Stock — Order Now!</strong>
-      Free delivery on orders over KSh 10,000 countrywide.
-    </div>
+    <div><strong>Limited Stock — Order Now!</strong> Free delivery on orders over KSh 10,000 countrywide.</div>
   </div>
 
   <!-- Mini trust -->
@@ -221,72 +204,47 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     <span class="mini-badge">🔒 M-Pesa Secure</span>
   </div>
 
-  <!-- Step 1: Product selection -->
-  <div class="order-section-head">
-    <h2>Step 1 — Choose Your Products</h2>
-    <p>Tap a product to select it, then set the quantity. Select as many as you need.</p>
+  <!-- Browse nudge -->
+  <div class="shop-nudge">
+    🛍️ Not sure what to order?
+    <a href="shop.html">Browse our full catalogue →</a>
+    then come back to order.
   </div>
 
-  <!-- Category filter -->
-  <div class="cat-tabs" id="cat-tabs">
-    <button class="cat-tab active" onclick="filterCat('all',this)">All</button>
-    <button class="cat-tab" onclick="filterCat('duvets',this)">🛏 Duvets & Bedding</button>
-    <button class="cat-tab" onclick="filterCat('furniture',this)">🪑 Furniture</button>
-    <button class="cat-tab" onclick="filterCat('kitchenware',this)">🍽 Kitchenware</button>
-    <button class="cat-tab" onclick="filterCat('carpets',this)">🏠 Carpets & Rugs</button>
-    <button class="cat-tab" onclick="filterCat('bath',this)">🛁 Bath & Towels</button>
-  </div>
-
-  <!-- Product search -->
-  <div class="pick-search-wrap">
-    <span class="pick-search-icon">🔍</span>
-    <input type="text" id="pick-search" placeholder="Search products..." oninput="searchProducts(this.value)"/>
-  </div>
-
-  <!-- Selected summary bar -->
-  <div class="order-summary-bar" id="order-summary-bar">
-    <div>
-      <strong id="sum-text">0 products selected</strong>
-      <br/><span style="font-size:11.5px;opacity:.8;">Scroll down to fill in your details</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <span class="order-summary-count" id="sum-total">KSh 0</span>
-      <button onclick="document.getElementById('order-form-section').scrollIntoView({behavior:'smooth'})"
-        style="background:#fff;color:var(--green);border:none;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;">
-        Continue ↓
-      </button>
-    </div>
-  </div>
-
-  <!-- Products grid -->
-  <div class="product-picker" id="product-picker">
-    <!-- JS rendered -->
-  </div>
-
-  <!-- Step 2: Your details -->
-  <div class="order-section-head" id="order-form-section" style="margin-top:36px;">
-    <h2>Step 2 — Your Details</h2>
-    <p>We'll WhatsApp you to confirm your order and arrange delivery.</p>
-  </div>
-
+  <!-- ORDER FORM -->
   <div class="order-form-card">
-    <h3>📋 Order Details</h3>
+    <h3>📋 Your Order Details</h3>
+
+    <!-- What do you want -->
+    <div class="form-group">
+      <label for="o-items">What would you like to order? <span class="req">*</span></label>
+      <textarea
+        class="order-desc-area"
+        id="o-items"
+        placeholder="e.g. 6×6 King Duvet Set (cream colour), 2× Bath Towel Set, Fluffy Carpet 5×8 ft (grey)..."
+        required></textarea>
+      <span class="helper">Be as specific as you like — colour, size, quantity, model. We'll confirm everything via WhatsApp before delivery.</span>
+    </div>
+
+    <!-- Name + Phone -->
     <div class="form-row">
-      <div class="form-group">
-        <label for="o-name">Full Name *</label>
+      <div class="form-group" style="margin-bottom:0;">
+        <label for="o-name">Full Name <span class="req">*</span></label>
         <input type="text" id="o-name" placeholder="e.g. Jane Wanjiku" required/>
       </div>
-      <div class="form-group">
-        <label for="o-phone">Phone / WhatsApp *</label>
+      <div class="form-group" style="margin-bottom:0;">
+        <label for="o-phone">Phone / WhatsApp <span class="req">*</span></label>
         <input type="tel" id="o-phone" placeholder="e.g. 0716 060029" required/>
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label for="o-location">Delivery Location *</label>
+
+    <!-- Location + Payment -->
+    <div class="form-row" style="margin-top:14px;">
+      <div class="form-group" style="margin-bottom:0;">
+        <label for="o-location">Delivery Location <span class="req">*</span></label>
         <input type="text" id="o-location" placeholder="e.g. Westlands, Nairobi" required/>
       </div>
-      <div class="form-group">
+      <div class="form-group" style="margin-bottom:0;">
         <label for="o-payment">Payment Method</label>
         <select id="o-payment">
           <option value="mpesa">M-Pesa</option>
@@ -295,24 +253,24 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
         </select>
       </div>
     </div>
-    <div class="form-group" style="margin-bottom:18px;">
-      <label for="o-notes">Special Notes (optional)</label>
-      <textarea id="o-notes" placeholder="e.g. colour preference, size, specific model, or any other instructions..."></textarea>
+
+    <!-- Additional notes -->
+    <div class="form-group" style="margin-top:14px;">
+      <label for="o-notes">Additional Notes (optional)</label>
+      <textarea id="o-notes" style="min-height:60px;" placeholder="e.g. call before delivery, gate code, preferred time..."></textarea>
     </div>
 
-    <div style="display:flex;gap:10px;margin-bottom:8px;">
-      <button class="order-submit-btn" id="order-submit-btn" onclick="submitOrder()" style="flex:1;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <!-- Submit -->
+    <div class="submit-row">
+      <button class="btn-submit btn-submit-wa" onclick="submitOrder()">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp Order
       </button>
-      <button class="order-submit-btn" onclick="submitOrderEmail()" style="flex:1;background:#161616;">
+      <button class="btn-submit btn-submit-em" onclick="submitOrderEmail()">
         ✉️ Email Order
       </button>
     </div>
-
-    <p style="text-align:center;font-size:11.5px;color:var(--muted);margin-top:4px;">
-      WhatsApp for instant reply · Email for a detailed order record
-    </p>
+    <p class="submit-hint">WhatsApp for instant reply · Email for a detailed order record</p>
   </div>
 
 </div>
@@ -385,24 +343,6 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
   </div>
   <div class="drawer-items" id="wl-items">
     <div class="drawer-empty"><div class="drawer-empty-icon">♡</div><p>Wishlist is empty</p></div>
-  </div>
-</div>
-
-<!-- QUICK VIEW -->
-<div class="modal" id="qv-modal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeQuickView()">✕</button>
-    <img class="modal-img" id="qv-img" src="" alt=""/>
-    <div class="modal-body">
-      <div class="modal-cat" id="qv-cat"></div>
-      <div class="modal-name" id="qv-name"></div>
-      <div class="modal-note" id="qv-note"></div>
-      <div class="modal-price-row"><span class="modal-price" id="qv-price"></span><span class="modal-old" id="qv-old"></span></div>
-      <div class="modal-actions">
-        <button class="btn-green" onclick="qvAddToCart()" style="flex:1;">🛒 Add to Cart</button>
-        <button id="qv-wl-btn" onclick="qvToggleWishlist()" style="width:42px;height:42px;border-radius:6px;border:1.5px solid #eee;background:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;">♡</button>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -500,247 +440,79 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     window.location = q ? 'shop.html?q=' + encodeURIComponent(q) : 'shop.html';
   }
 
-  // ── ORDER PAGE LOGIC ─────────────────────────────────
-
-  var ORDER_PRODUCTS = [
-    // Duvets & Bedding
-    { id:'d1', name:'6×6 Duvet Set (King)', cat:'duvets', price:5500, oldPrice:7000, emoji:'🛏️' },
-    { id:'d2', name:'5×6 Duvet Set (Queen)', cat:'duvets', price:4500, oldPrice:6000, emoji:'🛏' },
-    { id:'d3', name:'4×6 Single Duvet Set', cat:'duvets', price:3200, oldPrice:4500, emoji:'🛌' },
-    { id:'d4', name:'Fitted Bedsheet Set (6×6)', cat:'duvets', price:2800, oldPrice:3800, emoji:'🧺' },
-    { id:'d5', name:'White Hotel Bedsheet (6×6)', cat:'duvets', price:2500, oldPrice:3500, emoji:'🏨' },
-    { id:'d6', name:'Mattress Protector (6×6)', cat:'duvets', price:2200, oldPrice:3000, emoji:'🛡️' },
-
-    // Furniture
-    { id:'f1', name:'4-Stand Mosquito Net', cat:'furniture', price:4800, oldPrice:6500, emoji:'🪟' },
-    { id:'f2', name:'Marble Coffee Table', cat:'furniture', price:12500, oldPrice:16000, emoji:'🪑' },
-    { id:'f3', name:'Marble Dining Table (4-seater)', cat:'furniture', price:18000, oldPrice:24000, emoji:'🍽️' },
-    { id:'f4', name:'Sofa Set (3+2+1)', cat:'furniture', price:28000, oldPrice:36000, emoji:'🛋️' },
-    { id:'f5', name:'TV Stand / Cabinet', cat:'furniture', price:8500, oldPrice:12000, emoji:'📺' },
-    { id:'f6', name:'Bookshelf / Display Rack', cat:'furniture', price:6500, oldPrice:9000, emoji:'📚' },
-
-    // Kitchenware
-    { id:'k1', name:'Dinner Set (24-piece)', cat:'kitchenware', price:3800, oldPrice:5500, emoji:'🍽️' },
-    { id:'k2', name:'Non-Stick Cookware Set', cat:'kitchenware', price:4500, oldPrice:6500, emoji:'🍳' },
-    { id:'k3', name:'Electric Kettle', cat:'kitchenware', price:2200, oldPrice:3200, emoji:'🫖' },
-    { id:'k4', name:'Food Storage Set (10pcs)', cat:'kitchenware', price:1800, oldPrice:2800, emoji:'📦' },
-
-    // Carpets & Rugs
-    { id:'c1', name:'Fluffy Shaggy Carpet (5×8 ft)', cat:'carpets', price:4200, oldPrice:5800, emoji:'🏠' },
-    { id:'c2', name:'Fluffy Shaggy Carpet (7×10 ft)', cat:'carpets', price:7500, oldPrice:10000, emoji:'🏡' },
-    { id:'c3', name:'Centre Rug / Mat', cat:'carpets', price:1800, oldPrice:2600, emoji:'🪣' },
-
-    // Bath & Towels
-    { id:'b1', name:'Bath Towel Set (4-piece)', cat:'bath', price:2800, oldPrice:4000, emoji:'🛁' },
-    { id:'b2', name:'Bath Gown / Robe', cat:'bath', price:3200, oldPrice:4500, emoji:'🥻' },
-    { id:'b3', name:'Premium Towel Pack (6pcs)', cat:'bath', price:3800, oldPrice:5500, emoji:'🧻' },
-  ];
-
-  var selectedItems = {}; // { id: qty }
-  var currentCat = 'all';
-  var searchQuery = '';
-
-  function fmt(n) { return 'KSh ' + n.toLocaleString(); }
-
-  function renderProducts() {
-    var filtered = ORDER_PRODUCTS.filter(function(p) {
-      var catOk = currentCat === 'all' || p.cat === currentCat;
-      var searchOk = !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase());
-      return catOk && searchOk;
-    });
-
-    var grid = document.getElementById('product-picker');
-    if (!filtered.length) {
-      grid.innerHTML = '<div class="pick-empty">No products found. <button style="background:none;border:none;color:var(--green);cursor:pointer;font-weight:700;" onclick="clearFilters()">Clear filters</button></div>';
-      return;
-    }
-
-    grid.innerHTML = filtered.map(function(p) {
-      var sel = !!selectedItems[p.id];
-      var qty = selectedItems[p.id] || 1;
-      return '<div class="pick-card' + (sel ? ' selected' : '') + '" id="pc-' + p.id + '" onclick="toggleProduct(\'' + p.id + '\')">' +
-        '<div class="pick-check">✓</div>' +
-        '<div class="pick-card-img">' + p.emoji + '</div>' +
-        '<div class="pick-card-body">' +
-          '<div class="pick-card-name">' + p.name + '</div>' +
-          '<div>' +
-            '<span class="pick-card-price">' + fmt(p.price) + '</span>' +
-            '<span class="pick-card-old">' + fmt(p.oldPrice) + '</span>' +
-          '</div>' +
-        '</div>' +
-        '<div class="qty-row" onclick="event.stopPropagation()">' +
-          '<button class="qty-btn" onclick="changeQty(\'' + p.id + '\',-1)">−</button>' +
-          '<span class="qty-val" id="qty-' + p.id + '">' + qty + '</span>' +
-          '<button class="qty-btn" onclick="changeQty(\'' + p.id + '\',1)">+</button>' +
-        '</div>' +
-      '</div>';
-    }).join('');
+  function getFields() {
+    return {
+      items:    document.getElementById('o-items').value.trim(),
+      name:     document.getElementById('o-name').value.trim(),
+      phone:    document.getElementById('o-phone').value.trim(),
+      location: document.getElementById('o-location').value.trim(),
+      payment:  document.getElementById('o-payment').value,
+      notes:    document.getElementById('o-notes').value.trim()
+    };
   }
 
-  function toggleProduct(id) {
-    if (selectedItems[id]) {
-      delete selectedItems[id];
-    } else {
-      selectedItems[id] = 1;
-    }
-    renderProducts();
-    updateSummary();
+  function validateFields(f) {
+    if (!f.items)    { alert('Please describe what you would like to order.'); document.getElementById('o-items').focus(); return false; }
+    if (!f.name)     { alert('Please enter your name.'); document.getElementById('o-name').focus(); return false; }
+    if (!f.phone)    { alert('Please enter your phone number.'); document.getElementById('o-phone').focus(); return false; }
+    if (!f.location) { alert('Please enter your delivery location.'); document.getElementById('o-location').focus(); return false; }
+    return true;
   }
 
-  function changeQty(id, delta) {
-    if (!selectedItems[id]) return;
-    selectedItems[id] = Math.max(1, (selectedItems[id] || 1) + delta);
-    var el = document.getElementById('qty-' + id);
-    if (el) el.textContent = selectedItems[id];
-    updateSummary();
+  function payLabel(val) {
+    return { mpesa: 'M-Pesa', cod: 'Cash on Delivery', already_paid: 'Already Paid via M-Pesa' }[val] || val;
   }
 
-  function updateSummary() {
-    var ids = Object.keys(selectedItems);
-    var total = ids.reduce(function(sum, id) {
-      var p = ORDER_PRODUCTS.find(function(x){ return x.id === id; });
-      return p ? sum + p.price * selectedItems[id] : sum;
-    }, 0);
-    var bar = document.getElementById('order-summary-bar');
-    var sumText = document.getElementById('sum-text');
-    var sumTotal = document.getElementById('sum-total');
-    if (ids.length) {
-      bar.classList.add('show');
-      sumText.textContent = ids.length + ' product' + (ids.length > 1 ? 's' : '') + ' selected';
-      sumTotal.textContent = fmt(total);
-    } else {
-      bar.classList.remove('show');
-    }
-  }
-
-  function filterCat(cat, btn) {
-    currentCat = cat;
-    document.querySelectorAll('.cat-tab').forEach(function(t){ t.classList.remove('active'); });
-    btn.classList.add('active');
-    renderProducts();
-  }
-
-  function searchProducts(q) {
-    searchQuery = q;
-    renderProducts();
-  }
-
-  function clearFilters() {
-    currentCat = 'all';
-    searchQuery = '';
-    document.getElementById('pick-search').value = '';
-    document.querySelectorAll('.cat-tab').forEach(function(t){ t.classList.remove('active'); });
-    document.querySelector('.cat-tab').classList.add('active');
-    renderProducts();
+  function firePixel() {
+    try {
+      if (typeof fbq === 'function') fbq('track', 'InitiateCheckout', { currency: 'KES' });
+    } catch(e) {}
   }
 
   function submitOrder() {
-    var ids = Object.keys(selectedItems);
-    var name = document.getElementById('o-name').value.trim();
-    var phone = document.getElementById('o-phone').value.trim();
-    var location = document.getElementById('o-location').value.trim();
-    var payment = document.getElementById('o-payment').value;
-    var notes = document.getElementById('o-notes').value.trim();
+    var f = getFields();
+    if (!validateFields(f)) return;
+    firePixel();
 
-    if (!name) { alert('Please enter your name.'); document.getElementById('o-name').focus(); return; }
-    if (!phone) { alert('Please enter your phone number.'); document.getElementById('o-phone').focus(); return; }
-    if (!location) { alert('Please enter your delivery location.'); document.getElementById('o-location').focus(); return; }
-    if (!ids.length) { alert('Please select at least one product.'); window.scrollTo({top:0,behavior:'smooth'}); return; }
+    var lines = [
+      '🛍️ *NEW ORDER — Irene Household Collections*', '',
+      '👤 *Name:* ' + f.name,
+      '📞 *Phone:* ' + f.phone,
+      '📍 *Location:* ' + f.location,
+      '💳 *Payment:* ' + payLabel(f.payment),
+      '',
+      '📦 *Order:*',
+      f.items
+    ];
+    if (f.notes) { lines.push(''); lines.push('📝 *Notes:* ' + f.notes); }
+    lines.push('', 'Please confirm and advise on delivery. Thank you! 🙏');
 
-    // Fire Meta Pixel InitiateCheckout
-    var total = ids.reduce(function(sum, id) {
-      var p = ORDER_PRODUCTS.find(function(x){ return x.id === id; });
-      return p ? sum + p.price * selectedItems[id] : sum;
-    }, 0);
-    try {
-      if (typeof fbq === 'function') {
-        fbq('track', 'InitiateCheckout', {
-          num_items: ids.length,
-          value: total,
-          currency: 'KES'
-        });
-      }
-    } catch(e) {}
-
-    // Build WhatsApp message
-    var payLabel = { mpesa: 'M-Pesa', cod: 'Cash on Delivery', already_paid: 'Already Paid via M-Pesa' }[payment] || payment;
-    var lines = ['🛍️ *NEW ORDER — Irene Household Collections*', ''];
-    lines.push('👤 *Name:* ' + name);
-    lines.push('📞 *Phone:* ' + phone);
-    lines.push('📍 *Location:* ' + location);
-    lines.push('💳 *Payment:* ' + payLabel);
-    lines.push('');
-    lines.push('📦 *Products Ordered:*');
-
-    ids.forEach(function(id) {
-      var p = ORDER_PRODUCTS.find(function(x){ return x.id === id; });
-      if (p) {
-        var lineTotal = p.price * selectedItems[id];
-        lines.push('  • ' + p.name + ' × ' + selectedItems[id] + ' — ' + fmt(lineTotal));
-      }
-    });
-
-    lines.push('');
-    lines.push('💰 *Order Total: ' + fmt(total) + '*');
-    if (notes) lines.push('📝 *Notes:* ' + notes);
-    lines.push('');
-    lines.push('Please confirm this order and advise on delivery timeline. Thank you! 🙏');
-
-    var msg = lines.join('\n');
-    var url = 'https://wa.me/254716060029?text=' + encodeURIComponent(msg);
-    window.open(url, '_blank');
+    window.open('https://wa.me/254716060029?text=' + encodeURIComponent(lines.join('\n')), '_blank');
   }
 
   function submitOrderEmail() {
-    var ids = Object.keys(selectedItems);
-    var name = document.getElementById('o-name').value.trim();
-    var phone = document.getElementById('o-phone').value.trim();
-    var location = document.getElementById('o-location').value.trim();
-    var payment = document.getElementById('o-payment').value;
-    var notes = document.getElementById('o-notes').value.trim();
+    var f = getFields();
+    if (!validateFields(f)) return;
+    firePixel();
 
-    if (!name) { alert('Please enter your name.'); document.getElementById('o-name').focus(); return; }
-    if (!phone) { alert('Please enter your phone number.'); document.getElementById('o-phone').focus(); return; }
-    if (!location) { alert('Please enter your delivery location.'); document.getElementById('o-location').focus(); return; }
-    if (!ids.length) { alert('Please select at least one product.'); window.scrollTo({top:0,behavior:'smooth'}); return; }
-
-    var total = ids.reduce(function(sum, id) {
-      var p = ORDER_PRODUCTS.find(function(x){ return x.id === id; });
-      return p ? sum + p.price * selectedItems[id] : sum;
-    }, 0);
-    try {
-      if (typeof fbq === 'function') {
-        fbq('track', 'InitiateCheckout', { num_items: ids.length, value: total, currency: 'KES' });
-      }
-    } catch(e) {}
-
-    var payLabel = { mpesa: 'M-Pesa', cod: 'Cash on Delivery', already_paid: 'Already Paid via M-Pesa' }[payment] || payment;
-    var subject = 'New Order from ' + name + ' — Irene Household Collections';
-    var body = ['NEW ORDER — Irene Household Collections', '',
-      'Name: ' + name,
-      'Phone: ' + phone,
-      'Delivery Location: ' + location,
-      'Payment: ' + payLabel,
+    var subject = 'New Order from ' + f.name + ' — Irene Household Collections';
+    var body = [
+      'NEW ORDER — Irene Household Collections', '',
+      'Name: ' + f.name,
+      'Phone: ' + f.phone,
+      'Delivery Location: ' + f.location,
+      'Payment: ' + payLabel(f.payment),
       '',
-      'Products Ordered:'];
-
-    ids.forEach(function(id) {
-      var p = ORDER_PRODUCTS.find(function(x){ return x.id === id; });
-      if (p) body.push('  - ' + p.name + ' x' + selectedItems[id] + ' — ' + fmt(p.price * selectedItems[id]));
-    });
-
-    body.push('', 'Order Total: ' + fmt(total));
-    if (notes) body.push('Notes: ' + notes);
-    body.push('', 'Please confirm this order and advise on delivery. Thank you!');
+      'Order:', f.items
+    ];
+    if (f.notes) { body.push('', 'Notes: ' + f.notes); }
+    body.push('', 'Please confirm and advise on delivery. Thank you!');
 
     window.location.href = 'mailto:irenehouseholds@gmail.com?subject=' +
       encodeURIComponent(subject) + '&body=' + encodeURIComponent(body.join('\n'));
   }
 
-  // Init
-  renderProducts();
-
-  // Show product context if opened from an ad (?name=X&photo=X&price=X or ?id=X)
+  // Show product context if page was opened from an ad (?name=X&photo=X&price=X or ?id=X)
   (function() {
     var params = new URLSearchParams(window.location.search);
     var banner = document.getElementById('ad-product-banner');
@@ -750,22 +522,18 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
       banner.style.display = 'block';
       document.getElementById('ad-prod-name').textContent = decodeURIComponent(name);
       if (price) {
-        var priceNum = parseInt(price);
-        if (!isNaN(priceNum) && priceNum > 0) {
-          document.getElementById('ad-prod-price').textContent = 'KSh ' + priceNum.toLocaleString();
-        }
+        var n = parseInt(price);
+        if (!isNaN(n) && n > 0) document.getElementById('ad-prod-price').textContent = 'KSh ' + n.toLocaleString();
       }
       if (note) document.getElementById('ad-prod-note').textContent = decodeURIComponent(note);
       var imgEl = document.getElementById('ad-prod-img');
       if (photo) {
-        imgEl.innerHTML = '<img src="' + decodeURIComponent(photo) + '" alt="Product" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.innerHTML=\'📦\'"/>';
-      } else {
-        imgEl.textContent = '📦';
+        imgEl.innerHTML = '<img src="' + decodeURIComponent(photo) + '" alt="Product" onerror="this.parentElement.innerHTML=\'📦\'"/>';
       }
-      var notesEl = document.getElementById('o-notes');
-      if (notesEl && !notesEl.value) {
+      var itemsEl = document.getElementById('o-items');
+      if (itemsEl && !itemsEl.value) {
         var priceStr = price && parseInt(price) > 0 ? ' — KSh ' + parseInt(price).toLocaleString() : '';
-        notesEl.value = 'I want to order: ' + decodeURIComponent(name) + priceStr;
+        itemsEl.value = decodeURIComponent(name) + priceStr;
       }
       try {
         if (typeof fbq === 'function') {
@@ -796,12 +564,25 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     if (e.target && e.target.tagName === 'IMG') {
       var img = e.target;
       img.style.display = 'none';
-      if (img.parentElement && img.parentElement.classList.contains('card-img')) {
-        img.parentElement.style.background = 'linear-gradient(135deg,#F5F1E8,#E8D9A8)';
-      }
     }
   }, true);
 </script>
+
+<!-- Floating Email Button -->
+<a href="mailto:irenehouseholds@gmail.com?subject=Order Inquiry&body=Hello Irene,%0A%0AI would like to place an order. Please get back to me.%0A%0AThank you."
+   id="float-email"
+   style="position:fixed;bottom:80px;right:16px;z-index:1500;
+          background:#161616;color:#fff;
+          width:52px;height:52px;border-radius:50%;
+          display:flex;align-items:center;justify-content:center;
+          font-size:22px;text-decoration:none;
+          box-shadow:0 4px 16px rgba(0,0,0,.25);
+          transition:transform .2s,box-shadow .2s;"
+   onmouseover="this.style.transform='scale(1.12)'"
+   onmouseout="this.style.transform='scale(1)'"
+   title="Order via Email">
+  ✉️
+</a>
 
 </body>
 </html>
