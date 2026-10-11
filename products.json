@@ -2280,6 +2280,26 @@
     "inStock": true
   },
   {
+    "id": 294,
+    "cat": "seatcovers",
+    "name": "woolen sherpa throw blanket",
+    "note": "woolen sherpa throw blanket",
+    "price": 2000,
+    "old": 2500,
+    "img": "seatcover.30.jpg",
+    "imgs": [
+      "seatcover.30.jpg",
+      "seatcover.30b.jpg",
+      "seatcover.30c.jpg",
+      "seatcover.30d.jpg",
+      "seatcover.30e.jpg",
+      "seatcover.30f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
