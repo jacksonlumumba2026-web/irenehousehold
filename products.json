@@ -2360,6 +2360,26 @@
     "inStock": true
   },
   {
+    "id": 298,
+    "cat": "seatcovers",
+    "name": "cosy fleece woolen",
+    "note": "cosy fleece woolen",
+    "price": 1999,
+    "old": 2500,
+    "img": "seatcover.34.jpg",
+    "imgs": [
+      "seatcover.34.jpg",
+      "seatcover.34b.jpg",
+      "seatcover.34c.jpg",
+      "seatcover.34d.jpg",
+      "seatcover.34e.jpg",
+      "seatcover.34f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
