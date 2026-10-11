@@ -2380,6 +2380,26 @@
     "inStock": true
   },
   {
+    "id": 299,
+    "cat": "seatcovers",
+    "name": "Boho throw pillow cases",
+    "note": "Boho throw pillow cases",
+    "price": 850,
+    "old": 1000,
+    "img": "seatcover.35.jpg",
+    "imgs": [
+      "seatcover.35.jpg",
+      "seatcover.35b.jpg",
+      "seatcover.35c.jpg",
+      "seatcover.35d.jpg",
+      "seatcover.35e.jpg",
+      "seatcover.35f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
