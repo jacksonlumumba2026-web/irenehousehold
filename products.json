@@ -4240,6 +4240,26 @@
     "inStock": true
   },
   {
+    "id": 300,
+    "cat": "carpets",
+    "name": "fluffy caarpet",
+    "note": "fluffy carpets\n size 5*8",
+    "price": 1999,
+    "old": 2500,
+    "img": "carpet.29.jpg",
+    "imgs": [
+      "carpet.29.jpg",
+      "carpet.29b.jpg",
+      "carpet.29c.jpg",
+      "carpet.29d.jpg",
+      "carpet.29e.jpg",
+      "carpet.29f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
