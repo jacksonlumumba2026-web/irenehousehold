@@ -2320,6 +2320,26 @@
     "inStock": true
   },
   {
+    "id": 296,
+    "cat": "seatcovers",
+    "name": "velvet fleece blanket",
+    "note": "velvet fleece blanket\nsize 6*7",
+    "price": 1000,
+    "old": 1200,
+    "img": "seatcover.32.jpg",
+    "imgs": [
+      "seatcover.32.jpg",
+      "seatcover.32b.jpg",
+      "seatcover.32c.jpg",
+      "seatcover.32d.jpg",
+      "seatcover.32e.jpg",
+      "seatcover.32f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 62,
     "cat": "bath",
     "name": "3 in 1 Towel Set",
