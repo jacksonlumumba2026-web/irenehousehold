@@ -3700,6 +3700,26 @@
     "inStock": true
   },
   {
+    "id": 291,
+    "cat": "decor",
+    "name": "3 pc curtains",
+    "note": "3 pc curtains\n2 curtains each 1.5m\n1 sheer 2m",
+    "price": 2400,
+    "old": 3000,
+    "img": "decor.15.jpg",
+    "imgs": [
+      "decor.15.jpg",
+      "decor.15b.jpg",
+      "decor.15c.jpg",
+      "decor.15d.jpg",
+      "decor.15e.jpg",
+      "decor.15f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 115,
     "cat": "carpets",
     "name": "Turkish Doormat",
