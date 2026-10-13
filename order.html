@@ -28,26 +28,35 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1296629684460965');
 fbq('track', 'PageView');
-</script>
+<\/script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
 <style>
-/* ── ORDER PAGE STYLES ──────────────────────────────────── */
+/* ── ORDER PAGE STYLES ───────────────────────────── */
 .order-wrap{max-width:680px;margin:0 auto;padding:0 16px 80px;}
 
-/* Ad product banner */
-.ad-banner{background:#fff;border-radius:12px;border:2px solid var(--green);padding:18px 20px;margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.09);}
-.ad-banner-tag{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.5px;margin-bottom:12px;}
-.ad-banner-row{display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;}
-.ad-banner-img{width:90px;height:90px;min-width:90px;border-radius:10px;overflow:hidden;background:#F5F1E8;display:flex;align-items:center;justify-content:center;font-size:2.2rem;flex-shrink:0;}
-.ad-banner-img img{width:100%;height:100%;object-fit:cover;}
-.ad-banner-name{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;color:var(--green-dark);margin-bottom:4px;}
-.ad-banner-price{font-size:1.25rem;font-weight:700;color:var(--green);font-family:'Outfit',sans-serif;margin-bottom:4px;}
+/* Product card banner — shown when coming from an ad */
+.ad-banner{background:#fff;border-radius:16px;border:2px solid var(--green);padding:20px;margin-bottom:24px;box-shadow:0 6px 28px rgba(0,0,0,.10);}
+.ad-banner-tag{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.5px;margin-bottom:14px;}
+.ad-banner-row{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;}
+.ad-banner-img{width:110px;height:110px;min-width:110px;border-radius:12px;overflow:hidden;background:#F5F1E8;display:flex;align-items:center;justify-content:center;font-size:2.8rem;flex-shrink:0;border:1px solid #ebe8e0;}
+.ad-banner-img img{width:100%;height:100%;object-fit:cover;border-radius:12px;}
+.ad-banner-info{flex:1;min-width:140px;}
+.ad-banner-name{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:var(--green-dark);margin-bottom:4px;line-height:1.3;}
+.ad-banner-price{font-size:1.35rem;font-weight:800;color:var(--green);font-family:'Outfit',sans-serif;margin-bottom:6px;}
 .ad-banner-note{font-size:12px;color:var(--muted);line-height:1.5;}
-.ad-banner-foot{margin-top:12px;padding-top:10px;border-top:1px solid #f0ede4;font-size:12px;color:var(--muted);}
+
+/* Colour / size selectors inside the product card */
+.ad-variants{margin-top:14px;padding-top:14px;border-top:1px solid #ebe8e0;display:flex;flex-wrap:wrap;gap:12px;}
+.ad-variant-group{display:flex;flex-direction:column;gap:4px;flex:1;min-width:130px;}
+.ad-variant-group label{font-size:11px;font-weight:700;color:#555;letter-spacing:.3px;}
+.ad-variant-group select{border:1.5px solid #d5d0c8;border-radius:8px;padding:9px 10px;font-size:13px;font-family:inherit;color:#1a1a1a;background:#faf9f6;outline:none;cursor:pointer;}
+.ad-variant-group select:focus{border-color:var(--green);}
+
+.ad-banner-foot{margin-top:14px;padding-top:10px;border-top:1px solid #ebe8e0;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;}
 
 /* Urgency bar */
 .urgency-bar{background:linear-gradient(90deg,#b91c1c,#dc2626);color:#fff;border-radius:10px;padding:13px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;}
@@ -82,12 +91,18 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 
 /* Submit buttons */
 .submit-row{display:flex;gap:10px;margin-top:4px;}
-.btn-submit{flex:1;border:none;padding:15px 10px;font-size:14px;font-weight:700;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .18s;}
+.btn-submit{flex:1;border:none;padding:15px 10px;font-size:14px;font-weight:700;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .18s,opacity .18s;}
 .btn-submit-wa{background:#25d366;color:#fff;}
 .btn-submit-wa:hover{background:#1da851;}
 .btn-submit-em{background:#161616;color:#fff;}
 .btn-submit-em:hover{background:#333;}
+.btn-submit:disabled{opacity:.6;cursor:not-allowed;}
 .submit-hint{text-align:center;font-size:11.5px;color:var(--muted);margin-top:8px;}
+
+/* Inline success/error message */
+.form-msg{border-radius:9px;padding:12px 16px;font-size:13px;font-weight:600;margin-top:12px;display:none;}
+.form-msg.ok{background:#d1fae5;color:#065f46;}
+.form-msg.err{background:#fee2e2;color:#991b1b;}
 
 /* Shop link nudge */
 .shop-nudge{background:#f5f1e8;border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:var(--green-dark);display:flex;align-items:center;gap:10px;}
@@ -175,17 +190,34 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 <!-- ORDER PAGE CONTENT -->
 <div class="order-wrap">
 
-  <!-- Ad product banner — shown when page opened from a Facebook/Instagram ad -->
+  <!-- Product card — shown when page opened from a Facebook/Instagram ad -->
   <div id="ad-product-banner" style="display:none;" class="ad-banner">
     <div class="ad-banner-tag">📦 YOU ARE ORDERING</div>
     <div class="ad-banner-row">
       <div class="ad-banner-img" id="ad-prod-img">📦</div>
-      <div style="flex:1;min-width:140px;">
+      <div class="ad-banner-info">
         <div class="ad-banner-name" id="ad-prod-name"></div>
         <div class="ad-banner-price" id="ad-prod-price"></div>
         <div class="ad-banner-note" id="ad-prod-note"></div>
       </div>
     </div>
+
+    <!-- Colour / Size selectors — populated from URL params -->
+    <div class="ad-variants" id="ad-variants" style="display:none;">
+      <div class="ad-variant-group" id="ad-color-group" style="display:none;">
+        <label>🎨 Choose Colour</label>
+        <select id="ad-color" onchange="syncVariantsToOrder()">
+          <option value="">— Select colour —</option>
+        </select>
+      </div>
+      <div class="ad-variant-group" id="ad-size-group" style="display:none;">
+        <label>📐 Choose Size</label>
+        <select id="ad-size" onchange="syncVariantsToOrder()">
+          <option value="">— Select size —</option>
+        </select>
+      </div>
+    </div>
+
     <div class="ad-banner-foot">✅ Fill in your details below and we'll confirm via WhatsApp</div>
   </div>
 
@@ -266,14 +298,32 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
         <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         WhatsApp Order
       </button>
-      <button class="btn-submit btn-submit-em" onclick="submitOrderEmail()">
+      <button class="btn-submit btn-submit-em" id="btn-email-order" onclick="submitOrderEmail()">
         ✉️ Email Order
       </button>
     </div>
+    <div class="form-msg" id="email-msg"></div>
     <p class="submit-hint">WhatsApp for instant reply · Email for a detailed order record</p>
   </div>
 
 </div>
+
+<!-- Hidden FormSubmit form for direct email delivery -->
+<form id="formsubmit-form"
+      action="https://formsubmit.co/irenehouseholds@gmail.com"
+      method="POST"
+      style="display:none;"
+      target="_blank">
+  <input type="hidden" name="_subject"  id="fs-subject"/>
+  <input type="hidden" name="_captcha"  value="false"/>
+  <input type="hidden" name="_template" value="table"/>
+  <input type="hidden" name="Name"      id="fs-name"/>
+  <input type="hidden" name="Phone"     id="fs-phone"/>
+  <input type="hidden" name="Location"  id="fs-location"/>
+  <input type="hidden" name="Payment"   id="fs-payment"/>
+  <input type="hidden" name="Order"     id="fs-order"/>
+  <input type="hidden" name="Notes"     id="fs-notes"/>
+</form>
 
 <!-- FOOTER -->
 <footer>
@@ -375,7 +425,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
   </div>
 </nav>
 
-<!-- WHATSAPP COMMUNITY POPUP -->
+<!-- WHATSAPP COMMUNITY POPUP — delayed 2 min, shows once on order page -->
 <div class="wa-popup-overlay" id="wa-popup-overlay">
   <div class="wa-popup">
     <button class="wa-popup-close" onclick="closeWaPopup()">✕</button>
@@ -399,40 +449,23 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 </div>
 
 <script>
-  // WhatsApp Community Popup
-  var popupCount = 0;
-  var maxPopups  = 3;
-  var popupDelay = 60000;
-
+  // Community popup — delayed 2 min, once per session on order page
   function showWaPopup() {
-    if (popupCount >= maxPopups) return;
-    try {
-      var shown = parseInt(sessionStorage.getItem('wa_popup_count') || '0');
-      if (shown >= maxPopups) return;
-    } catch(e) {}
+    try { if (sessionStorage.getItem('wa_popup_shown')) return; } catch(e) {}
     document.getElementById('wa-popup-overlay').classList.add('show');
   }
-
   function closeWaPopup() {
     document.getElementById('wa-popup-overlay').classList.remove('show');
-    popupCount++;
-    try { sessionStorage.setItem('wa_popup_count', popupCount); } catch(e) {}
-    if (popupCount < maxPopups) setTimeout(showWaPopup, popupDelay);
+    try { sessionStorage.setItem('wa_popup_shown', '1'); } catch(e) {}
   }
-
-  setTimeout(showWaPopup, 30000);
-
+  setTimeout(showWaPopup, 120000);
   document.addEventListener('DOMContentLoaded', function() {
-    var overlay = document.getElementById('wa-popup-overlay');
-    if (overlay) {
-      overlay.addEventListener('click', function(e) {
-        if (e.target === this) closeWaPopup();
-      });
-    }
+    var ov = document.getElementById('wa-popup-overlay');
+    if (ov) ov.addEventListener('click', function(e){ if (e.target===this) closeWaPopup(); });
   });
-</script>
+<\/script>
 
-<script src="script.js"></script>
+<script src="script.js"><\/script>
 
 <script>
   function goSearch() {
@@ -451,6 +484,30 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     };
   }
 
+  // Returns chosen colour and size from the product card selectors
+  function getVariants() {
+    var c = document.getElementById('ad-color');
+    var s = document.getElementById('ad-size');
+    return {
+      color: (c && c.value) ? c.value : '',
+      size:  (s && s.value) ? s.value : ''
+    };
+  }
+
+  // When a variant changes, update the order textarea to reflect it
+  function syncVariantsToOrder() {
+    var banner = document.getElementById('ad-product-banner');
+    if (!banner || banner.style.display === 'none') return;
+    var name  = document.getElementById('ad-prod-name').textContent;
+    var price = document.getElementById('ad-prod-price').textContent;
+    var v     = getVariants();
+    var line  = name;
+    if (price) line += ' — ' + price;
+    if (v.color) line += ' | Colour: ' + v.color;
+    if (v.size)  line += ' | Size: '   + v.size;
+    document.getElementById('o-items').value = line;
+  }
+
   function validateFields(f) {
     if (!f.items)    { alert('Please describe what you would like to order.'); document.getElementById('o-items').focus(); return false; }
     if (!f.name)     { alert('Please enter your name.'); document.getElementById('o-name').focus(); return false; }
@@ -464,109 +521,170 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
   }
 
   function firePixel() {
-    try {
-      if (typeof fbq === 'function') fbq('track', 'InitiateCheckout', { currency: 'KES' });
-    } catch(e) {}
+    try { if (typeof fbq === 'function') fbq('track', 'InitiateCheckout', { currency: 'KES' }); } catch(e) {}
+  }
+
+  function buildOrderLines(f) {
+    var v = getVariants();
+    var lines = [
+      '🛍️ *NEW ORDER — Irene Household Collections*', '',
+      '👤 *Name:* '     + f.name,
+      '📞 *Phone:* '    + f.phone,
+      '📍 *Location:* ' + f.location,
+      '💳 *Payment:* '  + payLabel(f.payment),
+      '',
+      '📦 *Order:*',
+      f.items
+    ];
+    if (v.color) lines.push('🎨 *Colour:* ' + v.color);
+    if (v.size)  lines.push('📐 *Size:* '   + v.size);
+    if (f.notes) { lines.push(''); lines.push('📝 *Notes:* ' + f.notes); }
+    lines.push('', 'Please confirm and advise on delivery. Thank you! 🙏');
+    return lines;
   }
 
   function submitOrder() {
     var f = getFields();
     if (!validateFields(f)) return;
     firePixel();
-
-    var lines = [
-      '🛍️ *NEW ORDER — Irene Household Collections*', '',
-      '👤 *Name:* ' + f.name,
-      '📞 *Phone:* ' + f.phone,
-      '📍 *Location:* ' + f.location,
-      '💳 *Payment:* ' + payLabel(f.payment),
-      '',
-      '📦 *Order:*',
-      f.items
-    ];
-    if (f.notes) { lines.push(''); lines.push('📝 *Notes:* ' + f.notes); }
-    lines.push('', 'Please confirm and advise on delivery. Thank you! 🙏');
-
-    window.open('https://wa.me/254716060029?text=' + encodeURIComponent(lines.join('\n')), '_blank');
+    window.open('https://wa.me/254716060029?text=' + encodeURIComponent(buildOrderLines(f).join('\n')), '_blank');
   }
 
+  // Email via FormSubmit AJAX — delivers directly to irenehouseholds@gmail.com
   function submitOrderEmail() {
     var f = getFields();
     if (!validateFields(f)) return;
     firePixel();
 
-    var subject = 'New Order from ' + f.name + ' — Irene Household Collections';
-    var body = [
-      'NEW ORDER — Irene Household Collections', '',
-      'Name: ' + f.name,
-      'Phone: ' + f.phone,
-      'Delivery Location: ' + f.location,
-      'Payment: ' + payLabel(f.payment),
-      '',
-      'Order:', f.items
-    ];
-    if (f.notes) { body.push('', 'Notes: ' + f.notes); }
-    body.push('', 'Please confirm and advise on delivery. Thank you!');
+    var v   = getVariants();
+    var btn = document.getElementById('btn-email-order');
+    var msg = document.getElementById('email-msg');
 
-    window.location.href = 'mailto:irenehouseholds@gmail.com?subject=' +
-      encodeURIComponent(subject) + '&body=' + encodeURIComponent(body.join('\n'));
+    btn.disabled    = true;
+    btn.textContent = '⏳ Sending…';
+    msg.style.display = 'none';
+
+    var data = new FormData();
+    data.append('_subject',  'New Order from ' + f.name + ' — Irene Household Collections');
+    data.append('_captcha',  'false');
+    data.append('_template', 'table');
+    data.append('Name',      f.name);
+    data.append('Phone',     f.phone);
+    data.append('Location',  f.location);
+    data.append('Payment',   payLabel(f.payment));
+    data.append('Order',     f.items + (v.color ? ' | Colour: ' + v.color : '') + (v.size ? ' | Size: ' + v.size : ''));
+    data.append('Notes',     f.notes || '—');
+
+    fetch('https://formsubmit.co/ajax/irenehouseholds@gmail.com', {
+      method:  'POST',
+      headers: { 'Accept': 'application/json' },
+      body:    data
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(res) {
+      if (res.success === 'true' || res.success === true) {
+        msg.className      = 'form-msg ok';
+        msg.textContent    = '✅ Order sent! We will confirm via WhatsApp shortly.';
+        msg.style.display  = 'block';
+        btn.textContent    = '✅ Sent!';
+      } else {
+        throw new Error('failed');
+      }
+    })
+    .catch(function() {
+      msg.className     = 'form-msg err';
+      msg.textContent   = '❌ Could not send. Please use WhatsApp instead.';
+      msg.style.display = 'block';
+      btn.disabled      = false;
+      btn.textContent   = '✉️ Email Order';
+    });
   }
 
-  // Show product context if page was opened from an ad (?name=X&photo=X&price=X or ?id=X)
+  // Show product card when page opened from an ad
+  // Supports: ?name=X&photo=X&price=X&note=X&colors=A,B,C&sizes=X,Y,Z
   (function() {
     var params = new URLSearchParams(window.location.search);
     var banner = document.getElementById('ad-product-banner');
     if (!banner) return;
 
-    function showAdBanner(name, photo, price, note) {
+    function populateSelect(selId, groupId, csvString) {
+      if (!csvString) return;
+      var opts = csvString.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+      if (!opts.length) return;
+      var sel   = document.getElementById(selId);
+      var group = document.getElementById(groupId);
+      opts.forEach(function(o) {
+        var opt = document.createElement('option');
+        opt.value = o; opt.textContent = o;
+        sel.appendChild(opt);
+      });
+      group.style.display = 'flex';
+      document.getElementById('ad-variants').style.display = 'flex';
+    }
+
+    function showAdBanner(name, photo, price, note, colors, sizes) {
       banner.style.display = 'block';
       document.getElementById('ad-prod-name').textContent = decodeURIComponent(name);
+
       if (price) {
         var n = parseInt(price);
-        if (!isNaN(n) && n > 0) document.getElementById('ad-prod-price').textContent = 'KSh ' + n.toLocaleString();
+        if (!isNaN(n) && n > 0)
+          document.getElementById('ad-prod-price').textContent = 'KSh ' + n.toLocaleString();
       }
       if (note) document.getElementById('ad-prod-note').textContent = decodeURIComponent(note);
+
       var imgEl = document.getElementById('ad-prod-img');
       if (photo) {
         imgEl.innerHTML = '<img src="' + decodeURIComponent(photo) + '" alt="Product" onerror="this.parentElement.innerHTML=\'📦\'"/>';
       }
+
+      // Colour / size dropdowns
+      if (colors) populateSelect('ad-color', 'ad-color-group', decodeURIComponent(colors));
+      if (sizes)  populateSelect('ad-size',  'ad-size-group',  decodeURIComponent(sizes));
+
+      // Pre-fill order textarea
       var itemsEl = document.getElementById('o-items');
       if (itemsEl && !itemsEl.value) {
-        var priceStr = price && parseInt(price) > 0 ? ' — KSh ' + parseInt(price).toLocaleString() : '';
-        itemsEl.value = decodeURIComponent(name) + priceStr;
+        var line = decodeURIComponent(name);
+        if (price && parseInt(price) > 0) line += ' — KSh ' + parseInt(price).toLocaleString();
+        itemsEl.value = line;
       }
+
       try {
         if (typeof fbq === 'function') {
-          fbq('track', 'ViewContent', { content_name: decodeURIComponent(name), value: parseInt(price)||0, currency: 'KES' });
+          fbq('track', 'ViewContent', {
+            content_name: decodeURIComponent(name),
+            value:        parseInt(price) || 0,
+            currency:     'KES'
+          });
         }
       } catch(e) {}
     }
 
-    var pName  = params.get('name');
-    var pPhoto = params.get('photo');
-    var pPrice = params.get('price');
-    var pNote  = params.get('note');
-    var pId    = params.get('id');
+    var pName   = params.get('name');
+    var pPhoto  = params.get('photo');
+    var pPrice  = params.get('price');
+    var pNote   = params.get('note');
+    var pColors = params.get('colors');
+    var pSizes  = params.get('sizes');
+    var pId     = params.get('id');
 
     if (pName) {
-      showAdBanner(pName, pPhoto, pPrice, pNote);
+      showAdBanner(pName, pPhoto, pPrice, pNote, pColors, pSizes);
     } else if (pId) {
       try {
-        var p = typeof PRODUCTS !== 'undefined' && PRODUCTS.find(function(x) { return x.id === parseInt(pId); });
-        if (p) showAdBanner(p.name, p.img, p.price > 0 ? p.price : 0, p.note);
+        var p = typeof PRODUCTS !== 'undefined' && PRODUCTS.find(function(x){ return x.id === parseInt(pId); });
+        if (p) showAdBanner(p.name, p.img, p.price > 0 ? p.price : 0, p.note, null, null);
       } catch(e) {}
     }
   })();
-</script>
+<\/script>
 
 <script>
   window.addEventListener('error', function(e) {
-    if (e.target && e.target.tagName === 'IMG') {
-      var img = e.target;
-      img.style.display = 'none';
-    }
+    if (e.target && e.target.tagName === 'IMG') e.target.style.display = 'none';
   }, true);
-</script>
+<\/script>
 
 <!-- Floating Email Button -->
 <a href="mailto:irenehouseholds@gmail.com?subject=Order Inquiry&body=Hello Irene,%0A%0AI would like to place an order. Please get back to me.%0A%0AThank you."
