@@ -109,7 +109,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 .shop-nudge a{color:var(--green);font-weight:700;text-decoration:none;}
 .shop-nudge a:hover{text-decoration:underline;}
 
-/* Product picker — shown for ?cat=seatcovers etc */
+/* Product picker — shown for ?cat=X */
 .product-picker{background:#fff;border-radius:16px;border:2px solid var(--green);padding:20px;margin-bottom:24px;box-shadow:0 6px 28px rgba(0,0,0,.10);}
 .product-picker-head{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--green-dark);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
 .product-picker-sub{font-size:11.5px;color:var(--muted);margin-bottom:14px;}
@@ -235,9 +235,9 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     <div class="ad-banner-foot">✅ Fill in your details below and we'll confirm via WhatsApp</div>
   </div>
 
-  <!-- Product picker — shown when ?cat=seatcovers (or any category) is in URL -->
+  <!-- Product picker — shown when ?cat=X is in URL -->
   <div id="product-picker" style="display:none;" class="product-picker">
-    <div class="product-picker-head">🛋️ <span id="picker-title">Choose Your Product</span></div>
+    <div class="product-picker-head"><span id="picker-title">Choose Your Product</span></div>
     <p class="product-picker-sub">Tap a product to select it, then fill in your details below</p>
     <div class="product-picker-grid" id="product-picker-grid"></div>
     <p class="product-picker-hint">✅ Scroll to see more options · Tap to select</p>
@@ -625,7 +625,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
   // Show product card when page opened from an ad
   // Supports: ?name=X&photo=X&price=X&note=X&colors=A,B,C&sizes=X,Y,Z
   //           ?id=60  (loads product directly from products.json)
-  //           ?cat=seatcovers  (shows category picker from products.json)
+  //           ?cat=X  (shows category picker from products.json)
   (function() {
     var params = new URLSearchParams(window.location.search);
     var banner = document.getElementById('ad-product-banner');
@@ -753,14 +753,18 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
             if (p) showAdBanner(p.name, p.img, p.price, p.note, null, null);
           } else if (pCat) {
             var catMap = {
-              seatcovers: '🛋️ Choose Your Seat Cover',
-              duvets:     '🛏️ Choose Your Duvet',
-              carpets:    '🪵 Choose Your Carpet',
-              furniture:  '🪑 Choose Your Furniture',
-              kitchenware:'🍳 Choose Your Kitchenware',
-              bath:       '🛁 Choose Your Bath Item',
-              nets:       '🦥 Choose Your Net',
-              electronics:'⚡ Choose Your Electronics'
+              seatcovers:  '🛋️ Choose Your Seat Cover',
+              duvets:      '🛏️ Choose Your Duvet',
+              carpets:     '🪵 Choose Your Carpet',
+              furniture:   '🪑 Choose Your Furniture',
+              kitchenware: '🍳 Choose Your Kitchenware',
+              cookware:    '🍲 Choose Your Cookware',
+              bath:        '🛁 Choose Your Bath Item',
+              nets:        '🦟 Choose Your Net',
+              electronics: '⚡ Choose Your Electronics',
+              decor:       '🏮 Choose Your Decor Item',
+              kids:        '🧸 Choose Your Kids Item',
+              travel:      '🧳 Choose Your Travel Item'
             };
             var catProducts = products.filter(function(x){
               return x.cat === pCat && x.inStock !== false;
