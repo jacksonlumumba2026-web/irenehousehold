@@ -840,26 +840,6 @@
     "inStock": true
   },
   {
-    "id": 45,
-    "cat": "kitchenware",
-    "name": "Japanese Style Dinnerset",
-    "note": "Ceramic premium pieces",
-    "price": 6500,
-    "old": 0,
-    "img": "kitchenware.19.jpg",
-    "imgs": [
-      "kitchenware.19.jpg",
-      "kitchenware.19b.jpg",
-      "kitchenware.19c.jpg",
-      "kitchenware.19d.jpg",
-      "kitchenware.19e.jpg",
-      "kitchenware.19f.jpg"
-    ],
-    "badge": "",
-    "badgeType": "",
-    "inStock": true
-  },
-  {
     "id": 46,
     "cat": "kitchenware",
     "name": "13pcs Ceramic Versace Tea Set",
