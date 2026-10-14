@@ -140,26 +140,6 @@
     "inStock": true
   },
   {
-    "id": 8,
-    "cat": "duvets",
-    "name": "Silk Embroidered Comforter Set",
-    "note": "Comes as a full set",
-    "price": 5500,
-    "old": 0,
-    "img": "duvet.3.jpg",
-    "imgs": [
-      "duvet.3.jpg",
-      "duvet.3b.jpg",
-      "duvet.3c.jpg",
-      "duvet.3d.jpg",
-      "duvet.3e.jpg",
-      "duvet.3f.jpg"
-    ],
-    "badge": "NEW",
-    "badgeType": "new",
-    "inStock": true
-  },
-  {
     "id": 9,
     "cat": "duvets",
     "name": "Luxury Tufted Home Comforter",
