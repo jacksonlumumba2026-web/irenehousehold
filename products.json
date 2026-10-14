@@ -257,7 +257,7 @@
     ],
     "badge": "",
     "badgeType": "",
-    "inStock": false
+    "inStock": true
   },
   {
     "id": 14,
@@ -357,26 +357,6 @@
     ],
     "badge": "SALE",
     "badgeType": "sale",
-    "inStock": true
-  },
-  {
-    "id": 19,
-    "cat": "duvets",
-    "name": "Designer Duvet Covers",
-    "note": "2 pillowcases included",
-    "price": 2600,
-    "old": 0,
-    "img": "duvet.14.jpg",
-    "imgs": [
-      "duvet.14.jpg",
-      "duvet.14b.jpg",
-      "duvet.14c.jpg",
-      "duvet.14d.jpg",
-      "duvet.14e.jpg",
-      "duvet.14f.jpg"
-    ],
-    "badge": "",
-    "badgeType": "",
     "inStock": true
   },
   {
