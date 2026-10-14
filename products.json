@@ -3924,8 +3924,8 @@
     "cat": "carpets",
     "name": "Translucent Bathroom Anti-Slip Mat",
     "note": "Large 50x80cm @800 or Medium 40x60cm @650",
-    "price": 650,
-    "old": 0,
+    "price": 800,
+    "old": 1000,
     "img": "carpet.16.jpg",
     "imgs": [
       "carpet.16.jpg",
