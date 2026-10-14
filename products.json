@@ -220,26 +220,6 @@
     "inStock": true
   },
   {
-    "id": 13,
-    "cat": "duvets",
-    "name": "Unbinded Cartoon Duvets",
-    "note": "1 duvet included",
-    "price": 2800,
-    "old": 0,
-    "img": "duvet.8.jpg",
-    "imgs": [
-      "duvet.8.jpg",
-      "duvet.8b.jpg",
-      "duvet.8c.jpg",
-      "duvet.8d.jpg",
-      "duvet.8e.jpg",
-      "duvet.8f.jpg"
-    ],
-    "badge": "",
-    "badgeType": "",
-    "inStock": true
-  },
-  {
     "id": 14,
     "cat": "duvets",
     "name": "High Quality Flannel Sherpa",
