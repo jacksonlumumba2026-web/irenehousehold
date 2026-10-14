@@ -1520,26 +1520,6 @@
     "inStock": true
   },
   {
-    "id": 51,
-    "cat": "carpets",
-    "name": "Fluffy Carpets",
-    "note": "5x8 size 280cm",
-    "price": 3500,
-    "old": 0,
-    "img": "carpet.1.jpg",
-    "imgs": [
-      "carpet.1.jpg",
-      "carpet.1b.jpg",
-      "carpet.1c.jpg",
-      "carpet.1d.jpg",
-      "carpet.1e.jpg",
-      "carpet.1f.jpg"
-    ],
-    "badge": "HOT",
-    "badgeType": "hot",
-    "inStock": true
-  },
-  {
     "id": 52,
     "cat": "carpets",
     "name": "Faux Fur Carpets",
