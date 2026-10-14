@@ -320,26 +320,6 @@
     "inStock": true
   },
   {
-    "id": 20,
-    "cat": "duvets",
-    "name": "Classy Duvet Covers",
-    "note": "2 pillowcases included",
-    "price": 2600,
-    "old": 0,
-    "img": "duvet.15.jpg",
-    "imgs": [
-      "duvet.15.jpg",
-      "duvet.15b.jpg",
-      "duvet.15c.jpg",
-      "duvet.15d.jpg",
-      "duvet.15e.jpg",
-      "duvet.15f.jpg"
-    ],
-    "badge": "",
-    "badgeType": "",
-    "inStock": true
-  },
-  {
     "id": 21,
     "cat": "duvets",
     "name": "2 Sided 100 Percent Cotton Duvet",
