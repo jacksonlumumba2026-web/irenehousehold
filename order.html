@@ -108,6 +108,20 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 .shop-nudge{background:#f5f1e8;border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:var(--green-dark);display:flex;align-items:center;gap:10px;}
 .shop-nudge a{color:var(--green);font-weight:700;text-decoration:none;}
 .shop-nudge a:hover{text-decoration:underline;}
+
+/* Product picker — shown for ?cat=seatcovers etc */
+.product-picker{background:#fff;border-radius:16px;border:2px solid var(--green);padding:20px;margin-bottom:24px;box-shadow:0 6px 28px rgba(0,0,0,.10);}
+.product-picker-head{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--green-dark);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+.product-picker-sub{font-size:11.5px;color:var(--muted);margin-bottom:14px;}
+.product-picker-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;}
+.picker-card{border:1.5px solid #ebe8e0;border-radius:10px;overflow:hidden;cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .12s;background:#faf9f6;}
+.picker-card:hover{border-color:var(--green);box-shadow:0 2px 12px rgba(0,0,0,.12);transform:translateY(-1px);}
+.picker-card.selected{border-color:var(--green);box-shadow:0 0 0 2.5px var(--green);}
+.picker-card img{width:100%;height:100px;object-fit:cover;display:block;}
+.picker-card-info{padding:8px;}
+.picker-card-name{font-size:11px;font-weight:600;color:#1a1a1a;line-height:1.3;margin-bottom:3px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.picker-card-price{font-size:12px;font-weight:700;color:var(--green);}
+.product-picker-hint{font-size:11px;color:var(--muted);text-align:center;margin-top:12px;}
 </style>
 </head>
 <body>
@@ -219,6 +233,14 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     </div>
 
     <div class="ad-banner-foot">✅ Fill in your details below and we'll confirm via WhatsApp</div>
+  </div>
+
+  <!-- Product picker — shown when ?cat=seatcovers (or any category) is in URL -->
+  <div id="product-picker" style="display:none;" class="product-picker">
+    <div class="product-picker-head">🛋️ <span id="picker-title">Choose Your Product</span></div>
+    <p class="product-picker-sub">Tap a product to select it, then fill in your details below</p>
+    <div class="product-picker-grid" id="product-picker-grid"></div>
+    <p class="product-picker-hint">✅ Scroll to see more options · Tap to select</p>
   </div>
 
   <!-- Urgency banner -->
@@ -602,6 +624,8 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 
   // Show product card when page opened from an ad
   // Supports: ?name=X&photo=X&price=X&note=X&colors=A,B,C&sizes=X,Y,Z
+  //           ?id=60  (loads product directly from products.json)
+  //           ?cat=seatcovers  (shows category picker from products.json)
   (function() {
     var params = new URLSearchParams(window.location.search);
     var banner = document.getElementById('ad-product-banner');
@@ -624,6 +648,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 
     function showAdBanner(name, photo, price, note, colors, sizes) {
       banner.style.display = 'block';
+      document.getElementById('product-picker').style.display = 'none';
       document.getElementById('ad-prod-name').textContent = decodeURIComponent(name);
 
       if (price) {
@@ -633,9 +658,16 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
       }
       if (note) document.getElementById('ad-prod-note').textContent = decodeURIComponent(note);
 
+      // Reset image
       var imgEl = document.getElementById('ad-prod-img');
+      imgEl.innerHTML = '📦';
       if (photo) {
-        imgEl.innerHTML = '<img src="' + decodeURIComponent(photo) + '" alt="Product" onerror="this.parentElement.innerHTML=\'📦\'"/>';
+        var img = document.createElement('img');
+        img.src = decodeURIComponent(photo);
+        img.alt = 'Product';
+        img.onerror = function(){ imgEl.textContent = '📦'; };
+        imgEl.innerHTML = '';
+        imgEl.appendChild(img);
       }
 
       // Colour / size dropdowns
@@ -644,7 +676,7 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 
       // Pre-fill order textarea
       var itemsEl = document.getElementById('o-items');
-      if (itemsEl && !itemsEl.value) {
+      if (itemsEl) {
         var line = decodeURIComponent(name);
         if (price && parseInt(price) > 0) line += ' — KSh ' + parseInt(price).toLocaleString();
         itemsEl.value = line;
@@ -661,6 +693,44 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
       } catch(e) {}
     }
 
+    // Show product picker grid for a category
+    function showProductPicker(products, catLabel) {
+      var picker = document.getElementById('product-picker');
+      var grid   = document.getElementById('product-picker-grid');
+      var title  = document.getElementById('picker-title');
+      if (!picker || !grid) return;
+
+      title.textContent = catLabel || 'Choose Your Product';
+      grid.innerHTML = '';
+
+      products.forEach(function(p) {
+        var card = document.createElement('div');
+        card.className = 'picker-card';
+        card.innerHTML =
+          '<img src="' + p.img + '" alt="' + p.name + '" onerror="this.src=\'\'"/>' +
+          '<div class="picker-card-info">' +
+            '<div class="picker-card-name">' + p.name + '</div>' +
+            '<div class="picker-card-price">KSh ' + (p.price || 0).toLocaleString() + '</div>' +
+          '</div>';
+        card.addEventListener('click', function() {
+          // Mark selected
+          grid.querySelectorAll('.picker-card').forEach(function(c){ c.classList.remove('selected'); });
+          card.classList.add('selected');
+          // Show the banner with this product
+          showAdBanner(p.name, p.img, p.price, p.note, null, null);
+          // Scroll down to the form
+          setTimeout(function(){
+            var form = document.querySelector('.order-form-card');
+            if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 200);
+        });
+        grid.appendChild(card);
+      });
+
+      picker.style.display = 'block';
+      banner.style.display = 'none';
+    }
+
     var pName   = params.get('name');
     var pPhoto  = params.get('photo');
     var pPrice  = params.get('price');
@@ -668,14 +738,42 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     var pColors = params.get('colors');
     var pSizes  = params.get('sizes');
     var pId     = params.get('id');
+    var pCat    = params.get('cat');
 
     if (pName) {
+      // Direct URL params (for custom ads with specific photo/price)
       showAdBanner(pName, pPhoto, pPrice, pNote, pColors, pSizes);
-    } else if (pId) {
-      try {
-        var p = typeof PRODUCTS !== 'undefined' && PRODUCTS.find(function(x){ return x.id === parseInt(pId); });
-        if (p) showAdBanner(p.name, p.img, p.price > 0 ? p.price : 0, p.note, null, null);
-      } catch(e) {}
+    } else if (pId || pCat) {
+      // Load from the site's products.json
+      fetch('products.json')
+        .then(function(r) { return r.json(); })
+        .then(function(products) {
+          if (pId) {
+            var p = products.find(function(x){ return x.id === parseInt(pId); });
+            if (p) showAdBanner(p.name, p.img, p.price, p.note, null, null);
+          } else if (pCat) {
+            var catMap = {
+              seatcovers: '🛋️ Choose Your Seat Cover',
+              duvets:     '🛏️ Choose Your Duvet',
+              carpets:    '🪵 Choose Your Carpet',
+              furniture:  '🪑 Choose Your Furniture',
+              kitchenware:'🍳 Choose Your Kitchenware',
+              bath:       '🛁 Choose Your Bath Item',
+              nets:       '🦥 Choose Your Net',
+              electronics:'⚡ Choose Your Electronics'
+            };
+            var catProducts = products.filter(function(x){
+              return x.cat === pCat && x.inStock !== false;
+            });
+            if (catProducts.length === 1) {
+              var p = catProducts[0];
+              showAdBanner(p.name, p.img, p.price, p.note, null, null);
+            } else if (catProducts.length > 1) {
+              showProductPicker(catProducts, catMap[pCat] || '🛍️ Choose Your Product');
+            }
+          }
+        })
+        .catch(function(){});
     }
   })();
 </script>
