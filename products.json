@@ -500,26 +500,6 @@
     "inStock": true
   },
   {
-    "id": 27,
-    "cat": "kitchenware",
-    "name": "6pcs High Quality Signature Hotpots",
-    "note": "6pcs hotpot set",
-    "price": 8000,
-    "old": 0,
-    "img": "kitchenware.1.jpg",
-    "imgs": [
-      "kitchenware.1.jpg",
-      "kitchenware.1b.jpg",
-      "kitchenware.1c.jpg",
-      "kitchenware.1d.jpg",
-      "kitchenware.1e.jpg",
-      "kitchenware.1f.jpg"
-    ],
-    "badge": "HOT",
-    "badgeType": "hot",
-    "inStock": true
-  },
-  {
     "id": 28,
     "cat": "kitchenware",
     "name": "Redberry Maximus Jumbo",
