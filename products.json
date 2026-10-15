@@ -2580,6 +2580,26 @@
     "inStock": true
   },
   {
+    "id": 303,
+    "cat": "bath",
+    "name": "Antslip large",
+    "note": "Antslip large\nSize 50×80cm",
+    "price": 1999,
+    "old": 1500,
+    "img": "bath.13.jpg",
+    "imgs": [
+      "bath.13.jpg",
+      "bath.13b.jpg",
+      "bath.13c.jpg",
+      "bath.13d.jpg",
+      "bath.13e.jpg",
+      "bath.13f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 70,
     "cat": "furniture",
     "name": "Four Seater Marble Dining Table",
