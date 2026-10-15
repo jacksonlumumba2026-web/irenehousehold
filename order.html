@@ -12,7 +12,7 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"/></noscript>
   <meta name="theme-color" content="#0c0c0c"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Order premium household items from Irene Household Collections — duvets, furniture, kitchenware, carpets & more. Fast delivery across Nairobi."/>
+  <meta name="description" content="Order premium household items from Irene Household Collections — duvets, furniture, kitchenware, carpets &amp; more. Fast delivery across Nairobi."/>
   <title>Place Your Order | Irene Household Collections</title>
   <link rel="canonical" href="https://irenehousehold.co.ke/order.html"/>
   <link rel="stylesheet" href="style.css"/>
@@ -57,6 +57,15 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 .ad-variant-group select:focus{border-color:var(--green);}
 
 .ad-banner-foot{margin-top:14px;padding-top:10px;border-top:1px solid #ebe8e0;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+
+/* Quantity selector */
+.ad-qty-row{margin-top:14px;padding-top:14px;border-top:1px solid #ebe8e0;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.ad-qty-label{font-size:12px;font-weight:700;color:#444;letter-spacing:.2px;white-space:nowrap;}
+.qty-ctrl{display:flex;align-items:center;gap:2px;background:#faf9f6;border:1.5px solid #d5d0c8;border-radius:30px;padding:3px;}
+.qty-ctrl-btn{width:32px;height:32px;border-radius:50%;border:none;background:transparent;font-size:19px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--green-dark);line-height:1;transition:background .15s;}
+.qty-ctrl-btn:hover{background:var(--green);color:#fff;}
+.qty-ctrl-num{width:40px;text-align:center;font-size:15px;font-weight:700;color:var(--green-dark);}
+.ad-qty-total{font-size:13px;font-weight:700;color:var(--green);margin-left:auto;}
 
 /* Urgency bar */
 .urgency-bar{background:linear-gradient(90deg,#b91c1c,#dc2626);color:#fff;border-radius:10px;padding:13px 16px;margin-bottom:20px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;}
@@ -231,6 +240,17 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
           <option value="">— Select size —</option>
         </select>
       </div>
+    </div>
+
+    <!-- Quantity selector -->
+    <div class="ad-qty-row" id="ad-qty-row">
+      <span class="ad-qty-label">🔢 Quantity</span>
+      <div class="qty-ctrl">
+        <button class="qty-ctrl-btn" onclick="changeOrderQty(-1)" aria-label="Decrease">−</button>
+        <span class="qty-ctrl-num" id="ad-qty-num">1</span>
+        <button class="qty-ctrl-btn" onclick="changeOrderQty(1)" aria-label="Increase">+</button>
+      </div>
+      <span class="ad-qty-total" id="ad-qty-total"></span>
     </div>
 
     <div class="ad-banner-foot">✅ Fill in your details below and we'll confirm via WhatsApp</div>
@@ -517,6 +537,23 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     };
   }
 
+  // Quantity for the selected product
+  var orderQty = 1;
+  var orderUnitPrice = 0;
+
+  function changeOrderQty(delta) {
+    orderQty = Math.max(1, orderQty + delta);
+    document.getElementById('ad-qty-num').textContent = orderQty;
+    // Show running total if we have a price
+    var totalEl = document.getElementById('ad-qty-total');
+    if (totalEl && orderUnitPrice > 0) {
+      totalEl.textContent = 'Total: KSh ' + (orderQty * orderUnitPrice).toLocaleString();
+    } else if (totalEl) {
+      totalEl.textContent = '';
+    }
+    syncVariantsToOrder();
+  }
+
   // When a variant changes, update the order textarea to reflect it
   function syncVariantsToOrder() {
     var banner = document.getElementById('ad-product-banner');
@@ -524,8 +561,10 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     var name  = document.getElementById('ad-prod-name').textContent;
     var price = document.getElementById('ad-prod-price').textContent;
     var v     = getVariants();
-    var line  = name;
+    var qtyPrefix = orderQty > 1 ? orderQty + '× ' : '';
+    var line  = qtyPrefix + name;
     if (price) line += ' — ' + price;
+    if (orderQty > 1 && orderUnitPrice > 0) line += ' (Total: KSh ' + (orderQty * orderUnitPrice).toLocaleString() + ')';
     if (v.color) line += ' | Colour: ' + v.color;
     if (v.size)  line += ' | Size: '   + v.size;
     document.getElementById('o-items').value = line;
@@ -651,6 +690,13 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
       banner.style.display = 'block';
       document.getElementById('product-picker').style.display = 'none';
       document.getElementById('ad-prod-name').textContent = decodeURIComponent(name);
+      // Reset quantity when a new product is shown
+      orderQty = 1;
+      orderUnitPrice = parseInt(price) || 0;
+      var qtyNumEl = document.getElementById('ad-qty-num');
+      var qtyTotalEl = document.getElementById('ad-qty-total');
+      if (qtyNumEl) qtyNumEl.textContent = '1';
+      if (qtyTotalEl) qtyTotalEl.textContent = '';
 
       if (price) {
         var n = parseInt(price);
