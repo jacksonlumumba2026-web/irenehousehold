@@ -4380,6 +4380,26 @@
     "inStock": true
   },
   {
+    "id": 311,
+    "cat": "carpets",
+    "name": "3D carpets",
+    "note": "3D carpets\n Size 5×8",
+    "price": 3999,
+    "old": 5000,
+    "img": "carpet.36.jpg",
+    "imgs": [
+      "carpet.36.jpg",
+      "carpet.36b.jpg",
+      "carpet.36c.jpg",
+      "carpet.36d.jpg",
+      "carpet.36e.jpg",
+      "carpet.36f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
