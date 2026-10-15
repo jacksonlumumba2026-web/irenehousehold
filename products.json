@@ -4340,6 +4340,26 @@
     "inStock": true
   },
   {
+    "id": 309,
+    "cat": "carpets",
+    "name": "Plain fluffy carpets",
+    "note": "Plain fluffy carpets",
+    "price": 1999,
+    "old": 2500,
+    "img": "carpet.34.jpg",
+    "imgs": [
+      "carpet.34.jpg",
+      "carpet.34b.jpg",
+      "carpet.34c.jpg",
+      "carpet.34d.jpg",
+      "carpet.34e.jpg",
+      "carpet.34f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
