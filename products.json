@@ -2560,6 +2560,26 @@
     "inStock": true
   },
   {
+    "id": 302,
+    "cat": "bath",
+    "name": "Floral shower curtains",
+    "note": "Floral shower curtains\nSize 180×200cm",
+    "price": 850,
+    "old": 1000,
+    "img": "bath.12.jpg",
+    "imgs": [
+      "bath.12.jpg",
+      "bath.12b.jpg",
+      "bath.12c.jpg",
+      "bath.12d.jpg",
+      "bath.12e.jpg",
+      "bath.12f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 70,
     "cat": "furniture",
     "name": "Four Seater Marble Dining Table",
