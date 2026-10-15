@@ -2600,6 +2600,26 @@
     "inStock": true
   },
   {
+    "id": 304,
+    "cat": "bath",
+    "name": "Translucent bathroom antislip mat",
+    "note": "*Translucent Bathroom Antislip Mats*\n*Large Size*\nSize: 50x80cm \nPrice: 800\n\n*Medium Size*\nSize: 40x60cm \nPrice: 650",
+    "price": 800,
+    "old": 1000,
+    "img": "bath.14.jpg",
+    "imgs": [
+      "bath.14.jpg",
+      "bath.14b.jpg",
+      "bath.14c.jpg",
+      "bath.14d.jpg",
+      "bath.14e.jpg",
+      "bath.14f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 70,
     "cat": "furniture",
     "name": "Four Seater Marble Dining Table",
