@@ -4260,6 +4260,26 @@
     "inStock": true
   },
   {
+    "id": 305,
+    "cat": "carpets",
+    "name": "American carpet",
+    "note": "American carpet\nSize 5×8",
+    "price": 3800,
+    "old": 5000,
+    "img": "carpet.30.jpg",
+    "imgs": [
+      "carpet.30.jpg",
+      "carpet.30b.jpg",
+      "carpet.30c.jpg",
+      "carpet.30d.jpg",
+      "carpet.30e.jpg",
+      "carpet.30f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
