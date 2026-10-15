@@ -4280,6 +4280,26 @@
     "inStock": true
   },
   {
+    "id": 306,
+    "cat": "carpets",
+    "name": "HD carpet",
+    "note": "HD carpets\n5×8",
+    "price": 4500,
+    "old": 7500,
+    "img": "carpet.31.jpg",
+    "imgs": [
+      "carpet.31.jpg",
+      "carpet.31b.jpg",
+      "carpet.31c.jpg",
+      "carpet.31d.jpg",
+      "carpet.31e.jpg",
+      "carpet.31f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 123,
     "cat": "duvets",
     "name": "Single Velvet Fluffy Duvet",
