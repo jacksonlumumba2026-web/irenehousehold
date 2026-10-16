@@ -50,17 +50,12 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
 .ad-banner-note{font-size:12px;color:var(--muted);line-height:1.5;}
 
 /* Colour / size selectors inside the product card */
-.ad-variants{margin-top:14px;padding-top:14px;border-top:1px solid #ebe8e0;display:flex;flex-direction:column;gap:14px;}
-.ad-variant-group{display:flex;flex-direction:column;gap:6px;}
+.ad-variants{margin-top:14px;padding-top:14px;border-top:1px solid #ebe8e0;display:flex;flex-direction:column;gap:12px;}
+.ad-variant-group{display:flex;flex-direction:column;gap:5px;}
 .ad-variant-group label{font-size:11px;font-weight:700;color:#555;letter-spacing:.3px;text-transform:uppercase;}
-/* Chip button row */
-.variant-chips{display:flex;flex-wrap:wrap;gap:6px;}
-.variant-chip{padding:7px 14px;border:1.5px solid #d5d0c8;border-radius:20px;font-size:12px;font-weight:600;color:#444;background:#faf9f6;cursor:pointer;transition:all .15s;white-space:nowrap;}
-.variant-chip:hover{border-color:var(--green);color:var(--green-dark);}
-.variant-chip.selected{border-color:var(--green);background:var(--green);color:#fff;}
-/* Fallback free-text size input */
-.variant-freetext{border:1.5px solid #d5d0c8;border-radius:8px;padding:9px 11px;font-size:13px;font-family:inherit;color:#1a1a1a;background:#faf9f6;outline:none;width:100%;box-sizing:border-box;}
-.variant-freetext:focus{border-color:var(--green);background:#fff;}
+/* Dropdown select */
+.variant-select{border:1.5px solid #d5d0c8;border-radius:8px;padding:11px 12px;font-size:13px;font-family:inherit;color:#1a1a1a;background:#faf9f6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23555' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center;-webkit-appearance:none;appearance:none;outline:none;width:100%;cursor:pointer;box-sizing:border-box;}
+.variant-select:focus{border-color:var(--green);background-color:#fff;}
 
 .ad-banner-foot{margin-top:14px;padding-top:10px;border-top:1px solid #ebe8e0;font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;}
 
@@ -235,21 +230,24 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     <!-- Colour / Size selectors — populated from URL params -->
     <div class="ad-variants" id="ad-variants" style="display:none;">
       <div class="ad-variant-group" id="ad-color-group" style="display:none;">
-        <label>🎨 Colour</label>
-        <div class="variant-chips" id="ad-color-chips"></div>
-        <input type="hidden" id="ad-color" value=""/>
+        <label>🎨 Choose Colour</label>
+        <select class="variant-select" id="ad-color" onchange="syncVariantsToOrder()">
+          <option value="">— Select colour —</option>
+        </select>
       </div>
       <div class="ad-variant-group" id="ad-size-group" style="display:none;">
-        <label>📐 Size</label>
-        <div class="variant-chips" id="ad-size-chips"></div>
-        <input type="hidden" id="ad-size" value=""/>
+        <label>📐 Choose Size</label>
+        <select class="variant-select" id="ad-size" onchange="syncVariantsToOrder()">
+          <option value="">— Select size —</option>
+        </select>
       </div>
       <!-- Always-visible free-text size/variant field -->
-      <div class="ad-variant-group" id="ad-freesize-group">
-        <label>📝 Size / Variant notes (optional)</label>
-        <input type="text" class="variant-freetext" id="ad-freesize"
+      <div class="ad-variant-group">
+        <label>📝 Size / Variant (optional)</label>
+        <input type="text" class="variant-select" id="ad-freesize"
           placeholder="e.g. 6×6, King, 5×8 ft, Set of 4, Grey…"
-          oninput="syncVariantsToOrder()"/>
+          oninput="syncVariantsToOrder()"
+          style="background-image:none;"/>
       </div>
     </div>
 
@@ -544,9 +542,9 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     var s  = document.getElementById('ad-size');
     var fs = document.getElementById('ad-freesize');
     return {
-      color:     (c  && c.value)  ? c.value.trim()  : '',
-      size:      (s  && s.value)  ? s.value.trim()  : '',
-      freesize:  (fs && fs.value) ? fs.value.trim() : ''
+      color:    (c  && c.value  && c.value  !== '') ? c.value.trim()  : '',
+      size:     (s  && s.value  && s.value  !== '') ? s.value.trim()  : '',
+      freesize: (fs && fs.value && fs.value !== '') ? fs.value.trim() : ''
     };
   }
 
@@ -685,26 +683,18 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
     var banner = document.getElementById('ad-product-banner');
     if (!banner) return;
 
-    function buildChips(hiddenId, chipsId, groupId, csvString) {
+    function populateSelect(selId, groupId, csvString) {
       if (!csvString) return;
       var opts = csvString.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
       if (!opts.length) return;
-      var chipsEl = document.getElementById(chipsId);
-      var hiddenEl = document.getElementById(hiddenId);
-      var group   = document.getElementById(groupId);
-      chipsEl.innerHTML = '';
+      var sel   = document.getElementById(selId);
+      var group = document.getElementById(groupId);
+      // Clear previous options (keep placeholder)
+      while (sel.options.length > 1) sel.remove(1);
       opts.forEach(function(o) {
-        var chip = document.createElement('button');
-        chip.type = 'button';
-        chip.className = 'variant-chip';
-        chip.textContent = o;
-        chip.addEventListener('click', function() {
-          chipsEl.querySelectorAll('.variant-chip').forEach(function(c){ c.classList.remove('selected'); });
-          chip.classList.add('selected');
-          hiddenEl.value = o;
-          syncVariantsToOrder();
-        });
-        chipsEl.appendChild(chip);
+        var opt = document.createElement('option');
+        opt.value = o; opt.textContent = o;
+        sel.appendChild(opt);
       });
       group.style.display = 'flex';
       document.getElementById('ad-variants').style.display = 'flex';
@@ -741,13 +731,15 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
         imgEl.appendChild(img);
       }
 
-      // Reset hidden values and chips
-      document.getElementById('ad-color').value = '';
-      document.getElementById('ad-size').value  = '';
+      // Reset selects and free text
+      var colSel = document.getElementById('ad-color');
+      var sizSel = document.getElementById('ad-size');
+      if (colSel) { while (colSel.options.length > 1) colSel.remove(1); colSel.selectedIndex = 0; }
+      if (sizSel) { while (sizSel.options.length > 1) sizSel.remove(1); sizSel.selectedIndex = 0; }
       document.getElementById('ad-freesize').value = '';
-      // Colour / size chips
-      if (colors) buildChips('ad-color', 'ad-color-chips', 'ad-color-group', decodeURIComponent(colors));
-      if (sizes)  buildChips('ad-size',  'ad-size-chips',  'ad-size-group',  decodeURIComponent(sizes));
+      // Colour / size dropdowns
+      if (colors) populateSelect('ad-color', 'ad-color-group', decodeURIComponent(colors));
+      if (sizes)  populateSelect('ad-size',  'ad-size-group',  decodeURIComponent(sizes));
       // Always show the variants panel (for the free-text field)
       document.getElementById('ad-variants').style.display = 'flex';
 
@@ -793,8 +785,8 @@ src="https://www.facebook.com/tr?id=1296629684460965&ev=PageView&noscript=1"
           // Mark selected
           grid.querySelectorAll('.picker-card').forEach(function(c){ c.classList.remove('selected'); });
           card.classList.add('selected');
-          // Show the banner with this product (variants panel stays for free-text)
-          showAdBanner(p.name, p.img, p.price, p.note, p.colors || null, p.sizes || null);
+          // Show the banner with this product
+          showAdBanner(p.name, p.img, p.price, p.note, null, null);
           // Scroll down to the form
           setTimeout(function(){
             var form = document.querySelector('.order-form-card');
