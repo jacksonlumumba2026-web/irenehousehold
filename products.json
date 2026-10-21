@@ -5818,5 +5818,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 312,
+    "cat": "duvets",
+    "name": "*Duvet covers set*👆🏻 ➖2pillowcases  ➖1pc Duvet cover  ➖ Colors ;👆  ➖Size :6*6&5*6  ➖",
+    "note": "Available in grey and white",
+    "price": 3600,
+    "old": 3000,
+    "img": "duvet.41.jpg",
+    "imgs": [
+      "duvet.41.jpg",
+      "duvet.41b.jpg",
+      "duvet.41c.jpg",
+      "duvet.41d.jpg",
+      "duvet.41e.jpg",
+      "duvet.41f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
