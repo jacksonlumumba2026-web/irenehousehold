@@ -1560,6 +1560,26 @@
     "inStock": true
   },
   {
+    "id": 315,
+    "cat": "kitchenware",
+    "name": "2tier dish rack",
+    "note": "2* tier black/gold dishrack \n\n*Available",
+    "price": 2200,
+    "old": 3500,
+    "img": "kitchenware.54.jpg",
+    "imgs": [
+      "kitchenware.54.jpg",
+      "kitchenware.54b.jpg",
+      "kitchenware.54c.jpg",
+      "kitchenware.54d.jpg",
+      "kitchenware.54e.jpg",
+      "kitchenware.54f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 52,
     "cat": "carpets",
     "name": "Faux Fur Carpets",
