@@ -1580,6 +1580,26 @@
     "inStock": true
   },
   {
+    "id": 316,
+    "cat": "kitchenware",
+    "name": "3tier dash rack",
+    "note": "*‼️New in* ‼️‼️‼️\n*Restocked* .*❇️ Kitchen 3 tier dishrack*\n\n*❇️Gold Black*",
+    "price": 2999,
+    "old": 3500,
+    "img": "kitchenware.55.jpg",
+    "imgs": [
+      "kitchenware.55.jpg",
+      "kitchenware.55b.jpg",
+      "kitchenware.55c.jpg",
+      "kitchenware.55d.jpg",
+      "kitchenware.55e.jpg",
+      "kitchenware.55f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 52,
     "cat": "carpets",
     "name": "Faux Fur Carpets",
