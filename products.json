@@ -1620,6 +1620,26 @@
     "inStock": true
   },
   {
+    "id": 318,
+    "cat": "kitchenware",
+    "name": "2 layer black advanced dishrack",
+    "note": "Two layer dish rack",
+    "price": 2600,
+    "old": 3000,
+    "img": "kitchenware.57.jpg",
+    "imgs": [
+      "kitchenware.57.jpg",
+      "kitchenware.57b.jpg",
+      "kitchenware.57c.jpg",
+      "kitchenware.57d.jpg",
+      "kitchenware.57e.jpg",
+      "kitchenware.57f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 52,
     "cat": "carpets",
     "name": "Faux Fur Carpets",
