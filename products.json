@@ -1680,6 +1680,26 @@
     "inStock": true
   },
   {
+    "id": 321,
+    "cat": "kitchenware",
+    "name": "Buffet food warmer",
+    "note": "✅ *9L Rectangle  Gold Hydraulic Buffet Food Warmer / Chaffing Dish*\n\n✅Durable  And Efficient \n\n✅High Quality Material",
+    "price": 22500,
+    "old": 30000,
+    "img": "kitchenware.60.jpg",
+    "imgs": [
+      "kitchenware.60.jpg",
+      "kitchenware.60b.jpg",
+      "kitchenware.60c.jpg",
+      "kitchenware.60d.jpg",
+      "kitchenware.60e.jpg",
+      "kitchenware.60f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 52,
     "cat": "carpets",
     "name": "Faux Fur Carpets",
