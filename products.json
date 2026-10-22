@@ -1600,6 +1600,26 @@
     "inStock": true
   },
   {
+    "id": 317,
+    "cat": "kitchenware",
+    "name": "Heavy duty executive 3 tier  dish rack",
+    "note": "Executive 3tier dish rack",
+    "price": 2999,
+    "old": 3500,
+    "img": "kitchenware.56.jpg",
+    "imgs": [
+      "kitchenware.56.jpg",
+      "kitchenware.56b.jpg",
+      "kitchenware.56c.jpg",
+      "kitchenware.56d.jpg",
+      "kitchenware.56e.jpg",
+      "kitchenware.56f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 52,
     "cat": "carpets",
     "name": "Faux Fur Carpets",
