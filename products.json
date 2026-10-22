@@ -1520,6 +1520,26 @@
     "inStock": true
   },
   {
+    "id": 313,
+    "cat": "kitchenware",
+    "name": "3 layer dishrack greengold",
+    "note": "3 layer dish rack",
+    "price": 3999,
+    "old": 4500,
+    "img": "kitchenware.52.jpg",
+    "imgs": [
+      "kitchenware.52.jpg",
+      "kitchenware.52b.jpg",
+      "kitchenware.52c.jpg",
+      "kitchenware.52d.jpg",
+      "kitchenware.52e.jpg",
+      "kitchenware.52f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 52,
     "cat": "carpets",
     "name": "Faux Fur Carpets",
