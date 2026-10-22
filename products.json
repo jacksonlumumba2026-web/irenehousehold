@@ -1660,6 +1660,26 @@
     "inStock": true
   },
   {
+    "id": 320,
+    "cat": "kitchenware",
+    "name": "Premium range tea urn",
+    "note": "REDBERRY PREMIUM RANGE ELECTRIC TEA URN :\n10 ltr @ 10,000 p.pc\n15 ltr @ 11,500 p.pc \n20 ltr @ 14,500 p.pc\n25 ltr @ 15,000 p.pc\n*** With 1 Year Warranty \n*** Kindly Note very Limited Stock",
+    "price": 14500,
+    "old": 16000,
+    "img": "kitchenware.59.jpg",
+    "imgs": [
+      "kitchenware.59.jpg",
+      "kitchenware.59b.jpg",
+      "kitchenware.59c.jpg",
+      "kitchenware.59d.jpg",
+      "kitchenware.59e.jpg",
+      "kitchenware.59f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 52,
     "cat": "carpets",
     "name": "Faux Fur Carpets",
