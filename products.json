@@ -1540,6 +1540,26 @@
     "inStock": true
   },
   {
+    "id": 314,
+    "cat": "kitchenware",
+    "name": "Kenpoly double decker dishrack  Available in blue,teal,grey and red",
+    "note": "Dish rack",
+    "price": 1600,
+    "old": 2000,
+    "img": "kitchenware.53.jpg",
+    "imgs": [
+      "kitchenware.53.jpg",
+      "kitchenware.53b.jpg",
+      "kitchenware.53c.jpg",
+      "kitchenware.53d.jpg",
+      "kitchenware.53e.jpg",
+      "kitchenware.53f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 52,
     "cat": "carpets",
     "name": "Faux Fur Carpets",
