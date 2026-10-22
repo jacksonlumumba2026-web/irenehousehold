@@ -1640,6 +1640,26 @@
     "inStock": true
   },
   {
+    "id": 319,
+    "cat": "kitchenware",
+    "name": "New in 📌9.5ltr tea urn with marble effect✅ Available in black and white",
+    "note": "Tea urn marble effect available",
+    "price": 2900,
+    "old": 3500,
+    "img": "kitchenware.58.jpg",
+    "imgs": [
+      "kitchenware.58.jpg",
+      "kitchenware.58b.jpg",
+      "kitchenware.58c.jpg",
+      "kitchenware.58d.jpg",
+      "kitchenware.58e.jpg",
+      "kitchenware.58f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 52,
     "cat": "carpets",
     "name": "Faux Fur Carpets",
