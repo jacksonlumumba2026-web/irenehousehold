@@ -38,5 +38,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 3,
+    "cat": "furniture",
+    "name": "Mdf coffee table",
+    "note": "New in‼️‼️\n\n*Executive mdf marble coffee table/bed side*\n\n*Offer Price:",
+    "price": 4000,
+    "old": 5000,
+    "img": "furniture.2.jpg",
+    "imgs": [
+      "furniture.2.jpg",
+      "furniture.2b.jpg",
+      "furniture.2c.jpg",
+      "furniture.2d.jpg",
+      "furniture.2e.jpg",
+      "furniture.2f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
   }
 ]
