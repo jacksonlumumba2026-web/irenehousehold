@@ -20,6 +20,26 @@
     "inStock": true
   },
   {
+    "id": 10,
+    "cat": "duvets",
+    "name": "Fluffy duby",
+    "note": "*Available Fluffy duvets* \nPillowcases: 4pcs.\nBedsheet: 1pc.\nFluffy Duvet: 1pc",
+    "price": 4300,
+    "old": 5000,
+    "img": "duvet.2.jpg",
+    "imgs": [
+      "duvet.2.jpg",
+      "duvet.2b.jpg",
+      "duvet.2c.jpg",
+      "duvet.2d.jpg",
+      "duvet.2e.jpg",
+      "duvet.2f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 2,
     "cat": "furniture",
     "name": "Coffee table",
