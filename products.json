@@ -18,5 +18,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 2,
+    "cat": "furniture",
+    "name": "Coffee table",
+    "note": "✨ Modern. Unique. Classy. ✨\nElevate your space with our high-end coffee table — where timeless design meets luxury living. ☕🪞\n\n🔥 A statement piece.\n🌟 Crafted for elegance.\n🏡 Perfect for the modern home.",
+    "price": 45000,
+    "old": 50000,
+    "img": "furniture.1.jpg",
+    "imgs": [
+      "furniture.1.jpg",
+      "furniture.1b.jpg",
+      "furniture.1c.jpg",
+      "furniture.1d.jpg",
+      "furniture.1e.jpg",
+      "furniture.1f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
