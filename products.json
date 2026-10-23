@@ -118,5 +118,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 7,
+    "cat": "furniture",
+    "name": "3 in 1 marble table",
+    "note": "3 in 1 executive pure marble table \n\nVery strong ✅",
+    "price": 12999,
+    "old": 15000,
+    "img": "furniture.6.jpg",
+    "imgs": [
+      "furniture.6.jpg",
+      "furniture.6b.jpg",
+      "furniture.6c.jpg",
+      "furniture.6d.jpg",
+      "furniture.6e.jpg",
+      "furniture.6f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
