@@ -158,5 +158,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 9,
+    "cat": "furniture",
+    "name": "Glass effect marble table",
+    "note": "🔥Marble nesting coffee table (glass effect) white",
+    "price": 5500,
+    "old": 6500,
+    "img": "furniture.8.jpg",
+    "imgs": [
+      "furniture.8.jpg",
+      "furniture.8b.jpg",
+      "furniture.8c.jpg",
+      "furniture.8d.jpg",
+      "furniture.8e.jpg",
+      "furniture.8f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
