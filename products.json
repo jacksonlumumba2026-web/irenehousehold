@@ -78,5 +78,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 5,
+    "cat": "furniture",
+    "name": "Marble table",
+    "note": "* *Marble-top nesting coffee tables*\n\n with a Gold or chrome finish metal base. This modern and space-saving design is popular for its elegant appearance and versatility in living rooms.",
+    "price": 19500,
+    "old": 25000,
+    "img": "furniture.4.jpg",
+    "imgs": [
+      "furniture.4.jpg",
+      "furniture.4b.jpg",
+      "furniture.4c.jpg",
+      "furniture.4d.jpg",
+      "furniture.4e.jpg",
+      "furniture.4f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
