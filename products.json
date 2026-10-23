@@ -98,5 +98,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 6,
+    "cat": "furniture",
+    "name": "Marble table 2in 1",
+    "note": "2 in 1 Marble nesting coffee table (glass effect) white",
+    "price": 7000,
+    "old": 9000,
+    "img": "furniture.5.jpg",
+    "imgs": [
+      "furniture.5.jpg",
+      "furniture.5b.jpg",
+      "furniture.5c.jpg",
+      "furniture.5d.jpg",
+      "furniture.5e.jpg",
+      "furniture.5f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
