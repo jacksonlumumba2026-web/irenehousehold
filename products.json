@@ -58,5 +58,25 @@
     "badge": "",
     "badgeType": "",
     "inStock": true
+  },
+  {
+    "id": 4,
+    "cat": "furniture",
+    "name": "Nesting coffee table",
+    "note": "* *nesting coffee tables*\n\n with a Black or White finish metal base. This modern and space-saving design is popular for its elegant appearance and versatility in living rooms.",
+    "price": 19500,
+    "old": 22500,
+    "img": "furniture.3.jpg",
+    "imgs": [
+      "furniture.3.jpg",
+      "furniture.3b.jpg",
+      "furniture.3c.jpg",
+      "furniture.3d.jpg",
+      "furniture.3e.jpg",
+      "furniture.3f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
