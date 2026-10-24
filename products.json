@@ -238,5 +238,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 13,
+    "cat": "decor",
+    "name": "ACRYLIC TRANSPARENT MAKEUP DRAWER// Organizer Desktop Cosmetic Storage Box Lipstick Jewelry Make Up Brush Holder",
+    "note": "ACRYLIC TRANSPARENT MAKEUP DRAWER// Organizer Desktop Cosmetic Storage Box Lipstick Jewelry Make Up Brush Holder Storage Cases",
+    "price": 1800,
+    "old": 2500,
+    "img": "decor.1.jpg",
+    "imgs": [
+      "decor.1.jpg",
+      "decor.1b.jpg",
+      "decor.1c.jpg",
+      "decor.1d.jpg",
+      "decor.1e.jpg",
+      "decor.1f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
