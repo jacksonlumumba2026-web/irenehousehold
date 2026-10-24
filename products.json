@@ -60,6 +60,26 @@
     "inStock": true
   },
   {
+    "id": 12,
+    "cat": "duvets",
+    "name": "Fancy duvet set",
+    "note": "Fancy duvet set\nWith *_1_* Bedsheet\n        *_2_* pillow cases \n       *_2_* comforter cases\nSize *6*7*",
+    "price": 5500,
+    "old": 7000,
+    "img": "duvet.4.jpg",
+    "imgs": [
+      "duvet.4.jpg",
+      "duvet.4b.jpg",
+      "duvet.4c.jpg",
+      "duvet.4d.jpg",
+      "duvet.4e.jpg",
+      "duvet.4f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 2,
     "cat": "furniture",
     "name": "Coffee table",
