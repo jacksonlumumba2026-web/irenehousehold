@@ -438,5 +438,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 23,
+    "cat": "cookware",
+    "name": "‼️‼️New in  *Smartpro Table Top Cookers 4 gas",
+    "note": "‼️‼️New in \n*Smartpro Table Top Cooker 4 gasBurner*",
+    "price": 4500,
+    "old": 5500,
+    "img": "cookware.1.jpg",
+    "imgs": [
+      "cookware.1.jpg",
+      "cookware.1b.jpg",
+      "cookware.1c.jpg",
+      "cookware.1d.jpg",
+      "cookware.1e.jpg",
+      "cookware.1f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
   }
 ]
