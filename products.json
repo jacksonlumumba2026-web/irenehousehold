@@ -318,5 +318,25 @@
     "badge": "",
     "badgeType": "",
     "inStock": true
+  },
+  {
+    "id": 17,
+    "cat": "kitchenware",
+    "name": "❇️8PCS SET",
+    "note": "❇️8PCS SET \n (VK 22)\n\n✴️Premium High quality uakeen nonstick \n\n\n✴️ Heavy and Durable \n\nGas /Vitroceramic/Halogen/Induction.\n\nSIZES..\n\n❇️ 24cm Casserole 4.1L \n\n❇️28cm casserole 6.3L\n\n❇️18cm Sauce pan 1.9L\n\n❇️28cm Deep fry pan 4.0L",
+    "price": 16000,
+    "old": 18000,
+    "img": "kitchenware.3.jpg",
+    "imgs": [
+      "kitchenware.3.jpg",
+      "kitchenware.3b.jpg",
+      "kitchenware.3c.jpg",
+      "kitchenware.3d.jpg",
+      "kitchenware.3e.jpg",
+      "kitchenware.3f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
