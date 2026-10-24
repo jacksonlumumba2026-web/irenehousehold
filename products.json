@@ -40,6 +40,26 @@
     "inStock": true
   },
   {
+    "id": 11,
+    "cat": "duvets",
+    "name": "*Zuri* *diamond* quilted bedcover",
+    "note": "*Zuri* *diamond* quilted bedcover \n\n *king* *size/7*8*  with 2 pillowcases",
+    "price": 5500,
+    "old": 6500,
+    "img": "duvet.3.jpg",
+    "imgs": [
+      "duvet.3.jpg",
+      "duvet.3b.jpg",
+      "duvet.3c.jpg",
+      "duvet.3d.jpg",
+      "duvet.3e.jpg",
+      "duvet.3f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 2,
     "cat": "furniture",
     "name": "Coffee table",
