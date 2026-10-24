@@ -260,6 +260,26 @@
     "inStock": true
   },
   {
+    "id": 22,
+    "cat": "furniture",
+    "name": "Restocked✅️ *7 layer shoe rack*",
+    "note": "Restocked✅️\n*7 layer shoe rack*\nNow available at the shop",
+    "price": 1350,
+    "old": 1500,
+    "img": "furniture.10.jpg",
+    "imgs": [
+      "furniture.10.jpg",
+      "furniture.10b.jpg",
+      "furniture.10c.jpg",
+      "furniture.10d.jpg",
+      "furniture.10e.jpg",
+      "furniture.10f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
+  },
+  {
     "id": 13,
     "cat": "decor",
     "name": "ACRYLIC TRANSPARENT MAKEUP DRAWER// Organizer Desktop Cosmetic Storage Box Lipstick Jewelry Make Up Brush Holder",
