@@ -258,5 +258,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 14,
+    "cat": "decor",
+    "name": "🔷Rotating makeup organizer",
+    "note": "🔷Rotating makeup organizer \n\n🔰Made of acrylic",
+    "price": 1050,
+    "old": 1800,
+    "img": "decor.2.jpg",
+    "imgs": [
+      "decor.2.jpg",
+      "decor.2b.jpg",
+      "decor.2c.jpg",
+      "decor.2d.jpg",
+      "decor.2e.jpg",
+      "decor.2f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
   }
 ]
