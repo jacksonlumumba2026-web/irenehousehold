@@ -358,5 +358,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 19,
+    "cat": "kitchenware",
+    "name": "Sandwich maker",
+    "note": "✨PRICE DROPPED✨\n✅4 SLICES SANDWICH MAKER",
+    "price": 2899,
+    "old": 3500,
+    "img": "kitchenware.5.jpg",
+    "imgs": [
+      "kitchenware.5.jpg",
+      "kitchenware.5b.jpg",
+      "kitchenware.5c.jpg",
+      "kitchenware.5d.jpg",
+      "kitchenware.5e.jpg",
+      "kitchenware.5f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
