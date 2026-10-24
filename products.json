@@ -338,5 +338,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 18,
+    "cat": "kitchenware",
+    "name": "‼️‼️New in🔥🔥 *11LTR SINGLE TRAY CHAFFING DISH",
+    "note": "‼️‼️New in🔥🔥\n*11LTR SINGLE TRAY CHAFFING DISH*",
+    "price": 3999,
+    "old": 4500,
+    "img": "kitchenware.4.jpg",
+    "imgs": [
+      "kitchenware.4.jpg",
+      "kitchenware.4b.jpg",
+      "kitchenware.4c.jpg",
+      "kitchenware.4d.jpg",
+      "kitchenware.4e.jpg",
+      "kitchenware.4f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
