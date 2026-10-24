@@ -458,5 +458,25 @@
     "badge": "",
     "badgeType": "",
     "inStock": true
+  },
+  {
+    "id": 24,
+    "cat": "electronics",
+    "name": "*Eurochef 3+1  standing cooker",
+    "note": "*Eurochef 3+1  standing cooker with shelves* \n  \n  🍚Not Auto Ignition\n  🍚Can use gas\n  🍚Can use electricity",
+    "price": 7000,
+    "old": 8000,
+    "img": "electronics.1.jpg",
+    "imgs": [
+      "electronics.1.jpg",
+      "electronics.1b.jpg",
+      "electronics.1c.jpg",
+      "electronics.1d.jpg",
+      "electronics.1e.jpg",
+      "electronics.1f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
