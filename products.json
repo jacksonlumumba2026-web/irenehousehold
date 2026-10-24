@@ -278,5 +278,25 @@
     "badge": "",
     "badgeType": "",
     "inStock": true
+  },
+  {
+    "id": 15,
+    "cat": "kitchenware",
+    "name": "*⏯️HIGH QUALITY ALUMINUM+ PLASTIC dish rack now available....*  -Has removable draining trays Flat place to accommodate glasses+ mugs",
+    "note": "*⏯️HIGH QUALITY ALUMINUM+ PLASTIC dish rack now available....*\n\n-Has removable draining trays\nFlat place to accommodate glasses+ mugs",
+    "price": 4300,
+    "old": 5200,
+    "img": "kitchenware.1.jpg",
+    "imgs": [
+      "kitchenware.1.jpg",
+      "kitchenware.1b.jpg",
+      "kitchenware.1c.jpg",
+      "kitchenware.1d.jpg",
+      "kitchenware.1e.jpg",
+      "kitchenware.1f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
   }
 ]
