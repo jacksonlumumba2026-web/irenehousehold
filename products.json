@@ -378,5 +378,25 @@
     "badge": "SALE",
     "badgeType": "sale",
     "inStock": true
+  },
+  {
+    "id": 20,
+    "cat": "kitchenware",
+    "name": "*12pcs ENGEIBEPG STAINLESSNESS",
+    "note": "*12pcs ENGEIBEPG STAINLESS SUFURIA*\n\n2.0lt\n2.9L\n3.9L\n6.6L\n\nPan 3.4L",
+    "price": 6500,
+    "old": 7500,
+    "img": "kitchenware.6.jpg",
+    "imgs": [
+      "kitchenware.6.jpg",
+      "kitchenware.6b.jpg",
+      "kitchenware.6c.jpg",
+      "kitchenware.6d.jpg",
+      "kitchenware.6e.jpg",
+      "kitchenware.6f.jpg"
+    ],
+    "badge": "SALE",
+    "badgeType": "sale",
+    "inStock": true
   }
 ]
