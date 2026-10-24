@@ -298,5 +298,25 @@
     "badge": "",
     "badgeType": "",
     "inStock": true
+  },
+  {
+    "id": 16,
+    "cat": "kitchenware",
+    "name": "*❇️HEAVY DUTY Kitchen 3 tier Dish rack Available*",
+    "note": "*❇️HEAVY DUTY Kitchen 3 tier Dish rack Available*\n\n \n\n✔️Easy to clean, anti_rust and safe\n✔️Has more space for storage\n✔️Has a drainage board",
+    "price": 6000,
+    "old": 7500,
+    "img": "kitchenware.2.jpg",
+    "imgs": [
+      "kitchenware.2.jpg",
+      "kitchenware.2b.jpg",
+      "kitchenware.2c.jpg",
+      "kitchenware.2d.jpg",
+      "kitchenware.2e.jpg",
+      "kitchenware.2f.jpg"
+    ],
+    "badge": "",
+    "badgeType": "",
+    "inStock": true
   }
 ]
